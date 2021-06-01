@@ -1,0 +1,86 @@
+@import 'node_modules/modern-normalize/modern-normalize.css';
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+// Фотны есть 400, 500, 700
+
+//Цвета
+
+$main-color: #242a37;
+$card-bg-color: #15395a;
+$hover-color: #00d7ff;
+$bg-color: #f2f3f7;
+$text-color: #282828;
+$secondary-text: #b9c3c8;
+$bold-text: #000000;
+$white-color: #ffffff;
+$button-color: #ff851c;
+$cancel-button: #24d40c;
+$delete-button: #db0938;
+
+//Цвета категорий
+$family-color: #ffe6d3;
+$healt-color: #cdf7ff;
+$learning-color: #fff6c0;
+$leisure-color: #f8d2ff;
+$work-color: #d3f6ce;
+$active-color: #b9c3c8;
+
+//Сбросы стилей
+
+%text-throw {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+%list-throw {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+%link-throw {
+  display: block;
+  text-decoration: none;
+}
+%button-throw {
+  outline: none;
+  border: none;
+  background-color: none;
+}
+%input-throw {
+  outline: none;
+}
+
+//Стили контейнера
+
+%container-styles {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 767px) {
+    max-width: 450px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 768px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+  }
+}
+
+%list-styles {
+  display: grid;
+  @media screen and (min-width: 320px) {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+  }
+  @media screen and (min-width: 1280px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
