@@ -1,0 +1,78 @@
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import s from './SingUpPage.module.scss';
+import { useDispatch } from 'react-redux';
+import { registerAuth } from '../../Redux/Auth/authOperation';
+
+const SingUpPage = () => {
+  const dispftch = useDispatch();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const nameFunc = e => setName(e.target.value);
+  const emailFunc = e => setEmail(e.target.value);
+  const passwordFunc = e => setPassword(e.target.value);
+
+  const btnClick = e => {
+    e.preventDefault();
+    dispftch(registerAuth({ name, email, password }));
+    setName('');
+    setPassword('');
+    setEmail('');
+  };
+
+  return (
+    <>
+      <div className={s}>
+        <NavLink exact to="/" className={s} activeClassName={s}>
+          Back
+        </NavLink>
+        <h1 className={s}>Registration</h1>
+        <form className={s} onSubmit={btnClick}>
+          <label className={s}>
+            Login
+            <input
+              required
+              className={s}
+              type="text"
+              value={name}
+              placeholder="Enter login"
+              onChange={nameFunc}
+            />
+          </label>
+          <br />
+          <label className={s}>
+            Email
+            <input
+              required
+              className={s}
+              type="text"
+              value={email}
+              placeholder="Enter email"
+              onChange={emailFunc}
+            />
+          </label>
+          <br />
+          <label className={s}>
+            Password
+            <input
+              required
+              className={s}
+              type="password"
+              value={password}
+              placeholder="Enter password"
+              onChange={passwordFunc}
+            />
+          </label>
+          <br />
+          <button type="submit" className={s}>
+            Registration
+          </button>
+        </form>
+      </div>
+    </>
+  );
+  // }
+};
+export default SingUpPage;
