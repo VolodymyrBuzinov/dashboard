@@ -1,37 +1,33 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import '../LoginPage/Login.css';
-import s from './SingUpPage.module.scss';
+import s from './LoginPage.module.scss';
+import './Login.scss';
 import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { getWaiting } from '../../Redux/Auth/authSelectors';
-import { registerAuth } from '../../Redux/Auth/authOperation';
+import { loginAuth } from '../../Redux/Auth/authOperation';
 import { CSSTransition } from 'react-transition-group';
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from 'react-loader-spinner';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-const SingUpPage = () => {
-  const dispftch = useDispatch();
-  const [name, setName] = useState('');
-    const wait = useSelector(getWaiting);
-
+const LoginPage = () => {
+  const dispatch = useDispatch();
+  const wait = useSelector(getWaiting);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const nameFunc = e => setName(e.target.value);
   const emailFunc = e => setEmail(e.target.value);
   const passwordFunc = e => setPassword(e.target.value);
 
   const btnClick = e => {
     e.preventDefault();
-    dispftch(registerAuth({ name, email, password }));
-    setName('');
-    setPassword('');
+    dispatch(loginAuth({ email, password }));
     setEmail('');
+    setPassword('');
   };
 
   return (
-      <section className={s}>
-         <CSSTransition
+    <section className={s}>
+      <CSSTransition
         in={wait}
         classNames="waitingMessage"
         timeout={250}
@@ -39,31 +35,20 @@ const SingUpPage = () => {
       >
         <Loader
           className={s.waitingMessage}
-        type="Ball-Triangle 	"
-        color="#00BFFF"
-        height={100}
-        width={100}
-      />
+          type="Ball-Triangle 	"
+          color="#00BFFF"
+          height={100}
+          width={100}
+        />
       </CSSTransition>
-        <NavLink exact to="/" className={s} activeClassName={s}>
-          Back
-        </NavLink>
-        <h1 className={s}>Registration</h1>
+      <NavLink exact to="/singUpPage" className={s} activeClassName={s}>
+        Registration
+      </NavLink>
+      <div className={s}>
+        <h1 className={s}>Login</h1>
         <form className={s} onSubmit={btnClick}>
           <label className={s}>
-            Login
-            <input
-              required
-              className={s}
-              type="text"
-              value={name}
-              placeholder="Enter login"
-              onChange={nameFunc}
-            />
-          </label>
-          <br />
-          <label className={s}>
-            Email
+            <span>Email</span>
             <input
               required
               className={s}
@@ -75,7 +60,7 @@ const SingUpPage = () => {
           </label>
           <br />
           <label className={s}>
-            Password
+            <span>Password</span>
             <input
               required
               className={s}
@@ -87,10 +72,12 @@ const SingUpPage = () => {
           </label>
           <br />
           <button type="submit" className={s}>
-            Registration
+            GO
           </button>
         </form>
-      </section>
+      </div>
+    </section>
   );
+  // }
 };
-export default SingUpPage;
+export default LoginPage;
