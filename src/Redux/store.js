@@ -1,4 +1,6 @@
 import authReduser from './Auth/authReduser';
+import templateTodoReduser from './Reducers/onClickBtnCreate-reducer'
+
 import {
   configureStore,
   combineReducers,
@@ -31,6 +33,7 @@ const authPersistConfig = {
 };
 const mainReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReduser),
+  templateTodo: templateTodoReduser
 });
 
 const store = configureStore({
