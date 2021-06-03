@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import s from './LoginPage.module.scss';
-import { useDispatch } from 'react-redux';
+import './Login.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { getWaiting } from '../../Redux/Auth/authSelectors';
 import { loginAuth } from '../../Redux/Auth/authOperation';
+import { CSSTransition } from 'react-transition-group';
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const wait = useSelector(getWaiting);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,6 +27,21 @@ const LoginPage = () => {
 
   return (
     <section className={s}>
+      <CSSTransition
+        in={wait}
+        classNames="waitingMessage"
+        timeout={250}
+        unmountOnExit
+      >
+        <Loader
+          className={s.waitingMessage}
+        type="Ball-Triangle 	"
+        color="#00BFFF"
+        height={100}
+        width={100}
+      />
+      
+      </CSSTransition>
       <NavLink exact to="/singUpPage" className={s} activeClassName={s}>
         Registration
       </NavLink>

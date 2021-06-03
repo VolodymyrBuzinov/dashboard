@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import '../LoginPage/Login.css';
 import s from './SingUpPage.module.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getWaiting } from '../../Redux/Auth/authSelectors';
 import { registerAuth } from '../../Redux/Auth/authOperation';
+import { CSSTransition } from 'react-transition-group';
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const SingUpPage = () => {
   const dispftch = useDispatch();
   const [name, setName] = useState('');
+    const wait = useSelector(getWaiting);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -23,8 +30,21 @@ const SingUpPage = () => {
   };
 
   return (
-    <>
-      <div className={s}>
+      <section className={s}>
+         <CSSTransition
+        in={wait}
+        classNames="waitingMessage"
+        timeout={250}
+        unmountOnExit
+      >
+        <Loader
+          className={s.waitingMessage}
+        type="Ball-Triangle 	"
+        color="#00BFFF"
+        height={100}
+        width={100}
+      />
+      </CSSTransition>
         <NavLink exact to="/" className={s} activeClassName={s}>
           Back
         </NavLink>
@@ -70,9 +90,7 @@ const SingUpPage = () => {
             Registration
           </button>
         </form>
-      </div>
-    </>
+      </section>
   );
-  // }
 };
 export default SingUpPage;
