@@ -2,6 +2,9 @@ import { Switch } from 'react-router';
 import { Suspense, lazy } from 'react';
 import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
+import s from './Router.module.scss'
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 const LoginPage = lazy(() =>
@@ -18,7 +21,13 @@ const MyCabinetPage = lazy(() =>
 
 function Router() {
   return (
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader
+          className={s.waitingMessage}
+        type="Ball-Triangle"
+        color="#00BFFF"
+        height={100}
+        width={100}
+      />}>
         <Switch>
           <PublicRoute
             exact
