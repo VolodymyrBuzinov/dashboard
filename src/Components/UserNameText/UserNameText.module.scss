@@ -1,0 +1,14 @@
+@import '../../Utils/utils.scss';
+
+.userNameText {
+  color: $header-text;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
