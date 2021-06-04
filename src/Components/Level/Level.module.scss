@@ -1,0 +1,51 @@
+@import '../../Utils/utils.scss';
+
+.Level__list {
+  @extend %list-throw;
+}
+
+.Level__list {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: all $animation-timing;
+  color: $secondary-text;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  &:hover {
+    transition: all $animation-timing;
+    cursor: pointer;
+    color: $text-color;
+  }
+}
+
+.Level__group {
+  display: flex;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}
+
+.Level__circle {
+  display: flex;
+  margin-right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  padding-right: 7px;
+
+  &.easy {
+    background: $hover-color;
+  }
+
+  &.normal {
+    background: $cancel-button;
+  }
+
+  &.hard {
+    background: $delete-button;
+  }
+}
