@@ -1,15 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PropTypes from 'prop-types';
 import s from './DashboardList.module.scss';
 import DashboardListItem from "../DashboardListItem/DashboardListItem";
-import todoOperations from "../../Redux/Todos/todos-operations";
-import todoSelectors from "../../Redux/Todos/todos-selectors";
+//import todoOperations from "../../Redux/Todos/todosOperations";
+import todoSelectors from "../../Redux/Todos/todosSelectors";
 
-export default function DashboardList() {
-  const dispatch = useDispatch();
+const DashboardList = () => {
   const todos = useSelector(todoSelectors.getAllTodos);
-  // console.log('todos', todos);
+  console.log('todos', todos);
 
   const today = new Date();
   // console.log(today);
@@ -28,26 +27,22 @@ export default function DashboardList() {
     <main className={s.todoListMain}>
     {todos.length >= 0 && (
       <div className={s.todoListDiv}>
-        TODAY
+        <p className={s.todoListTitle}>TODAY</p>
         {todos.map(({ title, id, time }) => (
-        <ul className={s.todoList}>
-          <DashboardListItem title={title} id={id} time={time} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
-          </DashboardListItem>
-        </ul>))}
-        <ul className={s.todoList}>
-          <DashboardListItem >
-          </DashboardListItem>
-        </ul>
-    TOMORROW
-      {todos.map(({ title, id, data }) => (
           <ul className={s.todoList}>
-            <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
+            <DashboardListItem title={title} id={id} time={time}>
             </DashboardListItem>
           </ul>))}
-          <ul className={s.todoList}>
           <DashboardListItem >
           </DashboardListItem>
-        </ul>
+        <p className={s.todoListTitle}>TOMORROW</p>
+        {todos.map(({ title, id, data }) => (
+          <ul className={s.todoList}>
+            <DashboardListItem title={title} id={id} data={data}>
+            </DashboardListItem>
+          </ul>))}
+          <DashboardListItem >
+          </DashboardListItem>
         </div>)}
       </main>
     </>
@@ -66,3 +61,5 @@ DashboardList.propTypes = {
   }
   ))
 };
+
+export default DashboardList;

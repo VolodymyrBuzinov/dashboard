@@ -3,8 +3,6 @@
 .todoItem {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 20px;
   width: 290px;
   height: 260px;
@@ -29,7 +27,43 @@
 }
 
 .todoItemСomplexity {
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+  margin-top: 19px;
+  margin-left: 38px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  color: #b9c3c8;
+}
+
+.todoItemDivSvg {
+}
+.todoItemSvg {
+}
+
+.todoItemGroup {
+  margin-bottom: 44px;
+  padding-left: 21px;
+  padding-top: 10px;
+  width: 120px;
+  height: 35px;
+  background: #d3f6ce;
+  border-radius: 0px 25px 25px 0px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+
+  letter-spacing: 0.02em;
+
+  color: #282828;
 }
 
 .todoItemTitle {
@@ -37,8 +71,12 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
-  /* identical to box height */
-
+  margin: 0;
+  margin-top: 71px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 200px;
+  height: auto;
   text-align: center;
 
   color: #282828;
@@ -53,6 +91,8 @@
 
   text-align: center;
   letter-spacing: 0.02em;
-
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 38px;
   color: #b9c3c8;
 }
