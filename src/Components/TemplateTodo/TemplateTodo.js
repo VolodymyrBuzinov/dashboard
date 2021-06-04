@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import Modal from '../Modal/Modal';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import Button from '../Button/Button';
+import Category from '../Category/Category'
+
+const LIST_CATEGORY = ['stuff', 'family', 'health', 'learning', 'leisure', 'work']
 
 const TemplateTodo = () => {
   const dispatch = useDispatch();
@@ -28,9 +31,7 @@ const TemplateTodo = () => {
       >
         {showModal && (
           <Modal onClose={toggleModal} type="category">
-            <ul>
-              <li>Test</li>
-            </ul>
+            <Category items={LIST_CATEGORY} />
           </Modal>
         )}
       </div>
