@@ -1,0 +1,52 @@
+@import '../../Utils/utils.scss';
+
+.container {
+  @extend %container-styles;
+}
+.button {
+  position: relative;
+  display: flex;
+  width: 100%;
+
+  padding: 0;
+  padding-bottom: 1px;
+  margin: 0;
+  border: none;
+
+  font-family: HelveticaNeueCyr;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  text-align: left;
+  & p {
+    margin: 0;
+  }
+}
+
+.icon {
+  margin-left: 10px;
+  width: 12px;
+  height: 14px;
+}
+
+.dottedLine {
+  width: 100%;
+  height: 14px;
+  border-top: 1px dashed #b9c3c8;
+  transform: translateY(50%);
+}
+
+.menu {
+  opacity: 1;
+}
+.isOpenMenu {
+  opacity: 0;
+}
+.contentMenu {
+  transform: translateY(-100%);
+}
+.isOpen {
+  transform: translateY(100%);
+}
