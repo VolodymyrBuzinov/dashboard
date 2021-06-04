@@ -1,0 +1,20 @@
+@import '../../Utils/utils.scss';
+
+.nikButton {
+  @extend %button-throw;
+  margin-right: 10px;
+  border-radius: 50%;
+
+  font-family: inherit;
+  color: $white-color;
+  background-color: $logout-color;
+
+  font-style: normal;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 1.06;
+  letter-spacing: 0.02em;
+
+  width: 30px;
+  height: 30px;
+}

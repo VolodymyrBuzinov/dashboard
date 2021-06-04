@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import sprite from '../../Icons/symbol-defs.svg'
 import style from './MenuDone.module.scss';
 
