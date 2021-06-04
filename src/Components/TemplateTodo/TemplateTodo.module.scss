@@ -1,0 +1,26 @@
+@import '../../Utils/utils.scss';
+
+.TemplateTodo__group {
+  position: relative;
+  border: solid 1px $delete-button;
+
+  background: $white-color;
+  @extend %list-throw;
+  position: relative;
+  /* margin на время разработки*/
+  margin-left: auto;
+  margin-right: auto;
+
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  @media screen and (max-width: 767px) {
+    max-width: 290px;
+    height: 260px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 205px;
+    height: 199px;
+  }
+}
