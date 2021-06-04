@@ -28,6 +28,10 @@
   }
 }
 
+.todoItemСomplexity {
+  text-align: left;
+}
+
 .todoItemTitle {
   font-style: normal;
   font-weight: 700;
@@ -40,7 +44,7 @@
   color: #282828;
 }
 
-.todoItemData {
+.todoItemTime {
   font-style: normal;
   font-weight: 400;
   font-size: 14px;

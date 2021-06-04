@@ -21,32 +21,20 @@ export default function DashboardList() {
   // console.log('TOMORROW!');
   }
   
-  /*  {if data.getDay() === today.getDay()}
-  {if data.getDay() === tomorrow.getDay()} */
+  /*  {if time.getDay() === today.getDay()}
+  {if time.getDay() === tomorrow.getDay()} */
   
   return (<>
     <main className={s.todoListMain}>
     {todos.length >= 0 && (
       <div className={s.todoListDiv}>
         TODAY
-        {todos.map(({ title, id, data }) => (
+        {todos.map(({ title, id, time }) => (
         <ul className={s.todoList}>
-          <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
+          <DashboardListItem title={title} id={id} time={time} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
           </DashboardListItem>
         </ul>))}
         <ul className={s.todoList}>
-          <DashboardListItem >
-          </DashboardListItem>
-
-          <DashboardListItem >
-          </DashboardListItem>
-
-          <DashboardListItem >
-          </DashboardListItem>
-
-          <DashboardListItem >
-          </DashboardListItem>
-        
           <DashboardListItem >
           </DashboardListItem>
         </ul>
@@ -57,18 +45,6 @@ export default function DashboardList() {
             </DashboardListItem>
           </ul>))}
           <ul className={s.todoList}>
-          <DashboardListItem >
-          </DashboardListItem>
-
-          <DashboardListItem >
-          </DashboardListItem>
-
-          <DashboardListItem >
-          </DashboardListItem>
-
-          <DashboardListItem >
-          </DashboardListItem>
-        
           <DashboardListItem >
           </DashboardListItem>
         </ul>
