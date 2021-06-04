@@ -2,16 +2,29 @@
 
 .Btn {
   display: flex;
-  background: red;
+  //добавил стили заливки значка сложности
 
   &__circle {
+    margin: 5px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: green;
+
+    &.easy {
+      background: $hover-color;
+    }
+
+    &.normal {
+      background: $cancel-button;
+    }
+
+    &.hard {
+      background: $delete-button;
+    }
   }
 
   &__icon {
     transform: rotate(180deg);
+    margin: 10px 0 0 7px;
   }
 }
