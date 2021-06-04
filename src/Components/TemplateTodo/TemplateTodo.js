@@ -4,6 +4,7 @@ import Modal from '../Modal/Modal';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import Button from '../Button/Button';
 import Category from '../Category/Category'
+import CategoryBtn from '../Category/CategoryBtn'
 
 const LIST_CATEGORY = ['stuff', 'family', 'health', 'learning', 'leisure', 'work']
 
@@ -14,9 +15,6 @@ const TemplateTodo = () => {
   const [showModal, setShowModal] = useState(false);
   const [state, setState] = useState(INITIAL_STATE);
 
-  const obj = {
-    category: LIST_CATEGORY[0]
-  }
 
   const onclick = () => dispatch(onClickBtnCreate(true));
   const toggleModal = useCallback(() => {
@@ -35,8 +33,7 @@ const TemplateTodo = () => {
 
   return (
     <>    
-      <div
-        onClick={toggleModal}
+      <div        
         style={{
           position: 'relative',
           width: '205px',
@@ -46,11 +43,14 @@ const TemplateTodo = () => {
           border: 'solid 1px',
         }}
       >
+        <CategoryBtn type='level' title={state.category } onClick={toggleModal}>
         {showModal && (
           <Modal onClose={toggleModal} type="category">
             <Category items={LIST_CATEGORY} handleClick={handleClickElement} />
           </Modal>
         )}
+        </CategoryBtn>
+        
       </div>
       <Button
         content="icon-plus"
