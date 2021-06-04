@@ -11,7 +11,6 @@ const ExitButton = () => {
 
   return (
     <button
-      exact
       to="/"
       // className={s.navLink}
       // activeClassName={s.navLinkactive}
