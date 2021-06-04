@@ -1,0 +1,14 @@
+@import '../../Utils/utils.scss';
+
+.todoListMain {
+  background-color: $bg-color;
+  width: 100vw;
+}
+
+.todoListDiv {
+  @extend %container-styles;
+}
+.todoList {
+  @extend %list-styles;
+  width: 300px;
+}

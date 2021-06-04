@@ -1,0 +1,54 @@
+@import '../../Utils/utils.scss';
+
+.todoItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 290px;
+  height: 260px;
+
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    height: 260px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 205px;
+    height: 199px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 205px;
+    height: 199px;
+  }
+}
+
+.todoItemTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #282828;
+}
+
+.todoItemData {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.02em;
+
+  color: #b9c3c8;
+}

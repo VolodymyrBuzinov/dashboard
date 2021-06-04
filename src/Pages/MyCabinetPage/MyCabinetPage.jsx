@@ -1,10 +1,11 @@
 import ExitButton from '../../Components/ExitButton/ExitButton';
+import DashboardList from '../../Components/DashboardList/DashboardList';
 
 const MyCabinetPage = () => {
   return (
     <>
       <ExitButton />
-      <h1>Hello to MyCabinet</h1>
+      <DashboardList />
     </>
   );
 };
