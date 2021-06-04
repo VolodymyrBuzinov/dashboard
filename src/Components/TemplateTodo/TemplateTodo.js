@@ -21,7 +21,7 @@ const LIST_LEVEL = ['easy', 'normal', 'hard'];
 
 const INITIAL_STATE = { category: LIST_CATEGORY[0], level: LIST_LEVEL[0] };
 
-const TemplateTodo = () => {
+const TemplateTodo = ({ category }) => {
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -74,10 +74,12 @@ const TemplateTodo = () => {
         ></div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
-          <div className={style.TemplateTodo__ButtonBgc}>
+          <div
+            className={`${style.TemplateTodo__ButtonBgc} ${style[category]}`}
+          >
             <ButtonOpenModal
               type="category"
-              title={state.category}
+              title={category}
               onClick={toggleModalCategory}
             >
               {showModalCategory && (

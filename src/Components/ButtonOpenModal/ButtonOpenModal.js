@@ -4,9 +4,10 @@ import sprite from '../../Icons/symbol-defs.svg';
 const ButtonOpenModal = ({ type, title, onClick, children }) => {
   return (
     <div onClick={onClick} className={`${style.Btn} ${style[type]}`}>
-      {type === 'level' && (
-        <div className={`${style.Btn__circle} ${style[title]}`}></div>
-      )}
+      <div
+        className={`${style.Btn__circle} ${type === 'level' && style[title]}`}
+      ></div>
+
       <span
         className={
           type === 'level'

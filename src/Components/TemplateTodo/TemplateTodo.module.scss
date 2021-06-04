@@ -41,15 +41,32 @@
   }
 }
 
-.TemplateTodo__ButtonBgc::before {
-  content: ' ';
-  display: block;
-  width: 88px;
-  height: 20px;
-  background-color: aqua;
-  border-radius: 0px 15px 15px 0px;
+.TemplateTodo__ButtonBgc {
+  &::before {
+    content: ' ';
+    display: block;
+    width: 88px;
+    height: 20px;
+    background-color: $secondary-text;
+    border-radius: 0px 15px 15px 0px;
 
-  position: absolute;
-  left: 0;
-  transform: translateY(-1px);
+    position: absolute;
+    left: 0;
+    transform: translateY(-1px);
+  }
+  &.family::before {
+    background: $family-color;
+  }
+  &.health::before {
+    background: $healt-color;
+  }
+  &.learning::before {
+    background: $learning-color;
+  }
+  &.leisure::before {
+    background: $leisure-color;
+  }
+  &.work::before {
+    background: $work-color;
+  }
 }
