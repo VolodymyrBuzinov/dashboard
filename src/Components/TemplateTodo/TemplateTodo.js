@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import Button from '../Button/Button';
@@ -25,7 +26,6 @@ const TemplateTodo = () => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
   const [state, setState] = useState(INITIAL_STATE);
-  console.log('🚀 ~ TemplateTodo ~ State', state);
 
   const onclick = () => dispatch(onClickBtnCreate(true));
 
@@ -36,11 +36,7 @@ const TemplateTodo = () => {
     setShowModalLevel(prevShowModalLevel => !prevShowModalLevel);
   }, []);
 
-  const handleClickElement = e => {
-    console.log(
-      '🚀 ~ file: TemplateTodo.js ~ line 46 ~ TemplateTodo ~ e.target',
-      e.target,
-    );
+  const handleClickElementCategory = e => {
     const { type, name } = e.target.dataset;
     setState(prevState => ({
       ...prevState,
@@ -57,16 +53,7 @@ const TemplateTodo = () => {
 
   return (
     <>
-      <div
-        style={{
-          position: 'relative',
-          width: '205px',
-          height: '199px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          border: 'solid 1px',
-        }}
-      >
+      <div className={style.TemplateTodo__group}>
         <CategoryBtn
           type="level"
           title={state.level}
@@ -89,7 +76,7 @@ const TemplateTodo = () => {
             <Modal onClose={toggleModalCategory} type="category">
               <Category
                 items={LIST_CATEGORY}
-                handleClick={handleClickElement}
+                handleClick={handleClickElementCategory}
               />
             </Modal>
           )}
