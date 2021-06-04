@@ -1,0 +1,17 @@
+@import '../../Utils/utils.scss';
+
+.Btn {
+  display: flex;
+  background: red;
+
+  &__circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: green;
+  }
+
+  &__icon {
+    transform: rotate(180deg);
+  }
+}
