@@ -5,28 +5,29 @@ import s from './DashboardList.module.scss';
 import DashboardListItem from "../DashboardListItem/DashboardListItem";
 import todoOperations from "../../Redux/Todos/todos-operations";
 import todoSelectors from "../../Redux/Todos/todos-selectors";
-/*
 
-   {todos.map(({ name, id, number }) => (
-  {if today.getDay() === data.getDay()} */
 export default function DashboardList() {
   const dispatch = useDispatch();
   const todos = useSelector(todoSelectors.getAllTodos);
-  
+  console.log('todos', todos);
+
   const today = new Date();
-  console.log(today);
+  //console.log(today);
   const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-  console.log(tomorrow);
+  //console.log(tomorrow);
   if (tomorrow.getDay() === today.getDay()) {
-    console.log('today!');
+    console.log('TODAY!');
   } else {
     console.log('TOMORROW!');
   }
   console.log(tomorrow<today)
-  console.log(tomorrow>today) 
-
+  console.log(tomorrow > today)
+  
+  /*  {if data.getDay() === today.getDay()}
+  {if data.getDay() === tomorrow.getDay()} */
+  
   return (<>
-    {todos.length >= 0 &&
+    {todos.length >= 0 && (
       <div className={s.div}>
       
         TODAY
@@ -73,7 +74,7 @@ export default function DashboardList() {
           <DashboardListItem >
           </DashboardListItem>
         </ul>
-      </div>}
+      </div>)}
     </>
   );
 }
