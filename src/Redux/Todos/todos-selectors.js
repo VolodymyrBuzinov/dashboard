@@ -13,10 +13,11 @@ const getError = state => state.todos.error;
     );
  }); */
 
-export default {
+ const exp ={
   getLoading,
   getFilter,
  // getVisibleContacts,
     getError,
   getAllTodos
 };
+export default exp;

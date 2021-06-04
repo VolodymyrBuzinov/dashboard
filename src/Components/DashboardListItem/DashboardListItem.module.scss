@@ -1,7 +1,6 @@
 @import '../../Utils/utils.scss';
 
-.item {
-  margin-left: 0;
+.todoItem {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,10 +28,9 @@
   }
 }
 
-.title {
-  font-family: HelveticaNeueCyr;
+.todoItemTitle {
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   line-height: 16px;
   /* identical to box height */
@@ -42,10 +40,9 @@
   color: #282828;
 }
 
-.data {
-  font-family: HelveticaNeueCyr;
+.todoItemData {
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 14px;
   line-height: 14px;
   /* identical to box height */

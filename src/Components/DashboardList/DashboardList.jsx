@@ -9,34 +9,32 @@ import todoSelectors from "../../Redux/Todos/todos-selectors";
 export default function DashboardList() {
   const dispatch = useDispatch();
   const todos = useSelector(todoSelectors.getAllTodos);
-  console.log('todos', todos);
+  // console.log('todos', todos);
 
   const today = new Date();
-  //console.log(today);
+  // console.log(today);
   const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-  //console.log(tomorrow);
+  // console.log(tomorrow);
   if (tomorrow.getDay() === today.getDay()) {
-    console.log('TODAY!');
+  // console.log('TODAY!');
   } else {
-    console.log('TOMORROW!');
+  // console.log('TOMORROW!');
   }
-  console.log(tomorrow<today)
-  console.log(tomorrow > today)
   
   /*  {if data.getDay() === today.getDay()}
   {if data.getDay() === tomorrow.getDay()} */
   
   return (<>
+    <main className={s.todoListMain}>
     {todos.length >= 0 && (
-      <div className={s.div}>
-      
+      <div className={s.todoListDiv}>
         TODAY
-         {todos.map(({ title, id, data }) => (
-        <ul className={s.list}>
+        {todos.map(({ title, id, data }) => (
+        <ul className={s.todoList}>
           <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
           </DashboardListItem>
         </ul>))}
-        <ul className={s.list}>
+        <ul className={s.todoList}>
           <DashboardListItem >
           </DashboardListItem>
 
@@ -54,11 +52,11 @@ export default function DashboardList() {
         </ul>
     TOMORROW
       {todos.map(({ title, id, data }) => (
-          <ul className={s.list}>
+          <ul className={s.todoList}>
             <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
             </DashboardListItem>
           </ul>))}
-        <ul className={s.list}>
+          <ul className={s.todoList}>
           <DashboardListItem >
           </DashboardListItem>
 
@@ -74,7 +72,8 @@ export default function DashboardList() {
           <DashboardListItem >
           </DashboardListItem>
         </ul>
-      </div>)}
+        </div>)}
+      </main>
     </>
   );
 }

@@ -35,4 +35,5 @@ const deleteTodo = todoId => async dispatch => {
     }
 };
 
-export default { fetchTodos, addTodo, deleteTodo};
+const exp = { fetchTodos, addTodo, deleteTodo };
+export default exp;

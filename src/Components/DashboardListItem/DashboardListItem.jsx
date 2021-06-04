@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './DashboardListItem.module.scss';
+import s from './DashboardListItem.module.scss';
 
 function DashboardListItem({ title, id, data, onClick}) {
   return (<>
-    <li key={id} onClick={onClick} className={styles.item}>
+    <li key={id} onClick={onClick} className={s.todoItem}>
       Сomplexity
-        <p className={styles.title}>title{title}</p>
-        <p className={styles.data}>data{data}</p>
+        <p className={s.todoItemTitle}>title{title}</p>
+        <p className={s.todoItemData}>data{data}</p>
       Group
       </li>
     </>
