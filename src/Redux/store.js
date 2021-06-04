@@ -1,4 +1,4 @@
-import authReduser from './Auth/authReduser';
+import authReduser from './Reducers/authReduser';
 import templateTodoReduser from './Reducers/onClickBtnCreate-reducer'
 
 import {

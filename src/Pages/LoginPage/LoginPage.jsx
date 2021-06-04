@@ -3,11 +3,12 @@ import s from './LoginPage.module.scss';
 import './Login.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getWaiting } from '../../Redux/Auth/authSelectors';
-import { loginAuth } from '../../Redux/Auth/authOperation';
+import { getWaiting } from '../../Redux/Selectors/authSelectors';
+import { loginAuth } from '../../Redux/Operations/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -35,13 +36,15 @@ const LoginPage = () => {
       >
         <Loader
           className={s.waitingMessage}
-          type="Ball-Triangle 	"
+          type="BallTriangle"
           color="#00BFFF"
           height={100}
           width={100}
         />
       </CSSTransition>
-      <NavLink exact to="/singUpPage" className={s} activeClassName={s}>
+      <NavLink exact to="/singUpPage"
+        // className={s} activeClassName={s}
+      >
         Registration
       </NavLink>
       <div className={s}>

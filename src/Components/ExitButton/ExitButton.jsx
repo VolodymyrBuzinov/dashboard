@@ -1,7 +1,7 @@
-import s from './ExitButton.module.scss';
+// import s from './ExitButton.module.scss';
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { logOutAuth } from '../../Redux/Auth/authOperation';
+import { logOutAuth } from '../../Redux/Operations/authOperation';
 
 const ExitButton = () => {
   const dispatch = useDispatch();
@@ -13,8 +13,8 @@ const ExitButton = () => {
     <button
       exact
       to="/"
-      className={s.navLink}
-      activeClassName={s.navLinkactive}
+      // className={s.navLink}
+      // activeClassName={s.navLinkactive}
       onClick={() => {
         onLogout();
       }}

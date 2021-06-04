@@ -15,9 +15,9 @@ import {
   getCurrentUserStart,
   getCurrentUserSuccess,
   getCurrentUserError,
-} from './authAction';
+} from '../Actions/authAction';
 
-axios.defaults.baseURL = 'https://apt-booking-api.herokuapp.com';
+axios.defaults.baseURL = 'https://dashboard-go-it.herokuapp.com';
 
 const token = {
   set(token) {
@@ -32,8 +32,8 @@ const registerAuth = credentials => async dispatch => {
   // const notify = text => toast.error(text);
   dispatch(registerStart());
   try {
-    const response = await axios.post('/users/register', credentials);
-    token.set(response.data.token);
+    const response = await axios.post('/users/signup', credentials);
+    // token.set(response.data.token);
     dispatch(registerSuccess(response.data));
   } catch (error) {
     console.log(error.response.data.message);
@@ -45,7 +45,7 @@ const loginAuth = credentials => async dispatch => {
   dispatch(loginStart());
   try {
     const response = await axios.post('/users/login', credentials);
-    token.set(response.data.token);
+    token.set(response.data.data.token);
     dispatch(loginSuccess(response.data));
   } catch (error) {
     dispatch(loginError(error.message));

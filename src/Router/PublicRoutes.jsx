@@ -2,7 +2,7 @@
 
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
-import { getIsAutheticated } from '../Redux/Auth/authSelectors';
+import { getIsAutheticated } from '../Redux/Selectors/authSelectors';
 
 export default function PublicRoute({
   children,
