@@ -2,8 +2,28 @@
 
 .container {
   @extend %container-styles;
+  overflow: hidden;
+  position: relative;
 }
-.button {
+
+.check {
+  opacity: 0;
+  width: 100%;
+  cursor: pointer;
+  border-color: transparent;
+  border-style: none;
+  background: transparent none;
+  position: absolute;
+  z-index: 1;
+  &:checked + .doneList > .menu {
+    display: block;
+  }
+  &:checked + .doneList .icon {
+    transform: rotate(0deg);
+  }
+}
+
+.spoiler {
   position: relative;
   display: flex;
   width: 100%;
@@ -26,6 +46,7 @@
 }
 
 .icon {
+  transform: rotate(180deg);
   margin-left: 10px;
   width: 12px;
   height: 14px;
@@ -39,14 +60,13 @@
 }
 
 .menu {
-  opacity: 1;
+  display: none;
 }
-.isOpenMenu {
-  opacity: 0;
+
+.doneList {
+  display: block;
 }
+
 .contentMenu {
-  transform: translateY(-100%);
-}
-.isOpen {
-  transform: translateY(100%);
+  margin: 0;
 }
