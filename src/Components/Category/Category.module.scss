@@ -5,6 +5,7 @@
 }
 
 .Category__item {
+  color: $text-color;
   font-size: 11px;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -15,7 +16,6 @@
   }
 
   &:hover {
-    transition: all $animation-timing;
     cursor: pointer;
     color: $secondary-text;
   }

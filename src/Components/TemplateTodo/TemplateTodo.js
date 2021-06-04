@@ -6,7 +6,7 @@ import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
-import CategoryBtn from '../Category/CategoryBtn';
+import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -30,20 +30,14 @@ const TemplateTodo = () => {
   const onclick = () => dispatch(onClickBtnCreate(true));
 
   const toggleModalCategory = useCallback(() => {
-    setShowModalCategory(prevShowModalCategory => !prevShowModalCategory);
-  }, []);
-  const toggleModalLevel = useCallback(() => {
-    setShowModalLevel(prevShowModalLevel => !prevShowModalLevel);
+    setShowModalCategory(prev => !prev);
   }, []);
 
-  const handleClickElementCategory = e => {
-    const { type, name } = e.target.dataset;
-    setState(prevState => ({
-      ...prevState,
-      [type]: name,
-    }));
-  };
-  const handleClickElementLevel = e => {
+  const toggleModalLevel = useCallback(() => {
+    setShowModalLevel(prev => !prev);
+  }, []);
+
+  const handleClickElement = e => {
     const { type, name } = e.target.dataset;
     setState(prevState => ({
       ...prevState,
@@ -54,34 +48,55 @@ const TemplateTodo = () => {
   return (
     <>
       <div className={style.TemplateTodo__group}>
-        <CategoryBtn
-          type="level"
-          title={state.level}
-          onClick={toggleModalLevel}
-        >
-          {showModalLevel && (
-            <Modal onClose={toggleModalLevel} type="level">
-              <Level items={LIST_LEVEL} handleClick={handleClickElementLevel} />
-            </Modal>
-          )}
-        </CategoryBtn>
-        <div style={{ height: '100px' }}></div>
+        <div className={style.TemplateTodo__WrapperTop}>
+          <div className="button">
+            <ButtonOpenModal
+              type="level"
+              title={state.level}
+              onClick={toggleModalLevel}
+            >
+              {showModalLevel && (
+                <Modal onClose={toggleModalLevel} type="level">
+                  <Level items={LIST_LEVEL} handleClick={handleClickElement} />
+                </Modal>
+              )}
+            </ButtonOpenModal>
+          </div>
+          <div
+            className="star"
+            style={{ background: 'blue', width: '19px', height: '18px' }}
+          ></div>
+        </div>
 
-        <CategoryBtn
-          type="category"
-          title={state.category}
-          onClick={toggleModalCategory}
-        >
-          {showModalCategory && (
-            <Modal onClose={toggleModalCategory} type="category">
-              <Category
-                items={LIST_CATEGORY}
-                handleClick={handleClickElementCategory}
-              />
-            </Modal>
-          )}
-        </CategoryBtn>
+        <div
+          className={style.TemplateTodo__WrapperMidle}
+          style={{ width: '100%', height: '55px', background: '#FFE6D3' }}
+        ></div>
+
+        <div className={style.TemplateTodo__WrapperBottom}>
+          <div className={style.TemplateTodo__ButtonBgc}>
+            <ButtonOpenModal
+              type="category"
+              title={state.category}
+              onClick={toggleModalCategory}
+            >
+              {showModalCategory && (
+                <Modal onClose={toggleModalCategory} type="category">
+                  <Category
+                    items={LIST_CATEGORY}
+                    handleClick={handleClickElement}
+                  />
+                </Modal>
+              )}
+            </ButtonOpenModal>
+          </div>
+          <div
+            className="Selectors"
+            style={{ outline: '1px solid', width: '68px', height: '16px' }}
+          ></div>
+        </div>
       </div>
+
       <Button
         content="icon-plus"
         type="button"
