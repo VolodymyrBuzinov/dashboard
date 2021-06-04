@@ -1,36 +1,83 @@
 import React from 'react';
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from 'prop-types';
-import styles from './DashboardList.module.scss';
+import s from './DashboardList.module.scss';
 import DashboardListItem from "../DashboardListItem/DashboardListItem";
-//import dashboardOperations from "../../Redux/dashboard/dashboard-operations";
-//import dashboardsSelectors from "../../Redux/dashboard/dashboard-selectors";
-/**
-const mapStateToProps = (state) => ({
-    dashboard: dashboardsSelectors.getVisibleDashboards(state)
-}
-);
-const mapDispatchToProps = dispatch => ({
-  onRemoveDashboard: (id) => dispatch(dashboardOperations.deleteDashboard(id)),
-});
-*/
+import todoOperations from "../../Redux/Todos/todos-operations";
+import todoSelectors from "../../Redux/Todos/todos-selectors";
+/*
+
+   {todos.map(({ name, id, number }) => (
+  {if today.getDay() === data.getDay()} */
 export default function DashboardList() {
-  // const dispatch = useDispatch();
-  //const dashboards = useSelector(dashboardsSelectors.getVisibleDashboards);
+  const dispatch = useDispatch();
+  const todos = useSelector(todoSelectors.getAllTodos);
+  
+  const today = new Date();
+  console.log(today);
+  const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
+  console.log(tomorrow);
+  if (tomorrow.getDay() === today.getDay()) {
+    console.log('today!');
+  } else {
+    console.log('TOMORROW!');
+  }
+  console.log(tomorrow<today)
+  console.log(tomorrow>today) 
+
   return (<>
-    
-          <DashboardListItem className={styles.item}>
+    {todos.length >= 0 &&
+      <div className={s.div}>
+      
+        TODAY
+         {todos.map(({ title, id, data }) => (
+        <ul className={s.list}>
+          <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
           </DashboardListItem>
-       
+        </ul>))}
+        <ul className={s.list}>
+          <DashboardListItem >
+          </DashboardListItem>
+
+          <DashboardListItem >
+          </DashboardListItem>
+
+          <DashboardListItem >
+          </DashboardListItem>
+
+          <DashboardListItem >
+          </DashboardListItem>
+        
+          <DashboardListItem >
+          </DashboardListItem>
+        </ul>
+    TOMORROW
+      {todos.map(({ title, id, data }) => (
+          <ul className={s.list}>
+            <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
+            </DashboardListItem>
+          </ul>))}
+        <ul className={s.list}>
+          <DashboardListItem >
+          </DashboardListItem>
+
+          <DashboardListItem >
+          </DashboardListItem>
+
+          <DashboardListItem >
+          </DashboardListItem>
+
+          <DashboardListItem >
+          </DashboardListItem>
+        
+          <DashboardListItem >
+          </DashboardListItem>
+        </ul>
+      </div>}
     </>
   );
 }
-/**title={title} id={id} data={data} onClick={() => dispatch(dashboardOperations.deleteDashboard(id))} */
-  /*{dashboards.length > 0 && 
-      {dashboards.map(({ title, id, data }) => (        
-        ))
-      }
-    } */
+
 DashboardList.defaultProps = {
   dashboards: [],
 };
