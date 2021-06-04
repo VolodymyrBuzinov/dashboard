@@ -1,24 +1,22 @@
-import React from 'react';
+import { useState } from 'react';
 import sprite from '../../Icons/symbol-defs.svg'
 import style from './MenuDone.module.scss';
 
 
 function MenuDone() {
-        // const [isOpen, setIsOpen] = useState(false);
-        return <div className={style.container}>
-            <input type="checkbox" className={style.check}></input>
-            <div className={style.doneList}>
-
- <div
-        className={style.spoiler}
+        const [isOpen, setIsOpen] = useState(false);
+    return <div className={style.container}>
+ <button
+        onClick={()=>setIsOpen(!isOpen)}
+        type="button"
+        className={style.button}
       >
-    <span>DONE</span> <svg className={style.icon}><use href={`${sprite}#icon-polygon`}></use></svg> <span className={style.dottedLine}></span>
+    <p>DONE</p> <svg className={style.icon}><use href={`${sprite}#icon-polygon`}></use></svg> <span className={style.dottedLine}></span>
+        </button>
+        <div className={`${style.menu} ${isOpen&&style.isOpenMenu}`} aria-expanded={isOpen}>
+            <h2 className={`${style.contentMenu} ${isOpen && style.isOpen}`}>Test content</h2>
         </div>
-        <div className={`${style.menu} ${style.isOpenMenu}`}>
-            <h2 className={`${style.contentMenu} ${style.isOpen}`}>Test content</h2>
-        </div>
-            </div>
-        </div>
+    </div>
 }
 
 export default MenuDone
