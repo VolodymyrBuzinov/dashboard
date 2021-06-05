@@ -10,7 +10,7 @@ import sprite from '../../Icons/symbol-defs.svg'
 const Button = ({ content, type, isFixed, onClick }) => {
   
   const isIcon = content.slice(0,4) === 'icon' 
-
+  
   return (
     <>
       <button

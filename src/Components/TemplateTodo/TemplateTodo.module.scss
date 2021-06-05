@@ -39,6 +39,11 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  &__ButtonStar {
+    @extend %button-throw;
+    background-color: $white-color;
+  }
 }
 
 .TemplateTodo__ButtonBgc {

@@ -20,7 +20,10 @@ const LIST_CATEGORY = [
 
 const LIST_LEVEL = ['easy', 'normal', 'hard'];
 
-const INITIAL_STATE = { category: LIST_CATEGORY[0], level: LIST_LEVEL[0] };
+const INITIAL_STATE = {
+  category: LIST_CATEGORY[0],
+  level: LIST_LEVEL[0],
+};
 
 const TemplateTodo = ({ category }) => {
   const dispatch = useDispatch();
@@ -64,21 +67,12 @@ const TemplateTodo = ({ category }) => {
             </ButtonOpenModal>
           </div>
 
-          {/* оставил до утверждени варианатов
-          <div
-            className="star"
-            style={{ background: 'blue', width: '19px', height: '18px' }}
-          ></div> */}
           <div className="star">
-            {/* <Button
-              content="icon-Vector"
-              type="button"
-              isFixed="true"
-              onClick={onclick}
-            /> */}
-            <svg width="15" height="15" className={style.Btn__icon}>
-              <use href={`${sprite}#icon-Vector`}></use>
-            </svg>
+            <button className={style.TemplateTodo__ButtonStar}>
+              <svg width="15" height="15" className={style.Btn__icon}>
+                <use href={`${sprite}#icon-Vector`}></use>
+              </svg>
+            </button>
           </div>
         </div>
 
