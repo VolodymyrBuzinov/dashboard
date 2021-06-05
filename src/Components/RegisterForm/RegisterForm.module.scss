@@ -1,0 +1,60 @@
+@import '../../Utils/utils.scss';
+
+.registerForm {
+  @media screen and (min-width: 768px) {
+    width: 198px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 196px;
+  }
+}
+
+.inputContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.registr_label {
+  color: $hover-color;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 0.9;
+  transform: translateX(0);
+  transition: 0.3s linear;
+}
+
+.registr_input {
+  @extend %input-throw;
+  padding: 0;
+  width: 100%;
+  height: 38px;
+  border: none;
+  border-bottom: 1px solid $hover-color;
+  color: $hover-color;
+  @media screen and (max-width: 767px) {
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 3px;
+  }
+  &:focus + .registr_label {
+    transform: translateX(-100px);
+  }
+}
+
+.loginBtn {
+  display: flex;
+  margin-top: 23px;
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+}
