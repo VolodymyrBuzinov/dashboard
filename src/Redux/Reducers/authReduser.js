@@ -12,6 +12,7 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
   getVerifyUserSuccess,
+  getVerifyUserError,
 } from '../Actions/authAction';
 
 const initial = { name: null, email: null };
@@ -33,6 +34,7 @@ const error = createReducer(null, {
   [loginError]: (_, { payload }) => payload,
   [getCurrentUserError]: (_, { payload }) => payload,
   [logoutError]: (_, { payload }) => payload,
+  [getVerifyUserError]: (_, { payload }) => payload,
 });
 
 const isAuthenticated = createReducer(false, {

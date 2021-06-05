@@ -17,3 +17,4 @@ export const getCurrentUserSuccess = createAction('getCurrentUserSuccess');
 export const getCurrentUserError = createAction('getCurrentUserError');
 
 export const getVerifyUserSuccess = createAction('getVerifyUserSuccess');
+export const getVerifyUserError = createAction('getVerifyUserError');
