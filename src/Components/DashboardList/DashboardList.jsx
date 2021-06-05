@@ -14,41 +14,30 @@ const DashboardList = () => {
   },
   [dispatch])
   const todos = useSelector(todoSelectors.getAllTodos);
-  console.log('todos', todos);
 
   const today = new Date();
-  // console.log(today);
   const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-  // console.log(tomorrow);
   if (tomorrow.getDay() === today.getDay()) {
   // console.log('TODAY!');
   } else {
   // console.log('TOMORROW!');
   }
-  
+  /**{ time.getDay() === tomorrow.getDay() ? alert('TOMORROW!'): alert(' No TOMORROW!') } */
   /*  {if time.getDay() === today.getDay()}
   {if time.getDay() === tomorrow.getDay()} */
   
   return (<>
-      <main className={s.todoListMain}>
-      {todos.length >= 0 && (
+    <main className={s.todoListMain}>
+      
+      {todos.length > 0 && (
         <div className={s.todoListDiv}>
         <p className={s.todoListTitle}>TODAY</p>
-        {todos.map(({ title, id, time }) => (
-          <ul className={s.todoList}>
-            <DashboardListItem title={title} id={id} time={time}>
-            </DashboardListItem>
-          </ul>))}
-          <DashboardListItem >
-          </DashboardListItem>
+          {todos.map(({ title, id, time, category, difficulty }) => (
+            <ul className={s.todoList}>
+              <DashboardListItem category={category} difficulty={difficulty} title={title} id={id} time={time}>
+              </DashboardListItem>
+            </ul>))}
         <p className={s.todoListTitle}>TOMORROW</p>
-        {todos.map(({ title, id, data }) => (
-          <ul className={s.todoList}>
-            <DashboardListItem title={title} id={id} data={data}>
-            </DashboardListItem>
-          </ul>))}
-          <DashboardListItem >
-          </DashboardListItem>
           {/* // * DONE */}
           <MenuDone />
         </div>)}

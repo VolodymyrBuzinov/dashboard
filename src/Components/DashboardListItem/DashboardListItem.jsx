@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import s from './DashboardListItem.module.scss';
 import iconVector from '../../Icons/svg/Vector.svg'
 
-function DashboardListItem({ title, id, time, onClick}) {
+function DashboardListItem({ title, id, time, category, difficulty, onClick}) {
   return (<>
     <li key={id} onClick={onClick} className={s.todoItem}>
-      <div className={s.todoItemСomplexity}>Hard
+      <div className={s.todoItemСomplexity}>{difficulty}
         <img className={s.todoItemSvg} src={`${iconVector}`} alt="" />
       </div>
-        <p className={s.todoItemTitle}>Title{title}</p>
-        <p className={s.todoItemTime}>Time{time}</p>
-      <div className={s.todoItemGroup}>WORK</div>
+        <p className={s.todoItemTitle}>{title}</p>
+        <p className={s.todoItemTime}>{time}</p>
+      <div className={s.todoItemGroup}>{category}</div>
     </li>
     </>
   );

@@ -1,16 +1,14 @@
 import axios from "axios";
-//import axios from "../../Api/tasks";
+import { BaseURL } from '../../Api/AxiosToken';
 import todosActions from "./todosActions";
 
-axios.defaults.baseURL = 'https://dashboard-go-it.herokuapp.com/';
-// axios.defaults.headers.common = { 'Authorization': `Bearer ${response.data.token}` }
+BaseURL();
 
 const fetchTodos = () => async dispatch => {
     dispatch(todosActions.fetchTodoRequest());
     try {
         const tasks = await axios.get('/tasks')
             .then(tasks => tasks.data.data);
-        console.log(tasks.data.data);
         dispatch(todosActions.fetchTodoSuccess(tasks));
     } catch (error) {
         dispatch(todosActions.fetchTodoError(error.massage))
