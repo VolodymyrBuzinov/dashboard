@@ -1,12 +1,17 @@
-import React from 'react';
-import { useSelector } from "react-redux";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
 import s from './DashboardList.module.scss';
 import DashboardListItem from "../DashboardListItem/DashboardListItem";
-//import todoOperations from "../../Redux/Todos/todosOperations";
+import todoOperations from "../../Redux/Todos/todosOperations";
 import todoSelectors from "../../Redux/Todos/todosSelectors";
 
 const DashboardList = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(todoOperations.fetchTodos())
+  },
+  [dispatch])
   const todos = useSelector(todoSelectors.getAllTodos);
   console.log('todos', todos);
 

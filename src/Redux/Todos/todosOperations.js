@@ -2,16 +2,17 @@ import axios from "axios";
 //import axios from "../../Api/tasks";
 import todosActions from "./todosActions";
 
-axios.defaults.baseURL = 'https://apt-booking-api.herokuapp.com';
-axios.defaults.headers.common = { 'Authorization': `bearer ${process.env.REACT_APP_TOKEN}` }
+axios.defaults.baseURL = 'https://dashboard-go-it.herokuapp.com/';
+// axios.defaults.headers.common = { 'Authorization': `Bearer ${response.data.token}` }
 
 const fetchTodos = () => async dispatch => {
     dispatch(todosActions.fetchTodoRequest());
     try {
-        const { data } = await axios.get('/tasks');
-        dispatch(todosActions.fetchTodoSuccess(data));
+        const tasks = await axios.get('/tasks')
+            .then(tasks => tasks.data.data);
+        
+        dispatch(todosActions.fetchTodoSuccess(tasks));
     } catch (error) {
-        console.log(error.massage);
         dispatch(todosActions.fetchTodoError(error.massage))
     }
 };
