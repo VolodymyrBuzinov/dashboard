@@ -6,12 +6,12 @@ import iconVector from '../../Icons/svg/Vector.svg'
 function DashboardListItem({ title, id, time, onClick}) {
   return (<>
     <li key={id} onClick={onClick} className={s.todoItem}>
-      <div className={s.todoItemСomplexity}>Сomplexity
+      <div className={s.todoItemСomplexity}>Hard
         <img className={s.todoItemSvg} src={`${iconVector}`} alt="" />
       </div>
         <p className={s.todoItemTitle}>Title{title}</p>
         <p className={s.todoItemTime}>Time{time}</p>
-      <div className={s.todoItemGroup}>GROUP</div>
+      <div className={s.todoItemGroup}>WORK</div>
     </li>
     </>
   );
