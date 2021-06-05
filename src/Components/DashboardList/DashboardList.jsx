@@ -32,10 +32,10 @@ const DashboardList = () => {
       {todos.length > 0 && (
         <div className={s.todoListDiv}>
         <p className={s.todoListTitle}>TODAY</p>
-          {todos.map(({ title, id, time, category, difficulty }) => (
+          {todos.map(({ title, id, time, category, difficulty, done }) => (
             <ul className={s.todoList}>
-              <DashboardListItem category={category} difficulty={difficulty} title={title} id={id} time={time}>
-              </DashboardListItem>
+             {(!done) && <DashboardListItem category={category} difficulty={difficulty} title={title} id={id} time={time}>
+              </DashboardListItem>}
             </ul>))}
         <p className={s.todoListTitle}>TOMORROW</p>
           {/* // * DONE */}
