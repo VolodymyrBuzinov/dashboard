@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch} from 'react-redux';
-import { loginAuth } from '../../Redux/Auth/authOperation';
+import { loginAuth } from '../../Redux/Operations/authOperation';
 import Button from '../Button/Button';
 import s from './RegisterForm.module.scss';
 

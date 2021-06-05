@@ -10,7 +10,7 @@ import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
 const SingUpPage = () => {
-  const dispftch = useDispatch();
+  const dispatch = useDispatch();
   const [name, setName] = useState('');
   const wait = useSelector(getWaiting);
 
@@ -23,7 +23,7 @@ const SingUpPage = () => {
 
   const btnClick = e => {
     e.preventDefault();
-    dispftch(registerAuth({ name, email, password }));
+    dispatch(registerAuth({ name, email, password }));
     setName('');
     setPassword('');
     setEmail('');

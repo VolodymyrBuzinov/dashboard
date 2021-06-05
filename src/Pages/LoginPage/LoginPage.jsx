@@ -4,7 +4,7 @@ import s from './LoginPage.module.scss';
 import './Login.scss';
 import { useSelector } from 'react-redux';
 // import { NavLink } from 'react-router-dom';
-import { getWaiting } from '../../Redux/Auth/authSelectors';
+import { getWaiting } from '../../Redux/Selectors/authSelectors';
 // import { loginAuth } from '../../Redux/Auth/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';

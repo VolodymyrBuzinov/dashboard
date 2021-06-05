@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
-import todoSelectors from "../../Redux/Todos/todos-selectors";
-import todoOperations from "../../Redux/Todos/todos-operations";
+import todoSelectors from "../../Redux/Todos/todosSelectors";
+import todoOperations from "../../Redux/Todos/todosOperations";
 // * style
 import sprite from '../../Icons/symbol-defs.svg';
 import style from './MenuDone.module.scss';
