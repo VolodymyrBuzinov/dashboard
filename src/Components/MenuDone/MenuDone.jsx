@@ -1,8 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import todoSelectors from "../../Redux/Todos/todosSelectors";
-import todoOperations from "../../Redux/Todos/todosOperations";
+// import todoOperations from "../../Redux/Todos/todosOperations";
 // * style
 import sprite from '../../Icons/symbol-defs.svg';
 import style from './MenuDone.module.scss';
@@ -10,7 +10,7 @@ import styleDashboardList from '../DashboardList/DashboardList.module.scss';
 
 
 function MenuDone() {
- const dispatch = useDispatch();
+//  const dispatch = useDispatch();
   const todos = useSelector(todoSelectors.getAllTodos);
     return <div className={style.container}>
         <input type="checkbox" className={style.check}></input>
@@ -19,28 +19,14 @@ function MenuDone() {
             <div
                 className={style.spoiler}
             >
-                <span>DONE</span> <svg className={style.icon}><use href={`${sprite}#icon-polygon`}></use></svg> <span className={style.dottedLine}></span>
+                <span className={styleDashboardList.todoListTitle}>DONE</span> <svg className={style.icon}><use href={`${sprite}#icon-polygon`}></use></svg> <span className={style.dottedLine}></span>
             </div>
             <div className={style.menu}>
-                {todos.map(({ title, id, data }) => (
-        <ul className={styleDashboardList.todoList}>
-          <DashboardListItem title={title} id={id} data={data} onClick={() => dispatch(todoOperations.deleteDashboard(id))} >
-          </DashboardListItem>
-        </ul>))}
-                   <ul className={styleDashboardList.todoList}>
-          <DashboardListItem >
-          </DashboardListItem>
-          <DashboardListItem >
-          </DashboardListItem>
-          <DashboardListItem >
-          </DashboardListItem>
-          <DashboardListItem >
-          </DashboardListItem>
-          <DashboardListItem >
-          </DashboardListItem>
-          <DashboardListItem >
-          </DashboardListItem>
-</ul>
+               {todos.map(({ title, id, time, category, difficulty, done }) => (
+            <ul className={styleDashboardList.todoList}>
+              {done && <DashboardListItem category={category} difficulty={difficulty} title={title} id={id} time={time}>
+              </DashboardListItem>}
+            </ul>))}
             </div>
         </div>
     </div>
