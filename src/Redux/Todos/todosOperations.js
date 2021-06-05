@@ -10,7 +10,7 @@ const fetchTodos = () => async dispatch => {
     try {
         const tasks = await axios.get('/tasks')
             .then(tasks => tasks.data.data);
-        
+        console.log(tasks.data.data);
         dispatch(todosActions.fetchTodoSuccess(tasks));
     } catch (error) {
         dispatch(todosActions.fetchTodoError(error.massage))
