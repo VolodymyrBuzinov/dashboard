@@ -15,6 +15,7 @@ import {
   getCurrentUserStart,
   getCurrentUserSuccess,
   getCurrentUserError,
+  getVerifyUserSuccess,
 } from '../Actions/authAction';
 
 axios.defaults.baseURL = 'https://dashboard-go-it.herokuapp.com';
@@ -80,4 +81,12 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
-export { registerAuth, loginAuth, logOutAuth, getCurrentUser };
+const verify = eve => async dispatch => {
+  try {
+    dispatch(getVerifyUserSuccess(eve));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { registerAuth, loginAuth, logOutAuth, getCurrentUser, verify };
