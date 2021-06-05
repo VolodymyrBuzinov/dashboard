@@ -7,20 +7,18 @@
 .backdrop {
   background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
-  // top: 0;
-  // left: 0;
+  top: 0;
+  left: 0;
+  padding: 75px 21px 47px 21px; /* не очень понимаю как сделать по другому позиционирование, если размер карточки изменится */
   border-radius: 10px;
 }
 
 .open {
-  display: block;
   transform: scale(1);
   transition: 0.5s;
 }
 
 .close {
-  height: 0;
-  // display: none;
   transform: scale(0);
   transition: 0.5s;
 }
@@ -29,32 +27,25 @@
   background-color: $white-color;
   width: 163px;
   height: 77px;
-  margin: 75px 21px 47px 21px;
   border-radius: 10px;
-  // padding-left: 30px;
-  // transform: scale(1);
 }
 
 .content {
   display: block;
   font-size: 12px;
   font-weight: bold;
-  padding-top: 25px;
+  padding: 25px 0 14px 0;
   text-align: center;
 }
 
 .controls {
   display: flex;
-  margin-top: 14px;
   justify-content: center;
   height: 10px;
-
-  // margin-left: 30px;
 }
 
 .buttonCancel {
   color: $cancel-button;
-  // margin-left: 30px;
 }
 
 .buttonDelete {

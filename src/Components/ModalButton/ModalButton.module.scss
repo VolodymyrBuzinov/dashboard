@@ -6,4 +6,10 @@
   font-weight: bold;
   padding: 0;
   background-color: inherit;
+  cursor: pointer;
+}
+
+.Button:hover {
+  /*тут не знаю, надо что, или нет*/
+  color: blue;
 }
