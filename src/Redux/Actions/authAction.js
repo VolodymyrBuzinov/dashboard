@@ -15,3 +15,6 @@ export const logoutError = createAction('logoutError');
 export const getCurrentUserStart = createAction('getCurrentUserStart');
 export const getCurrentUserSuccess = createAction('getCurrentUserSuccess');
 export const getCurrentUserError = createAction('getCurrentUserError');
+
+export const getVerifyUserSuccess = createAction('getVerifyUserSuccess');
+export const getVerifyUserError = createAction('getVerifyUserError');

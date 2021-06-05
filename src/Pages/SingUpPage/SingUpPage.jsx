@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getWaiting } from '../../Redux/Auth/authSelectors';
-import { registerAuth } from '../../Redux/Auth/authOperation';
+import { getWaiting } from '../../Redux/Selectors/authSelectors';
+import { registerAuth } from '../../Redux/Operations/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -39,13 +39,15 @@ const SingUpPage = () => {
       >
         <Loader
           className={s.waitingMessage}
-          type="Ball-Triangle 	"
+          type="BallTriangle"
           color="#00BFFF"
           height={100}
           width={100}
         />
       </CSSTransition>
-      <NavLink exact to="/" className={s} activeClassName={s}>
+      <NavLink exact to="/"
+        // className={s} activeClassName={s}
+      >
         Back
       </NavLink>
       <h1 className={s}>Registration</h1>

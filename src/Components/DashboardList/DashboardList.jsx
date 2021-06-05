@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
 import s from './DashboardList.module.scss';
 import DashboardListItem from "../DashboardListItem/DashboardListItem";
-import todoOperations from "../../Redux/Todos/todosOperations";
-import todoSelectors from "../../Redux/Todos/todosSelectors";
+import todoOperations from "../../Redux/Todos/todos-operations";
+import todoSelectors from "../../Redux/Todos/todos-selectors";
+import MenuDone from '../MenuDone/MenuDone.jsx';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -48,6 +49,9 @@ const DashboardList = () => {
           </ul>))}
           <DashboardListItem >
           </DashboardListItem>
+          </ul>
+          {/* // * DONE */}
+          <MenuDone />
         </div>)}
       </main>
     </>
