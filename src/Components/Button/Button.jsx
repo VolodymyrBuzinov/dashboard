@@ -10,7 +10,7 @@ import sprite from '../../Icons/symbol-defs.svg'
 const Button = ({ content, type, isFixed, onClick }) => {
   
   const isIcon = content.slice(0,4) === 'icon' 
-  
+
   return (
     <>
       <button
@@ -18,6 +18,7 @@ const Button = ({ content, type, isFixed, onClick }) => {
         type={type}
         className={`${style.Button} ${isFixed && style.fixed} ${!isIcon && style.text}`}
       >
+        
         {isIcon ? (<svg width="30" height="30">          
           <use href={`${sprite}#${content}`} ></use>
         </svg>): content}
