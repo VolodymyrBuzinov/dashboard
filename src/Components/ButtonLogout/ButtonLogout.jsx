@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch } from 'react-redux';
 import iconLogout from '../../Icons/svg/logout.svg'
 import s from './ButtonLogout.module.scss'
-import {logOutAuth } from '../../Redux/Auth/authOperation';
+import {logOutAuth } from '../../Redux/Operations/authOperation';
 
 
 const ButtonLogout = () => {
