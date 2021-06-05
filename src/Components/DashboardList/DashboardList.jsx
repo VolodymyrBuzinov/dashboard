@@ -39,7 +39,7 @@ const DashboardList = () => {
             </ul>))}
         <p className={s.todoListTitle}>TOMORROW</p>
           {/* // * DONE */}
-          <MenuDone />
+          <MenuDone/>
         </div>)}
       </main>
     </>
