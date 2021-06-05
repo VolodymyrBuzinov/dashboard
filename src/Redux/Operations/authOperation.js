@@ -1,6 +1,5 @@
 import axios from 'axios';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { AxiosToken, BaseURL } from '../../Api/AxiosToken';
 
 import {
   loginStart,
@@ -15,29 +14,20 @@ import {
   getCurrentUserStart,
   getCurrentUserSuccess,
   getCurrentUserError,
-} from './authAction';
+  getVerifyUserSuccess,
+  getVerifyUserError,
+} from '../Actions/authAction';
 
-axios.defaults.baseURL = 'https://apt-booking-api.herokuapp.com';
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
+BaseURL();
 
 const registerAuth = credentials => async dispatch => {
-  // const notify = text => toast.error(text);
   dispatch(registerStart());
   try {
-    const response = await axios.post('/users/register', credentials);
-    token.set(response.data.token);
-    dispatch(registerSuccess(response.data));
+    const response = await axios.post('/users/signup', credentials);
+    console.log(response);
+    dispatch(registerSuccess(response.data.data));
   } catch (error) {
-    console.log(error.response.data.message);
-    dispatch(registerError(error));
+    dispatch(registerError(error.message));
   }
 };
 
@@ -45,8 +35,10 @@ const loginAuth = credentials => async dispatch => {
   dispatch(loginStart());
   try {
     const response = await axios.post('/users/login', credentials);
-    token.set(response.data.token);
-    dispatch(loginSuccess(response.data));
+
+    AxiosToken().set(response.data.data.token);
+
+    dispatch(loginSuccess(response.data.data));
   } catch (error) {
     dispatch(loginError(error.message));
   }
@@ -56,7 +48,7 @@ const logOutAuth = () => async dispatch => {
   dispatch(logoutStart());
   try {
     await axios.post('/users/logout');
-    token.unset();
+    AxiosToken().unset();
     dispatch(logoutSuccess());
   } catch (error) {
     dispatch(logoutError(error.message));
@@ -70,14 +62,22 @@ const getCurrentUser = () => async (dispatch, getState) => {
   if (!persistedToken) {
     return;
   }
-  token.set(persistedToken);
+  AxiosToken().set(persistedToken);
   dispatch(getCurrentUserStart());
   try {
     const response = await axios.get('/users/current');
-    dispatch(getCurrentUserSuccess(response.data));
+    dispatch(getCurrentUserSuccess(response.data.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
   }
 };
 
-export { registerAuth, loginAuth, logOutAuth, getCurrentUser };
+const verify = eve => async dispatch => {
+  try {
+    dispatch(getVerifyUserSuccess(eve));
+  } catch (error) {
+    dispatch(getVerifyUserError(error.message));
+  }
+};
+
+export { registerAuth, loginAuth, logOutAuth, getCurrentUser, verify };

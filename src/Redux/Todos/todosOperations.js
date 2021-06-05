@@ -1,22 +1,24 @@
 import axios from "axios";
-import todosActions from "./todos-actions";
+import { BaseURL } from '../../Api/AxiosToken';
+import todosActions from "./todosActions";
+
+BaseURL();
 
 const fetchTodos = () => async dispatch => {
     dispatch(todosActions.fetchTodoRequest());
-    
     try {
-        const { data } = await axios.get('/tasks');
-        dispatch(todosActions.fetchTodoSuccess(data));
+        const tasks = await axios.get('/tasks')
+            .then(tasks => tasks.data.data);
+        dispatch(todosActions.fetchTodoSuccess(tasks));
     } catch (error) {
-        dispatch(todosActions.fetchTodoError(error.massage));
+        dispatch(todosActions.fetchTodoError(error.massage))
     }
 };
 
-const addTodo = ({ name, number }) => async dispatch => {
+/*const addTodo = ({ title, time }) => async dispatch => {
     dispatch(todosActions.addTodoRequest());
-
     try {
-        const todo = {name, number};
+        const todo = {title, time};
         const { data } = await axios.post('/tasks', todo);
         dispatch(todosActions.addTodoSuccess(data));
     } catch (error) {
@@ -26,14 +28,17 @@ const addTodo = ({ name, number }) => async dispatch => {
 
 const deleteTodo = todoId => async dispatch => {
     dispatch(todosActions.deleteTodoRequest());
-
     try {
        await axios.delete(`/tasks/${todoId}`);
         dispatch(todosActions.deleteTodoSuccess(todoId))
     }  catch (error) {
         dispatch(todosActions.deleteTodoError(error.massage));
     }
-};
+};*/
 
-const exp = { fetchTodos, addTodo, deleteTodo };
+const exp = {
+    fetchTodos,
+    //addTodo, 
+    //deleteTodo
+};
 export default exp;

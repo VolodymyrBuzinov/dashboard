@@ -1,32 +1,25 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
 import s from './LoginPage.module.scss';
 import './Login.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { getWaiting } from '../../Redux/Auth/authSelectors';
-import { loginAuth } from '../../Redux/Auth/authOperation';
+import { useSelector } from 'react-redux';
+// import { NavLink } from 'react-router-dom';
+import { getWaiting } from '../../Redux/Selectors/authSelectors';
+// import { loginAuth } from '../../Redux/Auth/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import RegisterForm from '../../Components/RegisterForm/RegisterForm';
+import bgMobile from '../../Images/bg-mobile.png';
+import bgMobile2 from '../../Images/bg-mobile2.png';
+import pic1 from '../../Images/pic1.png';
+import pic2 from '../../Images/pic2.png';
 
 const LoginPage = () => {
-  const dispatch = useDispatch();
   const wait = useSelector(getWaiting);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const emailFunc = e => setEmail(e.target.value);
-  const passwordFunc = e => setPassword(e.target.value);
-
-  const btnClick = e => {
-    e.preventDefault();
-    dispatch(loginAuth({ email, password }));
-    setEmail('');
-    setPassword('');
-  };
 
   return (
-    <section className={s}>
+    <section className={s.login_section}>
       <CSSTransition
         in={wait}
         classNames="waitingMessage"
@@ -41,43 +34,25 @@ const LoginPage = () => {
           width={100}
         />
       </CSSTransition>
-      <NavLink exact to="/singUpPage" className={s} activeClassName={s}>
-        Registration
-      </NavLink>
-      <div className={s}>
-        <h1 className={s}>Login</h1>
-        <form className={s} onSubmit={btnClick}>
-          <label className={s}>
-            <span>Email</span>
-            <input
-              required
-              className={s}
-              type="text"
-              value={email}
-              placeholder="Enter email"
-              onChange={emailFunc}
-            />
-          </label>
-          <br />
-          <label className={s}>
-            <span>Password</span>
-            <input
-              required
-              className={s}
-              type="password"
-              value={password}
-              placeholder="Enter password"
-              onChange={passwordFunc}
-            />
-          </label>
-          <br />
-          <button type="submit" className={s}>
-            GO
-          </button>
-        </form>
+      {/* <NavLink exact to="/singUpPage" className={s} activeClassName={s}>
+        registration
+      </NavLink> */}
+      <div className={s.login_container}>
+        {/* <h1 className={s}>Login</h1> */}
+        <h1 className={s.login_title}>Questify</h1>
+        <p className={s.login_description}>
+          Questify will turn your life into a thrilling game full of amazing
+          quests and exciting challenges.
+        </p>
+        <p className={s.login_text}>Choose your name to sign up or log in</p>
+
+        <RegisterForm />
       </div>
+      <img src={pic1} alt="" className={s.login_loginPic} />
+      <img src={pic2} alt="" className={s.login_loginPicture} />
+      <img src={bgMobile} alt="" className={s.login_bgMobile} />
+      <img src={bgMobile2} alt="" className={s.login_bgMobile} />
     </section>
   );
-  // }
 };
 export default LoginPage;

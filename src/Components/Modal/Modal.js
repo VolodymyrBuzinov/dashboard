@@ -17,9 +17,7 @@ export default function Modal({ type, onClose, children }) {
   }, [onClose]);
 
   const handleBackdropClick = event => {
-    if (event.currentTarget !== event.target) {
-      onClose();
-    }
+    onClose();
   };
 
   return (

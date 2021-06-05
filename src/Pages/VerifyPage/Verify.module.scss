@@ -21,7 +21,7 @@
   }
   @media screen and (min-width: 1280px) {
     padding-top: 153px;
-    padding-bottom: 154px;  
+    padding-bottom: 154px;
     padding-left: 229px;
   }
 }
@@ -34,7 +34,6 @@
   @media screen and (max-width: 767px) {
     font-size: 24px;
     line-height: 1;
-
   }
   @media screen and (min-width: 768px) {
     font-size: 20px;
@@ -47,25 +46,26 @@
 
 .login_description {
   @extend %text-throw;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: 0.02em;
   color: $card-bg-color;
   @media screen and (max-width: 767px) {
-    margin-top: 60px;
-    font-size: 18px;
+    margin-top: 100px;
+    font-size: 25px;
     line-height: 1.6;
   }
   @media screen and (min-width: 768px) {
     width: 375px;
     margin-top: 50px;
-    font-size: 24px;
+    font-size: 35px;
     line-height: 1.3;
   }
   @media screen and (min-width: 1280px) {
     min-width: 562px;
     margin-top: 70px;
     font-size: 36px;
-    line-height: 1.2;  }
+    line-height: 1.2;
+  }
 }
 
 .login_text {
@@ -87,7 +87,8 @@
   @media screen and (min-width: 1280px) {
     margin-top: 35px;
     font-size: 24px;
-    line-height: 1.8;  }
+    line-height: 1.8;
+  }
 }
 
 .login_bgMobile {
@@ -124,5 +125,6 @@
     pointer-events: none;
   }
   @media screen and (min-width: 1280px) {
-    bottom: -120px;  }
+    bottom: -120px;
+  }
 }

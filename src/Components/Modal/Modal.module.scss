@@ -10,6 +10,7 @@
     position: relative;
     background: rgba(21, 57, 90, 0.3);
   }
+  z-index: 10;
 }
 
 .Modal__content {
@@ -20,18 +21,20 @@
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
 
+  z-index: 20;
+
   &.level {
     padding: 10px 12px;
     top: 0;
     left: 0;
-    transform: translateY(-50%);
+    transform: translate(-20px, -50%);
   }
 
   &.category {
     padding: 10px 12px;
     bottom: 0;
     left: 0;
-    transform: translateY(50%);
+    transform: translate(-20px, 50%);
   }
 
   &.delete {
