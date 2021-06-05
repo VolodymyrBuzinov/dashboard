@@ -4,6 +4,8 @@
   @extend %container-styles;
   overflow: hidden;
   position: relative;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .check {
@@ -61,10 +63,6 @@
 
 .menu {
   display: none;
-}
-
-.doneList {
-  display: block;
 }
 
 .contentMenu {

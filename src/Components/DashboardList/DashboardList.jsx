@@ -5,6 +5,7 @@ import s from './DashboardList.module.scss';
 import DashboardListItem from "../DashboardListItem/DashboardListItem";
 import todoOperations from "../../Redux/Todos/todos-operations";
 import todoSelectors from "../../Redux/Todos/todos-selectors";
+import MenuDone from '../MenuDone/MenuDone.jsx';
 
 export default function DashboardList() {
   const dispatch = useDispatch();
@@ -71,7 +72,9 @@ export default function DashboardList() {
         
           <DashboardListItem >
           </DashboardListItem>
-        </ul>
+          </ul>
+          {/* // * DONE */}
+          <MenuDone />
         </div>)}
       </main>
     </>
