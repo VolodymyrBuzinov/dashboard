@@ -1,22 +1,14 @@
 @import '../../Utils/utils.scss';
 
 .Btn {
-  position: absolute;
   display: flex;
-  //добавил стили заливки значка сложности + стили кнопки категорий
+  align-items: center;
 
-  &.level {
-    left: 21px;
-    top: 21px;
-  }
-
-  &.category {
-    left: 21px;
-    top: 200px;
-  }
+  cursor: pointer;
+  position: relative;
 
   &__circle {
-    margin: 5px;
+    margin-right: 8px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -36,6 +28,19 @@
 
   &__icon {
     transform: rotate(180deg);
-    margin: 10px 0 0 7px;
+  }
+}
+
+.Btn__span {
+  text-transform: uppercase;
+  color: $text-color;
+  margin-right: 7px;
+
+  &.level {
+    text-transform: lowercase;
+    color: $secondary-text;
+    &::first-letter {
+      text-transform: uppercase;
+    }
   }
 }

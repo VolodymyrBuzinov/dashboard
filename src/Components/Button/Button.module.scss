@@ -13,12 +13,11 @@
   position: relative;
   cursor: pointer;
 
-  &.text {    
+  &.text {
     color: $white-color;
     font-size: 24px;
     line-height: 1;
     font-weight: 700;
-
   }
 
   &.fixed {
@@ -49,6 +48,8 @@
     top: 0;
     left: 0;
     z-index: -1;
+
+    transition: $animation-timing;
   }
 
   &:hover::after {
