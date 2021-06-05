@@ -11,7 +11,9 @@ import {
   logoutError,
   getCurrentUserSuccess,
   getCurrentUserError,
-} from './authAction';
+  getVerifyUserSuccess,
+  getVerifyUserError,
+} from '../Actions/authAction';
 
 const initial = { name: null, email: null };
 
@@ -32,10 +34,11 @@ const error = createReducer(null, {
   [loginError]: (_, { payload }) => payload,
   [getCurrentUserError]: (_, { payload }) => payload,
   [logoutError]: (_, { payload }) => payload,
+  [getVerifyUserError]: (_, { payload }) => payload,
 });
 
 const isAuthenticated = createReducer(false, {
-  [registerSuccess]: () => true,
+  [registerSuccess]: () => false,
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
   [logoutSuccess]: () => false,
@@ -52,6 +55,9 @@ const waiting = createReducer(false, {
   [registerSuccess]: () => false,
   [registerError]: () => false,
 });
+const verify = createReducer(false, {
+  [getVerifyUserSuccess]: (_, { payload }) => payload,
+});
 
 export default combineReducers({
   isAuthenticated,
@@ -59,4 +65,5 @@ export default combineReducers({
   token,
   error,
   waiting,
+  verify,
 });
