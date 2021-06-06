@@ -11,6 +11,10 @@ import {
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import bgMobile from '../../Images/bg-mobile.png';
+import bgMobile2 from '../../Images/bg-mobile2.png';
+import pic1 from '../../Images/pic1.png';
+import pic2 from '../../Images/pic2.png';
 
 const SingUpPage = () => {
   const dispatch = useDispatch();
@@ -21,12 +25,14 @@ const SingUpPage = () => {
   const [password, setPassword] = useState('');
 
   const nameFunc = e => setName(e.target.value);
-  const emailFunc = e => setEmail(e.target.value);
-  const passwordFunc = e => setPassword(e.target.value);
+  // const emailFunc = e => setEmail(e.target.value);
+  // const passwordFunc = e => setPassword(e.target.value);
 
   const btnClick = e => {
     e.preventDefault();
     dispatch(registerAuth({ name, email, password }));
+
+    setName('');
     setPassword('');
   };
 
@@ -35,7 +41,7 @@ const SingUpPage = () => {
   };
 
   return (
-    <section className={s}>
+    <section className={s.registr_section}>
       <CSSTransition
         in={wait}
         classNames="waitingMessage"
@@ -50,66 +56,53 @@ const SingUpPage = () => {
           width={100}
         />
       </CSSTransition>
-      <NavLink
-        exact
-        to="/"
-        // className={s}
-      >
-        Back
-      </NavLink>
-      {''}
+      <div className={s.registr_container}>
+        <h1 className={s.registr_title}>Questify</h1>
+        <h2 className={s.registr_caption}>Registration</h2>
+        <p className={s.registr_text}>
+          Back to{' '}
+          <NavLink exact to="/" className={s.registr_link} activeClassName={s}>
+            log in
+          </NavLink>
+        </p>
+        <form onSubmit={btnClick}>
+          <div className={s.registr_inputContainer}>
+            <input
+              required
+              id="name"
+              className={s.registr_input}
+              type="text"
+              value={name}
+              onChange={nameFunc}
+            />
+            {!name && (
+              <label htmlFor="name" className={s.registr_label}>
+                Name
+              </label>
+            )}
+          </div>
 
-      <button
-        // type="button"
-        onClick={() => {
-          reVerify();
-        }}
-        className={s}
-      >
-        Re verification
-      </button>
-      <h1 className={s}>Registration</h1>
-      <form className={s} onSubmit={btnClick}>
-        <label className={s}>
-          Login
-          <input
-            required
-            className={s}
-            type="text"
-            value={name}
-            placeholder="Enter login"
-            onChange={nameFunc}
-          />
-        </label>
-        <br />
-        <label className={s}>
-          Email
-          <input
-            required
-            className={s}
-            type="text"
-            value={email}
-            placeholder="Enter email"
-            onChange={emailFunc}
-          />
-        </label>
-        <br />
-        <label className={s}>
-          Password
-          <input
-            required
-            className={s}
-            type="password"
-            value={password}
-            placeholder="Enter password"
-            onChange={passwordFunc}
-          />
-        </label>
-        <br />
-        <button type="submit" className={s}>
-          Registration
-        </button>
-      </form>
+          <RegisterForm />
+          
+        </form>
+      </div>
+      <img src={pic1} alt="background-picture" className={s.registr_loginPic} />
+      <img
+        src={pic2}
+        alt="background-picture"
+        className={s.registr_loginPicture}
+      />
+      <img
+        src={bgMobile}
+        alt="background-picture"
+        className={s.registr_bgMobile}
+      />
+      <img
+        src={bgMobile2}
+        alt="background-picture"
+        className={s.registr_bgMobile}
+      />
+
     </section>
   );
 };

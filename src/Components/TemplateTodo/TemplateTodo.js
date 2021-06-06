@@ -9,8 +9,10 @@ import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
+
 import { green } from '@material-ui/core/colors';
 import { findAllByTestId } from '@testing-library/dom';
+
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -33,6 +35,7 @@ const TemplateTodo = ({ category }) => {
   const [showModalLevel, setShowModalLevel] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [state, setState] = useState(INITIAL_STATE);
+  const [challenge, setChallenge] = useState(false);
 
   const onclick = () => dispatch(onClickBtnCreate(true));
 
@@ -43,6 +46,8 @@ const TemplateTodo = ({ category }) => {
   const toggleModalLevel = useCallback(() => {
     setShowModalLevel(prev => !prev);
   }, []);
+  
+  const toggleChallenge = () => setChallenge(prev => !prev);
 
   const toggleModalDelete = useCallback(() => {
     setShowModalDelete(prev => !prev);
@@ -59,6 +64,9 @@ const TemplateTodo = ({ category }) => {
   return (
     <div className={style.TemplateTodo}>
       <div className={style.TemplateTodo__group}>
+    <>      
+      <div className={challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group} /*onclick={toggleChallenge}*/>
+
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
@@ -75,9 +83,11 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
-            <button className={style.TemplateTodo__ButtonStar}>
+            <button className={style.TemplateTodo__ButtonStar} onClick={toggleChallenge}>
               <svg width="15" height="15" className={style.Btn__icon}>
-                <use href={`${sprite}#icon-Vector`}></use>
+                {challenge
+                  ? <use href={`${sprite}#icon-trophy`}></use>
+                  : <use href={`${sprite}#icon-Vector`}></use>}
               </svg>
             </button>
           </div>
@@ -119,6 +129,7 @@ const TemplateTodo = ({ category }) => {
           ></div>
         </Modal>
       )}
+
       <Button
         content="icon-plus"
         type="button"
