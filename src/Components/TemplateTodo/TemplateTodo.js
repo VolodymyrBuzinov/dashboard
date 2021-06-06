@@ -26,10 +26,10 @@ const LIST_LEVEL = ['easy', 'normal', 'hard'];
 
 const INITIAL_STATE = {
   category: LIST_CATEGORY[0],
-  level: LIST_LEVEL[0],
+  difficulty: LIST_LEVEL[0],
 };
 
-const TemplateTodo = ({ category }) => {
+const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const isVisible = useSelector(isVisibleTemplate);
   const edit = useSelector(isEdit);
   const dispatch = useDispatch();
@@ -87,7 +87,7 @@ const TemplateTodo = ({ category }) => {
           <div className="button">
             <ButtonOpenModal
               type="level"
-              title={state.level}
+              title={!isVisible ? state.difficulty : difficulty}
               onClick={edit && !challenge && toggleModalLevel}
               isEdit={edit && !challenge}
             >
@@ -128,7 +128,7 @@ const TemplateTodo = ({ category }) => {
           >
             <ButtonOpenModal
               type="category"
-              title={state.category}
+              title={!isVisible ? state.category : category}
               onClick={edit && !challenge && toggleModalCategory}
               isEdit={edit && !challenge}
             >

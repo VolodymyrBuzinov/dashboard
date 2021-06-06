@@ -4,8 +4,6 @@ import { useSelector } from 'react-redux';
 // import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 
 const ButtonOpenModal = ({ type, title, onClick, isEdit, children }) => {
-  // const isVisible = useSelector(isVisibleTemplate);
-
   return (
     <div
       onClick={onClick}
