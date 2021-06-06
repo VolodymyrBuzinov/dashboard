@@ -8,6 +8,7 @@
   justify-content: center;
   cursor: pointer;
   padding: 0;
+  color: $secondary-text;
 
   /*Style for button PLUS*/
   &.icon-plus {
@@ -106,14 +107,23 @@
     text-transform: uppercase;
   }
 
-  /*Style for button CLEAR*/
+  /*Style for button CLEAR,SAVE,DONE,STAR*/
 
   &.icon-clear,
   &.icon-save,
-  &.icon-done {
+  &.icon-done,
+  &.icon-star,
+  &.icon-trophy {
     & svg {
+      fill: currentColor;
       width: 10px;
       height: 10px;
+    }
+  }
+
+  &.active {
+    & svg {
+      fill: currentColor;
     }
   }
 }

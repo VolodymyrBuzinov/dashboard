@@ -7,7 +7,7 @@ import sprite from '../../Icons/symbol-defs.svg';
             на фиксированное положение на экране
     onClick-принимает функцию-обработчик события по нажатию кнопки
 */
-const Button = ({ content, type, onClick }) => {
+const Button = ({ content, type, onClick, isActive }) => {
   const isIcon = content.slice(0, 4) === 'icon';
 
   return (
@@ -17,7 +17,7 @@ const Button = ({ content, type, onClick }) => {
         type={type}
         className={`${style.Button} ${
           content === 'go!' ? style.go : style[content]
-        }`}
+        } ${isActive && style.active}`}
       >
         {isIcon ? (
           <svg width="30" height="30">

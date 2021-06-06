@@ -10,6 +10,7 @@ import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
+import { findAllByTestId } from '@testing-library/dom';
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -108,20 +109,7 @@ const TemplateTodo = ({ category }) => {
           <div
             className="Selectors"
             style={{ outline: '1px solid', width: '68px', height: '16px' }}
-          >
-            <Button
-              content="icon-done"
-              type="button"
-              isFixed="true"
-              onClick={onclick}
-            />
-            <Button
-              content="start"
-              type="button"
-              isFixed="true"
-              onClick={onclick}
-            />
-          </div>
+          ></div>
         </div>
       </div>
       {showModalDelete && (
