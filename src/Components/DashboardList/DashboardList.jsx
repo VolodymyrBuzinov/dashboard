@@ -14,17 +14,6 @@ const DashboardList = () => {
   },
   [dispatch])
   const todos = useSelector(todoSelectors.getAllTodos);
-
-  const today = new Date();
-  const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-  if (tomorrow.getDay() === today.getDay()) {
-  // console.log('TODAY!');
-  } else {
-  // console.log('TOMORROW!');
-  }
-  /**{ time.getDay() === tomorrow.getDay() ? alert('TOMORROW!'): alert(' No TOMORROW!') } */
-  /*  {if time.getDay() === today.getDay()}
-  {if time.getDay() === tomorrow.getDay()} */
   
   return (<>
     <main className={s.todoListMain}>
