@@ -11,7 +11,8 @@ function DashboardListItem({ title, id, time, category, difficulty, onClick}) {
       </div>
         <p className={s.todoItemTitle}>{title}</p>
         <p className={s.todoItemTime}>{time}</p>
-      <div className={s.todoItemGroup}>{category}</div>
+      <div className={s.todoItemGroup}>{category}
+      </div>
     </li>
     </>
   );
