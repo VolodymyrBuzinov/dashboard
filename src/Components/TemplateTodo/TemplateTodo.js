@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
@@ -7,8 +7,8 @@ import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
-import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
+import { green } from '@material-ui/core/colors';
 import InputTodo from '../InputTodo/InputTodo';
 
 const LIST_CATEGORY = [
@@ -31,17 +31,25 @@ const TemplateTodo = ({ category }) => {
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const [state, setState] = useState(INITIAL_STATE);
+  const [challenge, setChallenge] = useState(false);
 
   const onclick = () => dispatch(onClickBtnCreate(true));
 
-  const toggleModalCategory = useCallback(() => {
+  const toggleModalCategory = e => {
     setShowModalCategory(prev => !prev);
-  }, []);
+  };
 
-  const toggleModalLevel = useCallback(() => {
+  const toggleModalLevel = () => {
     setShowModalLevel(prev => !prev);
-  }, []);
+  };
+
+  const toggleChallenge = () => setChallenge(prev => !prev);
+
+  const toggleModalDelete = () => {
+    setShowModalDelete(prev => !prev);
+  };
 
   const handleClickElement = e => {
     const { type, name } = e.target.dataset;
@@ -52,8 +60,14 @@ const TemplateTodo = ({ category }) => {
   };
 
   return (
-    <>
-      <div className={style.TemplateTodo__group}>
+    <div className={style.TemplateTodo}>
+      <div
+        className={
+          challenge
+            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
+            : style.TemplateTodo__group
+        }
+      >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
@@ -70,11 +84,20 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
-            <button className={style.TemplateTodo__ButtonStar}>
-              <svg width="15" height="15" className={style.Btn__icon}>
-                <use href={`${sprite}#icon-Vector`}></use>
-              </svg>
-            </button>
+            {challenge ? (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-trophy"
+                type="button"
+                isActive={true}
+              />
+            ) : (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-Vector"
+                type="button"
+              />
+            )}
           </div>
         </div>
 
@@ -89,7 +112,7 @@ const TemplateTodo = ({ category }) => {
           >
             <ButtonOpenModal
               type="category"
-              title={category}
+              title={state.category}
               onClick={toggleModalCategory}
             >
               {showModalCategory && (
@@ -108,6 +131,13 @@ const TemplateTodo = ({ category }) => {
           ></div>
         </div>
       </div>
+      {showModalDelete && (
+        <Modal onClose={toggleModalDelete} type="delete">
+          <div
+            style={{ width: '100px', height: '100px', background: green }}
+          ></div>
+        </Modal>
+      )}
 
       <Button
         content="icon-plus"
@@ -115,7 +145,7 @@ const TemplateTodo = ({ category }) => {
         isFixed="true"
         onClick={onclick}
       />
-    </>
+    </div>
   );
 };
 
