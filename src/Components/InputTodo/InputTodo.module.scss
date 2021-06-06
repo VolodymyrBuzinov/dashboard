@@ -11,17 +11,30 @@
 }
 
 .InputTodo__input {
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
-  font-size: 16px;
   font-family: HelveticaNeueCyr;
-  line-height: 16px;
-  padding-bottom: 10px;
+  max-width: 200px;
   counter-reset: $text-color;
-  display: block;
-  width: 163px;
+  // display: block;
   border: none;
   text-align: center;
+
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 16px;
+    margin-bottom: 12px;
+  }
 }
 .InputTodo__input:focus {
   outline: none;
@@ -33,7 +46,7 @@
   color: $active-color;
   position: absolute;
   pointer-events: none;
-  left: 10px;
+  left: 25px;
   top: 15px;
   transition: $animation-timing;
   -moz-transition: $animation-timing;
