@@ -19,7 +19,6 @@ export default function DateAndTimePickers({ getDate }) {
         required
         min="2021-06-01T08:00"
         max="2022-06-30T21:00"
-        // value={`Today, ${selectedDate}`}
         value={selectedDate}
         onChange={handleDateChange}
         onBlur={() => {
