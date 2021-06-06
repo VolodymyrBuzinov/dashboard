@@ -1,3 +1,4 @@
+
 import s from './UserNik.module.scss';
 
 const UserNik = ({nik}) => {
