@@ -90,7 +90,15 @@
     line-height: 1.8;  }
 }
 
+.registr_link {
+  // нужно убрать display: block
+  // @extend %link-throw;
+  text-decoration: none;
+  color: $card-bg-color;
+}
+
 .login_bgMobile {
+  // @extend %img-styles;
   position: absolute;
   bottom: 0;
   @media screen and (max-width: 767px) {
@@ -102,6 +110,8 @@
 }
 
 .login_loginPic {
+  // @extend %img-styles;
+
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -114,12 +124,14 @@
 }
 
 .login_loginPicture {
+  // @extend %img-styles;
+
   @media screen and (max-width: 767px) {
     display: none;
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: -130px;
+    bottom: -200px;
     right: 0;
     pointer-events: none;
   }
