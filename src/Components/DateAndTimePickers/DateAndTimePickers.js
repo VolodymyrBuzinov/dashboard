@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from './DateAndTimePickers.module.scss';
 
-export default function DateAndTimePickers() {
+export default function DateAndTimePickers({ getDate }) {
   const [selectedDate, setSelectedDate] = useState(
     new Date('2021-06-15T09:00:00'),
   );
@@ -10,20 +10,8 @@ export default function DateAndTimePickers() {
     setSelectedDate(date.target.value);
   };
 
-  // const handleSubmit = useCallback(e => {
-  //   e.preventDefault();
-
-  //   console.log('run handleSubmit');
-  // }, []);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    console.log('run handleSubmit e =', e);
-  };
-
   return (
-    <form className={style.DateAndTimePickers__form} onSubmit={handleSubmit}>
+    <form className={style.DateAndTimePickers__form}>
       <input
         className={style.DateAndTimePickers__input}
         type="datetime-local"
@@ -34,6 +22,9 @@ export default function DateAndTimePickers() {
         // value={`Today, ${selectedDate}`}
         value={selectedDate}
         onChange={handleDateChange}
+        onBlur={() => {
+          getDate(selectedDate);
+        }}
       />
     </form>
   );

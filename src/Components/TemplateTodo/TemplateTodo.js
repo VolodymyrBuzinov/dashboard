@@ -90,8 +90,8 @@ const TemplateTodo = ({ category }) => {
             background: '#FFE6D3',
           }}
         >
-          <InputTodo />
-          <DateAndTimePickers />
+          <InputTodo getInputText={setState} />
+          <DateAndTimePickers getDate={setState} />
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
