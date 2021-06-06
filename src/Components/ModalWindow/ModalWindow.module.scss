@@ -1,0 +1,63 @@
+@import '../../Utils/utils.scss';
+
+.Button {
+  @extend %button-throw;
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 75px 21px 47px 21px; /* не очень понимаю как сделать по другому позиционирование, если размер карточки изменится */
+  border-radius: 10px;
+}
+
+.open {
+  transform: scale(1);
+  transition: 0.5s;
+}
+
+.close {
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+.modal {
+  background-color: $white-color;
+  width: 163px;
+  height: 77px;
+  border-radius: 10px;
+}
+
+.content {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 25px 0 14px 0;
+  text-align: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  height: 10px;
+}
+
+.buttonCancel {
+  color: $cancel-button;
+}
+
+.buttonDelete {
+  color: $delete-button;
+  margin-left: 10px;
+}
+
+.buttonDelete:before {
+  content: ' ';
+  background: #b9c3c8;
+  width: 1px;
+  height: 15px;
+  float: left;
+  margin-right: 10px;
+}

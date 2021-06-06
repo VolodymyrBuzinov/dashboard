@@ -1,4 +1,4 @@
-export { default as todosActions } from './todos-actions';
-export { default as todosReducer } from './todos-reducer';
-export { default as todosOperations } from './todos-operations';
-export { default as todosSelectors } from './todos-selectors';
+export { default as todosActions } from './todosActions';
+export { default as todosReducer } from './todosReducer';
+export { default as todosOperations } from './todosOperations';
+export { default as todosSelectors } from './todosSelectors';

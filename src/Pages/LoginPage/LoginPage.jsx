@@ -4,7 +4,7 @@ import s from './LoginPage.module.scss';
 import './Login.scss';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getWaiting } from '../../Redux/Auth/authSelectors';
+import { getWaiting } from '../../Redux/Selectors/authSelectors';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -27,7 +27,7 @@ const LoginPage = () => {
       >
         <Loader
           className={s.waitingMessage}
-          type="Ball-Triangle 	"
+          type="BallTriangle"
           color="#00BFFF"
           height={100}
           width={100}
@@ -41,16 +41,24 @@ const LoginPage = () => {
           quests and exciting challenges.
         </p>
         <p className={s.login_text}>
-          Choose your name to{' '}
-          <NavLink
-            exact
-            to="/singUpPage"
-            className={s.registr_link}
-            activeClassName={s}
-          >
-            sign up
+
+          //Choose your name to{' '}
+          //<NavLink
+            //exact
+           // to="/singUpPage"
+//className={s.registr_link}
+           // activeClassName={s}
+         // >
+          //  sign up
+//</NavLink>{' '}
+        //  or log in
+
+          Choose your name{' '}
+          <NavLink exact to="/singUpPage" className={s.login_text}>
+            to sign
           </NavLink>{' '}
-          or log in
+          to sign up or log in
+
         </p>
 
         <RegisterForm />

@@ -15,3 +15,16 @@ export const logoutError = createAction('logoutError');
 export const getCurrentUserStart = createAction('getCurrentUserStart');
 export const getCurrentUserSuccess = createAction('getCurrentUserSuccess');
 export const getCurrentUserError = createAction('getCurrentUserError');
+
+export const getVerifyUserSuccess = createAction('getVerifyUserSuccess');
+export const getVerifyUserError = createAction('getVerifyUserError');
+
+export const reVerificationtUserStart = createAction(
+  'reVerificationtUserStart',
+);
+export const reVerificationtUserSuccess = createAction(
+  'reVerificationtUserSuccess',
+);
+export const reVerificationtUserError = createAction(
+  'reVerificationtUserError',
+);

@@ -7,7 +7,8 @@ import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
-
+import sprite from '../../Icons/symbol-defs.svg';
+import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -19,7 +20,10 @@ const LIST_CATEGORY = [
 
 const LIST_LEVEL = ['easy', 'normal', 'hard'];
 
-const INITIAL_STATE = { category: LIST_CATEGORY[0], level: LIST_LEVEL[0] };
+const INITIAL_STATE = {
+  category: LIST_CATEGORY[0],
+  level: LIST_LEVEL[0],
+};
 
 const TemplateTodo = ({ category }) => {
   const dispatch = useDispatch();
@@ -62,16 +66,22 @@ const TemplateTodo = ({ category }) => {
               )}
             </ButtonOpenModal>
           </div>
-          <div
-            className="star"
-            style={{ background: 'blue', width: '19px', height: '18px' }}
-          ></div>
+
+          <div className="star">
+            <button className={style.TemplateTodo__ButtonStar}>
+              <svg width="15" height="15" className={style.Btn__icon}>
+                <use href={`${sprite}#icon-Vector`}></use>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div
           className={style.TemplateTodo__WrapperMidle}
           style={{ width: '100%', height: '55px', background: '#FFE6D3' }}
-        ></div>
+        >
+          <DateAndTimePickers />
+        </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
           <div

@@ -18,6 +18,7 @@ const Button = ({ content, type, isFixed, onClick }) => {
         type={type}
         className={`${style.Button} ${isFixed && style.fixed} ${!isIcon && style.text}`}
       >
+        
         {isIcon ? (<svg width="30" height="30">          
           <use href={`${sprite}#${content}`} ></use>
         </svg>): content}

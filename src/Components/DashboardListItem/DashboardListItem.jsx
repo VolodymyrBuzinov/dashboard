@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './DashboardListItem.module.scss';
+import iconVector from '../../Icons/svg/Vector.svg'
 
-function DashboardListItem({ title, id, data, onClick}) {
+function DashboardListItem({ title, id, time, category, difficulty, onClick}) {
   return (<>
     <li key={id} onClick={onClick} className={s.todoItem}>
-      Сomplexity
-        <p className={s.todoItemTitle}>title{title}</p>
-        <p className={s.todoItemData}>data{data}</p>
-      Group
-      </li>
+      <div className={s.todoItemСomplexity}>{difficulty}
+        <img className={s.todoItemSvg} src={`${iconVector}`} alt="" />
+      </div>
+        <p className={s.todoItemTitle}>{title}</p>
+        <p className={s.todoItemTime}>{time}</p>
+      <div className={s.todoItemGroup}>{category}
+      </div>
+    </li>
     </>
   );
 };    
