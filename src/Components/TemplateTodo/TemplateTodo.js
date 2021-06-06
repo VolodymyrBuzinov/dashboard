@@ -57,7 +57,7 @@ const TemplateTodo = ({ category }) => {
   return (
     <>
       
-      <div className={challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group} onclick={toggleChallenge}>
+      <div className={challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group} /*onclick={toggleChallenge}*/>
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
