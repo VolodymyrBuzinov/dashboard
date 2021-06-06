@@ -1,12 +1,13 @@
 import { Redirect, Switch } from 'react-router';
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
 import s from './Router.module.scss';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
+import { getCurrentUser } from '../Redux/Operations/authOperation';
 
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
@@ -26,7 +27,12 @@ const VerifyPage = lazy(() =>
 );
 
 function Router() {
+  const dispatch = useDispatch();
   const state = useSelector(getVerify);
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [dispatch]);
 
   return (
     <Suspense
