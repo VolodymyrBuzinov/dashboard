@@ -28,7 +28,7 @@ const LoginPage = () => {
       >
         <Loader
           className={s.waitingMessage}
-          type="Ball-Triangle 	"
+          type="BallTriangle"
           color="#00BFFF"
           height={100}
           width={100}

@@ -27,7 +27,6 @@ const VerifyPage = lazy(() =>
 
 function Router() {
   const state = useSelector(getVerify);
-  console.log(state);
 
   return (
     <Suspense
@@ -51,10 +50,7 @@ function Router() {
         />
         <PublicRoute
           path="/verifyPage"
-          // restricted
-          // redirectTo="/"
           render={() => (state ? <Redirect exact to="/" /> : <VerifyPage />)}
-          // component={VerifyPage}
         />
         <PublicRoute
           path="/singUpPage"
