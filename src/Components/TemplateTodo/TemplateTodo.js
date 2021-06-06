@@ -10,6 +10,7 @@ import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 
+
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -56,7 +57,7 @@ const TemplateTodo = ({ category }) => {
   return (
     <>
       
-      {!challenge ? <div className={style.TemplateTodo__group}>
+      <div className={challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group} onclick={toggleChallenge}>
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
@@ -75,7 +76,9 @@ const TemplateTodo = ({ category }) => {
           <div className="star">
             <button className={style.TemplateTodo__ButtonStar} onClick={toggleChallenge}>
               <svg width="15" height="15" className={style.Btn__icon}>
-                   <use href={`${sprite}#icon-Vector`}></use>
+                {challenge
+                  ? <use href={`${sprite}#icon-trophy`}></use>
+                  : <use href={`${sprite}#icon-Vector`}></use>}
               </svg>
             </button>
           </div>
@@ -113,65 +116,6 @@ const TemplateTodo = ({ category }) => {
           ></div>
         </div>
       </div>
-        
-          :<div className={style.TemplateTodo__challenge}>
-            <div className={style.TemplateTodo__WrapperTop}>
-              <div className="button">
-                <ButtonOpenModal
-                  type="level"
-                  title={state.level}
-                  onClick={toggleModalLevel}
-                >
-                  {showModalLevel && (
-                    <Modal onClose={toggleModalLevel} type="level">
-                      <Level items={LIST_LEVEL} handleClick={handleClickElement} />
-                    </Modal>
-                  )}
-                </ButtonOpenModal>
-              </div>
-
-              <div className="star">
-                <button className={style.TemplateTodo__ButtonStar} onClick={toggleChallenge}>
-                  <svg width="15" height="15" className={style.Btn__icon}>
-                      <use href={`${sprite}#icon-trophy`}></use>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div
-              className={style.TemplateTodo__WrapperMidle}
-              style={{ width: '100%', height: '55px', background: '#FFE6D3' }}
-            >
-              <DateAndTimePickers />
-            </div>
-
-            <div className={style.TemplateTodo__WrapperBottom}>
-              <div
-                className={`${style.TemplateTodo__ButtonBgc} ${style[category]}`}
-              >
-                <ButtonOpenModal
-                  type="category"
-                  title={category}
-                  onClick={toggleModalCategory}
-                >
-                  {showModalCategory && (
-                    <Modal onClose={toggleModalCategory} type="category">
-                      <Category
-                        items={LIST_CATEGORY}
-                        handleClick={handleClickElement}
-                      />
-                    </Modal>
-                  )}
-                </ButtonOpenModal>
-              </div>
-              <div
-                className="Selectors"
-                style={{ outline: '1px solid', width: '68px', height: '16px' }}
-              ></div>
-            </div>
-          </div>}
-
       <Button
         content="icon-plus"
         type="button"
