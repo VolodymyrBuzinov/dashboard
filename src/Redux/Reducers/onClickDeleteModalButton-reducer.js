@@ -8,10 +8,6 @@ import {
     // deleteTaskError
 } from '../Actions/onClickDeleteModalButton-action'
 
-// const tasks = createReducer(cards, {
-//     [deleteTaskSuccess]: (state,{ payload }) => state.filter(({id})=>id !== payload)
-// })
-
 const tasks = createReducer(cards, {
     [deleteTaskSuccess]: (state,{ payload }) => state.filter(({id})=>id !== payload)
 })

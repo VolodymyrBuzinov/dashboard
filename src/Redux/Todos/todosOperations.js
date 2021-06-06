@@ -15,16 +15,16 @@ const fetchTodos = () => async dispatch => {
     }
 };
 
-/*const addTodo = ({ title, time }) => async dispatch => {
-    dispatch(todosActions.addTodoRequest());
-    try {
-        const todo = {title, time};
-        const { data } = await axios.post('/tasks', todo);
-        dispatch(todosActions.addTodoSuccess(data));
-    } catch (error) {
-        dispatch(todosActions.addTodoError(error.massage));
-    }
-};
+// const addTodo = ({ title, time }) => async dispatch => {
+//     dispatch(todosActions.addTodoRequest());
+//     try {
+//         const todo = {title, time};
+//         const { data } = await axios.post('/tasks', todo);
+//         dispatch(todosActions.addTodoSuccess(data));
+//     } catch (error) {
+//         dispatch(todosActions.addTodoError(error.massage));
+//     }
+// };
 
 const deleteTodo = todoId => async dispatch => {
     dispatch(todosActions.deleteTodoRequest());
@@ -34,11 +34,11 @@ const deleteTodo = todoId => async dispatch => {
     }  catch (error) {
         dispatch(todosActions.deleteTodoError(error.massage));
     }
-};*/
+};
 
 const exp = {
     fetchTodos,
     //addTodo, 
-    //deleteTodo
+    deleteTodo
 };
 export default exp;
