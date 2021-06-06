@@ -1,0 +1,92 @@
+@import '../../Utils/utils.scss';
+
+.InputTodo__input {
+  @extend %button-throw;
+}
+
+/* form starting stylings ------------------------------- */
+.InputTodo__form {
+  position: relative;
+  //   margin-bottom: 10px;
+}
+
+.InputTodo__input {
+  font-weight: bold;
+  font-style: normal;
+  font-size: 16px;
+  font-family: HelveticaNeueCyr;
+  line-height: 16px;
+  padding: 10px;
+  counter-reset: $text-color;
+  display: block;
+  width: 163px;
+  border: none;
+  text-align: center;
+}
+.InputTodo__input:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.InputTodo__label {
+  font-family: HelveticaNeueCyr;
+  color: $active-color;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 15px;
+  transition: $animation-timing;
+  -moz-transition: $animation-timing;
+  -webkit-transition: $animation-timing;
+
+  //@extend
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* active state */
+.InputTodo__input:focus ~ label,
+.InputTodo__input:valid ~ label {
+  top: -15px;
+  font-size: 14px;
+  color: $active-color;
+}
+
+/* BOTTOM BARS ================================= */
+// .InputTodo__bar {
+.InputTodo__bar {
+  position: relative;
+  display: block;
+  width: 163px;
+}
+.InputTodo__bar:before,
+.InputTodo__bar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  position: absolute;
+  background: $hover-color;
+  transition: $animation-timing;
+  -moz-transition: $animation-timing;
+  -webkit-transition: $animation-timing;
+}
+.InputTodo__bar:before {
+  left: 50%;
+}
+.InputTodo__bar:after {
+  right: 50%;
+}
+
+/* active state */
+.InputTodo__input:focus ~ .InputTodo__bar:before,
+.InputTodo__input:focus ~ .InputTodo__bar:after {
+  width: 50%;
+}

@@ -3,27 +3,35 @@ import style from './DateAndTimePickers.module.scss';
 
 export default function DateAndTimePickers() {
   const [selectedDate, setSelectedDate] = useState(
-    new Date('2021-06-15T21:11:54'),
-  );
-  console.log(
-    '🚀 ~ file: DateAndTimePickers.js ~ line 6 ~ DateAndTimePickers ~ selectedDate',
-    selectedDate,
+    new Date('2021-06-15T09:00:00'),
   );
 
   const handleDateChange = date => {
     setSelectedDate(date.target.value);
   };
 
+  // const handleSubmit = useCallback(e => {
+  //   e.preventDefault();
+
+  //   console.log('run handleSubmit');
+  // }, []);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    console.log('run handleSubmit e =', e);
+  };
+
   return (
-    <form className={style.DateAndTimePickers__form}>
+    <form className={style.DateAndTimePickers__form} onSubmit={handleSubmit}>
       <input
         className={style.DateAndTimePickers__input}
         type="datetime-local"
         name="dateCreate"
         required
-        pattern="Today:[0-9]{2}"
         min="2021-06-01T08:00"
         max="2022-06-30T21:00"
+        // value={`Today, ${selectedDate}`}
         value={selectedDate}
         onChange={handleDateChange}
       />

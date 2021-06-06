@@ -9,6 +9,7 @@ import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
+import InputTodo from '../InputTodo/InputTodo';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -89,6 +90,7 @@ const TemplateTodo = ({ category }) => {
             background: '#FFE6D3',
           }}
         >
+          <InputTodo />
           <DateAndTimePickers />
         </div>
 
