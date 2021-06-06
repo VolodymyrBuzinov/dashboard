@@ -16,6 +16,9 @@ import {
   getCurrentUserError,
   getVerifyUserSuccess,
   getVerifyUserError,
+  reVerificationtUserStart,
+  reVerificationtUserSuccess,
+  reVerificationtUserError,
 } from '../Actions/authAction';
 
 BaseURL();
@@ -24,7 +27,6 @@ const registerAuth = credentials => async dispatch => {
   dispatch(registerStart());
   try {
     const response = await axios.post('/users/signup', credentials);
-    console.log(response);
     dispatch(registerSuccess(response.data.data));
   } catch (error) {
     dispatch(registerError(error.message));
@@ -55,6 +57,16 @@ const logOutAuth = () => async dispatch => {
   }
 };
 
+const reVerificationt = credentials => async dispatch => {
+  dispatch(reVerificationtUserStart());
+  try {
+    const response = await axios.post('/users/verify', credentials);
+    dispatch(reVerificationtUserSuccess(response.data.data));
+  } catch (error) {
+    dispatch(reVerificationtUserError(error.message));
+  }
+};
+
 const getCurrentUser = () => async (dispatch, getState) => {
   const {
     auth: { token: persistedToken },
@@ -80,4 +92,11 @@ const verify = eve => async dispatch => {
   }
 };
 
-export { registerAuth, loginAuth, logOutAuth, getCurrentUser, verify };
+export {
+  registerAuth,
+  loginAuth,
+  logOutAuth,
+  getCurrentUser,
+  verify,
+  reVerificationt,
+};

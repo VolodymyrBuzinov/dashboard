@@ -3,7 +3,7 @@ import React from 'react';
 import s from './LoginPage.module.scss';
 import './Login.scss';
 import { useSelector } from 'react-redux';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getWaiting } from '../../Redux/Selectors/authSelectors';
 // import { loginAuth } from '../../Redux/Auth/authOperation';
 import { CSSTransition } from 'react-transition-group';
@@ -44,7 +44,13 @@ const LoginPage = () => {
           Questify will turn your life into a thrilling game full of amazing
           quests and exciting challenges.
         </p>
-        <p className={s.login_text}>Choose your name to sign up or log in</p>
+        <p className={s.login_text}>
+          Choose your name{' '}
+          <NavLink exact to="/singUpPage" className={s.login_text}>
+            to sign
+          </NavLink>{' '}
+          to sign up or log in
+        </p>
 
         <RegisterForm />
       </div>
