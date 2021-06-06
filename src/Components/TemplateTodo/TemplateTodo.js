@@ -78,18 +78,7 @@ const TemplateTodo = ({ category }) => {
           </div>
         </div>
 
-        <div
-          className={style.TemplateTodo__WrapperMidle}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-
-            width: '100%',
-            height: '55px',
-            background: '#FFE6D3',
-          }}
-        >
+        <div className={style.TemplateTodo__WrapperMidle}>
           <InputTodo getInputText={setState} />
           <DateAndTimePickers getDate={setState} />
         </div>
