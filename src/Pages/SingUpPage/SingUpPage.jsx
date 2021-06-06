@@ -4,7 +4,10 @@ import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWaiting } from '../../Redux/Selectors/authSelectors';
-import { registerAuth } from '../../Redux/Operations/authOperation';
+import {
+  registerAuth,
+  reVerificationt,
+} from '../../Redux/Operations/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -24,9 +27,11 @@ const SingUpPage = () => {
   const btnClick = e => {
     e.preventDefault();
     dispatch(registerAuth({ name, email, password }));
-    setName('');
     setPassword('');
-    setEmail('');
+  };
+
+  const reVerify = () => {
+    dispatch(reVerificationt({ email }));
   };
 
   return (
@@ -45,11 +50,24 @@ const SingUpPage = () => {
           width={100}
         />
       </CSSTransition>
-      <NavLink exact to="/"
-        // className={s} activeClassName={s}
+      <NavLink
+        exact
+        to="/"
+        // className={s}
       >
         Back
       </NavLink>
+      {''}
+
+      <button
+        // type="button"
+        onClick={() => {
+          reVerify();
+        }}
+        className={s}
+      >
+        Re verification
+      </button>
       <h1 className={s}>Registration</h1>
       <form className={s} onSubmit={btnClick}>
         <label className={s}>
