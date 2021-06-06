@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,7 +11,6 @@ import {
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-// import { reVerify } from '../../Redux/Selectors/authSelectors';
 
 const SingUpPage = () => {
   const dispatch = useDispatch();

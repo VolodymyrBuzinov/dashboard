@@ -27,7 +27,6 @@ const registerAuth = credentials => async dispatch => {
   dispatch(registerStart());
   try {
     const response = await axios.post('/users/signup', credentials);
-    console.log(response);
     dispatch(registerSuccess(response.data.data));
   } catch (error) {
     dispatch(registerError(error.message));
@@ -62,7 +61,6 @@ const reVerificationt = credentials => async dispatch => {
   dispatch(reVerificationtUserStart());
   try {
     const response = await axios.post('/users/verify', credentials);
-    console.log(response);
     dispatch(reVerificationtUserSuccess(response.data.data));
   } catch (error) {
     dispatch(reVerificationtUserError(error.message));
