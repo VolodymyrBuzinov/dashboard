@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
@@ -7,7 +7,6 @@ import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
-import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
 
@@ -37,19 +36,19 @@ const TemplateTodo = ({ category }) => {
 
   const onclick = () => dispatch(onClickBtnCreate(true));
 
-  const toggleModalCategory = useCallback(() => {
+  const toggleModalCategory = e => {
     setShowModalCategory(prev => !prev);
-  }, []);
+  };
 
-  const toggleModalLevel = useCallback(() => {
+  const toggleModalLevel = () => {
     setShowModalLevel(prev => !prev);
-  }, []);
+  };
 
   const toggleChallenge = () => setChallenge(prev => !prev);
 
-  const toggleModalDelete = useCallback(() => {
+  const toggleModalDelete = () => {
     setShowModalDelete(prev => !prev);
-  }, []);
+  };
 
   const handleClickElement = e => {
     const { type, name } = e.target.dataset;
@@ -61,12 +60,12 @@ const TemplateTodo = ({ category }) => {
 
   return (
     <div className={style.TemplateTodo}>
-      {/* <div className={style.TemplateTodo__group}> */}
-
       <div
         className={
-          challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group
-        } /*onclick={toggleChallenge}*/
+          challenge
+            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
+            : style.TemplateTodo__group
+        }
       >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
@@ -84,18 +83,20 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
-            <button
-              className={style.TemplateTodo__ButtonStar}
-              onClick={toggleChallenge}
-            >
-              <svg width="15" height="15" className={style.Btn__icon}>
-                {challenge ? (
-                  <use href={`${sprite}#icon-trophy`}></use>
-                ) : (
-                  <use href={`${sprite}#icon-Vector`}></use>
-                )}
-              </svg>
-            </button>
+            {challenge ? (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-trophy"
+                type="button"
+                isActive={true}
+              />
+            ) : (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-Vector"
+                type="button"
+              />
+            )}
           </div>
         </div>
 
