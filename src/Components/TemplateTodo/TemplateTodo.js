@@ -9,9 +9,7 @@ import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
-
 import { green } from '@material-ui/core/colors';
-import { findAllByTestId } from '@testing-library/dom';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -46,7 +44,7 @@ const TemplateTodo = ({ category }) => {
   const toggleModalLevel = useCallback(() => {
     setShowModalLevel(prev => !prev);
   }, []);
-  
+
   const toggleChallenge = () => setChallenge(prev => !prev);
 
   const toggleModalDelete = useCallback(() => {
@@ -63,10 +61,13 @@ const TemplateTodo = ({ category }) => {
 
   return (
     <div className={style.TemplateTodo}>
-      <div className={style.TemplateTodo__group}>
-    <>      
-      <div className={challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group} /*onclick={toggleChallenge}*/>
+      {/* <div className={style.TemplateTodo__group}> */}
 
+      <div
+        className={
+          challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group
+        } /*onclick={toggleChallenge}*/
+      >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
@@ -83,11 +84,16 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
-            <button className={style.TemplateTodo__ButtonStar} onClick={toggleChallenge}>
+            <button
+              className={style.TemplateTodo__ButtonStar}
+              onClick={toggleChallenge}
+            >
               <svg width="15" height="15" className={style.Btn__icon}>
-                {challenge
-                  ? <use href={`${sprite}#icon-trophy`}></use>
-                  : <use href={`${sprite}#icon-Vector`}></use>}
+                {challenge ? (
+                  <use href={`${sprite}#icon-trophy`}></use>
+                ) : (
+                  <use href={`${sprite}#icon-Vector`}></use>
+                )}
               </svg>
             </button>
           </div>

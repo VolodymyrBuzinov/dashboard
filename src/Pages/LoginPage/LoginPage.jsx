@@ -37,50 +37,35 @@ const LoginPage = () => {
       <div className={s.login_container}>
         <h1 className={s.login_title}>Questify</h1>
         <p className={s.login_description}>
-          Questify will turn your life into a thrilling game full of amazing
-          quests and exciting challenges.
+          <span>
+            Questify will turn your life into a thrilling game full of amazing
+            quests and exciting challenges.
+          </span>
         </p>
         <p className={s.login_text}>
-
-          //Choose your name to{' '}
-          //<NavLink
-            //exact
-           // to="/singUpPage"
-//className={s.registr_link}
-           // activeClassName={s}
-         // >
-          //  sign up
-//</NavLink>{' '}
-        //  or log in
-
-          Choose your name{' '}
+          <span>Choose your name to sign up or log in Choose your name </span>
           <NavLink exact to="/singUpPage" className={s.login_text}>
-            to sign
-          </NavLink>{' '}
-          to sign up or log in
-
+            <span>to sign</span>
+          </NavLink>
+          <span>to sign up or log in</span>
         </p>
 
         <RegisterForm />
       </div>
-      <img 
-        src={pic1} 
-        alt="background-picture" 
-        className={s.login_loginPic} 
-      />
+      <img src={pic1} alt="background" className={s.login_loginPic} />
       <img
         src={pic2}
-        alt="background-picture"
+        alt="background"
         className={s.login_loginPicture}
       />
       <img
         src={bgMobile}
-        alt="background-picture"
+        alt="background"
         className={s.login_bgMobile}
       />
       <img
         src={bgMobile2}
-        alt="background-picture"
+        alt="background"
         className={s.login_bgMobile}
       />
     </section>
