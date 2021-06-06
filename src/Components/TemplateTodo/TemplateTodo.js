@@ -9,6 +9,7 @@ import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
+
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -78,7 +79,15 @@ const TemplateTodo = ({ category }) => {
 
         <div
           className={style.TemplateTodo__WrapperMidle}
-          style={{ width: '100%', height: '55px', background: '#FFE6D3' }}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+
+            width: '100%',
+            height: '55px',
+            background: '#FFE6D3',
+          }}
         >
           <DateAndTimePickers />
         </div>

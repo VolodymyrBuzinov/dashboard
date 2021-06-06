@@ -1,0 +1,20 @@
+@import '../../Utils/utils.scss';
+
+.DateAndTimePickers__form {
+  color: red;
+}
+.DateAndTimePickers__input {
+  font-family: HelveticaNeueCyr;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.02em;
+
+  color: $active-color;
+  border: none;
+  cursor: pointer;
+}
