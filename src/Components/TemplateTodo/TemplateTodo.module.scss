@@ -1,6 +1,10 @@
 @import '../../Utils/utils.scss';
 
 .TemplateTodo {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
   &__group {
     display: flex;
     flex-direction: column;

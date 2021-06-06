@@ -7,7 +7,7 @@
 
   border-radius: 10px;
   &.delete {
-    position: relative;
+    position: absolute;
     background: rgba(21, 57, 90, 0.3);
   }
   z-index: 10;
@@ -38,9 +38,6 @@
   }
 
   &.delete {
-    width: 163px;
-    height: 77px;
-    padding: 25px 30px 10px 30px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
