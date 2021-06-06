@@ -9,6 +9,7 @@ import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
+import { green } from '@material-ui/core/colors';
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -29,6 +30,7 @@ const TemplateTodo = ({ category }) => {
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const [state, setState] = useState(INITIAL_STATE);
 
   const onclick = () => dispatch(onClickBtnCreate(true));
@@ -41,6 +43,10 @@ const TemplateTodo = ({ category }) => {
     setShowModalLevel(prev => !prev);
   }, []);
 
+  const toggleModalDelete = useCallback(() => {
+    setShowModalDelete(prev => !prev);
+  }, []);
+
   const handleClickElement = e => {
     const { type, name } = e.target.dataset;
     setState(prevState => ({
@@ -50,7 +56,7 @@ const TemplateTodo = ({ category }) => {
   };
 
   return (
-    <>
+    <div className={style.TemplateTodo}>
       <div className={style.TemplateTodo__group}>
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
@@ -76,10 +82,7 @@ const TemplateTodo = ({ category }) => {
           </div>
         </div>
 
-        <div
-          className={style.TemplateTodo__WrapperMidle}
-          style={{ width: '100%', height: '55px', background: '#FFE6D3' }}
-        >
+        <div className={style.TemplateTodo__WrapperMidle}>
           <DateAndTimePickers />
         </div>
 
@@ -89,7 +92,7 @@ const TemplateTodo = ({ category }) => {
           >
             <ButtonOpenModal
               type="category"
-              title={category}
+              title={state.category}
               onClick={toggleModalCategory}
             >
               {showModalCategory && (
@@ -105,17 +108,36 @@ const TemplateTodo = ({ category }) => {
           <div
             className="Selectors"
             style={{ outline: '1px solid', width: '68px', height: '16px' }}
-          ></div>
+          >
+            <Button
+              content="icon-done"
+              type="button"
+              isFixed="true"
+              onClick={onclick}
+            />
+            <Button
+              content="start"
+              type="button"
+              isFixed="true"
+              onClick={onclick}
+            />
+          </div>
         </div>
       </div>
-
+      {showModalDelete && (
+        <Modal onClose={toggleModalDelete} type="delete">
+          <div
+            style={{ width: '100px', height: '100px', background: green }}
+          ></div>
+        </Modal>
+      )}
       <Button
         content="icon-plus"
         type="button"
         isFixed="true"
         onClick={onclick}
       />
-    </>
+    </div>
   );
 };
 
