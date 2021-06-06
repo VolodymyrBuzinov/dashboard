@@ -31,12 +31,12 @@ const DashboardList = () => {
       
       {todos.length > 0 && (
         <div className={s.todoListDiv}>
-        <p className={s.todoListTitle}>TODAY</p>
+          <p className={s.todoListTitle}>TODAY</p>
+          <ul className={s.todoList}>
           {todos.map(({ title, id, time, category, difficulty, done }) => (
-            <ul className={s.todoList}>
-             {(!done) && <DashboardListItem category={category} difficulty={difficulty} title={title} id={id} time={time}>
-              </DashboardListItem>}
-            </ul>))}
+             (!done) && <DashboardListItem category={category} difficulty={difficulty} title={title} id={id} time={time}>
+              </DashboardListItem>
+            ))}</ul>
         <p className={s.todoListTitle}>TOMORROW</p>
           {/* // * DONE */}
           <MenuDone/>
