@@ -28,3 +28,9 @@ export const reVerificationtUserSuccess = createAction(
 export const reVerificationtUserError = createAction(
   'reVerificationtUserError',
 );
+
+export const getRefreshTokenStart = createAction('getRefreshTokenStart');
+export const getRefreshTokenSuccess = createAction('getRefreshTokenSuccess');
+export const getRefreshTokenError = createAction('getRefreshTokenError');
+
+export const refreshTokenAction = createAction('refreshTokenAction');
