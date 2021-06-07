@@ -41,7 +41,7 @@ const DashboardList = () => {
   return (
     <>
       <main className={s.todoListMain}>
-        {todos.length > 0 && (
+     
           <div className={s.todoListDiv}>
             <p className={s.todoListTitle}>TODAY</p>
             <ul className={s.todoList}>
@@ -83,7 +83,7 @@ const DashboardList = () => {
               )}
             </ul>
           </div>
-        )}
+        
       </main>
     </>
   );
