@@ -16,7 +16,7 @@ const deleteTodoError = createAction('todos/deleteTodoError');
 
 const clearTodoError = createAction('todos/clearError');
 
-const exp = {
+const todosActions = {
     fetchTodoRequest,
     fetchTodoSuccess,
     fetchTodoError,
@@ -29,4 +29,4 @@ const exp = {
     // changeFilter,
     clearTodoError,
 };
-export default exp;
+export default todosActions;

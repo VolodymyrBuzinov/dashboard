@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { todosActions } from ".";
+import todosActions  from "../Actions/todosActions";
 
 const items = createReducer([], {
     [todosActions.fetchTodoSuccess]: (_, { payload }) => payload,
@@ -9,9 +9,9 @@ const items = createReducer([], {
     [todosActions.deleteTodoSuccess]: (state, { payload }) => state.filter(({ id }) => id !== payload)
 });
 
-const filter = createReducer('', {
+/*const filter = createReducer('', {
     [todosActions.changeFilter]: (_, { payload }) => payload,
-});
+});*/
 
 const loading = createReducer(false, {
     [todosActions.fetchTodoRequest]: () => true,
@@ -36,7 +36,7 @@ const error = createReducer('', {
 
 export default combineReducers({
     items,
-    filter,
+    //filter,
     loading,
     error,
 });

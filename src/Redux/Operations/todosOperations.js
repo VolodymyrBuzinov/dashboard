@@ -1,6 +1,6 @@
 import axios from "axios";
 import { BaseURL } from '../../Api/AxiosToken';
-import todosActions from "./todosActions";
+import todosActions from "../Actions/todosActions";
 
 BaseURL();
 
@@ -36,9 +36,9 @@ const deleteTodo = todoId => async dispatch => {
     }
 };
 
-const exp = {
+const todosOperations = {
     fetchTodos,
     //addTodo, 
     deleteTodo
 };
-export default exp;
+export default todosOperations;
