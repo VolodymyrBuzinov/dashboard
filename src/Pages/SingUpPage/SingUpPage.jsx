@@ -12,7 +12,7 @@ import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
-import RegisterForm from '../../Components/RegisterForm/RegisterForm';
+
 const SingUpPage = () => {
   const dispatch = useDispatch();
   const wait = useSelector(getWaiting);

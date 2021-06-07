@@ -7,7 +7,7 @@ import { editTodo } from '../../Redux/Actions/editTodo-action';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
-import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
+import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
@@ -41,10 +41,6 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const [state, setState] = useState(INITIAL_STATE);
   const [challenge, setChallenge] = useState(false);
 
-
-  const onclick = () => dispatch(onClickBtnCreate(true));
-
-
   const toggleModalCategory = e => {
     setShowModalCategory(prev => !prev);
   };
@@ -67,7 +63,6 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
     dispatch(onClickBtnCreate(false));
     dispatch(editTodo(false));
     setState(INITIAL_STATE);
-
   };
 
   const handleClickElement = e => {
@@ -83,7 +78,6 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
       className={style.TemplateTodo}
       onClick={!isVisible && !edit && editCard}
     >
-
       <div
         className={
           challenge
@@ -110,26 +104,17 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
           <div className="star">
             {challenge ? (
               <Button
-
                 onClick={!isVisible && !edit && toggleChallenge}
-
                 content="icon-trophy"
                 type="button"
                 isActive={true}
               />
             ) : (
               <Button
-
                 onClick={!isVisible && !edit && toggleChallenge}
                 content="icon-Vector"
                 type="button"
                 isActive={!edit}
-              />
-            )}
-
-                onClick={toggleChallenge}
-                content="icon-Vector"
-                type="button"
               />
             )}
 

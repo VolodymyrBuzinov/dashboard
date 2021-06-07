@@ -1,7 +1,5 @@
 import style from './ButtonOpenModal.module.scss';
 import sprite from '../../Icons/symbol-defs.svg';
-import { useSelector } from 'react-redux';
-// import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 
 const ButtonOpenModal = ({ type, title, onClick, isEdit, children }) => {
   return (

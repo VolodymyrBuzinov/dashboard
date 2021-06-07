@@ -12,7 +12,6 @@ const HeaderPage = () => {
   let letter = '';
   if (name) {
     letter = name.slice(0, 1);
-    console.log(letter);
   }
 
   return (
