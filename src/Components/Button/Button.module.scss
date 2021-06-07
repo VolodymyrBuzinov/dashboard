@@ -107,23 +107,23 @@
     text-transform: uppercase;
   }
 
-  /*Style for button CLEAR,SAVE,DONE,STAR*/
+  /*Style for button CLEAR,SAVE,DONE,STAR,TROPHY*/
 
   &.icon-clear,
   &.icon-save,
   &.icon-done,
-  &.icon-star,
+  &.icon-Vector,
   &.icon-trophy {
     & svg {
       fill: currentColor;
-      width: 10px;
-      height: 10px;
+      width: 15px;
+      height: 15px;
     }
   }
 
   &.active {
     & svg {
-      fill: currentColor;
+      fill: $hover-color;
     }
   }
 }
