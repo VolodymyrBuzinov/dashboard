@@ -6,7 +6,7 @@ export default function Spinner() {
       <div className={styles.spinnerInner}>
         <div className={styles.innerCircle}></div>
         <svg className={styles.spinnerIcon}>
-          <use href={`${sprite}#icon-question`}></use>
+          <use href={`${sprite}#icon-paulq`}></use>
         </svg>
       </div>
     </div>
