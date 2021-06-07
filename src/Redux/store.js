@@ -1,6 +1,7 @@
 import authReduser from './Reducers/authReduser';
 import templateTodoReduser from './Reducers/templateReduser';
 import todoReduser from './Todos/todosReducer';
+import loaderReducer from '../Redux/Reducers/loaderReducer'
 
 import {
   configureStore,
@@ -36,6 +37,7 @@ const mainReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReduser),
   templateTodo: templateTodoReduser,
   todos: todoReduser,
+  loader: loaderReducer
 });
 
 const store = configureStore({

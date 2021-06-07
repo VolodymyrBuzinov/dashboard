@@ -1,8 +1,7 @@
-// import React, { useState } from 'react';
-import React from 'react';
+import { useEffect } from 'react';
 import s from './LoginPage.module.scss';
 import './Login.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getWaiting } from '../../Redux/Selectors/authSelectors';
 import { CSSTransition } from 'react-transition-group';
@@ -13,9 +12,16 @@ import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
+import { showSpinner, hideSpinner } from '../../Redux/Actions/loaderAction';
 
 const LoginPage = () => {
   const wait = useSelector(getWaiting);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(hideSpinner());
+    }, 1500);
+  }, []);
 
   return (
     <section className={s.login_section}>
@@ -53,21 +59,9 @@ const LoginPage = () => {
         <RegisterForm />
       </div>
       <img src={pic1} alt="background" className={s.login_loginPic} />
-      <img
-        src={pic2}
-        alt="background"
-        className={s.login_loginPicture}
-      />
-      <img
-        src={bgMobile}
-        alt="background"
-        className={s.login_bgMobile}
-      />
-      <img
-        src={bgMobile2}
-        alt="background"
-        className={s.login_bgMobile}
-      />
+      <img src={pic2} alt="background" className={s.login_loginPicture} />
+      <img src={bgMobile} alt="background" className={s.login_bgMobile} />
+      <img src={bgMobile2} alt="background" className={s.login_bgMobile} />
     </section>
   );
 };

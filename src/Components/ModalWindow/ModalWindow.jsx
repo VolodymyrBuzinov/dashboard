@@ -1,4 +1,3 @@
-import React from 'react';
 import style from './ModalWindow.module.scss';
 import { useDispatch } from 'react-redux';
 import todosOperations from '../../Redux/Todos/todosOperations';
