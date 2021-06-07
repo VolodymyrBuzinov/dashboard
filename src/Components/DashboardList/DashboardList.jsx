@@ -52,7 +52,7 @@ const DashboardList = () => {
                       difficulty={difficulty}
                       title={title}
                       id={_id}
-                      time={time}
+                    time={time}
                     ></DashboardListItem>
               )}
             </ul>
@@ -65,7 +65,7 @@ const DashboardList = () => {
                       difficulty={difficulty}
                       title={title}
                       id={_id}
-                      time={time}
+                    time={time}
                     ></DashboardListItem>
               )}
             </ul>
