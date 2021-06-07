@@ -1,18 +1,18 @@
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux';
 import s from './HeaderPage.module.scss';
 
 import ButtonLogout from '../../Components/ButtonLogout/ButtonLogout';
 import UserNameText from '../../Components/UserNameText/UserNameText';
 import UserNik from '../../Components/UserNik/UserNik';
-import {getUserName} from '../../Redux/Selectors/authSelectors'
+import { getUserName } from '../../Redux/Selectors/authSelectors';
 
 const HeaderPage = () => {
-   const name = useSelector(getUserName);
-  let nik = '';
+  const name = useSelector(getUserName);
+  let letter = '';
   if (name) {
-   nik = name[0].toUpperCase();
+    letter = name.slice(0, 1);
   }
- 
+
   return (
     <header>
       <div className={s.headerContainer}>
@@ -20,8 +20,8 @@ const HeaderPage = () => {
           <p className={s.headerLogoText}>Questify</p>
         </div>
         <div className={s.userContainer}>
-          <UserNik nikName = {nik} />
-          <UserNameText name ={name} />
+          <UserNik nickName={letter} />
+          <UserNameText name={name} />
         </div>
         <ButtonLogout />
       </div>

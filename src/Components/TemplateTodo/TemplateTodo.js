@@ -1,15 +1,19 @@
-import { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
-import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
-import sprite from '../../Icons/symbol-defs.svg';
+import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
+import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
+import isEdit from '../../Redux/Selectors/editTodoSelector';
+import InputTodo from '../InputTodo/InputTodo';
+
 
 const LIST_CATEGORY = [
   'stuff',
@@ -24,10 +28,12 @@ const LIST_LEVEL = ['easy', 'normal', 'hard'];
 
 const INITIAL_STATE = {
   category: LIST_CATEGORY[0],
-  level: LIST_LEVEL[0],
+  difficulty: LIST_LEVEL[0],
 };
 
-const TemplateTodo = ({ category }) => {
+const TemplateTodo = ({ category, difficulty, id, time, title }) => {
+  const isVisible = useSelector(isVisibleTemplate);
+  const edit = useSelector(isEdit);
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -35,21 +41,29 @@ const TemplateTodo = ({ category }) => {
   const [state, setState] = useState(INITIAL_STATE);
   const [challenge, setChallenge] = useState(false);
 
-  const onclick = () => dispatch(onClickBtnCreate(true));
-
-  const toggleModalCategory = useCallback(() => {
+  const toggleModalCategory = e => {
     setShowModalCategory(prev => !prev);
-  }, []);
+  };
 
-  const toggleModalLevel = useCallback(() => {
+  const toggleModalLevel = () => {
     setShowModalLevel(prev => !prev);
-  }, []);
+  };
+
+  const toggleModalDelete = () => {
+    setShowModalDelete(prev => !prev);
+  };
 
   const toggleChallenge = () => setChallenge(prev => !prev);
 
-  const toggleModalDelete = useCallback(() => {
-    setShowModalDelete(prev => !prev);
-  }, []);
+  const editCard = () => {
+    dispatch(editTodo(true));
+  };
+
+  const acceptChanges = () => {
+    dispatch(onClickBtnCreate(false));
+    dispatch(editTodo(false));
+    setState(INITIAL_STATE);
+  };
 
   const handleClickElement = e => {
     const { type, name } = e.target.dataset;
@@ -58,22 +72,34 @@ const TemplateTodo = ({ category }) => {
       [type]: name,
     }));
   };
+  
+  const updateState = (name, value) => {
+    
+    setState(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
 
   return (
-    <div className={style.TemplateTodo}>
-      {/* <div className={style.TemplateTodo__group}> */}
-
+    <div
+      className={style.TemplateTodo}
+      onClick={!isVisible && !edit && editCard}
+    >
       <div
         className={
-          challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group
-        } /*onclick={toggleChallenge}*/
+          challenge
+            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
+            : style.TemplateTodo__group
+        }
       >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
               type="level"
-              title={state.level}
-              onClick={toggleModalLevel}
+              title={!isVisible ? state.difficulty : difficulty}
+              onClick={edit && !challenge && toggleModalLevel}
+              isEdit={edit && !challenge}
             >
               {showModalLevel && (
                 <Modal onClose={toggleModalLevel} type="level">
@@ -84,23 +110,28 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
-            <button
-              className={style.TemplateTodo__ButtonStar}
-              onClick={toggleChallenge}
-            >
-              <svg width="15" height="15" className={style.Btn__icon}>
-                {challenge ? (
-                  <use href={`${sprite}#icon-trophy`}></use>
-                ) : (
-                  <use href={`${sprite}#icon-Vector`}></use>
-                )}
-              </svg>
-            </button>
+            {challenge ? (
+              <Button
+                onClick={!isVisible && !edit && toggleChallenge}
+                content="icon-trophy"
+                type="button"
+                isActive={true}
+              />
+            ) : (
+              <Button
+                onClick={!isVisible && !edit && toggleChallenge}
+                content="icon-Vector"
+                type="button"
+                isActive={!edit}
+              />
+            )}
+            
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
-          <DateAndTimePickers />
+          <InputTodo getInputText={updateState} />
+          <DateAndTimePickers getDate={updateState} />          
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
@@ -109,8 +140,9 @@ const TemplateTodo = ({ category }) => {
           >
             <ButtonOpenModal
               type="category"
-              title={state.category}
-              onClick={toggleModalCategory}
+              title={!isVisible ? state.category : category}
+              onClick={edit && !challenge && toggleModalCategory}
+              isEdit={edit && !challenge}
             >
               {showModalCategory && (
                 <Modal onClose={toggleModalCategory} type="category">
@@ -125,7 +157,9 @@ const TemplateTodo = ({ category }) => {
           <div
             className="Selectors"
             style={{ outline: '1px solid', width: '68px', height: '16px' }}
-          ></div>
+          >
+            <Button type="button" content="icon-done" onClick={acceptChanges} />
+          </div>
         </div>
       </div>
       {showModalDelete && (
@@ -135,13 +169,6 @@ const TemplateTodo = ({ category }) => {
           ></div>
         </Modal>
       )}
-
-      <Button
-        content="icon-plus"
-        type="button"
-        isFixed="true"
-        onClick={onclick}
-      />
     </div>
   );
 };
