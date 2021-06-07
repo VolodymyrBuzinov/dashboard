@@ -82,7 +82,6 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
     }));
   };
 
-  console.log(edit);
   return (
     <div
       className={style.TemplateTodo}
@@ -160,7 +159,12 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
           {!isEditTodo && !isVisible && (
             <>
               <div className={style.TemplateTodo__ButtonGroup}>
-                <GroupButtonSaveClearDone acceptChanges={acceptChanges} />
+                <GroupButtonSaveClearDone
+                  isEditTodo={isEditTodo}
+                  isVisible={isVisible}
+                  toggleModalDelete={toggleModalDelete}
+                  acceptChanges={acceptChanges}
+                />
               </div>
             </>
           )}
