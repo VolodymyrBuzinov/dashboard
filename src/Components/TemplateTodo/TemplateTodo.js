@@ -10,8 +10,7 @@ import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
 import InputTodo from '../InputTodo/InputTodo';
-
-
+import sprite from '../../Icons/symbol-defs.svg';
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -52,12 +51,6 @@ const TemplateTodo = ({ category }) => {
     setShowModalDelete(prev => !prev);
   };
 
-  const toggleChallenge = () => setChallenge(prev => !prev);
-
-  const toggleModalDelete = useCallback(() => {
-    setShowModalDelete(prev => !prev);
-  }, []);
-
   const handleClickElement = e => {
     const { type, name } = e.target.dataset;
     setState(prevState => ({
@@ -74,7 +67,6 @@ const TemplateTodo = ({ category }) => {
             ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
             : style.TemplateTodo__group
         }
-
       >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
@@ -92,7 +84,6 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
-
             {challenge ? (
               <Button
                 onClick={toggleChallenge}
@@ -120,17 +111,14 @@ const TemplateTodo = ({ category }) => {
                 )}
               </svg>
             </button>
-
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
-
           <InputTodo getInputText={setState} />
           <DateAndTimePickers getDate={setState} />
 
           <DateAndTimePickers />
-
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
