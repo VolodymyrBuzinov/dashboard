@@ -136,7 +136,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
 
         <div className={style.TemplateTodo__WrapperBottom}>
           <div
-            className={`${style.TemplateTodo__ButtonBgc} ${style[category]}`}
+            className={`${style.TemplateTodo__ButtonBgc} ${edit? style[state.category]: style[category]}`}
           >
             <ButtonOpenModal
               type="category"
