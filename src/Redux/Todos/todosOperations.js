@@ -10,7 +10,7 @@ const fetchTodos = () => async dispatch => {
     const tasks = await axios.get('/tasks').then(tasks => tasks.data.data);
     dispatch(todosActions.fetchTodoSuccess(tasks));
   } catch (error) {
-    dispatch(todosActions.fetchTodoError(error));
+    dispatch(todosActions.fetchTodoError(error.response.status));
   }
 };
 
@@ -21,7 +21,7 @@ const fetchTodos = () => async dispatch => {
 //         const { data } = await axios.post('/tasks', todo);
 //         dispatch(todosActions.addTodoSuccess(data));
 //     } catch (error) {
-//         dispatch(todosActions.addTodoError(error));
+//         dispatch(todosActions.addTodoError(error.response.status));
 //     }
 // };
 
@@ -31,7 +31,7 @@ const deleteTodo = todoId => async dispatch => {
     await axios.delete(`/tasks/${todoId}`);
     dispatch(todosActions.deleteTodoSuccess(todoId));
   } catch (error) {
-    dispatch(todosActions.deleteTodoError(error));
+    dispatch(todosActions.deleteTodoError(error.response.status));
   }
 };
 
