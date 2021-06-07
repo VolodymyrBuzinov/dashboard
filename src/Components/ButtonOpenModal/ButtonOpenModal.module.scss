@@ -44,7 +44,7 @@
     cursor: pointer;
   }
 
-  &.level {
+  &.difficulty {
     text-transform: lowercase;
     color: $secondary-text;
     &::first-letter {

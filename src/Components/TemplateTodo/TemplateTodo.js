@@ -13,7 +13,7 @@ import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
-
+import ModalWindow from '../ModalWindow/ModalWindow'
 
 const LIST_CATEGORY = [
   'stuff',
@@ -96,13 +96,13 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
-              type="level"
+              type="difficulty"
               title={!isVisible ? state.difficulty : difficulty}
               onClick={edit && !challenge && toggleModalLevel}
               isEdit={edit && !challenge}
             >
               {showModalLevel && (
-                <Modal onClose={toggleModalLevel} type="level">
+                <Modal onClose={toggleModalLevel} type="difficulty">
                   <Level items={LIST_LEVEL} handleClick={handleClickElement} />
                 </Modal>
               )}
@@ -136,7 +136,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
 
         <div className={style.TemplateTodo__WrapperBottom}>
           <div
-            className={`${style.TemplateTodo__ButtonBgc} ${style[category]}`}
+            className={`${style.TemplateTodo__ButtonBgc} ${edit? style[state.category]: style[category]}`}
           >
             <ButtonOpenModal
               type="category"
@@ -163,11 +163,10 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
         </div>
       </div>
       {showModalDelete && (
-        <Modal onClose={toggleModalDelete} type="delete">
-          <div
-            style={{ width: '100px', height: '100px', background: green }}
-          ></div>
+          <Modal onClose={toggleModalDelete} type="delete">
+            <ModalWindow isOpened={toggleModalDelete} question='Delete this Quest?'/>
         </Modal>
+
       )}
     </div>
   );
