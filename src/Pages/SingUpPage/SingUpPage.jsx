@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getWaiting } from '../../Redux/Selectors/authSelectors';
 import { registerAuth } from '../../Redux/Operations/authOperation';
 import { CSSTransition } from 'react-transition-group';
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+// import Loader from 'react-loader-spinner';
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
+import Spinner from '../../Components/Spinner/Spinner';
 
 const SingUpPage = () => {
   const dispatch = useDispatch();
@@ -41,13 +42,14 @@ const SingUpPage = () => {
         timeout={250}
         unmountOnExit
       >
-        <Loader
+        <Spinner />
+        {/* <Loader
           className={s.waitingMessage}
           type="BallTriangle"
           color="#00BFFF"
           height={100}
           width={100}
-        />
+        /> */}
       </CSSTransition>
       <div className={s.registr_container}>
         <h1 className={s.registr_title}>Questify</h1>

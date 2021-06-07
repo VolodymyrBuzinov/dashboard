@@ -19,9 +19,31 @@ import {
   reVerificationtUserStart,
   reVerificationtUserSuccess,
   reVerificationtUserError,
+  getRefreshTokenStart,
+  getRefreshTokenSuccess,
+  getRefreshTokenError,
+  refreshTokenAction,
 } from '../Actions/authAction';
 
 BaseURL();
+
+const refToken = () => async (dispatch, getState) => {
+  dispatch(getRefreshTokenStart());
+  const {
+    auth: { refreshToken: persistedReToken },
+  } = getState();
+  const token = { refreshToken: persistedReToken };
+  if (!persistedReToken) {
+    return;
+  }
+
+  try {
+    const response = await axios.post('/users/refresh', token);
+    dispatch(getRefreshTokenSuccess(response.data.data));
+  } catch (error) {
+    dispatch(getRefreshTokenError(error.message));
+  }
+};
 
 const registerAuth = credentials => async dispatch => {
   dispatch(registerStart());
@@ -39,7 +61,7 @@ const loginAuth = credentials => async dispatch => {
     const response = await axios.post('/users/login', credentials);
 
     AxiosToken().set(response.data.data.token);
-
+    dispatch(refreshTokenAction(response.data.data.refreshToken));
     dispatch(loginSuccess(response.data.data));
   } catch (error) {
     dispatch(loginError(error.message));
@@ -99,4 +121,5 @@ export {
   getCurrentUser,
   verify,
   reVerificationt,
+  refToken,
 };

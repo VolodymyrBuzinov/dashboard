@@ -107,6 +107,33 @@
     text-transform: uppercase;
   }
 
+  /*Style for CANCEL, DELETE*/
+
+  &.cancel {
+    color: $cancel-button;
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  &.delete {
+    color: $delete-button;
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+
+    &:before {
+      content: ' ';
+      background: $secondary-text;
+      width: 1px;
+      height: 15px;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+
   /*Style for button CLEAR,SAVE,DONE,STAR,TROPHY*/
 
   &.icon-clear,

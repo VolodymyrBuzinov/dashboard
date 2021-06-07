@@ -3,10 +3,11 @@ import { combineReducers } from "redux";
 import todosActions  from "../Actions/todosActions";
 
 const items = createReducer([], {
-    [todosActions.fetchTodoSuccess]: (_, { payload }) => payload,
-    [todosActions.addTodoSuccess]: (state, { payload }) => [payload, ...state],
+  [todosActions.fetchTodoSuccess]: (_, { payload }) => payload,
+  [todosActions.addTodoSuccess]: (state, { payload }) => [payload, ...state],
 
-    [todosActions.deleteTodoSuccess]: (state, { payload }) => state.filter(({ id }) => id !== payload)
+  [todosActions.deleteTodoSuccess]: (state, { payload }) =>
+    state.filter(({ id }) => id !== payload),
 });
 
 /*const filter = createReducer('', {
@@ -14,26 +15,33 @@ const items = createReducer([], {
 });*/
 
 const loading = createReducer(false, {
-    [todosActions.fetchTodoRequest]: () => true,
-    [todosActions.fetchTodoSuccess]: () => false,
-    [todosActions.fetchTodoError]: () => false,
+  [todosActions.fetchTodoRequest]: () => true,
+  [todosActions.fetchTodoSuccess]: () => false,
+  [todosActions.fetchTodoError]: () => false,
 
-    [todosActions.addTodoRequest]: () => true,
-    [todosActions.addTodoSuccess]: () => false,
-    [todosActions.addTodoError]: () => false,
-    
-    [todosActions.deleteTodoRequest]: () => true,
-    [todosActions.deleteTodoSuccess]: () => false,
-    [todosActions.deleteTodoError]: () => false,
+  [todosActions.addTodoRequest]: () => true,
+  [todosActions.addTodoSuccess]: () => false,
+  [todosActions.addTodoError]: () => false,
+
+  [todosActions.deleteTodoRequest]: () => true,
+  [todosActions.deleteTodoSuccess]: () => false,
+  [todosActions.deleteTodoError]: () => false,
 });
 
 const error = createReducer('', {
-    [todosActions.fetchTodoError]: () => 'Ошибка доcтупа к данным! Авторизируйся!',
-    [todosActions.addTodoError]: () => 'Ошибка добавления карточки!',
-    [todosActions.deleteTodoError]: () => 'Ошибка удаления карточки!',
-    [todosActions.clearTodoError]: () => '',
+  [todosActions.fetchTodoError]: () =>
+    'Ошибка доcтупа к данным! Авторизируйся!',
+  [todosActions.addTodoError]: () => 'Ошибка добавления карточки!',
+  [todosActions.deleteTodoError]: () => 'Ошибка удаления карточки!',
+  [todosActions.clearTodoError]: () => '',
 });
 
+const refreshTokenError = createReducer('', {
+  [todosActions.fetchTodoError]: (_, { payload }) => payload,
+  [todosActions.addTodoError]: (_, { payload }) => payload,
+  [todosActions.deleteTodoError]: (_, { payload }) => payload,
+  [todosActions.clearTodoError]: (_, { payload }) => payload,
+});
 export default combineReducers({
     items,
     //filter,
