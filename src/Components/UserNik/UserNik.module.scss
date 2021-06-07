@@ -1,0 +1,14 @@
+@import '../../Utils/utils.scss';
+
+.nickButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: $logout-color;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 0;
+}

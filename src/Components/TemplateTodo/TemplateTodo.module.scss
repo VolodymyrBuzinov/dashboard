@@ -1,0 +1,98 @@
+@import '../../Utils/utils.scss';
+
+.TemplateTodo {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 1px $delete-button;
+    width: 100%;
+    height: 260px;
+    background: $white-color;
+    padding: 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+      3px 4px 4px rgba(21, 57, 90, 0.03);
+    border-radius: 10px;
+
+    position: relative;
+
+    @media screen and (max-width: 767px) {
+      max-width: 290px;
+      height: 260px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 205px;
+      height: 199px;
+    }
+  }
+  &__challenge {
+    background: $card-bg-color;
+  }
+
+  &__WrapperTop {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__WrapperBottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__ButtonStar {
+    @extend %button-throw;
+    background-color: transparent;
+  }
+
+  &__WrapperMidle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    @media screen and (max-width: 767px) {
+      height: 48px;
+    }
+    @media screen and (min-width: 768px) {
+      height: 42px;
+    }
+  }
+}
+
+.TemplateTodo__ButtonBgc {
+  &::before {
+    content: ' ';
+    display: block;
+    width: 88px;
+    height: 20px;
+    background-color: $secondary-text;
+    border-radius: 0px 15px 15px 0px;
+
+    position: absolute;
+    left: 0;
+    transform: translateY(-1px);
+  }
+  &.family::before {
+    background: $family-color;
+  }
+  &.health::before {
+    background: $healt-color;
+  }
+  &.learning::before {
+    background: $learning-color;
+  }
+  &.leisure::before {
+    background: $leisure-color;
+  }
+  &.work::before {
+    background: $work-color;
+  }
+}

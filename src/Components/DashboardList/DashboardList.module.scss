@@ -1,0 +1,23 @@
+@import '../../Utils/utils.scss';
+
+.todoListMain {
+  background-color: $bg-color;
+  width: 100vw;
+}
+
+.todoListDiv {
+  @extend %container-styles;
+  padding-top: 25px;
+  padding-bottom: 82px;
+}
+
+.todoListTitle {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.todoList {
+  @extend %list-styles;
+  width: 300px;
+  margin-bottom: 35px;
+}

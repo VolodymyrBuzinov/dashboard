@@ -1,0 +1,13 @@
+@import '../../Utils/utils.scss';
+
+.buttonLogout {
+  @extend %button-throw;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  width: 23px;
+  height: 17px;
+  background-color: transparent;
+}

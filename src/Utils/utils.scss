@@ -1,9 +1,7 @@
-@import 'node_modules/modern-normalize/modern-normalize.css';
-
 body {
   font-family: 'Roboto', sans-serif;
 }
-// Фотны есть 400, 500, 700
+// Фонты есть 400, 500, 700
 
 //Цвета
 
@@ -18,7 +16,8 @@ $white-color: #ffffff;
 $button-color: #ff851c;
 $cancel-button: #24d40c;
 $delete-button: #db0938;
-
+$logout-color: #3e4e6c;
+$header-text: #7b8aa4;
 //Цвета категорий
 $family-color: #ffe6d3;
 $healt-color: #cdf7ff;
@@ -26,7 +25,8 @@ $learning-color: #fff6c0;
 $leisure-color: #f8d2ff;
 $work-color: #d3f6ce;
 $active-color: #b9c3c8;
-
+//Тайминг анимации
+$animation-timing: 0.3s ease-in-out;
 //Сбросы стилей
 
 %text-throw {
@@ -46,7 +46,7 @@ $active-color: #b9c3c8;
 %button-throw {
   outline: none;
   border: none;
-  background-color: none;
+  background: none;
 }
 %input-throw {
   outline: none;
@@ -84,4 +84,12 @@ $active-color: #b9c3c8;
   @media screen and (min-width: 1280px) {
     grid-template-columns: repeat(5, 1fr);
   }
+}
+
+%img-styles {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
 }

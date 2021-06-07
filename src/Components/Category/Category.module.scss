@@ -1,0 +1,22 @@
+@import '../../Utils/utils.scss';
+
+.Category__list {
+  @extend %list-throw;
+}
+
+.Category__item {
+  color: $text-color;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: all $animation-timing;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: $secondary-text;
+  }
+}

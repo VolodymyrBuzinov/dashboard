@@ -1,0 +1,159 @@
+@import '../../Utils/utils.scss';
+
+.waitingMessage {
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.registr_section {
+  background-color: $white-color;
+}
+
+.registr_container {
+  @extend %container-styles;
+  @media screen and (max-width: 767px) {
+    padding-top: 60px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 212px;
+    padding-bottom: 212px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-top: 153px;
+    padding-bottom: 154px;
+    padding-left: 229px;
+  }
+}
+
+.registr_title {
+  @extend %text-throw;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: $hover-color;
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 0.9;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
+}
+
+.registr_text {
+  @extend %text-throw;
+  color: $secondary-text;
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+  @media screen and (max-width: 767px) {
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 3.2;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 25px;
+    font-size: 18px;
+    line-height: 2.5;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 35px;
+    font-size: 24px;
+    line-height: 1.8;  }
+}
+
+.registr_link {
+  // нужно убрать display: block
+  // @extend %link-throw;
+  text-decoration: none;
+  color: $card-bg-color;
+}
+
+.registr_inputContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.registr_label {
+  color: $hover-color;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 0.9;
+  transform: translateX(0);
+  transition: 0.3s linear;
+}
+
+.registr_input {
+  @extend %input-throw;
+  padding: 0;
+  height: 38px;
+  border: none;
+  border-bottom: 1px solid $hover-color;
+  color: $hover-color;
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 198px;
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 196px;
+    margin-top: 3px;
+  }
+  &:focus + .registr_label {
+    transform: translateX(-100px);
+  }
+}
+
+.registr_bgMobile {
+  // @extend %img-styles;
+
+  position: absolute;
+  bottom: 0;
+  @media screen and (max-width: 767px) {
+    left: 0;
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.registr_loginPic {
+  // @extend %img-styles;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+  }
+}
+
+.registr_loginPicture {
+  // @extend %img-styles;
+
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    bottom: -200px;
+    right: 0;
+    pointer-events: none;
+  }
+  @media screen and (min-width: 1280px) {
+    bottom: -120px;
+  }
+}

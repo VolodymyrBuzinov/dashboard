@@ -1,0 +1,130 @@
+@import '../../Utils/utils.scss';
+
+.waitingMessage {
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login_section {
+  background-color: $white-color;
+}
+
+.login_container {
+  @extend %container-styles;
+  @media screen and (max-width: 767px) {
+    padding-top: 60px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-top: 212px;
+    padding-bottom: 212px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding-top: 153px;
+    padding-bottom: 154px;
+    padding-left: 229px;
+  }
+}
+
+.login_title {
+  @extend %text-throw;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: $hover-color;
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 0.9;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
+}
+
+.login_description {
+  @extend %text-throw;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  color: $card-bg-color;
+  @media screen and (max-width: 767px) {
+    margin-top: 100px;
+    font-size: 25px;
+    line-height: 1.6;
+  }
+  @media screen and (min-width: 768px) {
+    width: 375px;
+    margin-top: 50px;
+    font-size: 35px;
+    line-height: 1.3;
+  }
+  @media screen and (min-width: 1280px) {
+    min-width: 562px;
+    margin-top: 70px;
+    font-size: 36px;
+    line-height: 1.2;
+  }
+}
+
+.login_text {
+  @extend %text-throw;
+  color: $secondary-text;
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+  @media screen and (max-width: 767px) {
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 3.2;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 25px;
+    font-size: 18px;
+    line-height: 2.5;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 35px;
+    font-size: 24px;
+    line-height: 1.8;
+  }
+}
+
+.login_bgMobile {
+  position: absolute;
+  bottom: 0;
+  @media screen and (max-width: 767px) {
+    left: 0;
+  }
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.login_loginPic {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+  }
+}
+
+.login_loginPicture {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    bottom: -130px;
+    right: 0;
+    pointer-events: none;
+  }
+  @media screen and (min-width: 1280px) {
+    bottom: -120px;
+  }
+}

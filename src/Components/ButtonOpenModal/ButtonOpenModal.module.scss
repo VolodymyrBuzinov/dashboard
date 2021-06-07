@@ -1,0 +1,57 @@
+@import '../../Utils/utils.scss';
+
+.Btn {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  &.visible {
+    cursor: pointer;
+  }
+
+  &__circle {
+    margin-right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+
+    &.easy {
+      background: $hover-color;
+    }
+
+    &.normal {
+      background: $cancel-button;
+    }
+
+    &.hard {
+      background: $delete-button;
+    }
+  }
+
+  &__icon {
+    transform: rotate(180deg);
+  }
+}
+
+.Btn__span {
+  text-transform: uppercase;
+  color: $text-color;
+  margin-right: 7px;
+  cursor: default;
+
+  &.visible {
+    cursor: pointer;
+  }
+
+  &.difficulty {
+    text-transform: lowercase;
+    color: $secondary-text;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &.category {
+  }
+}
