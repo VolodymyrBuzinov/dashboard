@@ -3,17 +3,24 @@ import style from './DateAndTimePickers.module.scss';
 
 export default function DateAndTimePickers({ getDate }) {
   const [selectedDate, setSelectedDate] = useState(
-    new Date('2021-06-15T09:00:00'),
+   ""
   );
 
   const handleDateChange = date => {
     setSelectedDate(date.target.value);
   };
 
+  // console.log(autoFocus);
+
   return (
     <form className={style.DateAndTimePickers__form}>
       <input
-        className={style.DateAndTimePickers__input}
+        className={
+          selectedDate
+            ? `${style.DateAndTimePickers__input}  ${style.active}`
+            : style.DateAndTimePickers__input 
+        }
+        // className={style.DateAndTimePickers__input}
         type="datetime-local"
         name="dateCreate"
         required
