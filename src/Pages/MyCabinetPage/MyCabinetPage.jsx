@@ -10,7 +10,7 @@ import { refToken } from '../../Redux/Operations/authOperation';
 const MyCabinetPage = () => {
   const state = useSelector(Selector.getErrorRefToken);
   const dispatch = useDispatch();
-  if (state === 'Request failed with status code 401') {
+  if (state === 'Unauthorized') {
     dispatch(refToken());
     console.log('была ошибка 401');
   }
