@@ -13,7 +13,7 @@ import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
-import ModalWindow from '../ModalWindow/ModalWindow'
+import ModalWindow from '../ModalWindow/ModalWindow';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -33,7 +33,8 @@ const INITIAL_STATE = {
 
 const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const isVisible = useSelector(isVisibleTemplate);
-  const edit = useSelector(isEdit);
+  const isEditTodo = useSelector(isEdit);
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -62,6 +63,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
     dispatch(editTodo(false));
+    setEdit(false);
     setState(INITIAL_STATE);
   };
 
@@ -72,14 +74,13 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
       [type]: name,
     }));
   };
-  
+
   const updateState = (name, value) => {
-    
     setState(prevState => ({
       ...prevState,
       [name]: value,
     }));
-  }
+  };
 
   return (
     <div
@@ -125,18 +126,19 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
                 isActive={!edit}
               />
             )}
-            
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
           <InputTodo getInputText={updateState} />
-          <DateAndTimePickers getDate={updateState} />          
+          <DateAndTimePickers getDate={updateState} />
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
           <div
-            className={`${style.TemplateTodo__ButtonBgc} ${edit? style[state.category]: style[category]}`}
+            className={`${style.TemplateTodo__ButtonBgc} ${
+              edit ? style[state.category] : style[category]
+            }`}
           >
             <ButtonOpenModal
               type="category"
@@ -163,10 +165,12 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
         </div>
       </div>
       {showModalDelete && (
-          <Modal onClose={toggleModalDelete} type="delete">
-            <ModalWindow isOpened={toggleModalDelete} question='Delete this Quest?'/>
+        <Modal onClose={toggleModalDelete} type="delete">
+          <ModalWindow
+            isOpened={toggleModalDelete}
+            question="Delete this Quest?"
+          />
         </Modal>
-
       )}
     </div>
   );
