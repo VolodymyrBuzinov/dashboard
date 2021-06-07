@@ -14,11 +14,12 @@ export default function InputTodo({ getInputText }) {
         className={style.InputTodo__input}
         autoFocus={true}
         type="text"
+        name='title'
         required
         value={inputText}
         onChange={handleInputChange}
         onBlur={() => {
-          getInputText(inputText);
+          getInputText('title', inputText);
         }}
       />
       <span className={style.InputTodo__bar}></span>
