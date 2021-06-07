@@ -75,7 +75,7 @@ const logOutAuth = () => async dispatch => {
     AxiosToken().unset();
     dispatch(logoutSuccess());
   } catch (error) {
-    dispatch(logoutError(error.message));
+    dispatch(logoutError(error.response.status));
   }
 };
 
@@ -99,10 +99,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
   AxiosToken().set(persistedToken);
   dispatch(getCurrentUserStart());
   try {
-    const response = await axios.get('/users/current');
+    const response = await axios.get('/users/currents');
     dispatch(getCurrentUserSuccess(response.data.data));
   } catch (error) {
-    dispatch(getCurrentUserError(error.message));
+    dispatch(getCurrentUserError(error.response.status));
   }
 };
 

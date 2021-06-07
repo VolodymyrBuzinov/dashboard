@@ -35,6 +35,7 @@ const user = createReducer(initial, {
 const token = createReducer(null, {
   [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
+  [getRefreshTokenSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
 });
 const error = createReducer(null, {
@@ -51,6 +52,7 @@ const isAuthenticated = createReducer(false, {
   [registerSuccess]: () => false,
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
+  [getRefreshTokenSuccess]: () => true,
   [logoutSuccess]: () => false,
   [registerError]: () => false,
   [loginError]: () => false,
