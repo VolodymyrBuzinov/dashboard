@@ -69,19 +69,7 @@ const DashboardList = () => {
                     ></DashboardListItem>
               )}
             </ul>
-            <MenuDone />
-            <ul className={s.todoList}>
-              {doneList.map(
-                ({ title, _id, time, category, difficulty }) =>
-                    <DashboardListItem
-                      category={category}
-                      difficulty={difficulty}
-                      title={title}
-                      id={_id}
-                      time={time}
-                    ></DashboardListItem>
-              )}
-            </ul>
+          <MenuDone todos={doneList}/>
           </div>
         
       </main>
