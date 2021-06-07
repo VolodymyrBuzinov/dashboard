@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
@@ -7,9 +7,10 @@ import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal';
-import sprite from '../../Icons/symbol-defs.svg';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
+import InputTodo from '../InputTodo/InputTodo';
+
 
 const LIST_CATEGORY = [
   'stuff',
@@ -37,13 +38,19 @@ const TemplateTodo = ({ category }) => {
 
   const onclick = () => dispatch(onClickBtnCreate(true));
 
-  const toggleModalCategory = useCallback(() => {
+  const toggleModalCategory = e => {
     setShowModalCategory(prev => !prev);
-  }, []);
+  };
 
-  const toggleModalLevel = useCallback(() => {
+  const toggleModalLevel = () => {
     setShowModalLevel(prev => !prev);
-  }, []);
+  };
+
+  const toggleChallenge = () => setChallenge(prev => !prev);
+
+  const toggleModalDelete = () => {
+    setShowModalDelete(prev => !prev);
+  };
 
   const toggleChallenge = () => setChallenge(prev => !prev);
 
@@ -61,12 +68,13 @@ const TemplateTodo = ({ category }) => {
 
   return (
     <div className={style.TemplateTodo}>
-      {/* <div className={style.TemplateTodo__group}> */}
-
       <div
         className={
-          challenge ? style.TemplateTodo__challenge : style.TemplateTodo__group
-        } /*onclick={toggleChallenge}*/
+          challenge
+            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
+            : style.TemplateTodo__group
+        }
+
       >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
@@ -84,6 +92,22 @@ const TemplateTodo = ({ category }) => {
           </div>
 
           <div className="star">
+
+            {challenge ? (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-trophy"
+                type="button"
+                isActive={true}
+              />
+            ) : (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-Vector"
+                type="button"
+              />
+            )}
+
             <button
               className={style.TemplateTodo__ButtonStar}
               onClick={toggleChallenge}
@@ -96,11 +120,17 @@ const TemplateTodo = ({ category }) => {
                 )}
               </svg>
             </button>
+
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
+
+          <InputTodo getInputText={setState} />
+          <DateAndTimePickers getDate={setState} />
+
           <DateAndTimePickers />
+
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
