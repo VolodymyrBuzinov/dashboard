@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import s from './DashboardListItem.module.scss';
 import iconVector from '../../Icons/svg/Vector.svg'
 
@@ -17,17 +16,5 @@ function DashboardListItem({ title, id, time, category, difficulty, onClick}) {
     </>
   );
 };    
-
-DashboardListItem.defaultProps = {
-  data: '',
-  title: '',
-  id: null,
-};
-
-DashboardListItem.propTypes = {
-  data: PropTypes.string,
-  title: PropTypes.string,
-  id: PropTypes.string.isRequired
-};
 
 export default DashboardListItem;

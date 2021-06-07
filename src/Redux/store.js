@@ -1,6 +1,6 @@
 import authReduser from './Reducers/authReduser';
 import templateTodoReduser from './Reducers/templateReduser';
-import todoReduser from './Todos/todosReducer';
+import todoReduser from './Reducers/todosReducer';
 
 import {
   configureStore,
