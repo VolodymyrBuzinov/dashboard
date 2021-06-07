@@ -5,7 +5,6 @@ import './Login.scss';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getWaiting } from '../../Redux/Selectors/authSelectors';
-// import { loginAuth } from '../../Redux/Auth/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -34,30 +33,41 @@ const LoginPage = () => {
           width={100}
         />
       </CSSTransition>
-      {/* <NavLink exact to="/singUpPage" className={s} activeClassName={s}>
-        registration
-      </NavLink> */}
+
       <div className={s.login_container}>
-        {/* <h1 className={s}>Login</h1> */}
         <h1 className={s.login_title}>Questify</h1>
         <p className={s.login_description}>
-          Questify will turn your life into a thrilling game full of amazing
-          quests and exciting challenges.
+          <span>
+            Questify will turn your life into a thrilling game full of amazing
+            quests and exciting challenges.
+          </span>
         </p>
         <p className={s.login_text}>
-          Choose your name{' '}
+          <span>Choose your name to sign up or log in Choose your name </span>
           <NavLink exact to="/singUpPage" className={s.login_text}>
-            to sign
-          </NavLink>{' '}
-          to sign up or log in
+            <span>to sign</span>
+          </NavLink>
+          <span>to sign up or log in</span>
         </p>
 
         <RegisterForm />
       </div>
-      <img src={pic1} alt="" className={s.login_loginPic} />
-      <img src={pic2} alt="" className={s.login_loginPicture} />
-      <img src={bgMobile} alt="" className={s.login_bgMobile} />
-      <img src={bgMobile2} alt="" className={s.login_bgMobile} />
+      <img src={pic1} alt="background" className={s.login_loginPic} />
+      <img
+        src={pic2}
+        alt="background"
+        className={s.login_loginPicture}
+      />
+      <img
+        src={bgMobile}
+        alt="background"
+        className={s.login_bgMobile}
+      />
+      <img
+        src={bgMobile2}
+        alt="background"
+        className={s.login_bgMobile}
+      />
     </section>
   );
 };

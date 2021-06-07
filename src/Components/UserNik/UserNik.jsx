@@ -1,9 +1,7 @@
 import s from './UserNik.module.scss';
 
-const UserNik = () => {
-    return (
-    <button className={s.nikButton}>J</button>
-    )
-}
+const UserNik = ({ nickName }) => {
+  return <div className={s.nickButton}>{nickName}</div>;
+};
 
-export default UserNik
+export default UserNik;
