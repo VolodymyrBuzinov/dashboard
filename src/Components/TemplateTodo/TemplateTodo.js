@@ -16,6 +16,7 @@ import InputTodo from '../InputTodo/InputTodo';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 
+
 const LIST_CATEGORY = [
   'stuff',
   'family',
@@ -34,7 +35,8 @@ const INITIAL_STATE = {
 
 const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const isVisible = useSelector(isVisibleTemplate);
-  const edit = useSelector(isEdit);
+  const isEditTodo = useSelector(isEdit);
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -63,6 +65,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
     dispatch(editTodo(false));
+    setEdit(false);
     setState(INITIAL_STATE);
   };
 
