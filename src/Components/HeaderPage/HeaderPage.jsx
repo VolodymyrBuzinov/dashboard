@@ -8,7 +8,7 @@ import { getUserName } from '../../Redux/Selectors/authSelectors';
 
 const HeaderPage = () => {
   const name = useSelector(getUserName);
-  console.log(name);
+
   let letter = '';
   if (name) {
     letter = name.slice(0, 1);
