@@ -30,7 +30,7 @@ const middleware = [
 const authPersistConfig = {
   key: 'token',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'refreshToken'],
 };
 const mainReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReduser),
