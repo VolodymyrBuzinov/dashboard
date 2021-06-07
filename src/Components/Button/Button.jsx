@@ -8,7 +8,8 @@ import sprite from '../../Icons/symbol-defs.svg';
 */
 const Button = ({ content, type, onClick, isActive }) => {
   const isIcon = content.slice(0, 4) === 'icon';
-
+  
+  console.log("🚀 ~ file: Button.jsx ~ line 10 ~ Button ~ isActive", isActive)
   return (
     <>
       <button

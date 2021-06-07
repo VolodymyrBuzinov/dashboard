@@ -14,6 +14,7 @@ import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
 import ModalWindow from '../ModalWindow/ModalWindow';
+import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -80,6 +81,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
     }));
   };
 
+  console.log(edit);
   return (
     <div
       className={style.TemplateTodo}
@@ -155,10 +157,10 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
             </ButtonOpenModal>
           </div>
           <div
-            className="Selectors"
-            style={{ outline: '1px solid', width: '68px', height: '16px' }}
+            className={style.TemplateTodo__ButtonGroup}
           >
-            <Button type="button" content="icon-done" onClick={acceptChanges} />
+            <GroupButtonSaveClearDone acceptChanges={acceptChanges} edit={edit ? `${true}` : `${false}`} />
+            {/* <Button type="button" content="icon-done" onClick={acceptChanges} /> */}
           </div>
         </div>
       </div>
