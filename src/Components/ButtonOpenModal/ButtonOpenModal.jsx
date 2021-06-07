@@ -7,9 +7,9 @@ const ButtonOpenModal = ({ type, title, onClick, isEdit, children }) => {
       onClick={onClick}
       className={`${style.Btn} ${isEdit && style.visible}`}
     >
-      <div
+      {type === "difficulty" && (<div
         className={`${style.Btn__circle} ${type === 'difficulty' && style[title]}`}
-      ></div>
+      ></div>)}
 
       <span
         className={`${
