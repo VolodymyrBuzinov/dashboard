@@ -12,6 +12,8 @@ import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
+import InputTodo from '../InputTodo/InputTodo';
+import sprite from '../../Icons/symbol-defs.svg';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -39,6 +41,10 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const [state, setState] = useState(INITIAL_STATE);
   const [challenge, setChallenge] = useState(false);
 
+
+  const onclick = () => dispatch(onClickBtnCreate(true));
+
+
   const toggleModalCategory = e => {
     setShowModalCategory(prev => !prev);
   };
@@ -61,6 +67,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
     dispatch(onClickBtnCreate(false));
     dispatch(editTodo(false));
     setState(INITIAL_STATE);
+
   };
 
   const handleClickElement = e => {
@@ -76,6 +83,7 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
       className={style.TemplateTodo}
       onClick={!isVisible && !edit && editCard}
     >
+
       <div
         className={
           challenge
@@ -102,23 +110,48 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
           <div className="star">
             {challenge ? (
               <Button
+
                 onClick={!isVisible && !edit && toggleChallenge}
+
                 content="icon-trophy"
                 type="button"
                 isActive={true}
               />
             ) : (
               <Button
+
                 onClick={!isVisible && !edit && toggleChallenge}
                 content="icon-Vector"
                 type="button"
                 isActive={!edit}
               />
             )}
+
+                onClick={toggleChallenge}
+                content="icon-Vector"
+                type="button"
+              />
+            )}
+
+            <button
+              className={style.TemplateTodo__ButtonStar}
+              onClick={toggleChallenge}
+            >
+              <svg width="15" height="15" className={style.Btn__icon}>
+                {challenge ? (
+                  <use href={`${sprite}#icon-trophy`}></use>
+                ) : (
+                  <use href={`${sprite}#icon-Vector`}></use>
+                )}
+              </svg>
+            </button>
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
+          <InputTodo getInputText={setState} />
+          <DateAndTimePickers getDate={setState} />
+
           <DateAndTimePickers />
         </div>
 
