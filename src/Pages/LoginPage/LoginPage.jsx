@@ -14,13 +14,10 @@ import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
 import Spinner from '../../Components/Spinner/Spinner';
-import { refToken } from '../../Redux/Operations/authOperation';
-import { useDispatch } from 'react-redux';
 
 const LoginPage = () => {
   const wait = useSelector(getWaiting);
-  const dispatch = useDispatch();
-  dispatch(refToken());
+
   return (
     <section className={s.login_section}>
       <CSSTransition
