@@ -47,4 +47,5 @@ export default combineReducers({
     //filter,
     loading,
     error,
+    refreshTokenError
 });

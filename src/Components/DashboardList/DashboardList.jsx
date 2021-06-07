@@ -38,11 +38,6 @@ const DashboardList = () => {
     else {doneList.push(todo)}
     return { todayList, tomorrowList, doneList }
   });
-  console.log('TODAY!', todayList);
-  console.log('TOMORROW!', tomorrowList);
-  console.log('DONE!', tomorrowList);
-  //console.log(todayList);
-  //console.log(new Date(Date.parse(todos[0].time)).getDay());
   return (
     <>
       <main className={s.todoListMain}>
