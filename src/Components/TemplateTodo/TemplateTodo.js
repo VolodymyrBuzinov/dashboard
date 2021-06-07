@@ -13,7 +13,7 @@ import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
-
+import ModalWindow from '../ModalWindow/ModalWindow'
 
 const LIST_CATEGORY = [
   'stuff',
@@ -163,11 +163,10 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
         </div>
       </div>
       {showModalDelete && (
-        <Modal onClose={toggleModalDelete} type="delete">
-          <div
-            style={{ width: '100px', height: '100px', background: green }}
-          ></div>
+          <Modal onClose={toggleModalDelete} type="delete">
+            <ModalWindow isOpened={toggleModalDelete} question='Delete this Quest?'/>
         </Modal>
+
       )}
     </div>
   );
