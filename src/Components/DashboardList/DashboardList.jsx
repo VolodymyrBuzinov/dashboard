@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './DashboardList.module.scss';
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
 import MenuDone from '../MenuDone/MenuDone.jsx';
+import TemplateTodo from '../TemplateTodo/TemplateTodo';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -41,52 +42,73 @@ const DashboardList = () => {
   return (
     <>
       <main className={s.todoListMain}>
-     
-          <div className={s.todoListDiv}>
+        <div className={s.todoListDiv}>
+          {todayList.length > 0 ? <>
             <p className={s.todoListTitle}>TODAY</p>
             <ul className={s.todoList}>
+              <TemplateTodo />
               {todayList.map(
-                ({ title, _id, time, category, difficulty }) =>
+                ({ title, _id, time, category, difficulty, challenge }) =>
+                  <li key={_id} className={s.todoItem}>
                     <DashboardListItem
                       category={category}
                       difficulty={difficulty}
                       title={title}
                       id={_id}
                       time={time}
-                    ></DashboardListItem>
+                  ></DashboardListItem>
+                  </li>
               )}
-            </ul>
+            </ul></>
+            : null}
+          {tomorrowList.length > 0 ? <> 
             <p className={s.todoListTitle}>TOMORROW</p>
             <ul className={s.todoList}>
               {tomorrowList.map(
-                ({ title, _id, time, category, difficulty }) =>
+                ({ title, _id, time, category, difficulty, challenge }) =>
+                  <li key={_id} className={s.todoItem}>
                     <DashboardListItem
                       category={category}
                       difficulty={difficulty}
                       title={title}
                       id={_id}
                       time={time}
-                    ></DashboardListItem>
+                  ></DashboardListItem>
+                  </li>
               )}
-            </ul>
+            </ul></>
+            : null}
             <MenuDone />
-            <ul className={s.todoList}>
-              {doneList.map(
-                ({ title, _id, time, category, difficulty }) =>
-                    <DashboardListItem
-                      category={category}
-                      difficulty={difficulty}
-                      title={title}
-                      id={_id}
-                      time={time}
-                    ></DashboardListItem>
-              )}
-            </ul>
           </div>
-        
       </main>
     </>
   );
 };
 
 export default DashboardList;
+
+  /**<div
+        className={
+          challenge
+            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
+            : style.TemplateTodo__group
+        }
+      > 
+      <div className="star">
+            {challenge ? (
+              <Button
+                onClick={!isVisible && !edit && toggleChallenge}
+                content="icon-trophy"
+                type="button"
+                isActive={true}
+              />
+            ) : (
+              <Button
+                onClick={!isVisible && !edit && toggleChallenge}
+                content="icon-Vector"
+                type="button"
+                isActive={!edit}
+              />
+            )}
+            
+          </div>*/

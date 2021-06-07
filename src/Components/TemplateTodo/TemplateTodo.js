@@ -9,7 +9,7 @@ import Category from '../Category/Category';
 import Level from '../Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
-import { green } from '@material-ui/core/colors';
+//import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';

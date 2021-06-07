@@ -1,29 +1,39 @@
 @import '../../Utils/utils.scss';
 
-.todoItem {
+.todoItemСircle {
   display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  padding-top: 19px;
-
-  background: #ffffff;
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
-    3px 4px 4px rgba(21, 57, 90, 0.03);
-  border-radius: 10px;
-
+  align-items: center;
+  cursor: pointer;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: tomato;
   @media screen and (max-width: 767px) {
-    width: 290px;
-    height: 260px;
-    padding-bottom: 33px;
+    width: 10px;
+    height: 10px;
   }
   @media screen and (min-width: 768px) {
-    width: 205px;
-    height: 199px;
-    padding-bottom: 21px;
+    width: 8px;
+    height: 8px;
   }
-  @media screen and (min-width: 1280px) {
-    width: 205px;
-    height: 199px;
+  /*&.easy {
+    background: $hover-color;
+  }
+
+  &.normal {
+    background: $cancel-button;
+  }
+
+  &.hard {
+    background: $delete-button;
+  }*/
+}
+
+.todoItemDifficulty {
+  @media screen and (max-width: 767px) {
+    margin-right: 158px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-right: 86px;
   }
 }
 
@@ -31,21 +41,18 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-
-  margin-right: 21px;
+  align-items: center;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.02em;
   color: #b9c3c8;
 
   @media screen and (max-width: 767px) {
-    margin-left: 38px;
     margin-bottom: 70px;
     font-size: 16px;
     line-height: 16px;
   }
   @media screen and (min-width: 768px) {
-    margin-left: 36px;
     margin-bottom: 42px;
     font-size: 14px;
     line-height: 14px;
@@ -70,9 +77,6 @@
   font-weight: 700;
   word-wrap: break-word;
   margin: 0;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 200px;
   height: auto;
   text-align: center;
 
@@ -92,13 +96,11 @@
 .todoItemTime {
   font-style: normal;
   font-weight: 400;
-
   text-align: center;
   letter-spacing: 0.02em;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
-  max-width: 200px;
   color: #b9c3c8;
   @media screen and (max-width: 767px) {
     font-size: 18px;
@@ -115,11 +117,15 @@
 }
 
 .todoItemGroup {
-  padding-left: 21px;
-  background: #d3f6ce;
-
+  background-color: #d3f6ce;
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  transform: translateY(-1px);
   font-style: normal;
   font-weight: 400;
+  padding-left: 21px;
 
   /* identical to box height */
 

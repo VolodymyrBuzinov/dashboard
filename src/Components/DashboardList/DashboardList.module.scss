@@ -18,6 +18,38 @@
 
 .todoList {
   @extend %list-styles;
-  width: 300px;
+  @extend %list-throw;
+  //width: 300px;
   margin-bottom: 35px;
+}
+
+.todoItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-top: 19px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    height: 260px;
+    padding-bottom: 33px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 205px;
+    height: 199px;
+    padding-bottom: 21px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 205px;
+    height: 199px;
+  }
 }
