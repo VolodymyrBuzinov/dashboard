@@ -9,13 +9,11 @@ import Category from '../Category/Category';
 import Level from '../Level/Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
-import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
-
 
 const LIST_CATEGORY = [
   'stuff',
@@ -159,12 +157,13 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
               )}
             </ButtonOpenModal>
           </div>
-          <div
-            className={style.TemplateTodo__ButtonGroup}
-          >
-            <GroupButtonSaveClearDone acceptChanges={acceptChanges} edit={edit ? `${true}` : `${false}`} />
-            {/* <Button type="button" content="icon-done" onClick={acceptChanges} /> */}
-          </div>
+          {!isEditTodo && !isVisible && (
+            <>
+              <div className={style.TemplateTodo__ButtonGroup}>
+                <GroupButtonSaveClearDone acceptChanges={acceptChanges} />
+              </div>
+            </>
+          )}
         </div>
       </div>
       {showModalDelete && (
