@@ -13,7 +13,6 @@ import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
-import sprite from '../../Icons/symbol-defs.svg';
 import ModalWindow from '../ModalWindow/ModalWindow'
 
 const LIST_CATEGORY = [
@@ -73,6 +72,14 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
       [type]: name,
     }));
   };
+  
+  const updateState = (name, value) => {
+    
+    setState(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
 
   return (
     <div
@@ -118,27 +125,13 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
                 isActive={!edit}
               />
             )}
-
-            <button
-              className={style.TemplateTodo__ButtonStar}
-              onClick={toggleChallenge}
-            >
-              <svg width="15" height="15" className={style.Btn__icon}>
-                {challenge ? (
-                  <use href={`${sprite}#icon-trophy`}></use>
-                ) : (
-                  <use href={`${sprite}#icon-Vector`}></use>
-                )}
-              </svg>
-            </button>
+            
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
-          <InputTodo getInputText={setState} />
-          <DateAndTimePickers getDate={setState} />
-
-          <DateAndTimePickers />
+          <InputTodo getInputText={updateState} />
+          <DateAndTimePickers getDate={updateState} />          
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
