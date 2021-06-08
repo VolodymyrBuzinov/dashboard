@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { hideSpinner } from '../src/Redux/Actions/loaderAction';
 
+
 function App() {
   const isVisibleLoader = useSelector(getLoader)
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <Router />  
       {isVisibleLoader && <Spinner />}
       {!isVisibleLoader && <Router />}
       {/* <TemplateTodo />  */}

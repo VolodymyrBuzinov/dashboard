@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
@@ -6,14 +6,15 @@ import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
-import Level from '../Level';
+import Level from '../Level/Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers';
 //import { green } from '@material-ui/core/colors';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo';
-import ModalWindow from '../ModalWindow/ModalWindow'
+import ModalWindow from '../ModalWindow/ModalWindow';
+import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -31,9 +32,10 @@ const INITIAL_STATE = {
   difficulty: LIST_LEVEL[0],
 };
 
-const TemplateTodo = ({ category, difficulty, id, time, title }) => {
-  const isVisible = useSelector(isVisibleTemplate);
-  const edit = useSelector(isEdit);
+const TemplateTodo = ({ category, difficulty, time, title }) => {
+  const isVisible = useSelector(isVisibleTemplate)
+  const isEditTodo = useSelector(isEdit);
+  const [edit, setEdit] = useState(false);
   const dispatch = useDispatch();
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -41,27 +43,41 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
   const [state, setState] = useState(INITIAL_STATE);
   const [challenge, setChallenge] = useState(false);
 
+    
   const toggleModalCategory = e => {
-    setShowModalCategory(prev => !prev);
+    if(edit && !challenge) { setShowModalCategory(prev => !prev)};
   };
 
   const toggleModalLevel = () => {
-    setShowModalLevel(prev => !prev);
+    if(edit && !challenge)    setShowModalLevel(prev => !prev);
   };
 
   const toggleModalDelete = () => {
     setShowModalDelete(prev => !prev);
   };
 
-  const toggleChallenge = () => setChallenge(prev => !prev);
+  const toggleChallenge = () => {
+    if(!isVisible && !edit) setChallenge(prev => !prev)}
+
 
   const editCard = () => {
+    if(!isEditTodo && !isVisible) {
     dispatch(editTodo(true));
+    setEdit(true)}
+    
   };
+
+  useEffect(() => {
+    if(!category){      
+      dispatch(editTodo(true));
+    setEdit(true)
+    }
+  })
 
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
     dispatch(editTodo(false));
+    setEdit(false);
     setState(INITIAL_STATE);
   };
 
@@ -72,20 +88,16 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
       [type]: name,
     }));
   };
-  
+
   const updateState = (name, value) => {
-    
     setState(prevState => ({
       ...prevState,
       [name]: value,
     }));
-  }
+  };
 
   return (
-    <div
-      className={style.TemplateTodo}
-      onClick={!isVisible && !edit && editCard}
-    >
+    <div className={style.TemplateTodo} onClick={editCard}>
       <div
         className={
           challenge
@@ -97,9 +109,9 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
           <div className="button">
             <ButtonOpenModal
               type="difficulty"
-              title={!isVisible ? state.difficulty : difficulty}
-              onClick={edit && !challenge && toggleModalLevel}
-              isEdit={edit && !challenge}
+              title={(!difficulty || edit) ? state.difficulty : difficulty}
+              onClick={toggleModalLevel}
+              isEdit={edit}
             >
               {showModalLevel && (
                 <Modal onClose={toggleModalLevel} type="difficulty">
@@ -112,36 +124,42 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
           <div className="star">
             {challenge ? (
               <Button
-                onClick={!isVisible && !edit && toggleChallenge}
+                onClick={toggleChallenge}
                 content="icon-trophy"
                 type="button"
                 isActive={true}
               />
             ) : (
               <Button
-                onClick={!isVisible && !edit && toggleChallenge}
+                onClick={toggleChallenge}
                 content="icon-Vector"
                 type="button"
                 isActive={!edit}
               />
             )}
-            
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
+          {!edit ? 
+          <><p className={style.todoItemTitle}>{title}</p>
+                    <p className={style.todoItemTime}>{time}</p></>
+                    : <> 
           <InputTodo getInputText={updateState} />
-          <DateAndTimePickers getDate={updateState} />          
+          <DateAndTimePickers getDate={updateState} /></>}
+          
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
           <div
-            className={`${style.TemplateTodo__ButtonBgc} ${edit? style[state.category]: style[category]}`}
+            className={`${style.TemplateTodo__ButtonBgc} ${
+              edit ? style[state.category] : style[category]
+            }`}
           >
             <ButtonOpenModal
               type="category"
-              title={!isVisible ? state.category : category}
-              onClick={edit && !challenge && toggleModalCategory}
+              title={(!category || edit) ? state.category : category}
+              onClick={toggleModalCategory}
               isEdit={edit && !challenge}
             >
               {showModalCategory && (
@@ -154,19 +172,27 @@ const TemplateTodo = ({ category, difficulty, id, time, title }) => {
               )}
             </ButtonOpenModal>
           </div>
-          <div
-            className="Selectors"
-            style={{ outline: '1px solid', width: '68px', height: '16px' }}
-          >
-            <Button type="button" content="icon-done" onClick={acceptChanges} />
-          </div>
+          {(edit) && (
+            <>
+              <div className={style.TemplateTodo__ButtonGroup}>
+                <GroupButtonSaveClearDone
+                  isEditTodo={edit}
+                  isVisible={isVisible}
+                  toggleModalDelete={toggleModalDelete}
+                  acceptChanges={acceptChanges}
+                />
+              </div>
+            </>
+          )}
         </div>
       </div>
       {showModalDelete && (
-          <Modal onClose={toggleModalDelete} type="delete">
-            <ModalWindow isOpened={toggleModalDelete} question='Delete this Quest?'/>
+        <Modal onClose={toggleModalDelete} type="delete">
+          <ModalWindow
+            isOpened={toggleModalDelete}
+            question="Delete this Quest?"
+          />
         </Modal>
-
       )}
     </div>
   );

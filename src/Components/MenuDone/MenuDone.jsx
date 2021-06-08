@@ -16,13 +16,17 @@ function MenuDone({todos}) {
             >
                 <span className={styleDashboardList.todoListTitle}>DONE</span> <svg className={style.icon}><use href={`${sprite}#icon-polygon`}></use></svg> <span className={style.dottedLine}></span>
             </div>
+            <div class={style.overflow}>
             <div className={style.menu}>
                 <ul className={styleDashboardList.todoList}>
                {todos.map(({ title, _id, time, category, difficulty }) => (
-             <DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time}>
+            <DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time}>
               </DashboardListItem>
+            //  <li key={_id}><DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time}>
+            //   </DashboardListItem></li>
             ))}
             </ul>
+                </div>
             </div>
         </div>
     </div>
