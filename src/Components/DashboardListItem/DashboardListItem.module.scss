@@ -1,5 +1,65 @@
 @import '../../Utils/utils.scss';
 
+.todoItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-top: 19px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background: $white-color;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    height: 260px;
+    padding-bottom: 33px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 205px;
+    height: 199px;
+    padding-bottom: 21px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 205px;
+    height: 199px;
+  }
+  &__challenge {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    padding-left: 21px;
+    padding-right: 21px;
+    margin-left: auto;
+    margin-right: auto;
+    background: $card-bg-color;
+    box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+      3px 4px 4px rgba(21, 57, 90, 0.03);
+    border-radius: 10px;
+    @media screen and (max-width: 767px) {
+      width: 290px;
+      height: 260px;
+      padding-bottom: 33px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 205px;
+      height: 199px;
+      padding-bottom: 21px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 205px;
+      height: 199px;
+    }
+  }
+}
+
 .todoItemСircle {
   display: flex;
   align-items: center;
@@ -72,6 +132,31 @@
   }
 }
 
+.todoItemChallenge {
+  display: none;
+  &__challenge {
+    position: absolute;
+    color: $secondary-text;
+
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.02em;
+    @media screen and (max-width: 767px) {
+      top: 63px;
+      left: 103px;
+      font-size: 14px;
+      line-height: 14px;
+    }
+    @media screen and (min-width: 768px) {
+      top: 53px;
+      left: 66px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}
 .todoItemTitle {
   font-style: normal;
   font-weight: 700;
@@ -79,7 +164,6 @@
   margin: 0;
   height: auto;
   text-align: center;
-
   color: $bold-text;
   @media screen and (max-width: 767px) {
     font-size: 20px;
@@ -90,6 +174,25 @@
     font-size: 16px;
     line-height: 16px;
     margin-bottom: 12px;
+  }
+  &__challenge {
+    font-style: normal;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin: 0;
+    height: auto;
+    text-align: center;
+    color: $white-color;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 12px;
+    }
   }
 }
 

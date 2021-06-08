@@ -12,7 +12,7 @@ import TemplateTodo from '../TemplateTodo/TemplateTodo';
 //import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 //import Button from '../Button/Button';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-//import isEdit from '../../Redux/Selectors/editTodoSelector';
+import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 
 const DashboardList = () => {
@@ -65,10 +65,6 @@ const DashboardList = () => {
     else {doneList.push(todo)//setdoneList(todo)
     } return { todayList, tomorrowList, doneList }
   });
-  console.log("todayList", todayList);
-  console.log("tomorrowList", tomorrowList);
-  console.log("doneList", doneList);
-  console.log("challengeList", challengeList);
   return (
     <>
       <main className={s.todoListMain}>
@@ -76,14 +72,14 @@ const DashboardList = () => {
           {todayList.length > 0 ? <>
             <p className={s.todoListTitle}>TODAY</p>
             <ul className={s.todoList}>
-              {isVisible && (
+              {!isVisible && (
               <DashboardListItem>
                 <TemplateTodo isVisible={isVisible} />
               </DashboardListItem>
-)}
+              )}
               {todayList.map(
                 ({ title, _id, time, category, difficulty, challenge }) =>
-                  <li key={_id} className={challenge ? s.todoItem__Challenge : s.todoItem}>
+                  <li key={_id}>
                     <DashboardListItem
                       category={category}
                       difficulty={difficulty}
@@ -100,7 +96,7 @@ const DashboardList = () => {
             <ul className={s.todoList}>
               {tomorrowList.map(
                 ({ title, _id, time, category, difficulty, challenge }) =>
-                    <li key={_id} className={ challenge ? s.todoItem__Challenge : s.todoItem}>
+                    <li key={_id} >
                     <DashboardListItem
                       category={category}
                       difficulty={difficulty}
@@ -117,7 +113,7 @@ const DashboardList = () => {
             <ul className={s.todoList}>
               {challengeList.map(
                 ({ title, _id, time, category, difficulty, challenge }) =>
-                    <li key={_id} className={ challenge ? s.todoItem__Challenge : s.todoItem}>
+                    <li key={_id} >
                     <DashboardListItem
                       category={category}
                       difficulty={difficulty}
