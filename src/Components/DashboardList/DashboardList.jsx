@@ -9,8 +9,8 @@ import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
 import MenuDone from '../MenuDone/MenuDone.jsx';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
-import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
-import Button from '../Button/Button';
+//import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+//import Button from '../Button/Button';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 
@@ -28,12 +28,12 @@ const DashboardList = () => {
   const todos = useSelector(todoSelectors.getAllTodos);
   
   const isVisible = useSelector(isVisibleTemplate);
-  const edit = useSelector(isEdit);
+  //const edit = useSelector(isEdit);
  
-  const onClick = () => {
+  /*const onClick = () => {
     if(edit) return
     dispatch(onClickBtnCreate(true));
-  };
+  };*/
 
   const today = new Date();
   const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
@@ -65,10 +65,6 @@ const DashboardList = () => {
     else {doneList.push(todo)//setdoneList(todo)
     } return { todayList, tomorrowList, doneList }
   });
-  console.log("todayList", todayList);
-  console.log("tomorrowList", tomorrowList);
-  console.log("doneList", doneList);
-  console.log("challengeList", challengeList);
   return (
     <>
       <main className={s.todoListMain}>
@@ -76,7 +72,7 @@ const DashboardList = () => {
           {todayList.length > 0 ? <>
             <p className={s.todoListTitle}>TODAY</p>
             <ul className={s.todoList}>
-              {isVisible && (
+              {!isVisible && (
               <DashboardListItem>
                 <TemplateTodo isVisible={isVisible} />
               </DashboardListItem>
