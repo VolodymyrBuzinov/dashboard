@@ -2,12 +2,12 @@ import { Redirect, Switch } from 'react-router';
 import { Suspense, lazy, useEffect } from 'react';
 import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
-// import s from './Router.module.scss';
-// import Loader from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
-import { getCurrentUser } from '../Redux/Operations/authOperation';
+import Selector from '../Redux/Selectors/todosSelectors';
+import { error } from '../Redux/Selectors/authSelectors';
+import { refToken, getCurrentUser } from '../Redux/Operations/authOperation';
+
 import Spinner from '../Components/Spinner/Spinner';
 
 const LoginPage = lazy(() =>
@@ -35,18 +35,27 @@ function Router() {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
+  const stateTodo = useSelector(Selector.getErrorRefToken);
+  const stateAuth = useSelector(error);
+  if (stateTodo || stateAuth === 401) {
+    dispatch(refToken());
+    setTimeout(() => {
+      dispatch(getCurrentUser());
+    }, 1000);
+  }
+
   return (
     <Suspense
-      fallback={
-        <Spinner />
-        // <Loader
-        //   className={s.waitingMessage}
-        //   type="BallTriangle"
-        //   color="#00BFFF"
-        //   height={100}
-        //   width={100}
-        // />
-      }
+      fallback={<Spinner />}
+      // <Spinner />
+      // <Loader
+      //   className={s.waitingMessage}
+      //   type="BallTriangle"
+      //   color="#00BFFF"
+      //   height={100}
+      //   width={100}
+      // />
+      // }
     >
       <Switch>
         <PublicRoute
