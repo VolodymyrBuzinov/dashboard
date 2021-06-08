@@ -4,6 +4,7 @@ import DashboardList from '../../Components/DashboardList/DashboardList';
 import Selector from '../../Redux/Selectors/todosSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { refToken } from '../../Redux/Operations/authOperation';
+import ButtonOpenTeamModal from '../../Components/TeamModal/ButtonOpenTeamModal';
 
 const MyCabinetPage = () => {
   const state = useSelector(Selector.getErrorRefToken);
@@ -16,6 +17,7 @@ const MyCabinetPage = () => {
   return (
     <>
       <HeaderPage />
+      <ButtonOpenTeamModal />
       {/*<ExitButton />*/}
       <DashboardList />
     </>
