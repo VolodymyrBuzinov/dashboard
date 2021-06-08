@@ -17,7 +17,7 @@ export default function GroupButtonSaveClearDone({ isEditTodo, isVisible, accept
 
   return (
     <>
-      {isVisible && <li className={style.GroupButtonSaveClearDone__ButtonGroup}>
+      {isVisible  && <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
         <Button
           className={style.GroupButtonSaveClearDone__ButtonSvg}
             type="button"
@@ -31,17 +31,17 @@ export default function GroupButtonSaveClearDone({ isEditTodo, isVisible, accept
             onClick={handleClickElementCreate}
             isActive={true}
           />
-        </li>}
+        </div>}
 
-      {isEditTodo &&  <li className={style.GroupButtonSaveClearDone__ButtonGroup}>
+      {(isEditTodo && !isVisible) &&  <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button  type="button" content="icon-save" onClick={handleClickElementSave} />
           <Button
             type="button"
             content="icon-clear"
             onClick={toggleModalDelete}
           />
-          <Button type="button" content="icon-done" onClick={acceptChanges} />
-        </li>  
+          <Button type="button" content="icon-done" onClick={()=>acceptChanges} />
+        </div>  
       }
     </>
   );
