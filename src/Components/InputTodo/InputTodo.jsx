@@ -12,9 +12,9 @@ export default function InputTodo({ getInputText }) {
     <form className={style.InputTodo__form}>
       <input
         className={style.InputTodo__input}
-        autoFocus={true}
+        autoFocus={false}
         type="text"
-        name='title'
+        name="title"
         required
         value={inputText}
         onChange={handleInputChange}

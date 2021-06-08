@@ -99,7 +99,7 @@
 
   /*Style for button START*/
 
-  &.start {
+  &.create {
     color: $hover-color;
     font-family: Helvetica, sans-serif;
     font-size: 14px;
@@ -115,6 +115,8 @@
     font-size: 10px;
     line-height: 1;
     text-transform: uppercase;
+    margin-right: 10px;
+    font-weight: bold;
   }
 
   &.delete {
@@ -123,6 +125,7 @@
     font-size: 10px;
     line-height: 1;
     text-transform: uppercase;
+    font-weight: bold;
 
     &:before {
       content: ' ';
@@ -142,9 +145,17 @@
   &.icon-Vector,
   &.icon-trophy {
     & svg {
-      fill: currentColor;
-      width: 15px;
-      height: 15px;
+      -webkit-filter: drop-shadow(0px 2px 2px $hover-color);
+      filter: drop-shadow(0px 2px 2px $hover-color);
+      fill: $hover-color;
+      @media screen and (max-width: 767px) {
+        width: 19px;
+        height: 19px;
+      }
+      @media screen and (min-width: 768px) {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 
@@ -152,5 +163,9 @@
     & svg {
       fill: $hover-color;
     }
+  }
+
+  &:not(:last-child) {
+    margin-right: 5px;
   }
 }
