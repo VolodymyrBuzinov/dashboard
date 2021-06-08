@@ -2,14 +2,26 @@ import Router from './Router/Router';
 import TemplateTodo from './Components/TemplateTodo/TemplateTodo';
 import Spinner from './Components/Spinner/Spinner'
 import getLoader from './Redux/Selectors/loaderSelector'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import {
+  showSpinner,
+  hideSpinner,
+} from '../src/Redux/Actions/loaderAction';
 
 function App() {
   const isVisibleLoader = useSelector(getLoader)
+  // const wait = useSelector(getWaiting);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(hideSpinner());
+    }, 1500);
+  }, []);
   return (
     <div className="App">
       {isVisibleLoader && <Spinner />}
-      <Router />
+      {!isVisibleLoader && <Router />}
       {/* <TemplateTodo />  */}
     </div>
   );

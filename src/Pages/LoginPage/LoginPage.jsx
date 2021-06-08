@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
 import s from './LoginPage.module.scss';
 import './Login.scss';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { getWaiting } from '../../Redux/Selectors/authSelectors';
 import { CSSTransition } from 'react-transition-group';
@@ -12,17 +11,8 @@ import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
-import { showSpinner, hideSpinner } from '../../Redux/Actions/loaderAction';
-
 const LoginPage = () => {
   const wait = useSelector(getWaiting);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    setTimeout(() => {
-      dispatch(hideSpinner());
-    }, 1500);
-  }, []);
-
   return (
     <section className={s.login_section}>
       <CSSTransition
