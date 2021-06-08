@@ -65,10 +65,10 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
     setEdit(true)}
   };
 
-  useEffect(() => {
-    created = true
-    console.log(created);
-  })
+  // useEffect(() => {
+  //   created = true
+  //   console.log(created);
+  // })
 
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
