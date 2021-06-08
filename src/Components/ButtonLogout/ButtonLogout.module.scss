@@ -12,10 +12,10 @@
   &:hover .icon,
   &:focus .icon {
     fill: $hover-color;
-    transition: $animation-timing;
   }
 }
 
 .icon {
   fill: $header-text;
+  transition: $animation-timing;
 }
