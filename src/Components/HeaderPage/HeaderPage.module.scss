@@ -11,6 +11,15 @@
   @media screen and (min-width: 768px) {
     justify-content: space-around;
   }
+
+  @media screen and (max-width: 767px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 49px;
+    padding-right: 49px;
+  }
 }
 
 .headerLogoContainer {
@@ -37,4 +46,3 @@
     font-size: 21px;
   }
 }
-
