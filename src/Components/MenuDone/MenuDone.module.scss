@@ -2,10 +2,21 @@
 
 .container {
   @extend %container-styles;
-  overflow: hidden;
   position: relative;
-  padding-left: 0;
-  padding-right: 0;
+
+  margin: 0;
+  padding: 0;
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 768px) {
+    width: 669px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 1137px;
+  }
 }
 
 .check {
@@ -17,8 +28,8 @@
   background: transparent none;
   position: absolute;
   z-index: 1;
-  &:checked + .doneList > .menu {
-    display: block;
+  &:checked + .doneList .menu {
+    transform: translateY(0%);
   }
   &:checked + .doneList .icon {
     transform: rotate(0deg);
@@ -62,9 +73,15 @@
 }
 
 .menu {
-  display: none;
+  transform: translateY(-110%);
+  transition: transform 500ms ease-in;
 }
 
 .contentMenu {
   margin: 0;
+}
+
+.overflow {
+  overflow: hidden;
+  position: relative;
 }

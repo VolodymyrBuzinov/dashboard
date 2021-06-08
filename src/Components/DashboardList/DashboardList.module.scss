@@ -9,6 +9,14 @@
   @extend %container-styles;
   padding-top: 25px;
   padding-bottom: 82px;
+  @media screen and (max-width: 767px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 49px;
+    padding-right: 49px;
+  }
 }
 
 .todoListTitle {
@@ -19,4 +27,10 @@
 .todoList {
   @extend %list-styles;
   @extend %list-throw;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 38px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 30px;
+  }
 }

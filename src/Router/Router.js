@@ -8,8 +8,6 @@ import Selector from '../Redux/Selectors/todosSelectors';
 import { error } from '../Redux/Selectors/authSelectors';
 import { refToken, getCurrentUser } from '../Redux/Operations/authOperation';
 
-import Spinner from '../Components/Spinner/Spinner';
-
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
 );
@@ -45,18 +43,7 @@ function Router() {
   }
 
   return (
-    <Suspense
-      fallback={<Spinner />}
-      // <Spinner />
-      // <Loader
-      //   className={s.waitingMessage}
-      //   type="BallTriangle"
-      //   color="#00BFFF"
-      //   height={100}
-      //   width={100}
-      // />
-      // }
-    >
+    <Suspense fallback={null}>
       <Switch>
         <PublicRoute
           exact

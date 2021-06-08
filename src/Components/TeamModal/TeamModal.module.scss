@@ -1,0 +1,103 @@
+@import '../../Utils/utils.scss';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+.modal {
+  @extend %container-styles;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.teamList {
+  @extend %list-throw;
+  @extend %list-styles;
+  display: grid;
+}
+.teamListItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.05),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+}
+
+.teamListItemImg {
+  @extend %img-styles;
+  border-radius: 3px;
+}
+
+.closeModal {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 3px;
+  border-radius: 50%;
+  top: 7px;
+  right: 7px;
+  cursor: pointer;
+  transition: all $animation-timing;
+  &::before {
+    content: 'x';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -55%);
+    // color: red;
+  }
+  &:hover,
+  &:focus {
+    transform: rotate(180deg);
+    background-color: $hover-color;
+  }
+}
+
+.nameTitle {
+  margin: 0;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.linkedinLink {
+  text-decoration: none;
+  color: $card-bg-color;
+  font-weight: 500;
+  font-size: 17px;
+
+  &:hover,
+  &:focus {
+    color: $hover-color;
+    text-decoration: underline;
+  }
+}
