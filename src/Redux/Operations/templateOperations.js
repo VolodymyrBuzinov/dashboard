@@ -4,6 +4,16 @@ import templateActions from '../Actions/templateActions';
 
 BaseURL();
 
+/* POST  = new todo
+https://dashboard-go-it.herokuapp.com/tasks
+{
+  "category": "STUFF",
+  "difficulty": "EASY",
+  "title": "Do something 2",
+  "time": "2021-06-10T20:30",
+}
+*/
+
 const createTemplate =
   ({ category, difficulty, title, time }) =>
   async dispatch => {
@@ -17,16 +27,16 @@ const createTemplate =
     }
   };
 
-/* POST  = new todo
-https://dashboard-go-it.herokuapp.com/tasks
-
+/* PUT  = Update todo
+https://dashboard-go-it.herokuapp.com/tasks/{tasksid}
 {
   "category": "STUFF",
   "difficulty": "EASY",
-  "title": "Do something 2",
+  "title": "Do something",
   "time": "2021-06-10T20:30",
+  "challenge": false,
+  "done": false
 }
-
 */
 
 const updateTemplate = todoId => async dispatch => {
@@ -39,22 +49,28 @@ const updateTemplate = todoId => async dispatch => {
   }
 };
 
-/* POST  = new todo
-https://dashboard-go-it.herokuapp.com/tasks/60bf333700af71001c9e493d
-
+/* PATCH  = update Status Todo (Done)
+https://dashboard-go-it.herokuapp.com/tasks/{tasksid}/done
 {
-"challenge": false,
-"done": false,
-"category": "STUFF",
-"difficulty": "NORMAL",
-"title": "Do something",
-"time": "2021-06-08T20:30"
+  "done": false
 }
-
 */
+
+const updateStatusDoneTemplate = todoId => async dispatch => {
+  dispatch(templateActions.updateStatusDoneTemplateRequest());
+  try {
+    await axios.patch(`/tasks/${todoId}/done`);
+    dispatch(templateActions.updateStatusDoneTemplateSuccess(todoId));
+  } catch (error) {
+    dispatch(
+      templateActions.updateStatusDoneTemplateError(error.response.status),
+    );
+  }
+};
 
 const exp = {
   createTemplate,
   updateTemplate,
+  updateStatusDoneTemplate,
 };
 export default exp;

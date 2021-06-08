@@ -19,8 +19,13 @@ const template = createReducer([], {
     ...state,
   ],
 
-  [templateActions.updateTemplateSuccess]: (state, { payload }) =>
+  [templateActions.updateTemplateSuccess]: (state, { payload }) => [
     state.filter(({ id }) => id !== payload),
+  ],
+
+  [templateActions.updateStatusDoneTemplateSuccess]: (state, { payload }) => [
+    state.filter(({ id }) => id !== payload),
+  ],
 });
 
 export default combineReducers({
