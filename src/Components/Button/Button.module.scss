@@ -115,6 +115,8 @@
     font-size: 10px;
     line-height: 1;
     text-transform: uppercase;
+    margin-right: 10px;
+    font-weight: bold;
   }
 
   &.delete {
@@ -123,6 +125,7 @@
     font-size: 10px;
     line-height: 1;
     text-transform: uppercase;
+    font-weight: bold;
 
     &:before {
       content: ' ';
