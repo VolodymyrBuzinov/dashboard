@@ -1,5 +1,3 @@
-// import React, { useState } from 'react';
-import React from 'react';
 import s from './LoginPage.module.scss';
 import './Login.scss';
 import { useSelector } from 'react-redux';
@@ -19,7 +17,6 @@ import RefreshToken from '../../Components/RefreshToken/RefreshToken';
 const LoginPage = () => {
   RefreshToken();
   const wait = useSelector(getWaiting);
-
   return (
     <section className={s.login_section}>
       <CSSTransition

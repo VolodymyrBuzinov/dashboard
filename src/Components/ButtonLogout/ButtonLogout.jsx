@@ -1,9 +1,9 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import iconLogout from '../../Icons/svg/logout.svg';
+// import iconLogout from '../../Icons/svg/logout.svg';
 import s from './ButtonLogout.module.scss';
 import { logOutAuth } from '../../Redux/Operations/authOperation';
 import { refToken } from '../../Redux/Operations/authOperation';
+import sprite from '../../Icons/symbol-defs.svg';
 
 import Selector from '../../Redux/Todos/todosSelectors';
 import { error } from '../../Redux/Selectors/authSelectors';
@@ -21,10 +21,11 @@ const ButtonLogout = () => {
       }, 1000);
     }
   };
-
   return (
     <button className={s.buttonLogout} onClick={() => onLogout()}>
-      <img src={`${iconLogout}`} alt="" />
+      <svg className={s.icon} width="22px" height="17px">
+        <use href={`${sprite}#icon-logout`}></use>
+      </svg>
     </button>
   );
 };

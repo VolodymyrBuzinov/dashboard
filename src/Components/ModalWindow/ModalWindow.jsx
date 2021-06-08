@@ -1,7 +1,6 @@
-import React from 'react';
 import style from './ModalWindow.module.scss';
 import { useDispatch } from 'react-redux';
-import todosOperations from '../../Redux/Todos/todosOperations';
+import todosOperations from '../../Redux/Operations/todosOperations';
 import Button from '../Button/Button';
 
 const ModalWindow = ({ id, isOpened, question }) => {
