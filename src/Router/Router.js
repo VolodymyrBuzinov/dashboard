@@ -8,7 +8,6 @@ import PrivateRoute from './PrivateRoutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
 import { getCurrentUser } from '../Redux/Operations/authOperation';
-import Spinner from '../Components/Spinner/Spinner';
 
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
@@ -37,16 +36,7 @@ function Router() {
 
   return (
     <Suspense
-      fallback={
-        <Spinner />
-        // <Loader
-        //   className={s.waitingMessage}
-        //   type="BallTriangle"
-        //   color="#00BFFF"
-        //   height={100}
-        //   width={100}
-        // />
-      }
+      fallback={null}
     >
       <Switch>
         <PublicRoute
