@@ -1,16 +1,32 @@
-import React, { useState } from 'react';
+import  { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch } from 'react-redux';
 import { registerAuth } from '../../Redux/Operations/authOperation';
+import { CSSTransition } from 'react-transition-group';
 import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
+import Spinner from '../../Components/Spinner/Spinner';
+import getLoader from '../../Redux/Selectors/loaderSelector';
+import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
+
 
 const SingUpPage = () => {
+  const isVisibleLoader = useSelector(getLoader);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(hideSpinner());
+    }, 1500);
+    return () => {
+      dispatch(showSpinner());
+    };
+  }, []);
+  const wait = useSelector(getWaiting);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,7 +43,12 @@ const SingUpPage = () => {
   };
 
   return (
-    <section className={s.registr_section}>
+
+    <>
+      {isVisibleLoader ? (
+        <Spinner />
+      ) : (
+        <section className={s.registr_section}>
       <div className={s.registr_container}>
         <h1 className={s.registr_title}>Questify</h1>
         <h2 className={s.registr_caption}>Registration</h2>
@@ -100,6 +121,8 @@ const SingUpPage = () => {
       <img src={bgMobile} alt="background" className={s.registr_bgMobile} />
       <img src={bgMobile2} alt="background" className={s.registr_bgMobile} />
     </section>
+      )}
+    </>
   );
 };
 export default SingUpPage;
