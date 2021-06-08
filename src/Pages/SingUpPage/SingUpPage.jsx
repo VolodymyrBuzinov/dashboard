@@ -8,7 +8,6 @@ import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
-import Spinner from '../../Components/Spinner/Spinner';
 
 const SingUpPage = () => {
   const dispatch = useDispatch();
@@ -29,13 +28,17 @@ const SingUpPage = () => {
 
   return (
     <section className={s.registr_section}>
-      <Spinner />
       <div className={s.registr_container}>
         <h1 className={s.registr_title}>Questify</h1>
         <h2 className={s.registr_caption}>Registration</h2>
         <p className={s.registr_text}>
           Back to{' '}
-          <NavLink exact to="/" className={s.registr_link} activeClassName={s}>
+          <NavLink
+            exact
+            to="/"
+            className={s.registr_link}
+            // activeClassName={s}
+          >
             log in
           </NavLink>
         </p>
