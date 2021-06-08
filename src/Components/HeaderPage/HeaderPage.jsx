@@ -3,15 +3,15 @@ import s from './HeaderPage.module.scss';
 
 import ButtonLogout from '../ButtonLogout/ButtonLogout';
 import UserNameText from '../UserNameText/UserNameText';
-import UserNik from '../UserNik/UserNik';
+import UserNick from '../UserNick/UserNick';
 import { getUserName } from '../../Redux/Selectors/authSelectors';
 
 const HeaderPage = () => {
   const name = useSelector(getUserName);
-  console.log(name);
+
   let letter = '';
   if (name) {
-    letter = name.slice(0, 1);
+    letter = name.slice(0, 1).toUpperCase();
   }
 
   return (
@@ -21,7 +21,7 @@ const HeaderPage = () => {
           <p className={s.headerLogoText}>Questify</p>
         </div>
         <div className={s.userContainer}>
-          <UserNik nickName={letter} />
+          <UserNick nickName={letter} />
           <UserNameText name={name} />
         </div>
         <ButtonLogout />

@@ -67,6 +67,7 @@ const DashboardList = () => {
               {tomorrowList.map(
                 ({ title, _id, time, category, difficulty, challenge }) =>
                   <li key={_id} className={s.todoItem}>
+                    <li key={_id} className={ challenge ? s.todoItemChallenge : s.todoItem}></li>
                     <DashboardListItem
                       category={category}
                       difficulty={difficulty}
@@ -78,7 +79,7 @@ const DashboardList = () => {
               )}
             </ul></>
             : null}
-            <MenuDone />
+            <MenuDone todos={doneList}/>
           </div>
       </main>
     </>

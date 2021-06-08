@@ -35,6 +35,35 @@
   @media screen and (min-width: 768px) {
     margin-right: 86px;
   }
+  flex-direction: column;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background: #ffffff;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+
+  // @media screen and (max-width: 767px) {
+  //   padding-bottom: 33px;
+  // }
+  // @media screen and (min-width: 768px) {
+  //   padding-bottom: 21px;
+  // }
+}
+
+.todoItemChallenge {
+  display: flex;
+  flex-direction: column;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  padding-left: 25px;
+  padding-right: 25px;
+  background: $card-bg-color;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
 }
 
 .todoItemСomplexity {
@@ -148,6 +177,10 @@
     height: 25px;
     border-radius: 0px 15px 15px 0px;
   }
+}
+
+svg {
+  fill: $hover-color;
 }
 /*@media screen and (max-width: 767px) {
   }
