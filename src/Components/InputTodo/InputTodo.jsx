@@ -12,6 +12,7 @@ export default function InputTodo({ getInputText }) {
     <form className={style.InputTodo__form}>
       <input
         className={style.InputTodo__input}
+        autoFocus={false}
         type="text"
         name="title"
         required

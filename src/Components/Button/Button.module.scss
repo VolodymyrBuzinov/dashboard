@@ -153,4 +153,8 @@
       fill: $hover-color;
     }
   }
+
+  &:not(:last-child) {
+    margin-right: 5px;
+  }
 }

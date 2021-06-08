@@ -157,7 +157,12 @@ const TemplateTodo = ({ category, difficulty, id, time, title, isVisible }) => {
           {true && true && (
             <>
               <div className={style.TemplateTodo__ButtonGroup}>
-                <GroupButtonSaveClearDone acceptChanges={acceptChanges} />
+                <GroupButtonSaveClearDone
+                  isEditTodo={isEditTodo}
+                  isVisible={isVisible}
+                  toggleModalDelete={toggleModalDelete}
+                  acceptChanges={acceptChanges}
+                />
               </div>
             </>
           )}
