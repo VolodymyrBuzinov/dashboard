@@ -1,16 +1,22 @@
 import React, {useState} from 'react';
 import s from './DashboardListItem.module.scss';
-//import iconVector from '../../Icons/svg/Vector.svg';
 import Button from '../Button/Button';
+//import TemplateTodo from '../TemplateTodo';
 
-function DashboardListItem({ title, id, time, category, difficulty, onClick }) {
+function DashboardListItem({ title, time, category, difficulty, children }) {
   const [challenge, setChallenge] = useState(false);
   const toggleChallenge = () => setChallenge(prev => !prev);
 
   return (<>
-    <li key={id} onClick={onClick} className={ challenge ? s.todoItemChallenge : s.todoItem}>
-      <div className={s.todoItemСomplexity}>{difficulty}
-        {/*<img className={s.todoItemSvg} src={`${iconVector}`} alt="" />*/}
+    {/*<TemplateTodo
+          category={category}
+          difficulty={difficulty}
+          title={title}
+          time={time}
+    />*/}
+      <div className={s.todoItemСomplexity}>
+      <div className={s.todoItemСircle}></div>
+        <div className={s.todoItemDifficulty}>{difficulty}</div>
         {challenge ? (
               <Button
                 onClick={toggleChallenge}
@@ -27,11 +33,10 @@ function DashboardListItem({ title, id, time, category, difficulty, onClick }) {
               />
             )}
       </div>
-        <p className={s.todoItemTitle}>{title}</p>
+      <p className={s.todoItemTitle}>{title}</p>
         <p className={s.todoItemTime}>{time}</p>
       <div className={s.todoItemGroup}>{category}
       </div>
-    </li>
     </>
   );
 };    
