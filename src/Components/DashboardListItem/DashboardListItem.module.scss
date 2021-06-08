@@ -35,35 +35,6 @@
   @media screen and (min-width: 768px) {
     margin-right: 86px;
   }
-  flex-direction: column;
-  padding-top: 21px;
-  padding-bottom: 21px;
-  padding-left: 25px;
-  padding-right: 25px;
-  background: #ffffff;
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
-    3px 4px 4px rgba(21, 57, 90, 0.03);
-  border-radius: 10px;
-
-  // @media screen and (max-width: 767px) {
-  //   padding-bottom: 33px;
-  // }
-  // @media screen and (min-width: 768px) {
-  //   padding-bottom: 21px;
-  // }
-}
-
-.todoItemChallenge {
-  display: flex;
-  flex-direction: column;
-  padding-top: 21px;
-  padding-bottom: 21px;
-  padding-left: 25px;
-  padding-right: 25px;
-  background: $card-bg-color;
-  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
-    3px 4px 4px rgba(21, 57, 90, 0.03);
-  border-radius: 10px;
 }
 
 .todoItemСomplexity {
@@ -74,7 +45,7 @@
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: #b9c3c8;
+  color: $secondary-text;
 
   @media screen and (max-width: 767px) {
     margin-bottom: 70px;
@@ -89,8 +60,8 @@
 }
 
 .todoItemSvg {
-  -webkit-filter: drop-shadow(0px 2px 2px #00d7ff);
-  filter: drop-shadow(0px 2px 2px #00d7ff);
+  -webkit-filter: drop-shadow(0px 2px 2px $hover-color);
+  filter: drop-shadow(0px 2px 2px $hover-color);
   @media screen and (max-width: 767px) {
     width: 19px;
     height: 19px;
@@ -109,7 +80,7 @@
   height: auto;
   text-align: center;
 
-  color: #282828;
+  color: $bold-text;
   @media screen and (max-width: 767px) {
     font-size: 20px;
     line-height: 20px;
@@ -130,7 +101,7 @@
   margin: 0;
   margin-left: auto;
   margin-right: auto;
-  color: #b9c3c8;
+  color: $secondary-text;
   @media screen and (max-width: 767px) {
     font-size: 18px;
     line-height: 18px;
@@ -146,7 +117,7 @@
 }
 
 .todoItemGroup {
-  background-color: #d3f6ce;
+  background-color: $work-color;
   content: ' ';
   display: block;
   position: absolute;
@@ -155,22 +126,21 @@
   font-style: normal;
   font-weight: 400;
   padding-left: 21px;
-
-  /* identical to box height */
-
   letter-spacing: 0.02em;
 
-  color: #282828;
+  color: $text-color;
   @media screen and (max-width: 767px) {
     font-size: 14px;
     line-height: 14px;
     padding-top: 10px;
+    top: 192px;
     width: 120px;
     height: 35px;
     border-radius: 0px 25px 25px 0px;
   }
   @media screen and (min-width: 768px) {
     font-size: 11px;
+    top: 153px;
     line-height: 11px;
     padding-top: 7px;
     width: 88px;
@@ -179,9 +149,6 @@
   }
 }
 
-svg {
-  fill: $hover-color;
-}
 /*@media screen and (max-width: 767px) {
   }
   @media screen and (min-width: 768px) {

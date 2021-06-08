@@ -1,17 +1,22 @@
 import React, {useState} from 'react';
 import s from './DashboardListItem.module.scss';
-//import iconVector from '../../Icons/svg/Vector.svg';
 import Button from '../Button/Button';
+//import TemplateTodo from '../TemplateTodo';
 
-function DashboardListItem({ title, time, category, difficulty, challenge }) {
-  const [setChallenge] = useState(false);
+function DashboardListItem({ title, time, category, difficulty, children }) {
+  const [challenge, setChallenge] = useState(false);
   const toggleChallenge = () => setChallenge(prev => !prev);
 
   return (<>
+    {/*<TemplateTodo
+          category={category}
+          difficulty={difficulty}
+          title={title}
+          time={time}
+    />*/}
       <div className={s.todoItemСomplexity}>
       <div className={s.todoItemСircle}></div>
         <div className={s.todoItemDifficulty}>{difficulty}</div>
-        {/*<img className={s.todoItemSvg} src={`${iconVector}`} alt="" />*/}
         {challenge ? (
               <Button
                 onClick={toggleChallenge}
