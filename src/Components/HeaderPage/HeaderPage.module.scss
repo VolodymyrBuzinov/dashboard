@@ -1,11 +1,14 @@
 @import '../../Utils/utils.scss';
 
+header{
+background-color: $main-color;
+}
+
 .headerContainer {
   @extend %container-styles;
   display: flex;
   align-items: center;
 
-  background-color: $main-color;
   box-shadow: 0px 4px 4px rgba(36, 42, 55, 0.1);
 
   @media screen and (min-width: 768px) {
