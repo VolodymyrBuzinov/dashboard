@@ -4,14 +4,10 @@ import Spinner from './Components/Spinner/Spinner'
 import getLoader from './Redux/Selectors/loaderSelector'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import {
-  showSpinner,
-  hideSpinner,
-} from '../src/Redux/Actions/loaderAction';
+import { hideSpinner } from '../src/Redux/Actions/loaderAction';
 
 function App() {
   const isVisibleLoader = useSelector(getLoader)
-  // const wait = useSelector(getWaiting);
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
