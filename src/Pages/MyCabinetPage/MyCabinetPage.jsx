@@ -1,4 +1,3 @@
-// import ExitButton from '../../Components/ExitButton/ExitButton';
 import HeaderPage from '../../Components/HeaderPage/HeaderPage';
 import DashboardList from '../../Components/DashboardList/DashboardList';
 import Selector from '../../Redux/Selectors/todosSelectors';
@@ -8,8 +7,11 @@ import getLoader from '../../Redux/Selectors/loaderSelector';
 import { useEffect } from 'react';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import Spinner from '../../Components/Spinner/Spinner';
+import ButtonOpenTeamModal from '../../Components/TeamModal/ButtonOpenTeamModal';
+import RefreshToken from '../../Components/RefreshToken/RefreshToken';
 
 const MyCabinetPage = () => {
+  RefreshToken();
   const isVisibleLoader = useSelector(getLoader);
   const state = useSelector(Selector.getErrorRefToken);
   const dispatch = useDispatch();
@@ -34,10 +36,10 @@ const MyCabinetPage = () => {
       ) : (
         <>
           <HeaderPage />
+    <ButtonOpenTeamModal />
           <DashboardList />
         </>
-      )}
-    </>
-  );
-};
+      )})
+}
+
 export default MyCabinetPage;

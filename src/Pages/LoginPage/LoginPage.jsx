@@ -11,11 +11,13 @@ import getLoader from '../../Redux/Selectors/loaderSelector';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
+import RefreshToken from '../../Components/RefreshToken/RefreshToken';
 
 const LoginPage = () => {
-  const isVisibleLoader = useSelector(getLoader);
+  RefreshToken();
+    const isVisibleLoader = useSelector(getLoader);
   const dispatch = useDispatch();
-  useEffect(() => {
+    useEffect(() => {
     setTimeout(() => {
       dispatch(hideSpinner());
     }, 1500);
@@ -56,6 +58,7 @@ const LoginPage = () => {
         </section>
       )}
     </>
+
   );
 };
 export default LoginPage;

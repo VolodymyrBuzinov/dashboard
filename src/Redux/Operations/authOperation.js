@@ -32,13 +32,15 @@ const refToken = () => async (dispatch, getState) => {
   const {
     auth: { refreshToken: persistedReToken },
   } = getState();
-  const token = { refreshToken: persistedReToken };
+
+  const reToken = { refreshToken: persistedReToken };
   if (!persistedReToken) {
     return;
   }
 
   try {
-    const response = await axios.post('/users/refresh', token);
+    const response = await axios.post('/users/refresh', reToken);
+    AxiosToken().set(response.data.data.token);
     dispatch(getRefreshTokenSuccess(response.data.data));
   } catch (error) {
     dispatch(getRefreshTokenError(error.message));
@@ -75,7 +77,7 @@ const logOutAuth = () => async dispatch => {
     AxiosToken().unset();
     dispatch(logoutSuccess());
   } catch (error) {
-    dispatch(logoutError(error.message));
+    dispatch(logoutError(error.response.status));
   }
 };
 
@@ -102,7 +104,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const response = await axios.get('/users/current');
     dispatch(getCurrentUserSuccess(response.data.data));
   } catch (error) {
-    dispatch(getCurrentUserError(error.message));
+    dispatch(getCurrentUserError(error.response.status));
   }
 };
 
