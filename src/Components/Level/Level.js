@@ -10,7 +10,7 @@ export default function Level({ items, handleClick }) {
 
             <li
               key={index}
-              data-type="level"
+              data-type="difficulty"
               data-name={item}
               onClick={handleClick}
               className={style.Level__list}

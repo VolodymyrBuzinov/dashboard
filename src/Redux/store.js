@@ -1,7 +1,7 @@
 import authReduser from './Reducers/authReduser';
 import templateTodoReduser from './Reducers/templateReduser';
-import todoReduser from './Todos/todosReducer';
 import loaderReducer from '../Redux/Reducers/loaderReducer'
+import todoReduser from './Reducers/todosReducer';
 
 import {
   configureStore,
@@ -31,7 +31,7 @@ const middleware = [
 const authPersistConfig = {
   key: 'token',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'refreshToken'],
 };
 const mainReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReduser),

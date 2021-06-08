@@ -2,12 +2,13 @@ import { Redirect, Switch } from 'react-router';
 import { Suspense, lazy, useEffect } from 'react';
 import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
-import s from './Router.module.scss';
-import Loader from 'react-loader-spinner';
-import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+// import s from './Router.module.scss';
+// import Loader from 'react-loader-spinner';
+// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
 import { getCurrentUser } from '../Redux/Operations/authOperation';
+import Spinner from '../Components/Spinner/Spinner';
 
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
@@ -37,13 +38,14 @@ function Router() {
   return (
     <Suspense
       fallback={
-        <Loader
-          className={s.waitingMessage}
-          type="BallTriangle"
-          color="#00BFFF"
-          height={100}
-          width={100}
-        />
+        <Spinner />
+        // <Loader
+        //   className={s.waitingMessage}
+        //   type="BallTriangle"
+        //   color="#00BFFF"
+        //   height={100}
+        //   width={100}
+        // />
       }
     >
       <Switch>

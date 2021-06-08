@@ -16,6 +16,10 @@ import {
   // reVerificationtUserStart,
   reVerificationtUserSuccess,
   reVerificationtUserError,
+  // getRefreshTokenStart,
+  getRefreshTokenSuccess,
+  getRefreshTokenError,
+  refreshTokenAction,
 } from '../Actions/authAction';
 
 const initial = { name: null, email: null };
@@ -25,6 +29,7 @@ const user = createReducer(initial, {
   [loginSuccess]: (_, { payload }) => payload.user,
   [logoutSuccess]: () => initial,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
+  [getRefreshTokenSuccess]: (_, { payload }) => payload.user,
 });
 
 const token = createReducer(null, {
@@ -39,6 +44,7 @@ const error = createReducer(null, {
   [logoutError]: (_, { payload }) => payload,
   [getVerifyUserError]: (_, { payload }) => payload,
   [reVerificationtUserError]: (_, { payload }) => payload,
+  [getRefreshTokenError]: (_, { payload }) => payload,
 });
 
 const isAuthenticated = createReducer(false, {
@@ -67,6 +73,11 @@ const reVerify = createReducer(null, {
   [reVerificationtUserSuccess]: (_, { payload }) => payload,
 });
 
+const refreshToken = createReducer(null, {
+  [refreshTokenAction]: (_, { payload }) => payload,
+  [logoutSuccess]: () => null,
+});
+
 export default combineReducers({
   isAuthenticated,
   user,
@@ -75,4 +86,5 @@ export default combineReducers({
   waiting,
   verify,
   reVerify,
+  refreshToken,
 });

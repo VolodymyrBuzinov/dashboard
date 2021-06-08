@@ -18,6 +18,5 @@
 
 .todoList {
   @extend %list-styles;
-  width: 300px;
-  margin-bottom: 35px;
+  @extend %list-throw;
 }

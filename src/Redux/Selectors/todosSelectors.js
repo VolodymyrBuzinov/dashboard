@@ -1,20 +1,21 @@
 //import { createSelector } from "@reduxjs/toolkit";
 
 const today = new Date();
-  const tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-  if (tomorrow.getDay() === today.getDay()) {
+const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+if (tomorrow.getDay() === today.getDay()) {
   // console.log('TODAY!');
-  } else {
+} else {
   // console.log('TOMORROW!');
-  }
-  /**{ time.getDay() === tomorrow.getDay() ? alert('TOMORROW!'): alert(' No TOMORROW!') } */
-  /*  {if time.getDay() === today.getDay()}
+}
+/**{ time.getDay() === tomorrow.getDay() ? alert('TOMORROW!'): alert(' No TOMORROW!') } */
+/*  {if time.getDay() === today.getDay()}
   {if time.getDay() === tomorrow.getDay()} */
 
 const getLoading = state => state.todos.loading;
 const getFilter = state => state.todos.filter;
 const getAllTodos = state => state.todos.items;
 const getError = state => state.todos.error;
+const getErrorRefToken = state => state.todos.refreshTokenError;
 
 /*const getTodayTodos = createSelector([getAllTodos, today,], (todos) => {
   return
@@ -29,12 +30,13 @@ const getError = state => state.todos.error;
     );
  }); */
 
- const exp ={
+const exp = {
   getLoading,
   getFilter,
- // getVisibleContacts,
-    getError,
-   getAllTodos,
+  // getVisibleContacts,
+  getError,
+  getAllTodos,
+  getErrorRefToken,
   //getTodayTodos
 };
 export default exp;
