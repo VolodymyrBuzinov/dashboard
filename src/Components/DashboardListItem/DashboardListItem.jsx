@@ -14,6 +14,8 @@ function DashboardListItem({ title, time, category, difficulty, children }) {
           title={title}
           time={time}
     />*/}
+    {children}
+    <div className={challenge ? s.todoItem__challenge : s.todoItem}>
       <div className={s.todoItemСomplexity}>
       <div className={s.todoItemСircle}></div>
         <div className={s.todoItemDifficulty}>{difficulty}</div>
@@ -33,10 +35,13 @@ function DashboardListItem({ title, time, category, difficulty, children }) {
               />
             )}
       </div>
-      <p className={s.todoItemTitle}>{title}</p>
+      <p className={challenge ? s.todoItemChallenge__challenge : s.todoItemChallenge}>CHALLENGE</p>
+      <p className={challenge ? s.todoItemTitle__challenge : s.todoItemTitle}>{title}</p>
         <p className={s.todoItemTime}>{time}</p>
       <div className={s.todoItemGroup}>{category}
       </div>
+    </div>
+      
     </>
   );
 };    
