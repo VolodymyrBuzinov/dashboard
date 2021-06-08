@@ -5,6 +5,7 @@ const getWaiting = state => state.auth.waiting;
 const getVerify = state => state.auth.verify;
 const reVerify = state => state.auth.reVerify;
 const refreshToken = state => state.auth.refreshToken;
+const error = state => state.auth.error;
 
 export {
   getIsAutheticated,
@@ -14,4 +15,5 @@ export {
   getVerify,
   reVerify,
   refreshToken,
+  error,
 };

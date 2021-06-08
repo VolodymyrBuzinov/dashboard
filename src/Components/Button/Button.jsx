@@ -8,7 +8,7 @@ import sprite from '../../Icons/symbol-defs.svg';
 */
 const Button = ({ content, type, onClick, isActive }) => {
   const isIcon = content.slice(0, 4) === 'icon';
-
+  
   return (
     <>
       <button
