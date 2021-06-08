@@ -22,7 +22,7 @@ const MyCabinetPage = () => {
     return () => {
       dispatch(showSpinner());
     };
-  }, []);
+  }, [dispatch]);
 
   if (state === 401) {
     dispatch(refToken());
@@ -36,10 +36,12 @@ const MyCabinetPage = () => {
       ) : (
         <>
           <HeaderPage />
-    <ButtonOpenTeamModal />
+          <ButtonOpenTeamModal />
           <DashboardList />
         </>
-      )})
-}
+      )}
+    </>
+  );
+};
 
 export default MyCabinetPage;
