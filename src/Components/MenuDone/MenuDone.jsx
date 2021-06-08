@@ -4,6 +4,7 @@ import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import sprite from '../../Icons/symbol-defs.svg';
 import style from './MenuDone.module.scss';
 import styleDashboardList from '../DashboardList/DashboardList.module.scss';
+import styleDashboardListItem from '../DashboardListItem/DashboardListItem.module.scss';
 
 
 function MenuDone({todos}) {
@@ -20,7 +21,7 @@ function MenuDone({todos}) {
             <div className={style.menu}>
                 <ul className={styleDashboardList.todoList}>
                {todos.map(({ title, _id, time, category, difficulty,challenge }) => (
-             <li key={_id} className={ challenge ? styleDashboardList.todoItem__Challenge : styleDashboardList.todoItem}><DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time}>
+             <li key={_id} className={ challenge ? styleDashboardListItem.todoItem__Challenge : styleDashboardListItem.todoItem}><DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time}>
               </DashboardListItem></li>
             ))}
             </ul>
