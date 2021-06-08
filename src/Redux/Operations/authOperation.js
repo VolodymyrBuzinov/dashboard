@@ -32,13 +32,15 @@ const refToken = () => async (dispatch, getState) => {
   const {
     auth: { refreshToken: persistedReToken },
   } = getState();
-  const token = { refreshToken: persistedReToken };
+
+  const reToken = { refreshToken: persistedReToken };
   if (!persistedReToken) {
     return;
   }
 
   try {
-    const response = await axios.post('/users/refresh', token);
+    const response = await axios.post('/users/refresh', reToken);
+    AxiosToken().set(response.data.data.token);
     dispatch(getRefreshTokenSuccess(response.data.data));
   } catch (error) {
     dispatch(getRefreshTokenError(error.message));

@@ -13,10 +13,8 @@ import {
   getCurrentUserError,
   getVerifyUserSuccess,
   getVerifyUserError,
-  // reVerificationtUserStart,
   reVerificationtUserSuccess,
   reVerificationtUserError,
-  // getRefreshTokenStart,
   getRefreshTokenSuccess,
   getRefreshTokenError,
   refreshTokenAction,
@@ -30,6 +28,7 @@ const user = createReducer(initial, {
   [logoutSuccess]: () => initial,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
   [getRefreshTokenSuccess]: (_, { payload }) => payload.user,
+  [refreshTokenAction]: (_, { payload }) => payload.user,
 });
 
 const token = createReducer(null, {
@@ -38,6 +37,7 @@ const token = createReducer(null, {
   [getRefreshTokenSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
 });
+
 const error = createReducer(null, {
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
@@ -48,17 +48,18 @@ const error = createReducer(null, {
   [getRefreshTokenError]: (_, { payload }) => payload,
 });
 
+// получаю флаг для аутентификации
 const isAuthenticated = createReducer(false, {
   [registerSuccess]: () => false,
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
-  [getRefreshTokenSuccess]: () => true,
   [logoutSuccess]: () => false,
   [registerError]: () => false,
   [loginError]: () => false,
   [getCurrentUserError]: () => false,
 });
 
+// получаю флаг для спинера во время загрузки страницы
 const waiting = createReducer(false, {
   [loginStart]: () => true,
   [loginSuccess]: () => false,
@@ -67,14 +68,18 @@ const waiting = createReducer(false, {
   [registerSuccess]: () => false,
   [registerError]: () => false,
 });
+
+// получаю флаг true или false для перехода с verifyPage на loginPage
 const verify = createReducer(false, {
   [getVerifyUserSuccess]: (_, { payload }) => payload,
 });
 
+// отправка повторного письма верификации
 const reVerify = createReducer(null, {
   [reVerificationtUserSuccess]: (_, { payload }) => payload,
 });
 
+// получаю рефреш токен
 const refreshToken = createReducer(null, {
   [refreshTokenAction]: (_, { payload }) => payload,
   [logoutSuccess]: () => null,

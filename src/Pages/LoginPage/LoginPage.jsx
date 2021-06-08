@@ -14,8 +14,10 @@ import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
 import Spinner from '../../Components/Spinner/Spinner';
+import RefreshToken from '../../Components/RefreshToken/RefreshToken';
 
 const LoginPage = () => {
+  RefreshToken();
   const wait = useSelector(getWaiting);
 
   return (
