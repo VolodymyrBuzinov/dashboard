@@ -1,4 +1,4 @@
-import s from './UserNik.module.scss';
+import s from './UserNick.module.scss';
 
 const UserNik = ({ nickName }) => {
   return <div className={s.nickContainer}>
