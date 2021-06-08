@@ -19,11 +19,13 @@ const LoginPage = () => {
           </span>
         </p>
         <p className={s.login_text}>
-          <span>Choose your name to sign up or log in Choose your name </span>
-          <NavLink exact to="/singUpPage" className={s.login_text}>
-            <span>to sign</span>
-          </NavLink>
-          <span>to sign up or log in</span>
+          <span>
+            Choose your name to{' '}
+            <NavLink exact to="/singUpPage" className={s.login_text}>
+              <span>sign up</span>
+            </NavLink>{' '}
+            or log in Choose your name{' '}
+          </span>
         </p>
 
         <RegisterForm />
