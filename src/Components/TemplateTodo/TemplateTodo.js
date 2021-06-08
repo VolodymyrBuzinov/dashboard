@@ -63,12 +63,15 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
     if(!isEditTodo && !isVisible) {
     dispatch(editTodo(true));
     setEdit(true)}
+    
   };
 
-  // useEffect(() => {
-  //   created = true
-  //   console.log(created);
-  // })
+  useEffect(() => {
+    if(!category){      
+      dispatch(editTodo(true));
+    setEdit(true)
+    }
+  })
 
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
