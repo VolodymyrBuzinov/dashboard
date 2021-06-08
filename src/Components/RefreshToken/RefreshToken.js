@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Selector from '../../Redux/Todos/todosSelectors';
+import Selector from '../../Redux/Selectors/todosSelectors';
 import { error } from '../../Redux/Selectors/authSelectors';
 import { refToken, getCurrentUser } from '../../Redux/Operations/authOperation';
 

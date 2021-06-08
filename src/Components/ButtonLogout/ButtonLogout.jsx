@@ -5,7 +5,7 @@ import { logOutAuth } from '../../Redux/Operations/authOperation';
 import { refToken } from '../../Redux/Operations/authOperation';
 import sprite from '../../Icons/symbol-defs.svg';
 
-import Selector from '../../Redux/Todos/todosSelectors';
+import Selector from '../../Redux/Selectors/todosSelectors';
 import { error } from '../../Redux/Selectors/authSelectors';
 
 const ButtonLogout = () => {
