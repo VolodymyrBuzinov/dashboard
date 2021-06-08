@@ -1,12 +1,13 @@
 import style from './GroupButtonSaveClearDone.module.scss';
 import Button from '../Button/Button';
+import {useDispatch} from 'react-redux'
 
 export default function GroupButtonSaveClearDone({ isEditTodo, isVisible, acceptChanges, toggleModalDelete }) {
+const dispatch = useDispatch()
 
-
-  const handleClickElementClear = () => {
-    console.log('run handleClickElementClear');
-  };
+  // const handleClickElementClear = () => {
+  //   console.log('run handleClickElementClear');
+  // };
   const handleClickElementCreate = () => {
     console.log('run handleClickElementCreate');
   };
@@ -22,7 +23,7 @@ export default function GroupButtonSaveClearDone({ isEditTodo, isVisible, accept
           className={style.GroupButtonSaveClearDone__ButtonSvg}
             type="button"
             content="icon-clear"
-            onClick={handleClickElementClear}
+            onClick={acceptChanges}
             isActive={false}
           />
           <Button
@@ -40,7 +41,7 @@ export default function GroupButtonSaveClearDone({ isEditTodo, isVisible, accept
             content="icon-clear"
             onClick={toggleModalDelete}
           />
-          <Button type="button" content="icon-done" onClick={()=>acceptChanges} />
+          <Button type="button" content="icon-done" onClick={acceptChanges} />
         </div>  
       }
     </>

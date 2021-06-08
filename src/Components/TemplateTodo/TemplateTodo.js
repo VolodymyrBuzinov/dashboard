@@ -140,8 +140,13 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
+          {!edit ? 
+          <><p className={style.todoItemTitle}>{title}</p>
+                    <p className={style.todoItemTime}>{time}</p></>
+                    : <> 
           <InputTodo getInputText={updateState} />
-          <DateAndTimePickers getDate={updateState} />
+          <DateAndTimePickers getDate={updateState} /></>}
+          
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>

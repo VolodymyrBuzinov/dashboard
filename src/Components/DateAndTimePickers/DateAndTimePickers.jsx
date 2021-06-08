@@ -24,7 +24,7 @@ export default function DateAndTimePickers({ getDate }) {
         value={selectedDate}
         onChange={handleDateChange}
         onBlur={() => {
-          getDate('time',selectedDate);
+          getDate('time', selectedDate);
         }}
       />
     </form>
