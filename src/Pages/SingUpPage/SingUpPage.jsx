@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getWaiting } from '../../Redux/Selectors/authSelectors';
 import { registerAuth } from '../../Redux/Operations/authOperation';
-import { CSSTransition } from 'react-transition-group';
 import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
-import Spinner from '../../Components/Spinner/Spinner';
 import getLoader from '../../Redux/Selectors/loaderSelector';
-import { useEffect } from 'react';
+import Spinner from '../../Components/Spinner/Spinner';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 
 const SingUpPage = () => {
-  const isVisibleLoader = useSelector(getLoader);
   const dispatch = useDispatch();
+  const isVisibleLoader = useSelector(getLoader);
   useEffect(() => {
     setTimeout(() => {
       dispatch(hideSpinner());
@@ -26,7 +23,7 @@ const SingUpPage = () => {
       dispatch(showSpinner());
     };
   }, []);
-  const wait = useSelector(getWaiting);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,8 +31,6 @@ const SingUpPage = () => {
   const nameFunc = e => setName(e.target.value);
   const emailFunc = e => setEmail(e.target.value);
   const passwordFunc = e => setPassword(e.target.value);
-  // const emailFunc = e => setEmail(e.target.value);
-  // const passwordFunc = e => setPassword(e.target.value);
 
   const btnClick = e => {
     e.preventDefault();
@@ -50,14 +45,6 @@ const SingUpPage = () => {
         <Spinner />
       ) : (
         <section className={s.registr_section}>
-          <CSSTransition
-            in={wait}
-            classNames="waitingMessage"
-            timeout={250}
-            unmountOnExit
-          >
-            <Spinner />
-          </CSSTransition>
           <div className={s.registr_container}>
             <h1 className={s.registr_title}>Questify</h1>
             <h2 className={s.registr_caption}>Registration</h2>
@@ -67,7 +54,7 @@ const SingUpPage = () => {
                 exact
                 to="/"
                 className={s.registr_link}
-                activeClassName={s}
+                // activeClassName={s}
               >
                 log in
               </NavLink>
