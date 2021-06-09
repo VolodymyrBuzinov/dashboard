@@ -4,7 +4,6 @@ import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
-
 import { getCurrentUser } from '../Redux/Operations/authOperation';
 import { Refresh } from '../Components/ReFresh/Refresh';
 
