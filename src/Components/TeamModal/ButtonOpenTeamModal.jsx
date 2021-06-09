@@ -16,7 +16,8 @@ const ButtonOpenTeamModal = () => {
           <use href={`${svgSprite}#icon-teamwork`}></use>
         </svg>
       </div>
-      {showTeamModal && <TeamModal onClose={handleToggleModal} />}
+
+      <TeamModal isOpen={showTeamModal} onClose={handleToggleModal} />
     </>
   );
 };
