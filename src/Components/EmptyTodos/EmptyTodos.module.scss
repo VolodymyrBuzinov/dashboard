@@ -3,20 +3,11 @@
 .emptyList {
   @extend %list-throw;
   @extend %list-styles;
-  @media screen and (min-width: 320px) {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  @media screen and (min-width: 768px) {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-  @media screen and (min-width: 1280px) {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
+  margin-bottom: 31px;
+  margin-top: 37px;
 }
 .emptyItem {
+  background: $white-color;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
@@ -33,9 +24,15 @@
 }
 .emptyParagraph {
   @extend %list-throw;
-  margin-bottom: 36px;
   color: $text-color;
   font-weight: 700;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 63px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 26px;
+  }
 }
 .emptyIcon {
   width: 19px;
@@ -46,8 +43,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 42px;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 70px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+  }
 }
+
 .emptyControlsText {
   @extend %text-throw;
   padding-left: 20px;
@@ -70,10 +73,22 @@
   display: inline-block;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 21px;
+  padding-left: 25px;
   padding-right: 32px;
   color: $text-color;
   background-color: $hover-color;
   border-radius: 0px 15px 15px 0px;
   transform: translateX(-25px);
+}
+
+.emptyIcon {
+  filter: drop-shadow(0px 2px 2px $active-color);
+  @media screen and (max-width: 767px) {
+    width: 19px;
+    height: 19px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 15px;
+    height: 15px;
+  }
 }

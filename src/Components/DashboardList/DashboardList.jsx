@@ -1,13 +1,11 @@
-import {
-  useEffect,
-  //useState
-} from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './DashboardList.module.scss';
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
-import MenuDone from '../MenuDone/MenuDone.jsx';
+import MenuDone from '../MenuDone/MenuDone';
+import EmptyTodos from "../EmptyTodos/EmptyTodods";
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import Button from '../Button/Button';
@@ -16,10 +14,6 @@ import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
-  /* const [todayList, setTodayList] = useState([]);
-  const [tomorrowList, setTomorrowList] = useState([]);
-  const [doneList, setdoneList] = useState([]);
-  const [challengeList, setChallengeList] = useState([]);*/
   const isVisible = useSelector(isVisibleTemplate);
   const edit = useSelector(isEdit);
 
@@ -36,67 +30,63 @@ const DashboardList = () => {
   const today = new Date();
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
 
-  //const LIST_LEVEL = ['easy', 'normal', 'hard'];
   const todayList = [];
   const tomorrowList = [];
   const doneList = [];
   const challengeList = [];
-
+  
   todos.map(todo => {
     if (!todo.done) {
       if (!todo.challenge) {
         if (
-          today.getFullYear() ===
-            new Date(Date.parse(todo.time)).getFullYear() &&
+          today.getFullYear() ===  new Date(Date.parse(todo.time)).getFullYear() &&
           today.getMonth() === new Date(Date.parse(todo.time)).getMonth() &&
           today.getDay() === new Date(Date.parse(todo.time)).getDay()
         ) {
           todayList.push(todo);
-          //setTodayList(todo)
         }
         if (
-          tomorrow.getFullYear() ===
-            new Date(Date.parse(todo.time)).getFullYear() &&
+          tomorrow.getFullYear() === new Date(Date.parse(todo.time)).getFullYear() &&
           tomorrow.getMonth() === new Date(Date.parse(todo.time)).getMonth() &&
           tomorrow.getDay() === new Date(Date.parse(todo.time)).getDay()
         ) {
           tomorrowList.push(todo);
-          //setTomorrowList(todo)
         }
       } else {
-        challengeList.push(todo); //setChallenge(todo)
+        challengeList.push(todo); 
       }
     } else {
-      doneList.push(todo); //setdoneList(todo)
+      doneList.push(todo); 
     }
     return { todayList, tomorrowList, doneList };
   });
+  
   return (
     <>
       <main className={s.todoListMain}>
         <div className={s.todoListDiv}>
+          {todayList.length===0 && tomorrowList.length===0 && challengeList.length===0 && !isVisible && <>
+          <EmptyTodos/>
+          </>}
           {todayList.length > 0 || isVisible ? (
             <>
               <p className={s.todoListTitle}>TODAY</p>
               <ul className={s.todoList}>
                 {isVisible && (
-                  <DashboardListItem key="template">
-                    <TemplateTodo isVisible={isVisible} />
-                  </DashboardListItem>
+                  <TemplateTodo isVisible={isVisible} />
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
-                      <DashboardListItem key={_id}>
-                        <TemplateTodo
-                          category={category}
+                      <li key={_id}><DashboardListItem  category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
                           challenge={challenge}
-                          id={_id}
-                        />
+                          id={_id}>
                       </DashboardListItem>
+                      </li>
+                      
                     ),
                   )}
               </ul>
@@ -130,13 +120,15 @@ const DashboardList = () => {
                 {challengeList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-                      <DashboardListItem
+                      <DashboardListItem key={_id}>
+                        <TemplateTodo
                         category={category}
                         difficulty={difficulty}
                         title={title}
-                        id={_id}
                         time={time}
-                      ></DashboardListItem>
+                        challenge={challenge}
+                      />
+                      </DashboardListItem>
                     </li>
                   ),
                 )}
@@ -152,7 +144,6 @@ const DashboardList = () => {
 };
 
 export default DashboardList;
-
 /**<div
         className={
           challenge

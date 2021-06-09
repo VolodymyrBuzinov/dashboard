@@ -13,17 +13,18 @@ const fetchTodos = () => async dispatch => {
     dispatch(todosActions.fetchTodoError(error.response.status));
   }
 };
-
-// const addTodo = ({ title, time }) => async dispatch => {
-//     dispatch(todosActions.addTodoRequest());
-//     try {
-//         const todo = {title, time};
-//         const { data } = await axios.post('/tasks', todo);
-//         dispatch(todosActions.addTodoSuccess(data));
-//     } catch (error) {
-//         dispatch(todosActions.addTodoError(error.response.status));
-//     }
-// };
+/*
+const addTodo = ({ category, difficulty, title, time }) =>
+  async dispatch => {
+    dispatch(templateActions.createTemplateRequest());
+    try {
+      const template = { category, difficulty, title, time };
+      const { data } = await axios.post('/tasks', template);
+      dispatch(templateActions.createTemplateSuccess(data));
+    } catch (error) {
+      dispatch(templateActions.createTemplateError(error.response.status));
+    }
+  };*/
 
 const deleteTodo = todoId => async dispatch => {
   dispatch(todosActions.deleteTodoRequest());
