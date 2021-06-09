@@ -24,6 +24,7 @@ import {
   getRefreshTokenError,
   refreshTokenAction,
 } from '../Actions/authAction';
+import { toast } from 'react-toastify';
 
 BaseURL();
 
@@ -52,6 +53,7 @@ const registerAuth = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/signup', credentials);
     dispatch(registerSuccess(response.data.data));
+    toast.info('You are successfully registered!')
   } catch (error) {
     dispatch(registerError(error.message));
   }
@@ -65,6 +67,7 @@ const loginAuth = credentials => async dispatch => {
     AxiosToken().set(response.data.data.token);
     dispatch(refreshTokenAction(response.data.data.refreshToken));
     dispatch(loginSuccess(response.data.data));
+    toast.info('Welcam to Questify!')
   } catch (error) {
     dispatch(loginError(error.message));
   }
