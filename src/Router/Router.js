@@ -4,9 +4,9 @@ import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
-import Selector from '../Redux/Selectors/todosSelectors';
-import { error } from '../Redux/Selectors/authSelectors';
-import { refToken, getCurrentUser } from '../Redux/Operations/authOperation';
+
+import { getCurrentUser } from '../Redux/Operations/authOperation';
+import { Refresh } from '../Components/ReFresh/Refresh';
 
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
@@ -29,18 +29,11 @@ function Router() {
   const dispatch = useDispatch();
   const state = useSelector(getVerify);
 
+  Refresh();
+
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-
-  const stateTodo = useSelector(Selector.getErrorRefToken);
-  const stateAuth = useSelector(error);
-  if (stateTodo || stateAuth === 401) {
-    dispatch(refToken());
-    setTimeout(() => {
-      dispatch(getCurrentUser());
-    }, 1000);
-  }
 
   return (
     <Suspense fallback={null}>
