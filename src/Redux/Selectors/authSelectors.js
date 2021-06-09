@@ -6,6 +6,7 @@ const getVerify = state => state.auth.verify;
 const reVerify = state => state.auth.reVerify;
 const refreshToken = state => state.auth.refreshToken;
 const error = state => state.auth.error;
+const errorLogOut = state => state.auth.errorLogOut;
 
 export {
   getIsAutheticated,
@@ -16,4 +17,5 @@ export {
   reVerify,
   refreshToken,
   error,
+  errorLogOut,
 };
