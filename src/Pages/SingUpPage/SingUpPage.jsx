@@ -1,11 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getWaiting } from '../../Redux/Selectors/authSelectors';
 import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerAuth } from '../../Redux/Operations/authOperation';
-import { CSSTransition } from 'react-transition-group';
 import Spinner from '../../Components/Spinner/Spinner';
 import bgMobile from '../../Images/bg-mobile.png';
 import bgMobile2 from '../../Images/bg-mobile2.png';
@@ -16,7 +14,6 @@ import getLoader from '../../Redux/Selectors/loaderSelector';
 
 const SingUpPage = () => {
   const dispatch = useDispatch();
-  const wait = useSelector(getWaiting);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,33 +43,12 @@ const SingUpPage = () => {
         <Spinner />
       ) : (
         <section className={s.registr_section}>
-          <CSSTransition
-            in={wait}
-            classNames="waitingMessage"
-            timeout={250}
-            unmountOnExit
-          >
-            <Spinner />
-            {/* <Loader
-          className={s.waitingMessage}
-          type="BallTriangle"
-          color="#00BFFF"
-          height={100}
-          width={100}
-        /> */}
-          </CSSTransition>
-
           <div className={s.registr_container}>
             <h1 className={s.registr_title}>Questify</h1>
             <h2 className={s.registr_caption}>Registration</h2>
             <p className={s.registr_text}>
               Back to{' '}
-              <NavLink
-                exact
-                to="/"
-                className={s.registr_link}
-                // activeClassName={s}
-              >
+              <NavLink exact to="/" className={s.registr_link}>
                 log in
               </NavLink>
             </p>
@@ -117,9 +93,6 @@ const SingUpPage = () => {
                   value={password}
                   onChange={passwordFunc}
                 />
-                {/* <label htmlFor="password" className={s.registr_label}>
-          Password
-        </label> */}
                 {!password && (
                   <label htmlFor="password" className={s.registr_label}>
                     Password
