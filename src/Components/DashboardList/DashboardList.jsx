@@ -73,23 +73,20 @@ const DashboardList = () => {
               <p className={s.todoListTitle}>TODAY</p>
               <ul className={s.todoList}>
                 {isVisible && (
-                  <DashboardListItem key="template">
-                    <TemplateTodo isVisible={isVisible} />
-                  </DashboardListItem>
+                  <TemplateTodo isVisible={isVisible} />
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
-                      <DashboardListItem key={_id}>
-                        <TemplateTodo
-                          category={category}
+                      <li key={_id}><DashboardListItem  category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
                           challenge={challenge}
-                          id={_id}
-                        />
+                          id={_id}>
                       </DashboardListItem>
+                      </li>
+                      
                     ),
                   )}
               </ul>
