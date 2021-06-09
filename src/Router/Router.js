@@ -4,9 +4,14 @@ import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
+<<<<<<< HEAD
 import Selector from '../Redux/Selectors/todosSelectors';
 import { error } from '../Redux/Selectors/authSelectors';
 import { refToken, getCurrentUser } from '../Redux/Operations/authOperation';
+=======
+import { getCurrentUser } from '../Redux/Operations/authOperation';
+import Spinner from '../Components/Spinner/Spinner';
+>>>>>>> parent of bb15132 (add spinner for all pages)
 
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
@@ -43,7 +48,22 @@ function Router() {
   }
 
   return (
+<<<<<<< HEAD
     <Suspense fallback={null}>
+=======
+    <Suspense
+      fallback={
+        <Spinner />
+        // <Loader
+        //   className={s.waitingMessage}
+        //   type="BallTriangle"
+        //   color="#00BFFF"
+        //   height={100}
+        //   width={100}
+        // />
+      }
+    >
+>>>>>>> parent of bb15132 (add spinner for all pages)
       <Switch>
         <PublicRoute
           exact
