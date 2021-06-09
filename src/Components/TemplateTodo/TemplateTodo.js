@@ -99,7 +99,7 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
   };
 
   return (
-    <div className={style.TemplateTodo} onClick={editCard}>
+    <li className={style.TemplateTodo} onClick={editCard}>
       <div
         className={
           challenge
@@ -209,7 +209,7 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
           />
         </Modal>
       )}
-    </div>
+    </li>
   );
 };
 
