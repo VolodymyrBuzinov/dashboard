@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import s from './DashboardListItem.module.scss';
-import Button from '../Button/Button';
-//import TemplateTodo from '../TemplateTodo';
+import { useState } from 'react';
 
 function DashboardListItem({ title, time, category, difficulty, children }) {
   const [challenge, setChallenge] = useState(false);
