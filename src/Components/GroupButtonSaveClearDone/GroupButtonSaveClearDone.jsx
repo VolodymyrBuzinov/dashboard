@@ -1,14 +1,41 @@
 import style from './GroupButtonSaveClearDone.module.scss';
 import Button from '../Button/Button';
+import { useDispatch } from 'react-redux';
+import exp from '../../Redux/Operations/templateOperations';
+import todoOperations from '../../Redux/Operations/todosOperations';
+import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 export default function GroupButtonSaveClearDone({
   isEditTodo,
   isVisible,
   acceptChanges,
   toggleModalDelete,
+  state,
 }) {
+  const dispatch = useDispatch();
+
+  // const handleClickElementClear = () => {
+  //   console.log('run handleClickElementClear');
+  // };
   const handleClickElementCreate = () => {
-    console.log('run handleClickElementCreate');
+    const categoryToUpperCase = state.category.toUpperCase();
+    const difficultyToUpperCase = state.difficulty.toUpperCase();
+    console.log({
+      ...state,
+      category: categoryToUpperCase,
+      difficulty: difficultyToUpperCase,
+    });
+    dispatch(
+      exp.createTemplate({
+        ...state,
+        category: categoryToUpperCase,
+        difficulty: difficultyToUpperCase,
+      }),
+    );
+    // dispatch(todoOperations.fetchTodos());
+    dispatch(onClickBtnCreate(false));
+    dispatch(editTodo(false));
   };
   const handleClickElementSave = () => {
     console.log('run handleClickElementSave');
