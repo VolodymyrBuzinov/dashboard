@@ -74,7 +74,7 @@ const TemplateTodo = ({ category, difficulty, time, title, id }) => {
       dispatch(editTodo(true));
       setEdit(true);
     }
-  }, []);
+  }, [category, dispatch]);
 
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));

@@ -1,9 +1,5 @@
 import style from './GroupButtonSaveClearDone.module.scss';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
-import exp from '../../Redux/Operations/templateOperations';
-import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
-import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 export default function GroupButtonSaveClearDone({
   isEditTodo,
@@ -11,11 +7,6 @@ export default function GroupButtonSaveClearDone({
   acceptChanges,
   toggleModalDelete,
 }) {
-  const dispatch = useDispatch();
-
-  // const handleClickElementClear = () => {
-  //   console.log('run handleClickElementClear');
-  // };
   const handleClickElementCreate = () => {
     console.log('run handleClickElementCreate');
   };

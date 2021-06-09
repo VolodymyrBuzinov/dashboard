@@ -21,7 +21,7 @@ export default function VerifyPage() {
     return () => {
       dispatch(showSpinner());
     };
-  }, []);
+  }, [dispatch]);
 
   const onLogout = useCallback(() => {
     dispatch(verify(true));
