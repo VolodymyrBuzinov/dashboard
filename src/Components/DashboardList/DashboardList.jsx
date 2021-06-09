@@ -85,8 +85,7 @@ const DashboardList = () => {
                         <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
-                          time={time}
-                          id={_id}>
+                          time={time}>
                       </DashboardListItem>
                       </li>
                     ),
@@ -104,8 +103,7 @@ const DashboardList = () => {
                         <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
-                          time={time}
-                          id={_id}>
+                          time={time}>
                       </DashboardListItem>
                       </li>
                   ),
@@ -124,8 +122,7 @@ const DashboardList = () => {
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challengeStyle={challenge}
-                          id={_id}>
+                          challengeStyle={challenge}>
                       </DashboardListItem>
                       </li>
                   ),
