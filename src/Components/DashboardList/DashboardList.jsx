@@ -1,16 +1,19 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import s from './DashboardList.module.scss';
-import DashboardListItem from '../DashboardListItem/DashboardListItem';
+
+import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
+import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
+import isEdit from '../../Redux/Selectors/editTodoSelector';
+
+import s from './DashboardList.module.scss';
+
+import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from "../EmptyTodos/EmptyTodods";
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
-import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import Button from '../Button/Button';
-import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -77,16 +80,15 @@ const DashboardList = () => {
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
-                    ({ title, _id, time, category, difficulty, challenge }) => (
-                      <li key={_id}><DashboardListItem  category={category}
+                    ({ title, _id, time, category, difficulty }) => (
+                      <li key={_id}>
+                        <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challenge={challenge}
                           id={_id}>
                       </DashboardListItem>
                       </li>
-                      
                     ),
                   )}
               </ul>
@@ -97,17 +99,15 @@ const DashboardList = () => {
               <p className={s.todoListTitle}>TOMORROW</p>
               <ul className={s.todoList}>
                 {tomorrowList.map(
-                  ({ title, _id, time, category, difficulty, challenge }) => (
-                    <DashboardListItem key={_id}>
-                      <TemplateTodo
-                        category={category}
-                        difficulty={difficulty}
-                        title={title}
-                        time={time}
-                        challenge={challenge}
-                        id={_id}
-                      />
-                    </DashboardListItem>
+                  ({ title, _id, time, category, difficulty }) => (
+                    <li key={_id}>
+                        <DashboardListItem category={category}
+                          difficulty={difficulty}
+                          title={title}
+                          time={time}
+                          id={_id}>
+                      </DashboardListItem>
+                      </li>
                   ),
                 )}
               </ul>
@@ -120,16 +120,14 @@ const DashboardList = () => {
                 {challengeList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-                      <DashboardListItem key={_id}>
-                        <TemplateTodo
-                        category={category}
-                        difficulty={difficulty}
-                        title={title}
-                        time={time}
-                        challenge={challenge}
-                      />
+                        <DashboardListItem category={category}
+                          difficulty={difficulty}
+                          title={title}
+                          time={time}
+                          challengeStyle={challenge}
+                          id={_id}>
                       </DashboardListItem>
-                    </li>
+                      </li>
                   ),
                 )}
               </ul>

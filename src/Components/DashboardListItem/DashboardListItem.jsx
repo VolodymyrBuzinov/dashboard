@@ -1,8 +1,17 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import s from './DashboardListItem.module.scss';
-import Button from '../Button/Button'
-function DashboardListItem({ title, time, category, difficulty, children,  }) {
+import Button from '../Button/Button';
+
+function DashboardListItem({ title, time, category, difficulty, children, challengeStyle}) {
+  
   const [challenge, setChallenge] = useState(false);
+  useEffect(() => {
+   if (challengeStyle) {
+    setChallenge(true);
+  }
+  }, []);
+  
   const toggleChallenge = () => setChallenge(prev => !prev);
 
   return (
