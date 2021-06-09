@@ -16,7 +16,7 @@ import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import getLoader from '../../Redux/Selectors/loaderSelector';
-
+import Button from '../../Components/Button/Button';
 const SingUpPage = () => {
   const dispatch = useDispatch();
   const wait = useSelector(getWaiting);
