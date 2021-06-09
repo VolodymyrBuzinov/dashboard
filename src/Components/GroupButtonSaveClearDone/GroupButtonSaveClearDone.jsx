@@ -2,7 +2,6 @@ import style from './GroupButtonSaveClearDone.module.scss';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/templateOperations';
-import todoOperations from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 

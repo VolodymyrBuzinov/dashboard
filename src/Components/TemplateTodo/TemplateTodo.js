@@ -74,7 +74,7 @@ const TemplateTodo = ({ category, difficulty, time, title, id }) => {
       dispatch(editTodo(true));
       setEdit(true);
     }
-  }, []);  
+  }, [category, dispatch]);
 
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
@@ -204,7 +204,7 @@ const TemplateTodo = ({ category, difficulty, time, title, id }) => {
       {showModalDelete && (
         <Modal onClose={toggleModalDelete} type="delete">
           <ModalWindow
-          id={id}
+            id={id}
             isOpened={toggleModalDelete}
             question="Delete this Quest?"
             acceptChanges={acceptChanges}

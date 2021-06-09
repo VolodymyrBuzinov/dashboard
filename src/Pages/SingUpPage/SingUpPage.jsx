@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState } from 'react';
+=======
+import  { useState, useEffect } from 'react';
+>>>>>>> parent of d4438f0 (add fix)
 import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
@@ -9,9 +13,22 @@ import bgMobile2 from '../../Images/bg-mobile2.png';
 import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
 
+
 const SingUpPage = () => {
   const dispatch = useDispatch();
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(hideSpinner());
+    }, 1500);
+    return () => {
+      dispatch(showSpinner());
+    };
+  }, []);
+  const wait = useSelector(getWaiting);
+>>>>>>> parent of d4438f0 (add fix)
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -28,7 +45,16 @@ const SingUpPage = () => {
   };
 
   return (
+<<<<<<< HEAD
     <section className={s.registr_section}>
+=======
+
+    <>
+      {isVisibleLoader ? (
+        <Spinner />
+      ) : (
+        <section className={s.registr_section}>
+>>>>>>> parent of d4438f0 (add fix)
       <div className={s.registr_container}>
         <h1 className={s.registr_title}>Questify</h1>
         <h2 className={s.registr_caption}>Registration</h2>
@@ -101,6 +127,11 @@ const SingUpPage = () => {
       <img src={bgMobile} alt="background" className={s.registr_bgMobile} />
       <img src={bgMobile2} alt="background" className={s.registr_bgMobile} />
     </section>
+<<<<<<< HEAD
+=======
+      )}
+    </>
+>>>>>>> parent of d4438f0 (add fix)
   );
 };
 export default SingUpPage;
