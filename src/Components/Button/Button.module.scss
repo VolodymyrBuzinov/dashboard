@@ -145,9 +145,7 @@
   &.icon-Vector,
   &.icon-trophy {
     & svg {
-      -webkit-filter: drop-shadow(0px 2px 2px $hover-color);
-      filter: drop-shadow(0px 2px 2px $hover-color);
-      fill: $hover-color;
+      fill: $secondary-text;
       @media screen and (max-width: 767px) {
         width: 19px;
         height: 19px;

@@ -1,6 +1,6 @@
 import style from './Level.module.scss';
 
-export default function Level({ items, handleClick }) {
+export default function Level({ items, handleClick, cb }) {
   return (
     <>
       <ul className={style.Level__list}>
@@ -10,9 +10,7 @@ export default function Level({ items, handleClick }) {
 
             <li
               key={index}
-              data-type="difficulty"
-              data-name={item}
-              onClick={handleClick}
+              onClick={() => handleClick('difficulty', item, cb)}
               className={style.Level__list}
             >
               {item}
