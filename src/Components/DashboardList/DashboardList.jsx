@@ -115,6 +115,7 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         challenge={challenge}
+                        id={_id}
                       />
                     </DashboardListItem>
                   ),
