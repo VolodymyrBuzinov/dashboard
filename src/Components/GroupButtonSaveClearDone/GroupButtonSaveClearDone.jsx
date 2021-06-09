@@ -1,16 +1,17 @@
 import style from './GroupButtonSaveClearDone.module.scss';
 import Button from '../Button/Button';
-<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/templateOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
-=======
-import {useDispatch} from 'react-redux'
->>>>>>> parent of bd9cdfb (Собрал в одно целое:)
 
-export default function GroupButtonSaveClearDone({ isEditTodo, isVisible, acceptChanges, toggleModalDelete }) {
-const dispatch = useDispatch()
+export default function GroupButtonSaveClearDone({
+  isEditTodo,
+  isVisible,
+  acceptChanges,
+  toggleModalDelete,
+}) {
+  const dispatch = useDispatch();
 
   // const handleClickElementClear = () => {
   //   console.log('run handleClickElementClear');
@@ -20,14 +21,14 @@ const dispatch = useDispatch()
   };
   const handleClickElementSave = () => {
     console.log('run handleClickElementSave');
-    
   };
 
   return (
     <>
-      {isVisible  && <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
-        <Button
-          className={style.GroupButtonSaveClearDone__ButtonSvg}
+      {isVisible && (
+        <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
+          <Button
+            className={style.GroupButtonSaveClearDone__ButtonSvg}
             type="button"
             content="icon-clear"
             onClick={acceptChanges}
@@ -39,18 +40,24 @@ const dispatch = useDispatch()
             onClick={handleClickElementCreate}
             isActive={true}
           />
-        </div>}
+        </div>
+      )}
 
-      {(isEditTodo && !isVisible) &&  <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
-          <Button  type="button" content="icon-save" onClick={handleClickElementSave} />
+      {isEditTodo && !isVisible && (
+        <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
+          <Button
+            type="button"
+            content="icon-save"
+            onClick={handleClickElementSave}
+          />
           <Button
             type="button"
             content="icon-clear"
             onClick={toggleModalDelete}
           />
           <Button type="button" content="icon-done" onClick={acceptChanges} />
-        </div>  
-      }
+        </div>
+      )}
     </>
   );
 }

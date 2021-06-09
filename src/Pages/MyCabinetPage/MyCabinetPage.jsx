@@ -1,30 +1,27 @@
 import HeaderPage from '../../Components/HeaderPage/HeaderPage';
 import DashboardList from '../../Components/DashboardList/DashboardList';
-<<<<<<< HEAD
 import ButtonOpenTeamModal from '../../Components/TeamModal/ButtonOpenTeamModal';
-
-const MyCabinetPage = () => {
-<<<<<<< HEAD
-  return (
-    <>
-      <HeaderPage />
-      <ButtonOpenTeamModal />
-      <DashboardList />
-    </>
-  );
-};
-=======
-  RefreshToken();
-  const isVisibleLoader = useSelector(getLoader);
-=======
-import Selector from '../../Redux/Selectors/todosSelectors';
+import Spinner from '../../Components/Spinner/Spinner';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import getLoader from '../../Redux/Selectors/loaderSelector';
+import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import { refToken } from '../../Redux/Operations/authOperation';
+import Selector from '../../Redux/Selectors/todosSelectors';
 
 const MyCabinetPage = () => {
->>>>>>> parent of bb15132 (add spinner for all pages)
+  const isVisibleLoader = useSelector(getLoader);
   const state = useSelector(Selector.getErrorRefToken);
   const dispatch = useDispatch();
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(hideSpinner());
+    }, 1500);
+    return () => {
+      dispatch(showSpinner());
+    };
+  }, [dispatch]);
+
   if (state === 401) {
     dispatch(refToken());
     console.log('была ошибка 401');
@@ -32,25 +29,17 @@ const MyCabinetPage = () => {
 
   return (
     <>
-<<<<<<< HEAD
       {isVisibleLoader ? (
         <Spinner />
       ) : (
         <>
           <HeaderPage />
-    <ButtonOpenTeamModal />
+          <ButtonOpenTeamModal />
           <DashboardList />
         </>
-      )})
-}
->>>>>>> parent of d4438f0 (add fix)
-
-=======
-      <HeaderPage />
-      {/*<ExitButton />*/}
-      <DashboardList />
+      )}{' '}
     </>
   );
 };
->>>>>>> parent of bb15132 (add spinner for all pages)
+
 export default MyCabinetPage;
