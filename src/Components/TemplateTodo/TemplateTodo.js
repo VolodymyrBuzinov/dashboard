@@ -154,7 +154,7 @@ const TemplateTodo = ({ category, difficulty, time, title, id }) => {
             </>
           ) : (
             <>
-              <InputTodo getInputText={updateState} />
+              <InputTodo title={title} isEdit={edit} getInputText={updateState} />
               <DateAndTimePickers getDate={updateState} />
             </>
           )}
