@@ -2,12 +2,11 @@ import { Redirect, Switch } from 'react-router';
 import { Suspense, lazy, useEffect } from 'react';
 import PublicRoute from './PublicRoutes';
 import PrivateRoute from './PrivateRoutes';
-// import s from './Router.module.scss';
-// import Loader from 'react-loader-spinner';
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVerify } from '../Redux/Selectors/authSelectors';
-import { getCurrentUser } from '../Redux/Operations/authOperation';
+import Selector from '../Redux/Selectors/todosSelectors';
+import { error } from '../Redux/Selectors/authSelectors';
+import { refToken, getCurrentUser } from '../Redux/Operations/authOperation';
 
 const LoginPage = lazy(() =>
   import('../Pages/LoginPage/LoginPage' /*webpackChunkName: "LoginPage"*/),
@@ -34,10 +33,17 @@ function Router() {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
+  const stateTodo = useSelector(Selector.getErrorRefToken);
+  const stateAuth = useSelector(error);
+  if (stateTodo || stateAuth === 401) {
+    dispatch(refToken());
+    setTimeout(() => {
+      dispatch(getCurrentUser());
+    }, 1000);
+  }
+
   return (
-    <Suspense
-      fallback={null}
-    >
+    <Suspense fallback={null}>
       <Switch>
         <PublicRoute
           exact
