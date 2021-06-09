@@ -31,7 +31,7 @@ const INITIAL_STATE = {
   difficulty: LIST_LEVEL[0],
 };
 
-const TemplateTodo = ({ category, difficulty, time, title }) => {
+const TemplateTodo = ({ category, difficulty, time, title, id }) => {
   const categoryToLowerCase = category && category.toLowerCase();
   const difficultyToLowerCase = difficulty && difficulty.toLowerCase();
   const isVisible = useSelector(isVisibleTemplate);
@@ -74,7 +74,7 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
       dispatch(editTodo(true));
       setEdit(true);
     }
-  }, []);
+  }, []);  
 
   const acceptChanges = () => {
     dispatch(onClickBtnCreate(false));
@@ -204,8 +204,10 @@ const TemplateTodo = ({ category, difficulty, time, title }) => {
       {showModalDelete && (
         <Modal onClose={toggleModalDelete} type="delete">
           <ModalWindow
+          id={id}
             isOpened={toggleModalDelete}
             question="Delete this Quest?"
+            acceptChanges={acceptChanges}
           />
         </Modal>
       )}

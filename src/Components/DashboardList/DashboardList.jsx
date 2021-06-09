@@ -25,7 +25,7 @@ const DashboardList = () => {
 
   useEffect(() => {
     dispatch(todoOperations.fetchTodos());
-  }, [dispatch, isVisible]);
+  }, [dispatch, isVisible, edit]);
   const todos = useSelector(todoSelectors.getAllTodos);
 
   const onClick = () => {
@@ -94,6 +94,7 @@ const DashboardList = () => {
                           title={title}
                           time={time}
                           challenge={challenge}
+                          id={_id}
                         />
                       </DashboardListItem>
                     ),

@@ -2,13 +2,16 @@ import style from './ModalWindow.module.scss';
 import { useDispatch } from 'react-redux';
 import todosOperations from '../../Redux/Operations/todosOperations';
 import Button from '../Button/Button';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 
-const ModalWindow = ({ id, isOpened, question }) => {
+const ModalWindow = ({ id, isOpened, question, acceptChanges }) => {
   const dispatch = useDispatch();
 
   const handleRemoveTask = () => {
     dispatch(todosOperations.deleteTodo(id));
     isOpened();
+    dispatch(editTodo(false));
+    acceptChanges()
   };
 
   return (
