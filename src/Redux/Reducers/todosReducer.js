@@ -1,13 +1,16 @@
-import { createReducer } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import todosActions  from "../Actions/todosActions";
+import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
+import todosActions from '../Actions/todosActions';
 
 const items = createReducer([], {
   [todosActions.fetchTodoSuccess]: (_, { payload }) => payload,
   [todosActions.addTodoSuccess]: (state, { payload }) => [payload, ...state],
-
+  [todosActions.updateTodoeSuccess]: (state, { payload }) =>
+    state.filter(({ _id }) => _id !== payload),
+  [todosActions.updateTodoStatusDoneSuccess]: (state, { payload }) =>
+    state.filter(({ _id }) => _id !== payload),
   [todosActions.deleteTodoSuccess]: (state, { payload }) =>
-    state.filter(({ id }) => id !== payload),
+    state.filter(({ _id }) => _id !== payload),
 });
 
 const loading = createReducer(false, {
@@ -18,6 +21,14 @@ const loading = createReducer(false, {
   [todosActions.addTodoRequest]: () => true,
   [todosActions.addTodoSuccess]: () => false,
   [todosActions.addTodoError]: () => false,
+
+  [todosActions.updateTodoeRequest]: () => true,
+  [todosActions.updateTodoeSuccess]: () => false,
+  [todosActions.updateTodoeError]: () => false,
+
+  [todosActions.updateTodoStatusDoneRequest]: () => true,
+  [todosActions.updateTodoStatusDoneSuccess]: () => false,
+  [todosActions.updateTodoStatusDoneError]: () => false,
 
   [todosActions.deleteTodoRequest]: () => true,
   [todosActions.deleteTodoSuccess]: () => false,
@@ -39,8 +50,8 @@ const refreshTokenError = createReducer('', {
   [todosActions.clearTodoError]: (_, { payload }) => payload,
 });
 export default combineReducers({
-    items,
-    loading,
-    error,
-    refreshTokenError
+  items,
+  loading,
+  error,
+  refreshTokenError,
 });

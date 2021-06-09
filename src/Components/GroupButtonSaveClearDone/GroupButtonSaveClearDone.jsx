@@ -1,23 +1,24 @@
 import style from './GroupButtonSaveClearDone.module.scss';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
-import exp from '../../Redux/Operations/templateOperations';
-import todoOperations from '../../Redux/Operations/todosOperations';
+import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
-
 export default function GroupButtonSaveClearDone({
-  isEditTodo,
-  isVisible,
-  acceptChanges,
+  isEdit,
+  isCreate,
+  // cancelСhanges,
   toggleModalDelete,
   state,
+  id,
 }) {
   const dispatch = useDispatch();
 
-  // const handleClickElementClear = () => {
-  //   console.log('run handleClickElementClear');
-  // };
+  const cancelСhanges = () => {
+    // это будет пропс
+    console.log('run cancelСhanges');
+  };
+
   const handleClickElementCreate = () => {
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
@@ -27,29 +28,57 @@ export default function GroupButtonSaveClearDone({
       difficulty: difficultyToUpperCase,
     });
     dispatch(
-      exp.createTemplate({
+      exp.addTodo({
         ...state,
         category: categoryToUpperCase,
         difficulty: difficultyToUpperCase,
       }),
     );
-    // dispatch(todoOperations.fetchTodos());
     dispatch(onClickBtnCreate(false));
     dispatch(editTodo(false));
   };
+
   const handleClickElementSave = () => {
     console.log('run handleClickElementSave');
+    const categoryToUpperCase = state.category.toUpperCase();
+    const difficultyToUpperCase = state.difficulty.toUpperCase();
+    console.log({
+      ...state,
+      category: categoryToUpperCase,
+      difficulty: difficultyToUpperCase,
+    });
+
+    dispatch(
+      exp.updateTodo({
+        id,
+        ...state,
+        category: categoryToUpperCase,
+        difficulty: difficultyToUpperCase,
+      }),
+    );
+  };
+
+  const handleClickElementDone = e => {
+    console.log('run handleClickElementDone');
+    console.log(id);
+    console.log('60c13183f28402001cfb65ab');
+    dispatch(
+      exp.updateTodoStatusDone({
+        id,
+        // done: 'true',
+      }),
+    );
   };
 
   return (
     <>
-      {isVisible && (
+      {isCreate && (
         <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button
             className={style.GroupButtonSaveClearDone__ButtonSvg}
             type="button"
             content="icon-clear"
-            onClick={acceptChanges}
+            onClick={cancelСhanges}
             isActive={false}
           />
           <Button
@@ -60,8 +89,8 @@ export default function GroupButtonSaveClearDone({
           />
         </div>
       )}
-
-      {isEditTodo && !isVisible && (
+      {/* isEdit */}
+      {true && (
         <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button
             type="button"
@@ -73,7 +102,11 @@ export default function GroupButtonSaveClearDone({
             content="icon-clear"
             onClick={toggleModalDelete}
           />
-          <Button type="button" content="icon-done" onClick={acceptChanges} />
+          <Button
+            type="button"
+            content="icon-done"
+            onClick={handleClickElementDone}
+          />
         </div>
       )}
     </>

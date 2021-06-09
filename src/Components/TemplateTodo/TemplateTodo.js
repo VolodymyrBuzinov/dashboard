@@ -32,7 +32,6 @@ const INITIAL_STATE = {
 };
 
 const TemplateTodo = ({ category, difficulty, time, title, id }) => {
- 
   const categoryToLowerCase = category && category.toLowerCase();
   const difficultyToLowerCase = difficulty && difficulty.toLowerCase();
   const isVisible = useSelector(isVisibleTemplate);
@@ -155,7 +154,11 @@ const TemplateTodo = ({ category, difficulty, time, title, id }) => {
             </>
           ) : (
             <>
-              <InputTodo title={title} isEdit={edit} getInputText={updateState} />
+              <InputTodo
+                title={title}
+                isEdit={edit}
+                getInputText={updateState}
+              />
               <DateAndTimePickers getDate={updateState} />
             </>
           )}
@@ -196,6 +199,7 @@ const TemplateTodo = ({ category, difficulty, time, title, id }) => {
                   isVisible={isVisible}
                   toggleModalDelete={toggleModalDelete}
                   acceptChanges={acceptChanges}
+                  id={id}
                 />
               </div>
             </>
