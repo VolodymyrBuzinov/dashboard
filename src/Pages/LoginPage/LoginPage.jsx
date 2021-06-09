@@ -13,27 +13,25 @@ const LoginPage = () => {
       <div className={s.login_container}>
         <h1 className={s.login_title}>Questify</h1>
         <p className={s.login_description}>
-          <span>
-            Questify will turn your life into a thrilling game full of amazing
-            quests and exciting challenges.
-          </span>
+          Questify will turn your life into a thrilling game full of amazing
+          quests and exciting challenges.
         </p>
-        <p className={s.login_text}>
-          <span>
-            Choose your name to{' '}
-            <NavLink exact to="/singUpPage" className={s.login_text}>
-              <span>sign up</span>
-            </NavLink>{' '}
-            or log in Choose your name{' '}
-          </span>
-        </p>
+        <div className={s.login_textContainer}>
+          <span className={s.login_text}>Choose your name to</span>
+          <NavLink exact to="/singUpPage" className={s.registr_navLink}>
+            <span className={s.registr_link}>sign up</span>
+          </NavLink>
+          <span className={s.login_text}>or log in</span>
+        </div>
 
         <RegisterForm />
       </div>
+      <div className={s.login_pictureBlock}>
+        <img src={bgMobile} alt="background" className={s.login_bgMobile} />
+        <img src={bgMobile2} alt="background" className={s.login_bgMobile} />
+      </div>
       <img src={pic1} alt="background" className={s.login_loginPic} />
       <img src={pic2} alt="background" className={s.login_loginPicture} />
-      <img src={bgMobile} alt="background" className={s.login_bgMobile} />
-      <img src={bgMobile2} alt="background" className={s.login_bgMobile} />
     </section>
   );
 };
