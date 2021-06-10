@@ -8,6 +8,7 @@ import getLoader from '../../Redux/Selectors/loaderSelector';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import { refToken } from '../../Redux/Operations/authOperation';
 import Selector from '../../Redux/Selectors/todosSelectors';
+import { useTransition, animated } from 'react-spring';
 
 const MyCabinetPage = () => {
   const isVisibleLoader = useSelector(getLoader);
@@ -26,17 +27,32 @@ const MyCabinetPage = () => {
     dispatch(refToken());
     console.log('была ошибка 401');
   }
+  const transitions = useTransition(true, {
+    from: { opacity: 0, transform: 'translateY(-100%)' },
+    enter: {
+      opacity: 1,
+      transform: 'translateY(0)',
+      transition: 'all 300ms ease-in',
+    },
+    leave: { opacity: 0, transform: 'translateY(-100%)' },
+    delay: 1500,
+  });
 
   return (
     <>
       {isVisibleLoader ? (
         <Spinner />
       ) : (
-        <>
-          <HeaderPage />
-          <ButtonOpenTeamModal />
-          <DashboardList />
-        </>
+        transitions(
+          (styles, item) =>
+            item && (
+              <animated.div style={styles}>
+                <HeaderPage />
+                <ButtonOpenTeamModal />
+                <DashboardList />
+              </animated.div>
+            ),
+        )
       )}{' '}
     </>
   );
