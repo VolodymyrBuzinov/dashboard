@@ -10,7 +10,8 @@ import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import getLoader from '../../Redux/Selectors/loaderSelector';
 import { useEffect } from 'react';
 import Spinner from '../../Components/Spinner/Spinner';
-import { useTransition, animated } from 'react-spring';
+import { animated } from 'react-spring';
+import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
 
 export default function VerifyPage() {
   const isVisibleLoader = useSelector(getLoader);
@@ -31,16 +32,8 @@ export default function VerifyPage() {
     onLogout();
   }, 5000);
 
-  const transitions = useTransition(true, {
-    from: { opacity: 0, transform: 'translateY(-100%)' },
-    enter: {
-      opacity: 1,
-      transform: 'translateY(0)',
-      transition: 'all 150ms',
-    },
-    leave: { opacity: 0, transform: 'translateY(-100%)' },
-    delay: 1450,
-  });
+  const transitions = RouteTransition();
+
   return (
     <>
       {isVisibleLoader ? (

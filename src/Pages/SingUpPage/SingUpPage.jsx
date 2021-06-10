@@ -14,8 +14,9 @@ import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import getLoader from '../../Redux/Selectors/loaderSelector';
-import { useTransition, animated } from 'react-spring';
+import { animated } from 'react-spring';
 import Button from '../../Components/Button/Button';
+import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
 
 const SingUpPage = () => {
   const dispatch = useDispatch();
@@ -46,16 +47,7 @@ const SingUpPage = () => {
     setPassword('');
   };
 
-  const transitions = useTransition(true, {
-    from: { opacity: 0, transform: 'translateY(-100%)' },
-    enter: {
-      opacity: 1,
-      transform: 'translateY(0)',
-      transition: 'all 150ms',
-    },
-    leave: { opacity: 0, transform: 'translateY(-100%)' },
-    delay: 1450,
-  });
+  const transitions = RouteTransition();
 
   const sendFollowUpLetter = e => {
     e.preventDefault();

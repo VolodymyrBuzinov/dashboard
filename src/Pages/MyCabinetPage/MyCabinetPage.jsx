@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import getLoader from '../../Redux/Selectors/loaderSelector';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
-import { useTransition, animated } from 'react-spring';
+import { animated } from 'react-spring';
+import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
 
 const MyCabinetPage = () => {
   const isVisibleLoader = useSelector(getLoader);
@@ -20,16 +21,7 @@ const MyCabinetPage = () => {
     };
   }, [dispatch]);
 
-  const transitions = useTransition(true, {
-    from: { opacity: 0, transform: 'translateY(-100%)' },
-    enter: {
-      opacity: 1,
-      transform: 'translateY(0)',
-      transition: 'all 150ms',
-    },
-    leave: { opacity: 0, transform: 'translateY(-100%)' },
-    delay: 1450,
-  });
+  const transitions = RouteTransition();
 
   return (
     <>

@@ -11,7 +11,8 @@ import getLoader from '../../Redux/Selectors/loaderSelector';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Spinner from '../../Components/Spinner/Spinner';
-import { useTransition, animated } from 'react-spring';
+import { animated } from 'react-spring';
+import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -25,17 +26,7 @@ const LoginPage = () => {
     };
   }, [dispatch]);
 
-  const transitions = useTransition(true, {
-    from: { opacity: 0, transform: 'translateY(-100%)' },
-    enter: {
-      opacity: 1,
-      transform: 'translateY(0)',
-      transition: 'all 150ms',
-    },
-    leave: { opacity: 0, transform: 'translateY(-100%)' },
-    delay: 1450,
-  });
-
+  const transitions = RouteTransition();
   return (
     <>
       {isVisibleLoader ? (
