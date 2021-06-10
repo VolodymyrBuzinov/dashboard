@@ -6,12 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import getLoader from '../../Redux/Selectors/loaderSelector';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
-import { refToken } from '../../Redux/Operations/authOperation';
-import Selector from '../../Redux/Selectors/todosSelectors';
+import { animated } from 'react-spring';
+import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
 
 const MyCabinetPage = () => {
   const isVisibleLoader = useSelector(getLoader);
-  const state = useSelector(Selector.getErrorRefToken);
   const dispatch = useDispatch();
   useEffect(() => {
     setTimeout(() => {
@@ -22,21 +21,23 @@ const MyCabinetPage = () => {
     };
   }, [dispatch]);
 
-  if (state === 401) {
-    dispatch(refToken());
-    console.log('была ошибка 401');
-  }
+  const transitions = RouteTransition();
 
   return (
     <>
       {isVisibleLoader ? (
         <Spinner />
       ) : (
-        <>
-          <HeaderPage />
-          <ButtonOpenTeamModal />
-          <DashboardList />
-        </>
+        transitions(
+          (styles, item) =>
+            item && (
+              <animated.div style={styles}>
+                <HeaderPage />
+                <ButtonOpenTeamModal />
+                <DashboardList />
+              </animated.div>
+            ),
+        )
       )}{' '}
     </>
   );
