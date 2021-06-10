@@ -38,10 +38,10 @@ const DashboardList = () => {
   const challengeList = [];
  
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
-  console.log("todayList", todayList);
+  /*console.log("todayList", todayList);
   console.log("tomorrowList", tomorrowList);
   console.log("doneList", doneList);
-  console.log("challengeList", challengeList);
+  console.log("challengeList", challengeList);*/
   return (
     <>
       <main className={s.todoListMain}>

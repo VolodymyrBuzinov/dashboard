@@ -3,6 +3,7 @@
 .Btn {
   display: flex;
   align-items: center;
+
   position: relative;
 
   &.visible {
@@ -38,11 +39,6 @@
   color: $text-color;
   margin-right: 7px;
   cursor: default;
-  font-size: 14px;
-  line-height: 1;
-  @media screen and (min-width: 768px) {
-    font-size: 11px;
-  }
 
   &.visible {
     cursor: pointer;
@@ -51,33 +47,11 @@
   &.difficulty {
     text-transform: lowercase;
     color: $secondary-text;
-    font-size: 16px;
-    @media screen and (min-width: 768px) {
-      font-size: 14px;
-    }
     &::first-letter {
       text-transform: uppercase;
     }
   }
 
   &.category {
-    /*&.family {
-      background: $family-color;
-    }
-    &.health {
-      background: $healt-color;
-    }
-    &.learning {
-      background: $learning-color;
-    }
-    &.leisure {
-      background: $leisure-color;
-    }
-    &.work {
-      background: $work-color;
-    }
-    &.active {
-      background: $active-color;
-    }*/
   }
 }
