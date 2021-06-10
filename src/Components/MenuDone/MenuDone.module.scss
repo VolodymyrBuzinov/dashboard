@@ -59,6 +59,7 @@
 }
 
 .icon {
+  transition: $animation-timing;
   transform: rotate(180deg);
   margin-left: 10px;
   width: 12px;

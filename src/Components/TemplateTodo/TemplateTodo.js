@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
@@ -11,7 +11,7 @@ import InputTodo from '../InputTodo/InputTodo.jsx';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
-import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
+import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -31,8 +31,13 @@ const INITIAL_STATE = {
   title: null,
 };
 
-const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle}) => {
-   
+const TemplateTodo = ({
+  isEdit,
+  editCategory,
+  editDifficulty,
+  editTime,
+  editTitle,
+}) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
   const [category, setСategory] = useState(INITIAL_STATE.category);
@@ -40,18 +45,18 @@ const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle
   const [time, setTime] = useState(INITIAL_STATE.time);
   const [title, setTitle] = useState(INITIAL_STATE.title);
 
-  const dispatch  =useDispatch();
+  const dispatch = useDispatch();
 
-  useEffect(()=> {
-    if(isEdit){  
-      setСategory(editCategory)
-      setDifficulty(editDifficulty)
-      setTime(editTime)
-      setTitle(editTitle)
+  useEffect(() => {
+    if (isEdit) {
+      setСategory(editCategory);
+      setDifficulty(editDifficulty);
+      setTime(editTime);
+      setTitle(editTitle);
     }
-  })
+  }, [editCategory, editDifficulty, editTime, editTitle, isEdit]);
 
-  const cancelСhanges=() => dispatch(onClickBtnCreate(false))
+  const cancelСhanges = () => dispatch(onClickBtnCreate(false));
 
   return (
     <div className={style.TemplateTodo}>
@@ -60,13 +65,13 @@ const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle
           <div className="button">
             <ButtonOpenModal
               type="difficulty"
-              title={ difficulty}
+              title={difficulty}
               onClick={() => toggleModal('difficulty', setShowModalLevel)}
               isEdit={true}
             >
               {showModalLevel && (
                 <Modal
-                type='level'
+                  type="level"
                   onClose={() => toggleModal('difficulty', setShowModalLevel)}
                 >
                   <Level
@@ -85,10 +90,13 @@ const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
-
-          <InputTodo isEdit={isEdit} title={isEdit && title} getInputText={handleChangeState} cb={setTitle} />
+          <InputTodo
+            isEdit={isEdit}
+            title={isEdit && title}
+            getInputText={handleChangeState}
+            cb={setTitle}
+          />
           <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
-
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
@@ -116,11 +124,10 @@ const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle
             </ButtonOpenModal>
           </div>
 
-
           <div className={style.TemplateTodo__ButtonGroup}>
             <GroupButtonSaveClearDone
               isCreate={!isEdit && true}
-              isEdit ={isEdit && true}
+              isEdit={isEdit && true}
               category={category}
               difficulty={difficulty}
               title={title}
@@ -128,7 +135,6 @@ const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle
               cancelСhanges={cancelСhanges}
             />
           </div>
-
         </div>
       </div>
     </div>
