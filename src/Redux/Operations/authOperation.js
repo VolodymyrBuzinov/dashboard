@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { AxiosToken, BaseURL } from '../../Api/AxiosToken';
 
 import {
@@ -52,6 +53,7 @@ const registerAuth = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/signup', credentials);
     dispatch(registerSuccess(response.data.data));
+    toast.info('You are successfully registered!')
   } catch (error) {
     dispatch(registerError(error.message));
   }
@@ -65,6 +67,7 @@ const loginAuth = credentials => async dispatch => {
     AxiosToken().set(response.data.data.token);
     dispatch(refreshTokenAction(response.data.data.refreshToken));
     dispatch(loginSuccess(response.data.data));
+    toast.info('Welcam to Questify!')
   } catch (error) {
     dispatch(loginError(error.message));
   }
@@ -76,6 +79,7 @@ const logOutAuth = () => async dispatch => {
     await axios.post('/users/logout');
     AxiosToken().unset();
     dispatch(logoutSuccess());
+    toast.info('You are successfully logOut!')
   } catch (error) {
     dispatch(logoutError(error.response.status));
   }
@@ -86,6 +90,7 @@ const reVerificationt = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/verify', credentials);
     dispatch(reVerificationtUserSuccess(response.data.data));
+    toast.info('Reverification email has been sent to you.')
   } catch (error) {
     dispatch(reVerificationtUserError(error.message));
   }
@@ -111,6 +116,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
 const verify = eve => async dispatch => {
   try {
     dispatch(getVerifyUserSuccess(eve));
+    toast.info('Verification email has been sent to you.')
   } catch (error) {
     dispatch(getVerifyUserError(error.message));
   }
