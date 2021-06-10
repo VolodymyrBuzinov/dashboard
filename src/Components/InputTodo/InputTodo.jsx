@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import style from './InputTodo.module.scss';
 
-export default function InputTodo({ title, getInputText }) {
-  
+export default function InputTodo({ title, getInputText, cb }) {
   const [inputText, setinputText] = useState(null);
 
   const handleInputChange = date => {
@@ -17,14 +16,16 @@ export default function InputTodo({ title, getInputText }) {
         type="text"
         name="title"
         required
-        value={inputText===null ? title: inputText}
+        value={inputText === null ? title : inputText}
         onChange={handleInputChange}
         onBlur={() => {
-          getInputText('title', inputText);
+          getInputText('title', inputText, cb);
         }}
       />
       <span className={style.InputTodo__bar}></span>
-      <label className={style.InputTodo__label}>{`${title ? "EDIT QUEST": "CREATE NEW QUEST"} `}</label>
+      <label className={style.InputTodo__label}>{`${
+        title ? 'EDIT QUEST' : 'CREATE NEW QUEST'
+      } `}</label>
     </form>
   );
 }

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import style from './DateAndTimePickers.module.scss';
 
-export default function DateAndTimePickers({ getDate }) {
-  const [selectedDate, setSelectedDate] = useState("");
+export default function DateAndTimePickers({ getDate, cb }) {
+  const [selectedDate, setSelectedDate] = useState('');
 
   const handleDateChange = date => {
     setSelectedDate(date.target.value);
@@ -14,7 +14,7 @@ export default function DateAndTimePickers({ getDate }) {
         className={
           selectedDate
             ? `${style.DateAndTimePickers__input}  ${style.active}`
-            : style.DateAndTimePickers__input 
+            : style.DateAndTimePickers__input
         }
         type="datetime-local"
         name="dateCreate"
@@ -24,7 +24,7 @@ export default function DateAndTimePickers({ getDate }) {
         value={selectedDate}
         onChange={handleDateChange}
         onBlur={() => {
-          getDate('time', selectedDate);
+          getDate('time', selectedDate, cb);
         }}
       />
     </form>
