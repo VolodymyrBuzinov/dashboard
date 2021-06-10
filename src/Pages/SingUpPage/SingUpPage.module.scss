@@ -7,13 +7,20 @@
 }
 
 .registr_section {
-  background-color: $white-color;
+  position: relative;
 }
 
 .registr_container {
   @extend %container-styles;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+  @media screen and (min-width: 421px) and (max-width: 767px) {
     padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
   }
   @media screen and (min-width: 768px) {
     padding-top: 212px;
@@ -31,7 +38,11 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: $hover-color;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
     font-size: 24px;
     line-height: 1;
   }
@@ -44,33 +55,199 @@
   }
 }
 
+.registr_caption {
+  @extend %text-throw;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: $card-bg-color;
+  @media screen and (max-width: 420px) {
+    margin-top: 30px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
+    margin-top: 10px;
+    font-size: 24px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+    font-size: 24px;
+    line-height: 0.9;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
+}
+
+.registr_textContainer {
+  display: inline-flex;
+  @media screen and (max-width: 420px) {
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 421px) {
+    margin-top: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 35px;
+  }
+}
+
 .registr_text {
   @extend %text-throw;
   color: $secondary-text;
   font-weight: 400;
-
   letter-spacing: 0.02em;
   @media screen and (max-width: 767px) {
-    margin-top: 30px;
     font-size: 14px;
     line-height: 3.2;
   }
   @media screen and (min-width: 768px) {
-    margin-top: 25px;
     font-size: 18px;
     line-height: 2.5;
   }
   @media screen and (min-width: 1280px) {
-    margin-top: 35px;
     font-size: 24px;
-    line-height: 1.8;  }
+    line-height: 1.8;
+  }
+}
+
+.registr_navLink {
+  text-decoration: none;
 }
 
 .registr_link {
-  // нужно убрать display: block
-  // @extend %link-throw;
-  text-decoration: none;
+  margin-left: 5px;
+  font-weight: 400;
   color: $card-bg-color;
+  letter-spacing: 0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    line-height: 3.2;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 2.5;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+    line-height: 1.8;
+  }
+}
+
+.registr_secondBtnContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register_secondaryBtn {
+  @extend %button-throw;
+  margin-left: 15px;
+  padding: 3px;
+  border: 1px solid $card-bg-color;
+  border-radius: 3px;
+  font-weight: 400;
+  color: $card-bg-color;
+  letter-spacing: 0.02em;
+  background-color: $secondary-text;
+  @media screen and (max-width: 420px) {
+    font-size: 14px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
+    font-size: 14px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+  }
+}
+
+.registr_inputContainerSend {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 15px;
+  @media screen and (max-width: 767px) {
+    bottom: -20px;
+  }
+  @media screen and (min-width: 768px) {
+    bottom: -30px;
+  }
+}
+
+.registr_inputSendLetter {
+  @extend %input-throw;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid $hover-color;
+  color: $hover-color;
+  @media screen and (max-width: 767px) {
+    height: 30px;
+    width: 140px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 198px;
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 200px;
+    margin-top: 3px;
+  }
+  &:focus + .registr_labelSendLetter {
+    transform: translateX(-100px);
+  }
+}
+
+.registr_labelSendLetter {
+  color: $hover-color;
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 7px;
+  font-weight: 300;
+  font-size: 12px;
+  transform: translateX(0);
+  transition: 0.3s linear;
+  @media screen and (max-width: 1279px) {
+    left: 0;
+  }
+  @media screen and (min-width: 1280px) {
+    left: 0px;
+  }
+}
+
+.registr_sendBtn {
+  @extend %button-throw;
+  width: 30px;
+  height: 23px;
+  background-color: $hover-color;
+}
+
+.registr_form {
+  @media screen and (max-width: 420px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  @media screen and (min-width: 421px) {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+ 
+  @media screen and (min-width: 768px) {
+    margin-top: 100px;
+    width: 298px;
+  }
+  
 }
 
 .registr_inputContainer {
@@ -78,35 +255,22 @@
   overflow: hidden;
 }
 
-.registr_label {
-  color: $hover-color;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 0.9;
-  transform: translateX(0);
-  transition: 0.3s linear;
-}
-
 .registr_input {
   @extend %input-throw;
   padding: 0;
-  height: 38px;
   border: none;
   border-bottom: 1px solid $hover-color;
   color: $hover-color;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
     width: 100%;
-    margin-top: 10px;
+    height: 30px;
   }
-  @media screen and (min-width: 768px) {
-    width: 198px;
+  @media screen and (min-width: 421px) {
+    width: 100%;
+    height: 38px;
     margin-top: 10px;
   }
   @media screen and (min-width: 1280px) {
-    width: 196px;
     margin-top: 3px;
   }
   &:focus + .registr_label {
@@ -114,12 +278,54 @@
   }
 }
 
-.registr_bgMobile {
-  // @extend %img-styles;
-
+.registr_label {
+  color: $hover-color;
   position: absolute;
   bottom: 0;
-  @media screen and (max-width: 767px) {
+  padding-bottom: 7px;
+  font-weight: 300;
+  line-height: 0.9;
+  transform: translateX(0);
+  transition: 0.3s linear;
+  @media screen and (max-width: 420px) {
+    left: 0;
+    font-size: 16px;
+  }
+  @media screen and (min-width: 421px) {
+    left: 0;
+    font-size: 18px;
+  }
+  @media screen and (min-width: 768px) {
+    left: 0;
+  }
+}
+
+.registr_btn {
+  display: flex;
+  @media screen and (max-width: 420px) {
+    justify-content: center;
+    margin-top: 50px;
+  }
+  @media screen and (min-width: 421px) {
+    justify-content: end;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+}
+
+.registr_pictureBlock {
+  position: relative;
+}
+
+.registr_bgMobile {
+  position: absolute;
+  @media screen and (max-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 321px) {
+    bottom: -100px;
     left: 0;
   }
   @media screen and (min-width: 768px) {
@@ -128,8 +334,6 @@
 }
 
 .registr_loginPic {
-  // @extend %img-styles;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -142,18 +346,16 @@
 }
 
 .registr_loginPicture {
-  // @extend %img-styles;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: -200px;
+    bottom: 40px;
     right: 0;
     pointer-events: none;
   }
   @media screen and (min-width: 1280px) {
-    bottom: -120px;
+    bottom: -100px;
   }
 }

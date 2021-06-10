@@ -10,10 +10,6 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== payload),
 });
 
-/*const filter = createReducer('', {
-    [todosActions.changeFilter]: (_, { payload }) => payload,
-});*/
-
 const loading = createReducer(false, {
   [todosActions.fetchTodoRequest]: () => true,
   [todosActions.fetchTodoSuccess]: () => false,
@@ -44,7 +40,6 @@ const refreshTokenError = createReducer('', {
 });
 export default combineReducers({
     items,
-    //filter,
     loading,
     error,
     refreshTokenError

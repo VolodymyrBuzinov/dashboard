@@ -47,8 +47,10 @@
   color: $active-color;
   position: absolute;
   pointer-events: none;
-  left: 25px;
+  left: 50%;
+  transform: translateX(-50%);
   top: 15px;
+  white-space: nowrap;
   transition: $animation-timing;
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
