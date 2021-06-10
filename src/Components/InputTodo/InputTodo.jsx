@@ -16,7 +16,7 @@ export default function InputTodo({ title, getInputText, cb, isEdit }) {
         type="text"
         name="title"
         required
-        value={isEdit ? title : inputText}
+        value={!isEdit ? title : inputText}
         onChange={handleInputChange}
         onBlur={() => {
           getInputText('title', inputText, cb);

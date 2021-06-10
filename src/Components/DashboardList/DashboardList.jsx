@@ -1,24 +1,15 @@
-import {
-  useEffect,
-  //useState
-} from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
-//import { editTodo } from '../../Redux/Actions/editTodo-action';
-import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-import isEdit from '../../Redux/Selectors/editTodoSelector';
-
 import s from './DashboardList.module.scss';
 import sorter from '../DashboardList/sorter';
-
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from '../EmptyTodos/EmptyTodods';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
-import Button from '../Button/Button';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -75,9 +66,8 @@ const DashboardList = () => {
                           title={title}
                           time={time}
                           challengeStyle={challenge}
-                        >
                           id={_id}
-                        </DashboardListItem>
+                        />
                       </li>
                     ),
                   )}
@@ -97,9 +87,8 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         challengeStyle={challenge}
-                      >
                         id={_id}
-                      </DashboardListItem>
+                      />
                     </li>
                   ),
                 )}
@@ -119,7 +108,7 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         challengeStyle={challenge}
-                      ></DashboardListItem>
+                      />
                     </li>
                   ),
                 )}

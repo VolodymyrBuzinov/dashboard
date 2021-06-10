@@ -12,8 +12,8 @@ function DashboardListItem({
   time,
   category,
   difficulty,
-  children,
   challengeStyle,
+  onEdit,
 }) {
   const [challenge, setChallenge] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
@@ -31,7 +31,10 @@ function DashboardListItem({
   return (
     <>
       {!edit ? (
-        <div className={challenge ? s.todoItem__challenge : s.todoItem}>
+        <div
+          className={challenge ? s.todoItem__challenge : s.todoItem}
+          onClick={() => setEdit(true)}
+        >
           <div className={s.todoItemСomplexity}>
             <div className={s.todoItemDiv}>
               <div className={`${s.todoItemСircle} ${s[lowDifficulty]}`}></div>
@@ -77,7 +80,11 @@ function DashboardListItem({
               onClose={() => toggleModal('delete', setShowModalDelete)}
               type="delete"
             >
-              <ModalWindow id={id} />
+              <ModalWindow
+                id={id}
+                question={'Delete this Quest?'}
+                isOpened={() => toggleModal('delete', setShowModalDelete)}
+              />
             </Modal>
           )}
         </div>
