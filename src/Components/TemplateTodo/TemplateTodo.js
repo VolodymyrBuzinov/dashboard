@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {useDispatch} from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
@@ -10,6 +11,7 @@ import InputTodo from '../InputTodo/InputTodo.jsx';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 import toggleModal from './togleModal';
 import handleChangeState from './handleChangeState';
+import ononClickBtnCreate, { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
 
 const LIST_CATEGORY = [
   'stuff',
@@ -36,6 +38,10 @@ const TemplateTodo = () => {
   const [difficulty, setDifficulty] = useState(INITIAL_STATE.difficulty);
   const [time, setTime] = useState(INITIAL_STATE.time);
   const [title, setTitle] = useState(INITIAL_STATE.title);
+
+  const dispatch  =useDispatch();
+
+  const cancelСhanges=() => dispatch(onClickBtnCreate(false))
 
   return (
     <li key="template" className={style.TemplateTodo}>
@@ -108,6 +114,7 @@ const TemplateTodo = () => {
               difficulty={difficulty}
               title={title}
               time={time}
+              cancelСhanges={cancelСhanges}
             />
           </div>
 
