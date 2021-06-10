@@ -19,6 +19,7 @@ import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from '../EmptyTodos/EmptyTodods';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import Button from '../Button/Button';
+import CardDone from './CardDone/CardDone';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -75,12 +76,13 @@ const DashboardList = () => {
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
                       <li key={_id}>
+                        <CardDone id={_id} titleTodo={title}/>
                         <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challengeStyle={challenge}>
                            id={_id}
+                          challengeStyle={challenge}>
                       </DashboardListItem>
                       </li>
                     ),
@@ -95,14 +97,14 @@ const DashboardList = () => {
                 {tomorrowList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-
+                        <CardDone id={_id} titleTodo={title}/>
                         <DashboardListItem 
                           category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challengeStyle={challenge}>
                           id={_id}
+                          challengeStyle={challenge}>
                       </DashboardListItem>
                       </li>
                   ),
@@ -117,11 +119,13 @@ const DashboardList = () => {
                 {challengeList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
+                      <CardDone id={_id} titleTodo={title}/>
                       <DashboardListItem
                         category={category}
                         difficulty={difficulty}
                         title={title}
                         time={time}
+                        id={_id}
                         challengeStyle={challenge}
                       ></DashboardListItem>
                     </li>

@@ -8,15 +8,25 @@
   align-items: center;
   //   transform: translateY(-105%);
   transition: all 300ms ease-in;
-  background: red;
+  background: #ffffff;
 
   padding-top: 19px;
   padding-bottom: 15px;
   padding-left: 17px;
   padding-right: 18px;
-  width: 100%;
-  height: 100%;
   border-radius: 10px;
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    height: 260px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 205px;
+    height: 199px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 205px;
+    height: 199px;
+  }
 }
 .iconFon {
   margin-top: 10px;
