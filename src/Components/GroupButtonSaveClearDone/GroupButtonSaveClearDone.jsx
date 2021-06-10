@@ -4,29 +4,26 @@ import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
+
 export default function GroupButtonSaveClearDone({
   isEdit,
   isCreate,
-  // cancelСhanges,
   toggleModalDelete,
-  state,
+  category,
+  difficulty,
+  title,
+  time,
   id,
+  cancelСhanges,
 }) {
-  const dispatch = useDispatch();
+  const state = { category, difficulty, title, time };
 
-  const cancelСhanges = () => {
-    // это будет пропс
-    console.log('run cancelСhanges');
-  };
+  const dispatch = useDispatch();
 
   const handleClickElementCreate = () => {
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
-    console.log({
-      ...state,
-      category: categoryToUpperCase,
-      difficulty: difficultyToUpperCase,
-    });
+
     dispatch(
       exp.addTodo({
         ...state,
@@ -94,7 +91,7 @@ export default function GroupButtonSaveClearDone({
         </div>
       )}
       {/* isEdit */}
-      {true && (
+      {isEdit && (
         <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button
             type="button"

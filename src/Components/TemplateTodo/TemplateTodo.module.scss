@@ -79,17 +79,28 @@
 }
 
 .TemplateTodo__ButtonBgc {
+  position: relative;
+  display: flex;
+  height: 35px;
+  @media screen and (min-width: 768px) {
+    height: 25px;
+  }
   &::before {
     content: ' ';
     display: block;
-    width: 88px;
-    height: 20px;
+    width: 120px;
+    height: 35px;
+    @media screen and (min-width: 768px) {
+      width: 88px;
+      height: 25px;
+    }
     background-color: $secondary-text;
     border-radius: 0px 15px 15px 0px;
 
     position: absolute;
     left: 0;
-    transform: translateY(-1px);
+    bottom: 0;
+    transform: translateX(-21px);
   }
   &.family::before {
     background: $family-color;
