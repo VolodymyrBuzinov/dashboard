@@ -39,11 +39,6 @@ const DashboardList = () => {
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
 
-  //   console.log("todayList", todayList);
-  //   console.log("tomorrowList", tomorrowList);
-  //   console.log("doneList", doneList);
-  //   console.log("challengeList", challengeList);
-
   return (
     <>
       <main className={s.todoListMain}>
@@ -52,9 +47,7 @@ const DashboardList = () => {
             tomorrowList.length === 0 &&
             challengeList.length === 0 &&
             !isVisible && (
-              <>
                 <EmptyTodos />
-              </>
             )}
           {todayList.length > 0 || isVisible ? (
             <>
@@ -68,6 +61,7 @@ const DashboardList = () => {
                 {todayList.length > 0 &&
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
+                      <div className={s.menu}>
                       <li key={_id}>
                         <DashboardListItem
                           category={category}
@@ -75,10 +69,10 @@ const DashboardList = () => {
                           title={title}
                           time={time}
                           challengeStyle={challenge}
-                        >
                           id={_id}
-                        </DashboardListItem>
-                      </li>
+                        />
+                        </li>
+                        </div>
                     ),
                   )}
               </ul>
@@ -97,9 +91,8 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         challengeStyle={challenge}
-                      >
                         id={_id}
-                      </DashboardListItem>
+                      />
                     </li>
                   ),
                 )}
@@ -119,7 +112,8 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         challengeStyle={challenge}
-                      ></DashboardListItem>
+                        id={_id}
+                      />
                     </li>
                   ),
                 )}
