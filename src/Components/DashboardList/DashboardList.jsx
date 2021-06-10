@@ -76,7 +76,7 @@ const DashboardList = () => {
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
                       <li key={_id}>
-                        {/* <CardDone id={_id} titleTodo={title}/> */}
+                        <CardDone id={_id} titleTodo={title}/>
                         <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
@@ -97,7 +97,7 @@ const DashboardList = () => {
                 {tomorrowList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-                        {/* <CardDone id={_id} titleTodo={title}/> */}
+                        <CardDone id={_id} titleTodo={title}/>
                         <DashboardListItem 
                           category={category}
                           difficulty={difficulty}
@@ -119,7 +119,7 @@ const DashboardList = () => {
                 {challengeList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-                      {/* <CardDone id={_id} titleTodo={title}/> */}
+                      <CardDone id={_id} titleTodo={title}/>
                       <DashboardListItem
                         category={category}
                         difficulty={difficulty}
