@@ -89,13 +89,14 @@ const SingUpPage = () => {
               </NavLink>
 
               <div className={s.registr_secondBtnContainer}>
-                <button
+                {/* <button
                   type="button"
                   className={s.register_secondaryBtn}
                   onClick={sendFollowUpLetter}
                 >
                   Send a follow-up letter
-                </button>
+                </button> */}
+                <p>Send a follow-up letter</p>
 
                 <div className={s.registr_inputContainerSend}>
                   <input
@@ -106,9 +107,7 @@ const SingUpPage = () => {
                     value={reEmail}
                     onChange={emailFunc}
                   />
-                  {/* <button className={s.registr_sendBtn} type="button">
-                Go
-              </button> */}
+                  <button className={s.registr_sendBtn} type="button" onClick={sendFollowUpLetter}></button>
                   {!reEmail && (
                     <label
                       htmlFor="email"
