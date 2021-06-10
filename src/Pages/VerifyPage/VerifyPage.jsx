@@ -10,6 +10,7 @@ import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import getLoader from '../../Redux/Selectors/loaderSelector';
 import { useEffect } from 'react';
 import Spinner from '../../Components/Spinner/Spinner';
+import { useTransition, animated } from 'react-spring';
 
 export default function VerifyPage() {
   const isVisibleLoader = useSelector(getLoader);
@@ -29,26 +30,44 @@ export default function VerifyPage() {
   setTimeout(() => {
     onLogout();
   }, 5000);
+
+  const transitions = useTransition(true, {
+    from: { opacity: 0, transform: 'translateY(-100%)' },
+    enter: {
+      opacity: 1,
+      transform: 'translateY(0)',
+      transition: 'all 150ms',
+    },
+    leave: { opacity: 0, transform: 'translateY(-100%)' },
+    delay: 1450,
+  });
   return (
     <>
       {isVisibleLoader ? (
         <Spinner />
       ) : (
-        <section className={s.login_section}>
-          <div className={s.login_container}>
-            <h1 className={s.login_title}>Questify</h1>
-            <p className={s.login_description}>
-              Congratulations, email verification was successful.
-            </p>
-            <p className={s.login_text}>
-              in 5 seconds you will be redirected to the Home page
-            </p>
-          </div>
-          <img src={pic1} alt="" className={s.login_loginPic} />
-          <img src={pic2} alt="" className={s.login_loginPicture} />
-          <img src={bgMobile} alt="" className={s.login_bgMobile} />
-          <img src={bgMobile2} alt="" className={s.login_bgMobile} />
-        </section>
+        transitions(
+          (styles, item) =>
+            item && (
+              <animated.div style={styles}>
+                <section className={s.login_section}>
+                  <div className={s.login_container}>
+                    <h1 className={s.login_title}>Questify</h1>
+                    <p className={s.login_description}>
+                      Congratulations, email verification was successful.
+                    </p>
+                    <p className={s.login_text}>
+                      in 5 seconds you will be redirected to the Home page
+                    </p>
+                  </div>
+                  <img src={pic1} alt="" className={s.login_loginPic} />
+                  <img src={pic2} alt="" className={s.login_loginPicture} />
+                  <img src={bgMobile} alt="" className={s.login_bgMobile} />
+                  <img src={bgMobile2} alt="" className={s.login_bgMobile} />
+                </section>
+              </animated.div>
+            ),
+        )
       )}
     </>
   );

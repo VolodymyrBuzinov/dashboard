@@ -30,10 +30,10 @@ const LoginPage = () => {
     enter: {
       opacity: 1,
       transform: 'translateY(0)',
-      transition: 'all 100ms ease-in',
+      transition: 'all 150ms',
     },
     leave: { opacity: 0, transform: 'translateY(-100%)' },
-    delay: 1500,
+    delay: 1450,
   });
 
   return (
