@@ -27,6 +27,9 @@
     width: 205px;
     height: 199px;
   }
+  &[hidden] {
+    opacity: 0;
+  }
 }
 .iconFon {
   margin-top: 10px;
