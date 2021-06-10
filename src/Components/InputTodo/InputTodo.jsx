@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from './InputTodo.module.scss';
 
 export default function InputTodo({ title, getInputText, cb }) {
-  const [inputText, setinputText] = useState(null);
+  const [inputText, setinputText] = useState('');
 
   const handleInputChange = date => {
     setinputText(date.target.value);
