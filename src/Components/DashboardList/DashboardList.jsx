@@ -9,7 +9,7 @@ import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 import s from './DashboardList.module.scss';
-import sorter from '../../Utils/sorter';
+import sorter from '../DashboardList/sorter';
 
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
