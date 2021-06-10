@@ -8,9 +8,9 @@ const addTodoRequest = createAction('todos/addTodoRequest');
 const addTodoSuccess = createAction('todos/addTodoSuccess');
 const addTodoError = createAction('todos/addTodoError');
 
-const updateTodoeRequest = createAction('todos/updateTodoRequest');
-const updateTodoeSuccess = createAction('todos/updateTodoSuccess');
-const updateTodoeError = createAction('todos/updateTodoError');
+const updateTodoRequest = createAction('todos/updateTodoRequest');
+const updateTodoSuccess = createAction('todos/updateTodoSuccess');
+const updateTodoError = createAction('todos/updateTodoError');
 
 const updateTodoStatusDoneRequest = createAction(
   'todos/updateTodoStatusDoneRequest',
@@ -35,9 +35,9 @@ const todosActions = {
   addTodoRequest,
   addTodoSuccess,
   addTodoError,
-  updateTodoeRequest,
-  updateTodoeSuccess,
-  updateTodoeError,
+  updateTodoRequest,
+  updateTodoSuccess,
+  updateTodoError,
   updateTodoStatusDoneRequest,
   updateTodoStatusDoneSuccess,
   updateTodoStatusDoneError,

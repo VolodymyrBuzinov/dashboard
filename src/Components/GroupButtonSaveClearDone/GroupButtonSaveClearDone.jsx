@@ -61,13 +61,14 @@ export default function GroupButtonSaveClearDone({
       {isCreate && (
         <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button
-            className={style.GroupButtonSaveClearDone__ButtonSvg}
+            className={style.GroupButtonSaveClearDone__ButtonSvgClear}
             type="button"
             content="icon-clear"
             onClick={cancelСhanges}
             isActive={false}
           />
           <Button
+            className={style.GroupButtonSaveClearDone__ButtonSvgCreate}
             type="button"
             content="create"
             onClick={handleClickElementCreate}

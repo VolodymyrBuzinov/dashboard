@@ -13,7 +13,7 @@
 .InputTodo__input {
   font-weight: 700;
   font-style: normal;
-  font-family: HelveticaNeueCyr;
+  font-family: Helvetica, sans-serif;
   max-width: 155px;
   counter-reset: $text-color;
   // display: block;
@@ -43,7 +43,7 @@
 
 /* LABEL ======================================= */
 .InputTodo__label {
-  font-family: HelveticaNeueCyr;
+  font-family: Helvetica, sans-serif;
   color: $active-color;
   position: absolute;
   pointer-events: none;

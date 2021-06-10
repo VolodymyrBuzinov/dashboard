@@ -31,29 +31,31 @@ const addTodo =
 const updateTodo =
   ({ title, time, category, difficulty, id }) =>
   async dispatch => {
-    dispatch(todosActions.updateTodoeRequest());
+    dispatch(todosActions.updateTodoRequest());
 
     /*
-    try {
-      const template = { category, difficulty, title, time };
-      const { date } = await axios.put(`/tasks/${id}`, template);
-      dispatch(todosActions.updateTodoeSuccess(date));
-    } catch (error) {
-      dispatch(todosActions.updateTodoeError(error.response.status));
-    }
+    
     */
 
     try {
       const template = { category, difficulty, title, time };
-
-      dispatch(
-        todosActions.updateTodoeSuccess(
-          await axios.put(`/tasks/${id}`, template).then(res => res.data),
-        ),
-      );
+      const res = await axios.put(`/tasks/${id}`, template);
+      dispatch(todosActions.updateTodoeSuccess(res));
     } catch (error) {
       dispatch(todosActions.updateTodoeError(error.response.status));
     }
+
+    // try {
+    //   const template = { category, difficulty, title, time };
+
+    //   dispatch(
+    //     todosActions.updateTodoSuccess(
+    //       await axios.put(`/tasks/${id}`, template).then(res => res.data),
+    //     ),
+    //   );
+    // } catch (error) {
+    //   dispatch(todosActions.updateTodoError(error.response.status));
+    // }
   };
 
 const updateTodoStatusDone =
