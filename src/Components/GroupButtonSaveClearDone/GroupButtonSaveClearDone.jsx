@@ -94,7 +94,7 @@ export default function GroupButtonSaveClearDone({
         </div>
       )}
       {/* isEdit */}
-      {true && (
+      {isEdit && (
         <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button
             type="button"

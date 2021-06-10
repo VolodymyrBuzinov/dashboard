@@ -3,7 +3,6 @@
 .Btn {
   display: flex;
   align-items: center;
-
   position: relative;
 
   &.visible {
@@ -39,6 +38,11 @@
   color: $text-color;
   margin-right: 7px;
   cursor: default;
+  font-size: 14px;
+  line-height: 1;
+  @media screen and (min-width: 768px) {
+    font-size: 11px;
+  }
 
   &.visible {
     cursor: pointer;

@@ -50,6 +50,7 @@ const TemplateTodo = () => {
             >
               {showModalLevel && (
                 <Modal
+                type='level'
                   onClose={() => toggleModal('difficulty', setShowModalLevel)}
                 >
                   <Level
