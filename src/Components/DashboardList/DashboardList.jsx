@@ -69,7 +69,7 @@ const DashboardList = () => {
               <ul className={s.todoList}>
                 {isVisible && (
                   <li key="temlpate">
-                    <TemplateTodo isVisible={isVisible} />
+                    <TemplateTodo isVisible={isVisible}/>
                   </li>
                 )}
                 {todayList.length > 0 &&

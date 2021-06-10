@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
+import getShowCardDone from '../DashboardList/CardDone/getShowCardDone';
 
 export default function GroupButtonSaveClearDone({
   isEdit,
@@ -48,13 +49,14 @@ export default function GroupButtonSaveClearDone({
 
     dispatch(
       exp.updateTodo({
-        id,
         ...state,
+        id,
         category: categoryToUpperCase,
         difficulty: difficultyToUpperCase,
       }),
-    );
-  };
+      );
+    };
+    console.log("🚀 ~ file: GroupButtonSaveClearDone.jsx ~ line 57 ~ handleClickElementSave ~ id-dis", id)
 
   const handleClickElementDone = () => {
     console.log('run handleClickElementDone');
@@ -106,7 +108,7 @@ export default function GroupButtonSaveClearDone({
           <Button
             type="button"
             content="icon-done"
-            onClick={handleClickElementDone}
+            onClick={(()=>getShowCardDone(id))}
           />
         </div>
       )}
