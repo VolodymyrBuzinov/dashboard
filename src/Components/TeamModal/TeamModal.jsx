@@ -85,7 +85,9 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Anastasiia Pankrusheva</h3>
               <p className={style.description}>
-                Working with tasks logic in back-end
+                The logic of the arrangement of cards for today and tomorrow
+                Rendering data and styles from the back on the card in the
+                "Challenge" card
               </p>
               <a
                 href="https://www.linkedin.com/mwlite/in/anastasiia-pankrusheva"
