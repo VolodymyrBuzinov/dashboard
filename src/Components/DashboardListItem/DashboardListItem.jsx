@@ -4,15 +4,9 @@ import s from './DashboardListItem.module.scss';
 import style from '../TemplateTodo/TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import toggleModal from '../TemplateTodo/togleModal';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
-import Category from '../Category/Category';
-import Level from '../Level/Level';
-import handleChangeState from '../TemplateTodo/handleChangeState';
-import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
-import toggleModal from '../TemplateTodo/togleModal';
 
 // function DashboardListItem({
 //   title,
@@ -23,10 +17,6 @@ import toggleModal from '../TemplateTodo/togleModal';
 //   id,
 //   onClick,
 // }) {
-
-
-
-
 
 const LIST_CATEGORY = [
   'stuff',
@@ -46,9 +36,15 @@ const INITIAL_STATE = {
   title: null,
 };
 
-
-function DashboardListItem({ title, time, category, difficulty,
-  children, challengeStyle, id }) {
+function DashboardListItem({
+  title,
+  time,
+  category,
+  difficulty,
+  children,
+  challengeStyle,
+  id,
+}) {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
   //const [category, setСategory] = useState(INITIAL_STATE.category);
@@ -68,15 +64,12 @@ function DashboardListItem({ title, time, category, difficulty,
 
   return (
     <>
-
-      {!edit ? (   
-      <div className={challenge ? s.todoItem__challenge : s.todoItem} >
-        <div className={s.todoItemСomplexity}>
-         
-     {/**<div className={s.todoItemСircle}></div>
-        <div className={s.todoItemDifficulty}>{difficulty}</div> */} 
-        {challenge ? (
-
+      {!edit ? (
+        <div className={challenge ? s.todoItem__challenge : s.todoItem}>
+          <div className={s.todoItemСomplexity}>
+            {/**<div className={s.todoItemСircle}></div>
+        <div className={s.todoItemDifficulty}>{difficulty}</div> */}
+            {challenge ? (
               <Button
                 onClick={toggleChallenge}
                 content="icon-trophy"
@@ -91,7 +84,6 @@ function DashboardListItem({ title, time, category, difficulty,
                 isActive={true}
               />
             )}
-
           </div>
           <p
             className={
@@ -127,7 +119,6 @@ function DashboardListItem({ title, time, category, difficulty,
           isEdit={true}
         />
       )}
-
     </>
   );
 }
