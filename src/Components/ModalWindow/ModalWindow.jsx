@@ -9,9 +9,6 @@ const ModalWindow = ({ id, isOpened, question, acceptChanges }) => {
 
   const handleRemoveTask = () => {
     dispatch(todosOperations.deleteTodo(id));
-    isOpened();
-    dispatch(editTodo(false));
-    acceptChanges()
   };
 
   return (

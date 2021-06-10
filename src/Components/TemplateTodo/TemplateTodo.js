@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {useDispatch} from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
@@ -31,7 +31,8 @@ const INITIAL_STATE = {
   title: null,
 };
 
-const TemplateTodo = () => {
+const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle}) => {
+   
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
   const [category, setСategory] = useState(INITIAL_STATE.category);
@@ -41,16 +42,25 @@ const TemplateTodo = () => {
 
   const dispatch  =useDispatch();
 
+  useEffect(()=> {
+    if(isEdit){  
+      setСategory(editCategory)
+      setDifficulty(editDifficulty)
+      setTime(editTime)
+      setTitle(editTitle)
+    }
+  })
+
   const cancelСhanges=() => dispatch(onClickBtnCreate(false))
 
   return (
-    <li key="template" className={style.TemplateTodo}>
+    <div className={style.TemplateTodo}>
       <div className={style.TemplateTodo__group}>
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
               type="difficulty"
-              title={difficulty}
+              title={ difficulty}
               onClick={() => toggleModal('difficulty', setShowModalLevel)}
               isEdit={true}
             >
@@ -76,7 +86,7 @@ const TemplateTodo = () => {
 
         <div className={style.TemplateTodo__WrapperMidle}>
 
-          <InputTodo getInputText={handleChangeState} cb={setTitle} />
+          <InputTodo isEdit={isEdit} title={isEdit && title} getInputText={handleChangeState} cb={setTitle} />
           <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
 
         </div>
@@ -109,7 +119,8 @@ const TemplateTodo = () => {
 
           <div className={style.TemplateTodo__ButtonGroup}>
             <GroupButtonSaveClearDone
-              isCreate={true}
+              isCreate={!isEdit && true}
+              isEdit ={isEdit && true}
               category={category}
               difficulty={difficulty}
               title={title}
@@ -120,7 +131,7 @@ const TemplateTodo = () => {
 
         </div>
       </div>
-    </li>
+    </div>
   );
 };
 
