@@ -1,8 +1,8 @@
 import style from "./CardDone.module.scss"
 import sprite from '../../../Icons/symbol-defs.svg';
 
-import getShowCardDone from "./getShowCardDone"
-import getHiddenCardDone from "./getHiddenCardDone"
+// import getShowCardDone from "./getShowCardDone"
+// import getHiddenCardDone from "./getHiddenCardDone"
 import exp from '../../../Redux/Operations/todosOperations';
 import { useDispatch } from "react-redux";
 
@@ -36,14 +36,14 @@ const dispatch = useDispatch();
   };
 
     
-    return <div id={`cardDone-${id}`} className={`${style.cardDone}`} hidden>
-        <h3 className={style.title}>COMPLETED: <span class={style.textTitle}>{titleTodoShort}</span></h3>
+    return <div id={`cardDone-${id}`} className={`${style.cardDone}`} hidden="true">
+        <h3 className={style.title}>COMPLETED: <span className={style.textTitle}>{titleTodoShort}</span></h3>
         <svg className={style.iconFon}><use href={`${sprite}#icon-award`}></use></svg>
         <button type="button" onClick={ ()=>handleClickElementDone(id) } className={style.btnContinue}>Continue <svg className={style.iconArrow}><use href={`${sprite}#icon-arrow`}></use></svg></button>
 
         {/* кнопки для тестов */}
-        <button type="button" onClick={()=>getHiddenCardDone(id)}>HIDDEN</button>
-        <button type="button" onClick={()=>getShowCardDone(id)}>SHOW</button>
+        {/* <button type="button" onClick={()=>getHiddenCardDone(id)}>HIDDEN</button>
+        <button type="button" onClick={()=>getShowCardDone(id)}>SHOW</button> */}
     </div>
 }
 
