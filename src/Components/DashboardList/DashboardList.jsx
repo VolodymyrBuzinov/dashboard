@@ -22,19 +22,13 @@ import Button from '../Button/Button';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
-  
+
   const isVisible = useSelector(isVisibleTemplate);
-  const edit = useSelector(isEdit);
 
   useEffect(() => {
     dispatch(todoOperations.fetchTodos());
   }, [dispatch]);
   const todos = useSelector(todoSelectors.getAllTodos);
-
-  const onClick = () => {
-    if (edit) return;
-    dispatch(onClickBtnCreate(true));
-  };
 
   //const handleEdit = () => {};
 
@@ -45,10 +39,10 @@ const DashboardList = () => {
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
 
-//   console.log("todayList", todayList);
-//   console.log("tomorrowList", tomorrowList);
-//   console.log("doneList", doneList);
-//   console.log("challengeList", challengeList);
+  //   console.log("todayList", todayList);
+  //   console.log("tomorrowList", tomorrowList);
+  //   console.log("doneList", doneList);
+  //   console.log("challengeList", challengeList);
 
   return (
     <>
@@ -68,20 +62,22 @@ const DashboardList = () => {
               <ul className={s.todoList}>
                 {isVisible && (
                   <li key="temlpate">
-                    <TemplateTodo isVisible={isVisible} />
+                    <TemplateTodo />
                   </li>
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
                       <li key={_id}>
-                        <DashboardListItem category={category}
+                        <DashboardListItem
+                          category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challengeStyle={challenge}>
-                           id={_id}
-                      </DashboardListItem>
+                          challengeStyle={challenge}
+                        >
+                          id={_id}
+                        </DashboardListItem>
                       </li>
                     ),
                   )}
@@ -95,16 +91,16 @@ const DashboardList = () => {
                 {tomorrowList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-
-                        <DashboardListItem 
-                          category={category}
-                          difficulty={difficulty}
-                          title={title}
-                          time={time}
-                          challengeStyle={challenge}>
-                          id={_id}
+                      <DashboardListItem
+                        category={category}
+                        difficulty={difficulty}
+                        title={title}
+                        time={time}
+                        challengeStyle={challenge}
+                      >
+                        id={_id}
                       </DashboardListItem>
-                      </li>
+                    </li>
                   ),
                 )}
               </ul>
@@ -132,7 +128,6 @@ const DashboardList = () => {
           ) : null}
           <MenuDone todos={doneList} />
         </div>
-        <Button content="icon-plus" type="button" onClick={onClick} />
       </main>
     </>
   );

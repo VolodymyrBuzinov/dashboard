@@ -6,7 +6,15 @@ import Modal from '../Modal/Modal';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import toggleModal from '../TemplateTodo/toggleModal';
 
-function DashboardListItem({ id, title, time, category, difficulty, children, challengeStyle }) {
+function DashboardListItem({
+  id,
+  title,
+  time,
+  category,
+  difficulty,
+  children,
+  challengeStyle,
+}) {
   const [challenge, setChallenge] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -23,12 +31,13 @@ function DashboardListItem({ id, title, time, category, difficulty, children, ch
   return (
     <>
       {!edit ? (
-        <div className={challenge ? s.todoItem__challenge : s.todoItem} >
-        <div className={s.todoItemСomplexity}>
-          <div className={s.todoItemDiv}>
-            <div className={`${s.todoItemСircle} ${s[lowDifficulty]}`}></div>
-            <div className={s.todoItemDifficulty}>{difficulty}</div></div>
-          
+        <div className={challenge ? s.todoItem__challenge : s.todoItem}>
+          <div className={s.todoItemСomplexity}>
+            <div className={s.todoItemDiv}>
+              <div className={`${s.todoItemСircle} ${s[lowDifficulty]}`}></div>
+              <div className={s.todoItemDifficulty}>{difficulty}</div>
+            </div>
+
             {challenge ? (
               <Button
                 onClick={toggleChallenge}
@@ -43,17 +52,25 @@ function DashboardListItem({ id, title, time, category, difficulty, children, ch
                 type="button"
                 isActive={true}
               />
-            )}</div>
-          
-          <p className={challenge ? s.todoItemChallenge__challenge : s.todoItemChallenge }>
+            )}
+          </div>
+
+          <p
+            className={
+              challenge ? s.todoItemChallenge__challenge : s.todoItemChallenge
+            }
+          >
             CHALLENGE
           </p>
-          <p className={challenge ? s.todoItemTitle__challenge : s.todoItemTitle}>
+          <p
+            className={challenge ? s.todoItemTitle__challenge : s.todoItemTitle}
+          >
             {title}
           </p>
           <p className={s.todoItemTime}>{time}</p>
-          <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>{category}</div>
-    
+          <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
+            {category}
+          </div>
 
           {showModalDelete && (
             <Modal
@@ -66,8 +83,8 @@ function DashboardListItem({ id, title, time, category, difficulty, children, ch
         </div>
       ) : (
         <TemplateTodo
-          editCategory={category}
-          editDifficulty={difficulty}
+          editCategory={category.toLowerCase()}
+          editDifficulty={difficulty.toLowerCase()}
           editTitle={title}
           editTime={time}
           id={id}
