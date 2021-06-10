@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  //useState
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
-import { editTodo } from '../../Redux/Actions/editTodo-action';
+//import { editTodo } from '../../Redux/Actions/editTodo-action';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
@@ -33,7 +36,7 @@ const DashboardList = () => {
     dispatch(onClickBtnCreate(true));
   };
 
-  const handleEdit = () => {};
+  //const handleEdit = () => {};
 
   const todayList = [];
   const tomorrowList = [];
