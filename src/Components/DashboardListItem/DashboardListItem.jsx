@@ -1,8 +1,18 @@
-//import { useState } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import s from './DashboardListItem.module.scss';
+import Button from '../Button/Button';
 
-function DashboardListItem({ title, time, category, difficulty, children }) {
-  //const [challenge, setChallenge] = useState(false);
-  //const toggleChallenge = () => setChallenge(prev => !prev);
+function DashboardListItem({ title, time, category, difficulty, children, challengeStyle}) {
+  
+  const [challenge, setChallenge] = useState(false);
+  useEffect(() => {
+   if (challengeStyle) {
+    setChallenge(true);
+  }
+  }, []);
+  
+  const toggleChallenge = () => setChallenge(prev => !prev);
 
   return (
     <>
@@ -11,10 +21,9 @@ function DashboardListItem({ title, time, category, difficulty, children }) {
           difficulty={difficulty}
           title={title}
           time={time}
+          {children}
     />*/}
-      {children}
-
-      {/* <div className={challenge ? s.todoItem__challenge : s.todoItem}>
+      <div className={challenge ? s.todoItem__challenge : s.todoItem} >
       <div className={s.todoItemСomplexity}>
       <div className={s.todoItemСircle}></div>
         <div className={s.todoItemDifficulty}>{difficulty}</div>
@@ -39,7 +48,7 @@ function DashboardListItem({ title, time, category, difficulty, children }) {
         <p className={s.todoItemTime}>{time}</p>
       <div className={s.todoItemGroup}>{category}
       </div>
-    </div> */}
+    </div>
     </>
   );
 }
