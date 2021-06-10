@@ -4,17 +4,18 @@ import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
+import getShowCardDone from '../DashboardList/CardDone/getShowCardDone';
 
 export default function GroupButtonSaveClearDone({
-  isEdit,
   isCreate,
-  toggleModalDelete,
+  isEdit,
   category,
   difficulty,
   title,
   time,
-  id,
   cancelСhanges,
+  id,
+  toggleModalDelete,
 }) {
   const state = { category, difficulty, title, time };
 
@@ -36,37 +37,21 @@ export default function GroupButtonSaveClearDone({
   };
 
   const handleClickElementSave = () => {
-    console.log('run handleClickElementSave');
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
     console.log({
-      id,
       ...state,
       category: categoryToUpperCase,
       difficulty: difficultyToUpperCase,
+      id,
     });
 
     dispatch(
       exp.updateTodo({
-        id,
         ...state,
         category: categoryToUpperCase,
         difficulty: difficultyToUpperCase,
-      }),
-    );
-  };
-
-  const handleClickElementDone = () => {
-    console.log('run handleClickElementDone');
-    console.log({
-      id,
-      done: true,
-    });
-
-    dispatch(
-      exp.updateTodoStatusDone({
         id,
-        done: true,
       }),
     );
   };
@@ -106,7 +91,9 @@ export default function GroupButtonSaveClearDone({
           <Button
             type="button"
             content="icon-done"
-            onClick={handleClickElementDone}
+            onClick={() => {
+              getShowCardDone(id);
+            }}
           />
         </div>
       )}

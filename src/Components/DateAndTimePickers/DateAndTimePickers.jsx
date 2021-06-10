@@ -5,11 +5,6 @@ export default function DateAndTimePickers({ getDate, cb }) {
   const [selectedDate, setSelectedDate] = useState('');
 
   const handleDateChange = date => {
-    console.log(
-      '🚀 ~ file: DateAndTimePickers.jsx ~ line 8 ~ DateAndTimePickers ~ date',
-      date,
-    );
-
     setSelectedDate(date.target.value);
   };
 

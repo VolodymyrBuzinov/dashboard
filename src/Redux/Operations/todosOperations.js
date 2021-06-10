@@ -29,13 +29,28 @@ const addTodo =
   };
 
 const updateTodo =
-  ({ todoId, category, difficulty, title, time }) =>
+  ({ title, time, category, difficulty, id }) =>
   async dispatch => {
     dispatch(todosActions.updateTodoeRequest());
+
+    /*
     try {
       const template = { category, difficulty, title, time };
-      await axios.put(`/tasks/${todoId}`, template);
-      dispatch(todosActions.updateTodoeSuccess(todoId));
+      const { date } = await axios.put(`/tasks/${id}`, template);
+      dispatch(todosActions.updateTodoeSuccess(date));
+    } catch (error) {
+      dispatch(todosActions.updateTodoeError(error.response.status));
+    }
+    */
+
+    try {
+      const template = { category, difficulty, title, time };
+
+      dispatch(
+        todosActions.updateTodoeSuccess(
+          await axios.put(`/tasks/${id}`, template).then(res => res.data),
+        ),
+      );
     } catch (error) {
       dispatch(todosActions.updateTodoeError(error.response.status));
     }
@@ -46,10 +61,9 @@ const updateTodoStatusDone =
   async dispatch => {
     dispatch(todosActions.updateTodoStatusDoneRequest());
     try {
-      await axios.patch(`/tasks/${id}/done`, done);
+      await axios.patch(`/tasks/${id}/done`, { done: true });
       dispatch(todosActions.updateTodoStatusDoneSuccess(id, done));
     } catch (error) {
-      console.log('🚀 ~ file: todosOperations.js ~ line 51 ~ error', error);
       dispatch(todosActions.updateTodoStatusDoneError(error.message));
     }
   };
