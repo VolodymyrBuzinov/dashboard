@@ -75,9 +75,8 @@ const DashboardList = () => {
                           title={title}
                           time={time}
                           challengeStyle={challenge}
-                        >
                           id={_id}
-                        </DashboardListItem>
+                        ></DashboardListItem>
                       </li>
                     ),
                   )}
@@ -97,9 +96,8 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         challengeStyle={challenge}
-                      >
                         id={_id}
-                      </DashboardListItem>
+                      ></DashboardListItem>
                     </li>
                   ),
                 )}
