@@ -12,8 +12,6 @@ const deleteTodoRequest = createAction('todos/deleteTodoRequest');
 const deleteTodoSuccess = createAction('todos/deleteTodoSuccess');
 const deleteTodoError = createAction('todos/deleteTodoError');
 
-// const changeFilter = createAction('todos/changeFilter')
-
 const clearTodoError = createAction('todos/clearError');
 
 const todosActions = {
@@ -26,7 +24,6 @@ const todosActions = {
     deleteTodoRequest,
     deleteTodoSuccess,
     deleteTodoError,
-    // changeFilter,
     clearTodoError,
 };
 export default todosActions;

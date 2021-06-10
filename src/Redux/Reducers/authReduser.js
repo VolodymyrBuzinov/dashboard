@@ -42,10 +42,14 @@ const error = createReducer(null, {
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
   [getCurrentUserError]: (_, { payload }) => payload,
-  [logoutError]: (_, { payload }) => payload,
+  // [logoutError]: (_, { payload }) => payload,
   [getVerifyUserError]: (_, { payload }) => payload,
   [reVerificationtUserError]: (_, { payload }) => payload,
   [getRefreshTokenError]: (_, { payload }) => payload,
+});
+// получаю ошибку по logout
+const errorLogOut = createReducer(null, {
+  [logoutError]: (_, { payload }) => payload,
 });
 
 // получаю флаг для аутентификации
@@ -94,4 +98,5 @@ export default combineReducers({
   verify,
   reVerify,
   refreshToken,
+  errorLogOut,
 });

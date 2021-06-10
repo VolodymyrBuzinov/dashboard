@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 import '../LoginPage/Login.scss';
 import s from './SingUpPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerAuth } from '../../Redux/Operations/authOperation';
+import {
+  registerAuth,
+  reVerificationt,
+} from '../../Redux/Operations/authOperation';
 import { CSSTransition } from 'react-transition-group';
 import Spinner from '../../Components/Spinner/Spinner';
 import bgMobile from '../../Images/bg-mobile.png';
@@ -13,13 +16,15 @@ import pic1 from '../../Images/pic1.png';
 import pic2 from '../../Images/pic2.png';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import getLoader from '../../Redux/Selectors/loaderSelector';
-
+import Button from '../../Components/Button/Button';
 const SingUpPage = () => {
   const dispatch = useDispatch();
   const wait = useSelector(getWaiting);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [reEmail, setReEmail] = useState('');
+
   const isVisibleLoader = useSelector(getLoader);
   useEffect(() => {
     setTimeout(() => {
@@ -36,8 +41,15 @@ const SingUpPage = () => {
   const btnClick = e => {
     e.preventDefault();
     dispatch(registerAuth({ name, email, password }));
+    setReEmail(email);
+    setEmail('');
     setName('');
     setPassword('');
+  };
+
+  const sendFollowUpLetter = e => {
+    e.preventDefault();
+    dispatch(reVerificationt({ email: reEmail }));
   };
 
   return (
@@ -65,18 +77,51 @@ const SingUpPage = () => {
           <div className={s.registr_container}>
             <h1 className={s.registr_title}>Questify</h1>
             <h2 className={s.registr_caption}>Registration</h2>
-            <p className={s.registr_text}>
-              Back to{' '}
+            <div className={s.registr_textContainer}>
+              <span className={s.registr_text}>Back to</span>
               <NavLink
                 exact
                 to="/"
-                className={s.registr_link}
+                className={s.registr_navLink}
                 // activeClassName={s}
               >
-                log in
+                <span className={s.registr_link}>log in</span>
               </NavLink>
-            </p>
-            <form onSubmit={btnClick}>
+
+              <div className={s.registr_secondBtnContainer}>
+                <button
+                  type="button"
+                  className={s.register_secondaryBtn}
+                  onClick={sendFollowUpLetter}
+                >
+                  Send a follow-up letter
+                </button>
+
+                <div className={s.registr_inputContainerSend}>
+                  <input
+                    required
+                    id="email"
+                    className={s.registr_inputSendLetter}
+                    type="text"
+                    value={reEmail}
+                    onChange={emailFunc}
+                  />
+                  {/* <button className={s.registr_sendBtn} type="button">
+                Go
+              </button> */}
+                  {!reEmail && (
+                    <label
+                      htmlFor="email"
+                      className={s.registr_labelSendLetter}
+                    >
+                      Email
+                    </label>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <form onSubmit={btnClick} className={s.registr_form}>
               <div className={s.registr_inputContainer}>
                 <input
                   required
@@ -117,26 +162,32 @@ const SingUpPage = () => {
                   value={password}
                   onChange={passwordFunc}
                 />
-                {/* <label htmlFor="password" className={s.registr_label}>
-          Password
-        </label> */}
                 {!password && (
                   <label htmlFor="password" className={s.registr_label}>
                     Password
                   </label>
                 )}
               </div>
-              <button type="submit">Go</button>
+
+              <div className={s.registr_btn}>
+                <Button content="go!" isFixed={false} />
+              </div>
             </form>
+          </div>
+          <div className={s.registr_pictureBlock}>
+            <img
+              src={bgMobile}
+              alt="background"
+              className={s.registr_bgMobile}
+            />
+            <img
+              src={bgMobile2}
+              alt="background"
+              className={s.registr_bgMobile}
+            />
           </div>
           <img src={pic1} alt="background" className={s.registr_loginPic} />
           <img src={pic2} alt="background" className={s.registr_loginPicture} />
-          <img src={bgMobile} alt="background" className={s.registr_bgMobile} />
-          <img
-            src={bgMobile2}
-            alt="background"
-            className={s.registr_bgMobile}
-          />
         </section>
       )}
     </>

@@ -7,13 +7,18 @@
 }
 
 .login_section {
-  background-color: $white-color;
+  position: relative;
 }
 
 .login_container {
   @extend %container-styles;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    }
+  @media screen and (min-width: 421px) {
     padding-top: 60px;
+    padding-bottom: 60px;
   }
   @media screen and (min-width: 768px) {
     padding-top: 212px;
@@ -21,7 +26,7 @@
   }
   @media screen and (min-width: 1280px) {
     padding-top: 153px;
-    padding-bottom: 154px;  
+    padding-bottom: 154px;
     padding-left: 229px;
   }
 }
@@ -31,10 +36,13 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: $hover-color;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 419px) {
+    font-size: 20px;
+    line-height: 1;  
+  }
+  @media screen and (min-width: 420px) {
     font-size: 24px;
     line-height: 1;
-
   }
   @media screen and (min-width: 768px) {
     font-size: 20px;
@@ -50,7 +58,12 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: $card-bg-color;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 419px) {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    }
+  @media screen and (min-width: 420px) {
     margin-top: 60px;
     font-size: 18px;
     line-height: 1.6;
@@ -65,7 +78,20 @@
     min-width: 562px;
     margin-top: 70px;
     font-size: 36px;
-    line-height: 1.2;  }
+    line-height: 1.2;
+  }
+}
+
+.login_textContainer {
+  @media screen and (max-width: 421px) {
+    margin-top: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 25px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 35px;
+  }
 }
 
 .login_text {
@@ -74,7 +100,12 @@
   font-weight: 400;
 
   letter-spacing: 0.02em;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    }
+  @media screen and (min-width: 421px) {
     margin-top: 30px;
     font-size: 14px;
     line-height: 3.2;
@@ -87,21 +118,45 @@
   @media screen and (min-width: 1280px) {
     margin-top: 35px;
     font-size: 24px;
-    line-height: 1.8;  }
+    line-height: 1.8;
+  }
+}
+
+.registr_navLink {
+  text-decoration: none;
 }
 
 .registr_link {
-  // нужно убрать display: block
-  // @extend %link-throw;
-  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-weight: 400;
   color: $card-bg-color;
+  letter-spacing: 0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    line-height: 3.2;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 2.5;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+    line-height: 1.8;
+  }
+}
+
+.login_pictureBlock {
+  position: relative;
 }
 
 .login_bgMobile {
-  // @extend %img-styles;
   position: absolute;
-  bottom: 0;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 321px) {
+    bottom: -100px;
     left: 0;
   }
   @media screen and (min-width: 768px) {
@@ -110,8 +165,6 @@
 }
 
 .login_loginPic {
-  // @extend %img-styles;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -124,17 +177,16 @@
 }
 
 .login_loginPicture {
-  // @extend %img-styles;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: -200px;
+    bottom: -20px;
     right: 0;
     pointer-events: none;
   }
   @media screen and (min-width: 1280px) {
-    bottom: -120px;  }
+    bottom: -90px;
+  }
 }
