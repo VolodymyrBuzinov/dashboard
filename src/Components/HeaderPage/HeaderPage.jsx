@@ -9,6 +9,7 @@ import { getUserName } from '../../Redux/Selectors/authSelectors';
 const HeaderPage = () => {
   let name = useSelector(getUserName);
   name = name.slice(0, 1).toUpperCase() + name.slice(1)
+  
   let letter = '';
   if (name) {
     letter = name.slice(0, 1).toUpperCase();
