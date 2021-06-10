@@ -9,7 +9,7 @@ import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers.jsx';
 import InputTodo from '../InputTodo/InputTodo.jsx';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
-import toggleModal from './togleModal';
+import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
 
