@@ -10,6 +10,8 @@ import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import getLoader from '../../Redux/Selectors/loaderSelector';
 import { useEffect } from 'react';
 import Spinner from '../../Components/Spinner/Spinner';
+import { animated } from 'react-spring';
+import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
 
 export default function VerifyPage() {
   const isVisibleLoader = useSelector(getLoader);
@@ -29,26 +31,36 @@ export default function VerifyPage() {
   setTimeout(() => {
     onLogout();
   }, 5000);
+
+  const transitions = RouteTransition();
+
   return (
     <>
       {isVisibleLoader ? (
         <Spinner />
       ) : (
-        <section className={s.login_section}>
-          <div className={s.login_container}>
-            <h1 className={s.login_title}>Questify</h1>
-            <p className={s.login_description}>
-              Congratulations, email verification was successful.
-            </p>
-            <p className={s.login_text}>
-              in 5 seconds you will be redirected to the Home page
-            </p>
-          </div>
-          <img src={pic1} alt="" className={s.login_loginPic} />
-          <img src={pic2} alt="" className={s.login_loginPicture} />
-          <img src={bgMobile} alt="" className={s.login_bgMobile} />
-          <img src={bgMobile2} alt="" className={s.login_bgMobile} />
-        </section>
+        transitions(
+          (styles, item) =>
+            item && (
+              <animated.div style={styles}>
+                <section className={s.login_section}>
+                  <div className={s.login_container}>
+                    <h1 className={s.login_title}>Questify</h1>
+                    <p className={s.login_description}>
+                      Congratulations, email verification was successful.
+                    </p>
+                    <p className={s.login_text}>
+                      in 5 seconds you will be redirected to the Home page
+                    </p>
+                  </div>
+                  <img src={pic1} alt="" className={s.login_loginPic} />
+                  <img src={pic2} alt="" className={s.login_loginPicture} />
+                  <img src={bgMobile} alt="" className={s.login_bgMobile} />
+                  <img src={bgMobile2} alt="" className={s.login_bgMobile} />
+                </section>
+              </animated.div>
+            ),
+        )
       )}
     </>
   );

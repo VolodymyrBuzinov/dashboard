@@ -141,13 +141,24 @@
 
   &.icon-clear,
   &.icon-save,
-  &.icon-done,
+  &.icon-done {
+    & svg {
+      @media screen and (max-width: 767px) {
+        width: 19px;
+        height: 19px;
+      }
+      @media screen and (min-width: 768px) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
   &.icon-Vector,
   &.icon-trophy {
     & svg {
-      -webkit-filter: drop-shadow(0px 2px 2px $hover-color);
-      filter: drop-shadow(0px 2px 2px $hover-color);
       fill: $hover-color;
+      filter: drop-shadow(0px 2px 2px $hover-color);
+
       @media screen and (max-width: 767px) {
         width: 19px;
         height: 19px;

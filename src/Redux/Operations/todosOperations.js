@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BaseURL } from '../../Api/AxiosToken';
 import todosActions from '../Actions/todosActions';
+import { toast } from 'react-toastify';
 
 BaseURL();
 
@@ -13,24 +14,55 @@ const fetchTodos = () => async dispatch => {
     dispatch(todosActions.fetchTodoError(error.response.status));
   }
 };
-/*
-const addTodo = ({ category, difficulty, title, time }) =>
+
+const addTodo =
+  ({ category, difficulty, title, time }) =>
   async dispatch => {
-    dispatch(templateActions.createTemplateRequest());
+    dispatch(todosActions.addTodoRequest());
     try {
       const template = { category, difficulty, title, time };
       const { data } = await axios.post('/tasks', template);
-      dispatch(templateActions.createTemplateSuccess(data));
+      dispatch(todosActions.addTodoSuccess(data));
     } catch (error) {
-      dispatch(templateActions.createTemplateError(error.response.status));
+      dispatch(todosActions.addTodoError(error.response.status));
     }
-  };*/
+  };
+
+const updateTodo =
+  ({ todoId, category, difficulty, title, time }) =>
+  async dispatch => {
+    dispatch(todosActions.updateTodoeRequest());
+    try {
+      const template = { category, difficulty, title, time };
+      await axios.put(`/tasks/${todoId}`, template);
+      dispatch(todosActions.updateTodoeSuccess(todoId));
+    } catch (error) {
+      dispatch(todosActions.updateTodoeError(error.response.status));
+    }
+  };
+
+const updateTodoStatusDone =
+  ({ id, done }) =>
+  async dispatch => {
+    dispatch(todosActions.updateTodoStatusDoneRequest());
+    try {
+      await axios.patch(`/tasks/${id}/done`, done);
+      dispatch(todosActions.updateTodoStatusDoneSuccess(id, done));
+    } catch (error) {
+      console.log(
+        '🚀 ~ file: todosOperations.js ~ line 51 ~ error',
+        error.message,
+      );
+      dispatch(todosActions.updateTodoStatusDoneError(error.message));
+    }
+  };
 
 const deleteTodo = todoId => async dispatch => {
   dispatch(todosActions.deleteTodoRequest());
   try {
     await axios.delete(`/tasks/${todoId}`);
     dispatch(todosActions.deleteTodoSuccess(todoId));
+    toast.info('Your task is successfully deleted!')
   } catch (error) {
     dispatch(todosActions.deleteTodoError(error.response.status));
   }
@@ -38,7 +70,9 @@ const deleteTodo = todoId => async dispatch => {
 
 const exp = {
   fetchTodos,
-  //addTodo,
+  addTodo,
+  updateTodo,
+  updateTodoStatusDone,
   deleteTodo,
 };
 export default exp;
