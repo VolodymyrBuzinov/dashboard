@@ -8,6 +8,7 @@ import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 import s from './DashboardList.module.scss';
+import sorter from '../../Utils/sorter'
 
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
@@ -22,7 +23,7 @@ const DashboardList = () => {
 
   useEffect(() => {
     dispatch(todoOperations.fetchTodos());
-  }, [dispatch, isVisible, edit]);
+  }, [dispatch]);
   const todos = useSelector(todoSelectors.getAllTodos);
 
   const onClick = () => {
@@ -30,45 +31,21 @@ const DashboardList = () => {
     dispatch(onClickBtnCreate(true));
   };
 
-  const today = new Date();
-  const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
-
   const todayList = [];
   const tomorrowList = [];
   const doneList = [];
   const challengeList = [];
-  
-  todos.map(todo => {
-    if (!todo.done) {
-      if (!todo.challenge) {
-        if (
-          today.getFullYear() ===  new Date(Date.parse(todo.time)).getFullYear() &&
-          today.getMonth() === new Date(Date.parse(todo.time)).getMonth() &&
-          today.getDay() === new Date(Date.parse(todo.time)).getDay()
-        ) {
-          todayList.push(todo);
-        }
-        if (
-          tomorrow.getFullYear() === new Date(Date.parse(todo.time)).getFullYear() &&
-          tomorrow.getMonth() === new Date(Date.parse(todo.time)).getMonth() &&
-          tomorrow.getDay() === new Date(Date.parse(todo.time)).getDay()
-        ) {
-          tomorrowList.push(todo);
-        }
-      } else {
-        challengeList.push(todo); 
-      }
-    } else {
-      doneList.push(todo); 
-    }
-    return { todayList, tomorrowList, doneList };
-  });
+ 
+  sorter(todos, todayList, tomorrowList, doneList, challengeList);
   
   return (
     <>
       <main className={s.todoListMain}>
         <div className={s.todoListDiv}>
-          {todayList.length===0 && tomorrowList.length===0 && challengeList.length===0 && !isVisible && <>
+          {todayList.length === 0 &&
+           tomorrowList.length === 0 &&
+           challengeList.length === 0 &&
+           !isVisible && <>
           <EmptyTodos/>
           </>}
           {todayList.length > 0 || isVisible ? (
