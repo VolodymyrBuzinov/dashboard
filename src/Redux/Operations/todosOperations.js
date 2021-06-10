@@ -41,15 +41,18 @@ const updateTodo =
   };
 
 const updateTodoStatusDone =
-  ({ id, done = 'true' }) =>
+  ({ id, done }) =>
   async dispatch => {
     dispatch(todosActions.updateTodoStatusDoneRequest());
     try {
       await axios.patch(`/tasks/${id}/done`, done);
-      dispatch(todosActions.updateTodoStatusDoneSuccess(id));
+      dispatch(todosActions.updateTodoStatusDoneSuccess(id, done));
     } catch (error) {
-      console.log('🚀 ~ file: todosOperations.js ~ line 51 ~ error', error);
-      dispatch(todosActions.updateTodoStatusDoneError(error));
+      console.log(
+        '🚀 ~ file: todosOperations.js ~ line 51 ~ error',
+        error.message,
+      );
+      dispatch(todosActions.updateTodoStatusDoneError(error.message));
     }
   };
 

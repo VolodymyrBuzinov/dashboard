@@ -43,6 +43,7 @@ export default function GroupButtonSaveClearDone({
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
     console.log({
+      id,
       ...state,
       category: categoryToUpperCase,
       difficulty: difficultyToUpperCase,
@@ -58,14 +59,17 @@ export default function GroupButtonSaveClearDone({
     );
   };
 
-  const handleClickElementDone = e => {
+  const handleClickElementDone = () => {
     console.log('run handleClickElementDone');
-    console.log(id);
-    console.log('60c13183f28402001cfb65ab');
+    console.log({
+      id,
+      done: true,
+    });
+
     dispatch(
       exp.updateTodoStatusDone({
         id,
-        // done: 'true',
+        done: 'true',
       }),
     );
   };
