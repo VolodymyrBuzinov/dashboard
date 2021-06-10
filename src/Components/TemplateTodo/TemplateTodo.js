@@ -68,8 +68,10 @@ const TemplateTodo = () => {
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
+
           <InputTodo getInputText={handleChangeState} cb={setTitle} />
           <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
+
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
@@ -97,6 +99,7 @@ const TemplateTodo = () => {
             </ButtonOpenModal>
           </div>
 
+
           <div className={style.TemplateTodo__ButtonGroup}>
             <GroupButtonSaveClearDone
               isCreate={true}
@@ -106,6 +109,7 @@ const TemplateTodo = () => {
               time={time}
             />
           </div>
+
         </div>
       </div>
     </li>
