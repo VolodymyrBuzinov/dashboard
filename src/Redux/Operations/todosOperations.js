@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BaseURL } from '../../Api/AxiosToken';
 import todosActions from '../Actions/todosActions';
+import { toast } from 'react-toastify';
 
 BaseURL();
 
@@ -62,6 +63,7 @@ const deleteTodo = todoId => async dispatch => {
   try {
     await axios.delete(`/tasks/${todoId}`);
     dispatch(todosActions.deleteTodoSuccess(todoId));
+    toast.info('Your task is successfully deleted!')
   } catch (error) {
     dispatch(todosActions.deleteTodoError(error.response.status));
   }
