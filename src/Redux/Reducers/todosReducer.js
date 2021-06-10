@@ -4,7 +4,10 @@ import todosActions from '../Actions/todosActions';
 
 const items = createReducer([], {
   [todosActions.fetchTodoSuccess]: (_, { payload }) => payload,
-  [todosActions.addTodoSuccess]: (state, { payload }) => [payload, ...state],
+  [todosActions.addTodoSuccess]: (state, { payload }) => [
+    ...state,
+    payload.data,
+  ],
   [todosActions.updateTodoeSuccess]: (state, { payload }) =>
     state.filter(({ _id }) => _id !== payload),
   [todosActions.updateTodoStatusDoneSuccess]: (state, { payload }) =>

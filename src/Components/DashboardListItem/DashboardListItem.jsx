@@ -83,8 +83,8 @@ function DashboardListItem({
         </div>
       ) : (
         <TemplateTodo
-          editCategory={category}
-          editDifficulty={difficulty}
+          editCategory={category.toLowerCase()}
+          editDifficulty={difficulty.toLowerCase()}
           editTitle={title}
           editTime={time}
           id={id}
