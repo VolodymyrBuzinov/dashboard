@@ -37,6 +37,7 @@ const TemplateTodo = ({
   editDifficulty,
   editTime,
   editTitle,
+  id,
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -133,6 +134,7 @@ const TemplateTodo = ({
               title={title}
               time={time}
               cancelСhanges={cancelСhanges}
+              id={id}
             />
           </div>
         </div>

@@ -66,7 +66,7 @@ export default function GroupButtonSaveClearDone({
     dispatch(
       exp.updateTodoStatusDone({
         id,
-        done: 'true',
+        done: true,
       }),
     );
   };
