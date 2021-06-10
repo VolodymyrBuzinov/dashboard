@@ -139,7 +139,7 @@ const TeamModal = ({ onClose, isOpen }) => {
             <li className={style.teamListItem}>
               <img
                 className={style.teamListItemImg}
-                src="https://i.ibb.co/098vnM0/Andrii-Zatochniy.jpg"
+                src="https://i.ibb.co/gtzqLFn/Andrii-Zatochniy.jpg"
                 alt="Andrii-Zatochniy"
                 border="0"
               />
@@ -154,6 +154,24 @@ const TeamModal = ({ onClose, isOpen }) => {
                 className={style.linkedinLink}
               >
                 Andrii's Linkedin
+              </a>
+            </li>
+            <li className={style.teamListItem}>
+              <img
+                className={style.teamListItemImg}
+                src="https://i.ibb.co/1MMmFrX/Yurii-Streltsov.jpg"
+                alt="Yurii-Streltsov"
+                border="0"
+              />
+              <p className={style.description}>
+                Working with tasks logic in back-end
+              </p>
+              <a
+                href="https://www.linkedin.com/in/yurii-streltsov/"
+                target="blank"
+                className={style.linkedinLink}
+              >
+                Yurii's Linkedin
               </a>
             </li>
           </ul>
