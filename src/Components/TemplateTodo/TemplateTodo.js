@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import {useDispatch} from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
 import Button from '../Button/Button';
@@ -10,6 +11,7 @@ import InputTodo from '../InputTodo/InputTodo.jsx';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 import toggleModal from './togleModal';
 import handleChangeState from './handleChangeState';
+import ononClickBtnCreate, { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
 
 const LIST_CATEGORY = [
   'stuff',
@@ -37,6 +39,10 @@ const TemplateTodo = () => {
   const [time, setTime] = useState(INITIAL_STATE.time);
   const [title, setTitle] = useState(INITIAL_STATE.title);
 
+  const dispatch  =useDispatch();
+
+  const cancelСhanges=() => dispatch(onClickBtnCreate(false))
+
   return (
     <li key="template" className={style.TemplateTodo}>
       <div className={style.TemplateTodo__group}>
@@ -50,6 +56,7 @@ const TemplateTodo = () => {
             >
               {showModalLevel && (
                 <Modal
+                type='level'
                   onClose={() => toggleModal('difficulty', setShowModalLevel)}
                 >
                   <Level
@@ -68,8 +75,10 @@ const TemplateTodo = () => {
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
+
           <InputTodo getInputText={handleChangeState} cb={setTitle} />
           <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
+
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
@@ -97,6 +106,7 @@ const TemplateTodo = () => {
             </ButtonOpenModal>
           </div>
 
+
           <div className={style.TemplateTodo__ButtonGroup}>
             <GroupButtonSaveClearDone
               isCreate={true}
@@ -104,8 +114,10 @@ const TemplateTodo = () => {
               difficulty={difficulty}
               title={title}
               time={time}
+              cancelСhanges={cancelСhanges}
             />
           </div>
+
         </div>
       </div>
     </li>
