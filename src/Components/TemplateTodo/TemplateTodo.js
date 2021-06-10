@@ -11,7 +11,7 @@ import InputTodo from '../InputTodo/InputTodo.jsx';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
 import toggleModal from './togleModal';
 import handleChangeState from './handleChangeState';
-import ononClickBtnCreate, { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
+import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
 
 const LIST_CATEGORY = [
   'stuff',
