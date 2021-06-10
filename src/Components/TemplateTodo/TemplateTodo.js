@@ -1,19 +1,17 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch} from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
-import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
-import { editTodo } from '../../Redux/Actions/editTodo-action';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level/Level';
 import ButtonOpenModal from '../ButtonOpenModal/ButtonOpenModal.jsx';
 import DateAndTimePickers from '../DateAndTimePickers/DateAndTimePickers.jsx';
-import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-import isEdit from '../../Redux/Selectors/editTodoSelector';
 import InputTodo from '../InputTodo/InputTodo.jsx';
-import ModalWindow from '../ModalWindow/ModalWindow';
 import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSaveClearDone';
+import toggleModal from './toggleModal';
+import handleChangeState from './handleChangeState';
+import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action'
 
 const LIST_CATEGORY = [
   'stuff',
@@ -29,190 +27,111 @@ const LIST_LEVEL = ['easy', 'normal', 'hard'];
 const INITIAL_STATE = {
   category: LIST_CATEGORY[0],
   difficulty: LIST_LEVEL[0],
+  time: null,
+  title: null,
 };
 
-const TemplateTodo = ({ category, difficulty, time, title, id }) => {
- 
-  const categoryToLowerCase = category && category.toLowerCase();
-  const difficultyToLowerCase = difficulty && difficulty.toLowerCase();
-  const isVisible = useSelector(isVisibleTemplate);
-  const isEditTodo = useSelector(isEdit);
-  const [edit, setEdit] = useState(false);
-  const dispatch = useDispatch();
+const TemplateTodo = ({isEdit, editCategory, editDifficulty, editTime, editTitle}) => {
+   
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
-  const [showModalDelete, setShowModalDelete] = useState(false);
-  const [state, setState] = useState(INITIAL_STATE);
-  const [challenge, setChallenge] = useState(false);
+  const [category, setСategory] = useState(INITIAL_STATE.category);
+  const [difficulty, setDifficulty] = useState(INITIAL_STATE.difficulty);
+  const [time, setTime] = useState(INITIAL_STATE.time);
+  const [title, setTitle] = useState(INITIAL_STATE.title);
 
-  const toggleModalCategory = e => {
-    if (edit && !challenge) {
-      setShowModalCategory(prev => !prev);
+  const dispatch  =useDispatch();
+
+  useEffect(()=> {
+    if(isEdit){  
+      setСategory(editCategory)
+      setDifficulty(editDifficulty)
+      setTime(editTime)
+      setTitle(editTitle)
     }
-  };
+  })
 
-  const toggleModalLevel = () => {
-    if (edit && !challenge) setShowModalLevel(prev => !prev);
-  };
-
-  const toggleModalDelete = () => {
-    setShowModalDelete(prev => !prev);
-  };
-
-  const toggleChallenge = () => {
-    if (!isVisible && !edit) setChallenge(prev => !prev);
-  };
-
-  const editCard = () => {
-    if (!isEditTodo && !isVisible) {
-      dispatch(editTodo(true));
-      setEdit(true);
-    }
-  };
-
-  useEffect(() => {
-    if (!category) {
-      dispatch(editTodo(true));
-      setEdit(true);
-    }
-  }, [category, dispatch]);
-
-  const acceptChanges = () => {
-    dispatch(onClickBtnCreate(false));
-    dispatch(editTodo(false));
-    setEdit(false);
-    setState(INITIAL_STATE);
-  };
-
-  const handleClickElement = e => {
-    const { type, name } = e.target.dataset;
-    setState(prevState => ({
-      ...prevState,
-      [type]: name,
-    }));
-  };
-
-  const updateState = (name, value) => {
-    setState(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
+  const cancelСhanges=() => dispatch(onClickBtnCreate(false))
 
   return (
-    <li className={style.TemplateTodo} onClick={editCard}>
-      <div
-        className={
-          challenge
-            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
-            : style.TemplateTodo__group
-        }
-      >
+    <div className={style.TemplateTodo}>
+      <div className={style.TemplateTodo__group}>
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
               type="difficulty"
-              title={
-                !difficultyToLowerCase || edit
-                  ? state.difficulty
-                  : difficultyToLowerCase
-              }
-              onClick={toggleModalLevel}
-              isEdit={edit}
+              title={ difficulty}
+              onClick={() => toggleModal('difficulty', setShowModalLevel)}
+              isEdit={true}
             >
               {showModalLevel && (
-                <Modal onClose={toggleModalLevel} type="difficulty">
-                  <Level items={LIST_LEVEL} handleClick={handleClickElement} />
+                <Modal
+                type='level'
+                  onClose={() => toggleModal('difficulty', setShowModalLevel)}
+                >
+                  <Level
+                    items={LIST_LEVEL}
+                    handleClick={handleChangeState}
+                    cb={setDifficulty}
+                  />
                 </Modal>
               )}
             </ButtonOpenModal>
           </div>
 
           <div className="star">
-            {challenge ? (
-              <Button
-                onClick={toggleChallenge}
-                content="icon-trophy"
-                type="button"
-                isActive={true}
-              />
-            ) : (
-              <Button
-                onClick={toggleChallenge}
-                content="icon-Vector"
-                type="button"
-                isActive={!edit}
-              />
-            )}
+            <Button content="icon-Vector" type="button" isActive={true} />
           </div>
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
-          {!edit ? (
-            <>
-              <p className={style.todoItemTitle}>{title}</p>
-              <p className={style.todoItemTime}>{time}</p>
-            </>
-          ) : (
-            <>
-              <InputTodo title={title} isEdit={edit} getInputText={updateState} />
-              <DateAndTimePickers getDate={updateState} />
-            </>
-          )}
+
+          <InputTodo isEdit={isEdit} title={isEdit && title} getInputText={handleChangeState} cb={setTitle} />
+          <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
+
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
           <div
-            className={`${style.TemplateTodo__ButtonBgc} ${
-              edit ? style[state.category] : style[categoryToLowerCase]
-            }`}
+            className={`${style.TemplateTodo__ButtonBgc} ${style[category]}`}
           >
             <ButtonOpenModal
               type="category"
-              title={
-                !categoryToLowerCase || edit
-                  ? state.category
-                  : categoryToLowerCase
-              }
-              onClick={toggleModalCategory}
-              isEdit={edit && !challenge}
+              title={category}
+              onClick={() => toggleModal('category', setShowModalCategory)}
+              isEdit={true}
             >
               {showModalCategory && (
-                <Modal onClose={toggleModalCategory} type="category">
+                <Modal
+                  onClose={() => toggleModal('category', setShowModalCategory)}
+                  type="category"
+                >
                   <Category
                     items={LIST_CATEGORY}
-                    handleClick={handleClickElement}
+                    handleClick={handleChangeState}
+                    cb={setСategory}
                   />
                 </Modal>
               )}
             </ButtonOpenModal>
           </div>
-          {edit && (
-            <>
-              <div className={style.TemplateTodo__ButtonGroup}>
-                <GroupButtonSaveClearDone
-                  state={state}
-                  isEditTodo={edit}
-                  isVisible={isVisible}
-                  toggleModalDelete={toggleModalDelete}
-                  acceptChanges={acceptChanges}
-                />
-              </div>
-            </>
-          )}
+
+
+          <div className={style.TemplateTodo__ButtonGroup}>
+            <GroupButtonSaveClearDone
+              isCreate={!isEdit && true}
+              isEdit ={isEdit && true}
+              category={category}
+              difficulty={difficulty}
+              title={title}
+              time={time}
+              cancelСhanges={cancelСhanges}
+            />
+          </div>
+
         </div>
       </div>
-      {showModalDelete && (
-        <Modal onClose={toggleModalDelete} type="delete">
-          <ModalWindow
-            id={id}
-            isOpened={toggleModalDelete}
-            question="Delete this Quest?"
-            acceptChanges={acceptChanges}
-          />
-        </Modal>
-      )}
-    </li>
+    </div>
   );
 };
 

@@ -19,8 +19,8 @@ function MenuDone({todos}) {
             <div className={style.overflow}>
             <div className={style.menu}>
                 <ul className={styleDashboardList.todoList}>
-               {todos.map(({ title, _id, time, category, difficulty,challenge }) => (
-             <li key={_id} ><DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time}>
+               {todos.map(({ title, _id, time, category, difficulty, challenge }) => (
+             <li key={_id} ><DashboardListItem category={category} difficulty={difficulty} title={title} id={_id} time={time} challengeStyle={challenge}>
               </DashboardListItem></li>
             ))}
             </ul>
