@@ -8,7 +8,7 @@ import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 import s from './DashboardList.module.scss';
-import sorter from '../../Utils/sorter'
+import sorter from './sorter'
 
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
@@ -18,6 +18,7 @@ import Button from '../Button/Button';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
+  
   const isVisible = useSelector(isVisibleTemplate);
   const edit = useSelector(isEdit);
 
@@ -37,7 +38,10 @@ const DashboardList = () => {
   const challengeList = [];
  
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
-  
+  console.log("todayList", todayList);
+  console.log("tomorrowList", tomorrowList);
+  console.log("doneList", doneList);
+  console.log("challengeList", challengeList);
   return (
     <>
       <main className={s.todoListMain}>
@@ -57,12 +61,13 @@ const DashboardList = () => {
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
-                    ({ title, _id, time, category, difficulty }) => (
+                    ({ title, _id, time, category, difficulty, challenge }) => (
                       <li key={_id}>
                         <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
-                          time={time}>
+                          time={time}
+                          challengeStyle={challenge}>
                       </DashboardListItem>
                       </li>
                     ),
@@ -75,12 +80,13 @@ const DashboardList = () => {
               <p className={s.todoListTitle}>TOMORROW</p>
               <ul className={s.todoList}>
                 {tomorrowList.map(
-                  ({ title, _id, time, category, difficulty }) => (
+                  ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
                         <DashboardListItem category={category}
                           difficulty={difficulty}
                           title={title}
-                          time={time}>
+                          time={time}
+                          challengeStyle={challenge}>
                       </DashboardListItem>
                       </li>
                   ),
