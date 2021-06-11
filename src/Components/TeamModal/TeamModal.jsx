@@ -206,8 +206,8 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Anastasiia Zaikina</h3>
               <p className={style.description}>
-                Worked with all task animations and logic for switching tasks to
-                a challenge.
+                Worked with task animations and logic for switching tasks to a
+                challenge, and notifications.
               </p>
               <a
                 href="https://www.linkedin.com/in/анастасия-заикина-1a9481190"
