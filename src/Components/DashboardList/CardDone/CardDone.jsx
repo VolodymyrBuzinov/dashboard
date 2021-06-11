@@ -1,8 +1,8 @@
 import style from "./CardDone.module.scss"
 import sprite from '../../../Icons/symbol-defs.svg';
 
-import getShowCardDone from "./getShowCardDone"
-import getHiddenCardDone from "./getHiddenCardDone"
+// import getShowCardDone from "./getShowCardDone"
+// import getHiddenCardDone from "./getHiddenCardDone"
 
 function CardDone({ id, titleTodo = "title" }) {
     let titleTodoShort
@@ -22,8 +22,8 @@ function CardDone({ id, titleTodo = "title" }) {
         <button type="button" className={style.btnContinue}>Continue <svg className={style.iconArrow}><use href={`${sprite}#icon-arrow`}></use></svg></button>
 
         {/* кнопки для тестов */}
-        <button type="button" onClick={()=>getHiddenCardDone(id)}>HIDDEN</button>
-        <button type="button" onClick={()=>getShowCardDone(id)}>SHOW</button>
+        {/* <button type="button" onClick={()=>getHiddenCardDone(id)}>HIDDEN</button> */}
+        {/* <button type="button" onClick={()=>getShowCardDone(id)}>SHOW</button> */}
     </div>
 }
 
