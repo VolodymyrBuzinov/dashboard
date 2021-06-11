@@ -42,7 +42,7 @@ const DashboardList = () => {
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
 
-  /*  console.log("todayList", todayList);
+  /* console.log('todayList', todayList);
   console.log("tomorrowList", tomorrowList);
   console.log("doneList", doneList);
   console.log("challengeList", challengeList);*/
@@ -78,9 +78,9 @@ const DashboardList = () => {
                         timeout={300}
                         classNames={s}
                         unmountOnExit
-                        key="temlpate"
+                        key={_id}
                       >
-                        <li key={_id}>
+                        <li>
                           <CardDone id={_id} titleTodo={title} />
                           <DashboardListItem
                             category={category}
