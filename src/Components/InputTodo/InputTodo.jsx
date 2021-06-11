@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useEffect } from 'react';
 import style from './InputTodo.module.scss';
 
 export default function InputTodo({ title, getInputText, cb, isEdit }) {
   const [inputText, setinputText] = useState('');
 
-  useEffect(() => {    
+  const inputEl = useRef(null);
+
+  useEffect(() => {
     if (isEdit) setinputText(title);
   }, [isEdit]);
 
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Enter') {
+        inputEl.current.blur();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isEdit]);
+
   const handleInputChange = event => {
-    event.preventDefault();
     setinputText(event.target.value);
   };
 
   return (
-    <form className={style.InputTodo__form}>
+    <div className={style.InputTodo__form}>
       <input
-                className={style.InputTodo__input}
+        ref={inputEl}
+        className={style.InputTodo__input}
         autoFocus={true}
         type="text"
         name="title"
@@ -32,6 +48,6 @@ export default function InputTodo({ title, getInputText, cb, isEdit }) {
       <label className={style.InputTodo__label}>{`${
         isEdit ? 'EDIT QUEST' : 'CREATE NEW QUEST'
       } `}</label>
-    </form>
+    </div>
   );
 }
