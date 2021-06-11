@@ -23,19 +23,13 @@ import CardDone from './CardDone/CardDone';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
-  
+
   const isVisible = useSelector(isVisibleTemplate);
-  const edit = useSelector(isEdit);
 
   useEffect(() => {
     dispatch(todoOperations.fetchTodos());
   }, [dispatch]);
   const todos = useSelector(todoSelectors.getAllTodos);
-
-  const onClick = () => {
-    if (edit) return;
-    dispatch(onClickBtnCreate(true));
-  };
 
   //const handleEdit = () => {};
 
@@ -46,11 +40,11 @@ const DashboardList = () => {
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
 
-//   console.log("todayList", todayList);
-//   console.log("tomorrowList", tomorrowList);
-//   console.log("doneList", doneList);
-//   console.log("challengeList", challengeList);
-
+/*  console.log("todayList", todayList);
+  console.log("tomorrowList", tomorrowList);
+  console.log("doneList", doneList);
+  console.log("challengeList", challengeList);*/
+  
   return (
     <>
       <main className={s.todoListMain}>
@@ -59,9 +53,7 @@ const DashboardList = () => {
             tomorrowList.length === 0 &&
             challengeList.length === 0 &&
             !isVisible && (
-              <>
                 <EmptyTodos />
-              </>
             )}
           {todayList.length > 0 || isVisible ? (
             <>
@@ -70,20 +62,20 @@ const DashboardList = () => {
                 {isVisible && (
                   <li key="temlpate">
                     <TemplateTodo isVisible={isVisible}/>
-                  </li>
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
                       <li key={_id}>
                         <CardDone id={_id} titleTodo={title}/>
-                        <DashboardListItem category={category}
+                        <DashboardListItem
+                          category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                           id={_id}
-                          challengeStyle={challenge}>
-                      </DashboardListItem>
+                          id={_id}
+                          day='Today'
+                          challengeStyle={challenge}/>
                       </li>
                     ),
                   )}
@@ -103,9 +95,9 @@ const DashboardList = () => {
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          id={_id}
-                          challengeStyle={challenge}>
-                      </DashboardListItem>
+                        id={_id}
+                        day='Tomorrow'
+                          challengeStyle={challenge}/>
                       </li>
                   ),
                 )}
@@ -126,8 +118,9 @@ const DashboardList = () => {
                         title={title}
                         time={time}
                         id={_id}
+                        day='By'
                         challengeStyle={challenge}
-                      ></DashboardListItem>
+                      />
                     </li>
                   ),
                 )}
@@ -136,7 +129,6 @@ const DashboardList = () => {
           ) : null}
           <MenuDone todos={doneList} />
         </div>
-        <Button content="icon-plus" type="button" onClick={onClick} />
       </main>
     </>
   );
