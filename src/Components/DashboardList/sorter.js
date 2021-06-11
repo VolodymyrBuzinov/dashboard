@@ -10,20 +10,20 @@ const sorter = (whole, todayList, tomorrowList, doneList, challengeList) => {
             today.getMonth() === new Date(Date.parse(part.time)).getMonth() &&
             today.getDay() === new Date(Date.parse(part.time)).getDay()
           ) {
-            todayList.push(part);
+            todayList.unshift(part);
           }
           if (
             tomorrow.getFullYear() === new Date(Date.parse(part.time)).getFullYear() &&
             tomorrow.getMonth() === new Date(Date.parse(part.time)).getMonth() &&
             tomorrow.getDay() === new Date(Date.parse(part.time)).getDay()
           ) {
-            tomorrowList.push(part);
+            tomorrowList.unshift(part);
           }
         } else {
-          challengeList.push(part);
+          challengeList.unshift(part);
         }
       } else {
-        doneList.push(part);
+        doneList.unshift(part);
       }
       return { todayList, tomorrowList, doneList };
     });

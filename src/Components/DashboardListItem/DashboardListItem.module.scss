@@ -116,11 +116,9 @@
 }
 
 .todoItemDifficulty {
-  @media screen and (max-width: 767px) {
-    padding-left: 14px;
-  }
-  @media screen and (min-width: 768px) {
-    // margin-right: 86px;
+  text-transform: lowercase;
+  &::first-letter {
+    text-transform: uppercase;
   }
 }
 
@@ -257,7 +255,7 @@
     font-size: 14px;
     line-height: 14px;
     padding-top: 10px;
-    top: 192px;
+    top: 194px;
     width: 120px;
     height: 35px;
     border-radius: 0px 25px 25px 0px;
@@ -281,58 +279,5 @@
   height: 100%;
 
   border-radius: 10px;  
-  // z-index: 10;
+  
 }
-
-/*.todoItemGroup {
-  position: relative;
-  display: flex;
-  height: 35px;
-  @media screen and (min-width: 768px) {
-    height: 25px;
-  }
-  &::before {
-    content: ' ';
-    display: block;
-    width: 120px;
-    height: 35px;
-    @media screen and (min-width: 768px) {
-      width: 88px;
-      height: 25px;
-    }
-    background-color: $secondary-text;
-    border-radius: 0px 15px 15px 0px;
-
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transform: translateX(-21px);
-  }*/
-/*&.family::before {
-    background: $family-color;
-  }
-  &.health::before {
-    background: $healt-color;
-  }
-  &.learning::before {
-    background: $learning-color;
-  }
-  &.leisure::before {
-    background: $leisure-color;
-  }
-  &.work::before {
-    background: $work-color;
-  }
-}*/
-
-/*&.easy {
-      background: $hover-color;
-    }
-
-    &.normal {
-      background: $cancel-button;
-    }
-
-    &.hard {
-      background: $delete-button;
-    }*/

@@ -10,6 +10,8 @@ import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from '../EmptyTodos/EmptyTodods';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
+import Button from '../Button/Button';
+import CardDone from './CardDone/CardDone';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -30,11 +32,11 @@ const DashboardList = () => {
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
 
-  //   console.log("todayList", todayList);
-  //   console.log("tomorrowList", tomorrowList);
-  //   console.log("doneList", doneList);
-  //   console.log("challengeList", challengeList);
-
+/*  console.log("todayList", todayList);
+  console.log("tomorrowList", tomorrowList);
+  console.log("doneList", doneList);
+  console.log("challengeList", challengeList);*/
+  
   return (
     <>
       <main className={s.todoListMain}>
@@ -43,9 +45,7 @@ const DashboardList = () => {
             tomorrowList.length === 0 &&
             challengeList.length === 0 &&
             !isVisible && (
-              <>
                 <EmptyTodos />
-              </>
             )}
           {todayList.length > 0 || isVisible ? (
             <>
@@ -60,14 +60,15 @@ const DashboardList = () => {
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
                       <li key={_id}>
+                        <CardDone id={_id} titleTodo={title}/>
                         <DashboardListItem
                           category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challengeStyle={challenge}
                           id={_id}
-                        />
+                          day='Today'
+                          challengeStyle={challenge}/>
                       </li>
                     ),
                   )}
@@ -81,15 +82,17 @@ const DashboardList = () => {
                 {tomorrowList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
-                      <DashboardListItem
-                        category={category}
-                        difficulty={difficulty}
-                        title={title}
-                        time={time}
-                        challengeStyle={challenge}
+
+                        <CardDone id={_id} titleTodo={title}/>
+                        <DashboardListItem 
+                          category={category}
+                          difficulty={difficulty}
+                          title={title}
+                          time={time}
                         id={_id}
-                      />
-                    </li>
+                        day='Tomorrow'
+                          challengeStyle={challenge}/>
+                      </li>
                   ),
                 )}
               </ul>
@@ -102,11 +105,14 @@ const DashboardList = () => {
                 {challengeList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
                     <li key={_id}>
+                      <CardDone id={_id} titleTodo={title}/>
                       <DashboardListItem
                         category={category}
                         difficulty={difficulty}
                         title={title}
                         time={time}
+                        id={_id}
+                        day='By'
                         challengeStyle={challenge}
                       />
                     </li>
@@ -123,28 +129,3 @@ const DashboardList = () => {
 };
 
 export default DashboardList;
-/**<div
-        className={
-          challenge
-            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
-            : style.TemplateTodo__group
-        }
-      > 
-      <div className="star">
-            {challenge ? (
-              <Button
-                onClick={!isVisible && !edit && toggleChallenge}
-                content="icon-trophy"
-                type="button"
-                isActive={true}
-              />
-            ) : (
-              <Button
-                onClick={!isVisible && !edit && toggleChallenge}
-                content="icon-Vector"
-                type="button"
-                isActive={!edit}
-              />
-            )}
-            
-          </div>*/

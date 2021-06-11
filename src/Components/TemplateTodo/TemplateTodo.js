@@ -56,7 +56,8 @@ const TemplateTodo = ({
       setTime(editTime);
       setTitle(editTitle);
     }
-  });
+  }, [editCategory, editDifficulty, editTime, editTitle, isEdit]);
+
 
   const cancelСhanges = () => dispatch(onClickBtnCreate(false));
 

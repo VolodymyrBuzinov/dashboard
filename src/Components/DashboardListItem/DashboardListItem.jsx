@@ -16,6 +16,7 @@ function DashboardListItem({
   category,
   difficulty,
   challengeStyle,
+  day
 }) {
   const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
@@ -28,10 +29,16 @@ function DashboardListItem({
     if (challengeStyle) {
       setChallenge(true);
     }
-  }, []);
+
+  }, [challengeStyle]);
 
   const lowDifficulty = difficulty.toLowerCase();
   const lowCategory = category.toLowerCase();
+  
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const d = new Date(time);
+  const dayName = days[d.getDay()];
+
   const toggleChallenge = () => setChallenge(prev => !prev);
 
   const toggleEditCard = e => {
@@ -86,7 +93,7 @@ function DashboardListItem({
           >
             {title}
           </p>
-          <p className={s.todoItemTime}>{time}</p>
+          <p className={s.todoItemTime}>{day}{challenge ? ` ${dayName}` : null}, {time.slice(11)}</p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}
           </div>
