@@ -187,7 +187,7 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Yurii Streltsov</h3>
               <p className={style.description}>
-                Working with tasks logic in back-end
+                Worked with logic and figuration of edit task template.
               </p>
               <a
                 href="https://www.linkedin.com/in/yurii-streltsov/"
@@ -206,7 +206,8 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Anastasiia Zaikina</h3>
               <p className={style.description}>
-                Working with tasks logic in back-end
+                Worked with all task animations and logic for switching tasks to
+                a challenge.
               </p>
               <a
                 href="https://www.linkedin.com/in/анастасия-заикина-1a9481190"
@@ -224,7 +225,9 @@ const TeamModal = ({ onClose, isOpen }) => {
                 border="0"
               />
               <h3 className={style.nameTitle}>Vitalii Speka</h3>
-              <p className={style.description}>Working with date-time logic,</p>
+              <p className={style.description}>
+                Worked with logic and figuration of create task template.
+              </p>
               <a
                 href="https://www.linkedin.com/in/vitalii-speka/"
                 target="blank"
