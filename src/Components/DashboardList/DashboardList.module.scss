@@ -3,7 +3,7 @@
 .todoListMain {
   background-color: $bg-color;
   width: 100%;
-  height: 90vh;
+  min-height: 90vh;
 }
 
 .todoListDiv {
@@ -34,4 +34,34 @@
   @media screen and (min-width: 768px) {
     margin-bottom: 30px;
   }
+}
+
+.appear {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.appearActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 300ms ease-in;
+}
+
+.enter {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 300ms ease-in;
+}
+
+.exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.exitActive {
+  transform: translateY(-100%);
+  opacity: 0.1;
+  transition: all 300ms ease-in;
 }
