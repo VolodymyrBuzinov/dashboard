@@ -1,28 +1,27 @@
-import style from "./CardDone.module.scss"
+import style from './CardDone.module.scss';
 import sprite from '../../../Icons/symbol-defs.svg';
 
 // import getShowCardDone from "./getShowCardDone"
 // import getHiddenCardDone from "./getHiddenCardDone"
 
 import exp from '../../../Redux/Operations/todosOperations';
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
+function CardDone({ id, titleTodo = 'title' }) {
+  const dispatch = useDispatch();
 
-function CardDone({ id, titleTodo = "title" }) {
+  let titleTodoShort;
+  // ? если длина заголовка больше 15 - обрезаем и добавляем ...
+  if (titleTodo.length > 15) {
+    let titleTodoSlice = titleTodo.split('');
+    titleTodoSlice.length = 15;
+    titleTodoShort = titleTodoSlice.join('') + '...';
+  }
+  if (titleTodo.length <= 15) {
+    titleTodoShort = titleTodo;
+  }
 
-const dispatch = useDispatch();
-
-    let titleTodoShort
-    // ? если длина заголовка больше 15 - обрезаем и добавляем ...
-    if(titleTodo.length>15){let titleTodoSlice = titleTodo.split("")
-    titleTodoSlice.length = 15
-    titleTodoShort = titleTodoSlice.join('') + "..."
-    }
-    if (titleTodo.length <= 15) {
-       titleTodoShort = titleTodo
-    }
-    
-    const handleClickElementDone = (id) => {
+  const handleClickElementDone = id => {
     console.log('run handleClickElementDone');
     console.log({
       id,
@@ -37,15 +36,28 @@ const dispatch = useDispatch();
     );
   };
 
-    
-    return <div id={`cardDone-${id}`} className={`${style.cardDone}`} hidden={true}>
-        <h3 className={style.title}>COMPLETED: <span className={style.textTitle}>{titleTodoShort}</span></h3>
-        <svg className={style.iconFon}><use href={`${sprite}#icon-award`}></use></svg>
-        <button type="button" onClick={ ()=>handleClickElementDone(id) } className={style.btnContinue}>Continue <svg className={style.iconArrow}><use href={`${sprite}#icon-arrow`}></use></svg></button>
+  return (
+    <div id={`cardDone-${id}`} className={`${style.cardDone}`} hidden={true}>
+      <h3 className={style.title}>
+        COMPLETED: <span className={style.textTitle}>{titleTodoShort}</span>
+      </h3>
+      <svg className={style.iconFon}>
+        <use href={`${sprite}#icon-award`}></use>
+      </svg>
+      <button
+        type="button"
+        onClick={() => handleClickElementDone(id)}
+        className={style.btnContinue}
+      >
+        Continue{' '}
+        <svg className={style.iconArrow}>
+          <use href={`${sprite}#icon-arrow`}></use>
+        </svg>
+      </button>
 
-        {/* кнопки для тестов */}
-
+      {/* кнопки для тестов */}
     </div>
+  );
 }
 
-export default CardDone
+export default CardDone;
