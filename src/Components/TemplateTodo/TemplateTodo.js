@@ -13,6 +13,7 @@ import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSav
 import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -38,7 +39,7 @@ const TemplateTodo = ({
   editDifficulty,
   editTime,
   editTitle,
-  id,  
+  id,
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -58,7 +59,6 @@ const TemplateTodo = ({
       setTitle(editTitle);
     }
   }, [editCategory, editDifficulty, editTime, editTitle, isEdit]);
-
 
   const cancelСhanges = () => dispatch(onClickBtnCreate(false));
 
@@ -100,7 +100,12 @@ const TemplateTodo = ({
             getInputText={handleChangeState}
             cb={setTitle}
           />
-          <DateAndTimePickers time={editTime} isEdit={isEdit} getDate={handleChangeState} cb={setTime} />
+          <DateAndTimePickers
+            time={editTime}
+            isEdit={isEdit}
+            getDate={handleChangeState}
+            cb={setTime}
+          />
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
@@ -138,23 +143,25 @@ const TemplateTodo = ({
               time={time}
               cancelСhanges={cancelСhanges}
               id={id}
-              toggleModalDelete={()=>toggleModal('delete', setShowModalDelete)}
+              toggleModalDelete={() =>
+                toggleModal('delete', setShowModalDelete)
+              }
             />
           </div>
         </div>
       </div>
       {showModalDelete && (
-            <Modal
-              onClose={() => toggleModal('delete', setShowModalDelete)}
-              type="delete"
-            >
-              <ModalWindow
-                id={id}
-                question={'Delete this Quest?'}
-                isOpened={() => toggleModal('delete', setShowModalDelete)}
-              />
-            </Modal>
-          )}
+        <Modal
+          onClose={() => toggleModal('delete', setShowModalDelete)}
+          type="delete"
+        >
+          <ModalWindow
+            id={id}
+            question={'Delete this Quest?'}
+            isOpened={() => toggleModal('delete', setShowModalDelete)}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

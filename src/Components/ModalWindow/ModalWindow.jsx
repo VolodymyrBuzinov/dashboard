@@ -9,6 +9,7 @@ const ModalWindow = ({ id, isOpened, question }) => {
 
   const handleRemoveTask = () => {
     dispatch(todosOperations.deleteTodo(id));
+    dispatch(editTodo(false));
   };
 
   return (
