@@ -32,6 +32,7 @@ const INITIAL_STATE = {
 };
 
 const TemplateTodo = ({
+  id,
   isEdit,
   editCategory,
   editDifficulty,
@@ -133,6 +134,7 @@ const TemplateTodo = ({
               title={title}
               time={time}
               cancelСhanges={cancelСhanges}
+              id={id}
             />
           </div>
         </div>
