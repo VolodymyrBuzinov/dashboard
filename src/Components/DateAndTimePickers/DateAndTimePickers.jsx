@@ -1,19 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import style from './DateAndTimePickers.module.scss';
 
-export default function DateAndTimePickers({ getDate, cb }) {
+export default function DateAndTimePickers({ time, getDate, cb, isEdit }) {
   const [selectedDate, setSelectedDate] = useState('');
+
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    if (isEdit) setSelectedDate(time);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = e => {
+      if (e.code === 'Enter') {
+        inputEl.current.blur();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isEdit]);
 
   const handleDateChange = date => {
     setSelectedDate(date.target.value);
   };
 
   return (
-    <form className={style.DateAndTimePickers__form}>
-      {/* <div>
-
-      </div> */}
+    <div className={style.DateAndTimePickers__form}>
       <input
+        ref={inputEl}
         className={
           selectedDate
             ? `${style.DateAndTimePickers__input}  ${style.active}`
@@ -25,12 +43,12 @@ export default function DateAndTimePickers({ getDate, cb }) {
         step="0"
         min="2021-06-01T08:00"
         max="2022-06-30T21:00"
-        value={selectedDate}
+        value={isEdit ? selectedDate : time}
         onChange={handleDateChange}
         onBlur={() => {
           getDate('time', selectedDate, cb);
         }}
       />
-    </form>
+    </div>
   );
 }

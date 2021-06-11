@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
+import ModalWindow from '../ModalWindow/ModalWindow';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level/Level';
@@ -12,6 +13,7 @@ import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSav
 import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -41,6 +43,7 @@ const TemplateTodo = ({
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const [category, setСategory] = useState(INITIAL_STATE.category);
   const [difficulty, setDifficulty] = useState(INITIAL_STATE.difficulty);
   const [time, setTime] = useState(INITIAL_STATE.time);
@@ -93,11 +96,16 @@ const TemplateTodo = ({
         <div className={style.TemplateTodo__WrapperMidle}>
           <InputTodo
             isEdit={isEdit}
-            title={isEdit && title}
+            title={isEdit && editTitle}
             getInputText={handleChangeState}
             cb={setTitle}
           />
-          <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
+          <DateAndTimePickers
+            time={editTime}
+            isEdit={isEdit}
+            getDate={handleChangeState}
+            cb={setTime}
+          />
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>
@@ -135,10 +143,25 @@ const TemplateTodo = ({
               time={time}
               cancelСhanges={cancelСhanges}
               id={id}
+              toggleModalDelete={() =>
+                toggleModal('delete', setShowModalDelete)
+              }
             />
           </div>
         </div>
       </div>
+      {showModalDelete && (
+        <Modal
+          onClose={() => toggleModal('delete', setShowModalDelete)}
+          type="delete"
+        >
+          <ModalWindow
+            id={id}
+            question={'Delete this Quest?'}
+            isOpened={() => toggleModal('delete', setShowModalDelete)}
+          />
+        </Modal>
+      )}
     </div>
   );
 };

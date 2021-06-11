@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import s from './DashboardListItem.module.scss';
 import Button from '../Button/Button';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
-import Modal from '../Modal/Modal';
-import ModalWindow from '../ModalWindow/ModalWindow';
-import toggleModal from '../TemplateTodo/toggleModal';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
+import isEditTodo from '../../Redux/Selectors/editTodoSelector';
+import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 
 function DashboardListItem({
   id,
@@ -13,30 +14,68 @@ function DashboardListItem({
   category,
   difficulty,
   challengeStyle,
-  day
+  day,
 }) {
+  const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
-  const [showModalDelete, setShowModalDelete] = useState(false);
   const [edit, setEdit] = useState(false);
+  const isEdit = useSelector(isEditTodo);
+  const isVisible = useSelector(isVisibleTemplate);
 
   useEffect(() => {
     if (challengeStyle) {
       setChallenge(true);
     }
   }, [challengeStyle]);
+
   const lowDifficulty = difficulty.toLowerCase();
   const lowCategory = category.toLowerCase();
-  
-  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  const days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
   const d = new Date(time);
   const dayName = days[d.getDay()];
 
   const toggleChallenge = () => setChallenge(prev => !prev);
 
+  const onOpenEditCard = e => {
+    if (e.target.tagName === 'use') {
+      return;
+    }
+    if (isVisible) {
+      console.log('Закончить создание карточки');
+      return;
+    }
+    if (isEdit) {
+      if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
+        console.log('Закончить редактирование карточки');
+      }
+      return;
+    }
+
+    setEdit(true);
+    dispatch(editTodo(true));
+  };
+
+  const onCloseEditCard = () => {
+    setEdit(false);
+    dispatch(editTodo(false));
+  };
+
   return (
     <>
       {!edit ? (
-        <div className={challenge ? s.todoItem__challenge : s.todoItem}>
+        <div
+          className={challenge ? s.todoItem__challenge : s.todoItem}
+          onClick={onOpenEditCard}
+        >
           <div className={s.todoItemСomplexity}>
             <div className={s.todoItemDiv}>
               <div className={`${s.todoItemСircle} ${s[lowDifficulty]}`}></div>
@@ -72,29 +111,29 @@ function DashboardListItem({
           >
             {title}
           </p>
-          <p className={s.todoItemTime}>{day}{challenge ? ` ${dayName}` : null}, {time.slice(11)}</p>
+          <p className={s.todoItemTime}>
+            {day}
+            {challenge ? ` ${dayName}` : null}, {time.slice(11)}
+          </p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}
           </div>
-
-          {showModalDelete && (
-            <Modal
-              onClose={() => toggleModal('delete', setShowModalDelete)}
-              type="delete"
-            >
-              <ModalWindow id={id} />
-            </Modal>
-          )}
         </div>
       ) : (
-        <TemplateTodo
-          editCategory={category.toLowerCase()}
-          editDifficulty={difficulty.toLowerCase()}
-          editTitle={title}
-          editTime={time}
-          id={id}
-          isEdit={true}
-        />
+        <>
+          <div
+            className={`${s.Modal__backdrop}`}
+            onClick={onCloseEditCard}
+          ></div>
+          <TemplateTodo
+            editCategory={category.toLowerCase()}
+            editDifficulty={difficulty.toLowerCase()}
+            editTitle={title}
+            editTime={time}
+            id={id}
+            isEdit={isEdit}
+          />
+        </>
       )}
     </>
   );

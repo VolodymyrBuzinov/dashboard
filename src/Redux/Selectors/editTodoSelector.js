@@ -1,3 +1,3 @@
-const editTodo = state => state.templateTodo.isEdit;
+const isEditTodo = state => state.templateTodo.isEdit;
 
-export default editTodo;
+export default isEditTodo;

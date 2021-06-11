@@ -4,11 +4,12 @@ import todosOperations from '../../Redux/Operations/todosOperations';
 import Button from '../Button/Button';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 
-const ModalWindow = ({ id, isOpened, question, acceptChanges }) => {
+const ModalWindow = ({ id, isOpened, question }) => {
   const dispatch = useDispatch();
 
   const handleRemoveTask = () => {
     dispatch(todosOperations.deleteTodo(id));
+    dispatch(editTodo(false));
   };
 
   return (
