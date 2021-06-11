@@ -37,6 +37,10 @@
   margin-bottom: 7px;
   width: 144px;
   height: 123px;
+  @media screen and (max-width: 767px) {
+    width: 195px;
+    height: 172px;
+  }
 }
 
 .title {
