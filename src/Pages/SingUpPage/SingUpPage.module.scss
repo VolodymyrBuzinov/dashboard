@@ -23,13 +23,13 @@
     text-align: center;
   }
   @media screen and (min-width: 768px) {
-    padding-top: 212px;
+    padding-top: 170px;
     padding-bottom: 212px;
   }
   @media screen and (min-width: 1280px) {
     padding-top: 153px;
     padding-bottom: 154px;
-    padding-left: 229px;
+    padding-left: 400px;
   }
 }
 
@@ -51,7 +51,7 @@
     line-height: 0.9;
   }
   @media screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
@@ -76,7 +76,7 @@
     line-height: 0.9;
   }
   @media screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: 34px;
   }
 }
 
@@ -135,55 +135,37 @@
 }
 
 .registr_secondBtnContainer {
-  @media screen and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  width: 400px;
+  height: 100px;
+  background-color: transparent;
 }
 
-.registr_inputContainerSend {
-  position: relative;
+.regisrt_innerContent {
+  @extend %text-throw;
   display: flex;
+  align-items: center;
   @media screen and (max-width: 767px) {
-    align-items: center;
     justify-content: center;
   }
 }
 
-.registr_inputSendLetter {
-  @extend %input-throw;
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid $hover-color;
-  color: $hover-color;
-  @media screen and (max-width: 767px) {
-    height: 30px;
-    width: 100%;
+.regisrt_innerEmail {
+  @extend %text-throw;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: $card-bg-color;
+  @media screen and (max-width: 420px) {
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
+    font-size: 14px;
+    line-height: 1;
   }
   @media screen and (min-width: 768px) {
-    width: 198px;
-    margin-top: 10px;
+    font-size: 20px;
+    line-height: 0.9;
   }
-  @media screen and (min-width: 1280px) {
-    width: 200px;
-    margin-top: 3px;
-  }
-  &:focus + .registr_labelSendLetter {
-    transform: translateX(-100px);
-  }
-}
-
-.registr_labelSendLetter {
-  color: $hover-color;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding-bottom: 7px;
-  font-weight: 300;
-  font-size: 12px;
-  transform: translateX(0);
-  transition: $animation-timing;
 }
 
 .registr_sendBtn {
@@ -191,6 +173,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 20px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -203,7 +186,8 @@
     height: 15px;
     background-image: url(../../Images/icon_send.svg);
   }
-  &:focus {
+  &:focus,
+  &:hover {
     background-color: $card-bg-color;
   }
 }
@@ -216,14 +200,12 @@
     margin-top: 50px;
   }
   @media screen and (min-width: 421px) {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
   @media screen and (min-width: 768px) {
-    margin-top: 100px;
     width: 298px;
   }
 }
@@ -325,11 +307,11 @@
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: 40px;
+    bottom: 0;
     right: 0;
     pointer-events: none;
   }
   @media screen and (min-width: 1280px) {
-    bottom: -100px;
+    bottom: -70px;
   }
 }
