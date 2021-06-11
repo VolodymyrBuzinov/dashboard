@@ -8,6 +8,9 @@ import getLoader from '../../Redux/Selectors/loaderSelector';
 import { hideSpinner, showSpinner } from '../../Redux/Actions/loaderAction';
 import { animated } from 'react-spring';
 import { RouteTransition } from '../../Components/RouteTransition/RouteTransition';
+import Button from '../../Components/Button/Button';
+import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+import isEdit from '../../Redux/Selectors/editTodoSelector';
 
 const MyCabinetPage = () => {
   const isVisibleLoader = useSelector(getLoader);
@@ -22,6 +25,12 @@ const MyCabinetPage = () => {
   }, [dispatch]);
 
   const transitions = RouteTransition();
+
+  const edit = useSelector(isEdit);
+  const onClick = () => {
+    if (edit) return;
+    dispatch(onClickBtnCreate(true));
+  };
 
   return (
     <>
@@ -38,7 +47,8 @@ const MyCabinetPage = () => {
               </animated.div>
             ),
         )
-      )}{' '}
+      )}
+      <Button content="icon-plus" type="button" onClick={onClick} />
     </>
   );
 };

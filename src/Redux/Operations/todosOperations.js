@@ -21,8 +21,9 @@ const addTodo =
     dispatch(todosActions.addTodoRequest());
     try {
       const template = { category, difficulty, title, time };
-      const { data } = await axios.post('/tasks', template);
-      dispatch(todosActions.addTodoSuccess(data));
+      await axios
+        .post('/tasks', template)
+        .then(res => dispatch(todosActions.addTodoSuccess(res.data)));
     } catch (error) {
       dispatch(todosActions.addTodoError(error.response.status));
     }
