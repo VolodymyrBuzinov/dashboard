@@ -73,44 +73,30 @@ const SingUpPage = () => {
                         exact
                         to="/"
                         className={s.registr_navLink}
-                        // activeClassName={s}
                       >
                         <span className={s.registr_link}>log in</span>
                       </NavLink>
 
-
-              <div className={s.registr_secondBtnContainer}>
-                {/* <button
-                  type="button"
-                  className={s.register_secondaryBtn}
-                  onClick={sendFollowUpLetter}
-                >
-                  Send a follow-up letter
-                </button> */}
-                <p>Send a follow-up letter</p>
-
-                <div className={s.registr_inputContainerSend}>
-                  <input
-                    required
-                    id="email"
-                    className={s.registr_inputSendLetter}
-                    type="text"
-                    value={reEmail}
-                    onChange={emailFunc}
-                  />
-                  <button className={s.registr_sendBtn} type="button" onClick={sendFollowUpLetter}></button>
-                  {!reEmail && (
-                    <label
-                      htmlFor="email"
-                      className={s.registr_labelSendLetter}
-                    >
-                      Email
-                    </label>
-                  )}
-                </div>
-              </div>
-            </div>
-
+                      <div className={s.registr_secondBtnContainer}>
+                        {reEmail && (
+                          <>
+                            <p className={s.registr_text}>
+                              Send a follow-up letter
+                            </p>
+                            <div className={s.regisrt_innerContent}>
+                              <p className={s.regisrt_innerEmail}>
+                                {reEmail}
+                              </p>
+                              <button
+                                className={s.registr_sendBtn}
+                                type="button"
+                                onClick={sendFollowUpLetter}
+                              ></button>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
 
                     <form onSubmit={btnClick} className={s.registr_form}>
                       <div className={s.registr_inputContainer}>

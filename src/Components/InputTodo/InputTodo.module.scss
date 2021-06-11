@@ -19,8 +19,8 @@
 .InputTodo__input {
   font-weight: 700;
   font-style: normal;
-  font-family: HelveticaNeueCyr;
-  max-width: 200px;
+  font-family: Helvetica, sans-serif;
+  max-width: 155px;
   counter-reset: $text-color;
   // display: block;
   border: none;
@@ -49,7 +49,7 @@
 
 /* LABEL ======================================= */
 .InputTodo__label {
-  font-family: HelveticaNeueCyr;
+  font-family: Helvetica, sans-serif;
   color: $active-color;
   position: absolute;
   pointer-events: none;
@@ -86,7 +86,7 @@
 .InputTodo__bar {
   position: relative;
   display: block;
-  width: 200px;
+  width: 155px;
 }
 .InputTodo__bar:before,
 .InputTodo__bar:after {

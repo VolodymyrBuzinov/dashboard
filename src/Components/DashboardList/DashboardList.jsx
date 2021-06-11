@@ -1,19 +1,11 @@
-import {
-  useEffect,
-  //useState
-} from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import todoOperations from '../../Redux/Operations/todosOperations';
 import todoSelectors from '../../Redux/Selectors/todosSelectors';
-//import { editTodo } from '../../Redux/Actions/editTodo-action';
-// import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-// import isEdit from '../../Redux/Selectors/editTodoSelector';
-
 import s from './DashboardList.module.scss';
 import sorter from '../DashboardList/sorter';
-
 import DashboardListItem from '../DashboardListItem/DashboardListItem';
 import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from '../EmptyTodos/EmptyTodods';
@@ -41,11 +33,6 @@ const DashboardList = () => {
   const challengeList = [];
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
-
-  /* console.log('todayList', todayList);
-  console.log("tomorrowList", tomorrowList);
-  console.log("doneList", doneList);
-  console.log("challengeList", challengeList);*/
 
   return (
     <>
@@ -166,28 +153,3 @@ const DashboardList = () => {
 };
 
 export default DashboardList;
-/**<div
-        className={
-          challenge
-            ? `${style.TemplateTodo__challenge} ${style.TemplateTodo__group}`
-            : style.TemplateTodo__group
-        }
-      > 
-      <div className="star">
-            {challenge ? (
-              <Button
-                onClick={!isVisible && !edit && toggleChallenge}
-                content="icon-trophy"
-                type="button"
-                isActive={true}
-              />
-            ) : (
-              <Button
-                onClick={!isVisible && !edit && toggleChallenge}
-                content="icon-Vector"
-                type="button"
-                isActive={!edit}
-              />
-            )}
-            
-          </div>*/

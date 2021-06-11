@@ -65,3 +65,11 @@
   opacity: 0.1;
   transition: all 300ms ease-in;
 }
+
+.itemTodo {
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

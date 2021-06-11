@@ -4,17 +4,18 @@ import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
+import getShowCardDone from '../DashboardList/CardDone/getShowCardDone';
 
 export default function GroupButtonSaveClearDone({
-  isEdit,
   isCreate,
-  toggleModalDelete,
+  isEdit,
   category,
   difficulty,
   title,
   time,
-  id,
   cancelСhanges,
+  id,
+  toggleModalDelete,
 }) {
   const state = { category, difficulty, title, time };
 
@@ -36,25 +37,28 @@ export default function GroupButtonSaveClearDone({
   };
 
   const handleClickElementSave = () => {
-    console.log('run handleClickElementSave');
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
     console.log({
-      id,
       ...state,
       category: categoryToUpperCase,
       difficulty: difficultyToUpperCase,
+      id,
     });
 
     dispatch(
       exp.updateTodo({
-        id,
         ...state,
+        id,
         category: categoryToUpperCase,
         difficulty: difficultyToUpperCase,
       }),
     );
   };
+  console.log(
+    '🚀 ~ file: GroupButtonSaveClearDone.jsx ~ line 57 ~ handleClickElementSave ~ id-dis',
+    id,
+  );
 
   const handleClickElementDone = () => {
     console.log('run handleClickElementDone');
@@ -66,7 +70,6 @@ export default function GroupButtonSaveClearDone({
     dispatch(
       exp.updateTodoStatusDone({
         id,
-        done: 'true',
       }),
     );
   };
@@ -76,13 +79,14 @@ export default function GroupButtonSaveClearDone({
       {isCreate && (
         <div className={style.GroupButtonSaveClearDone__ButtonGroup}>
           <Button
-            className={style.GroupButtonSaveClearDone__ButtonSvg}
+            className={style.GroupButtonSaveClearDone__ButtonSvgClear}
             type="button"
             content="icon-clear"
             onClick={cancelСhanges}
             isActive={false}
           />
           <Button
+            className={style.GroupButtonSaveClearDone__ButtonSvgCreate}
             type="button"
             content="create"
             onClick={handleClickElementCreate}
@@ -106,7 +110,7 @@ export default function GroupButtonSaveClearDone({
           <Button
             type="button"
             content="icon-done"
-            onClick={handleClickElementDone}
+            onClick={() => getShowCardDone(id)}
           />
         </div>
       )}

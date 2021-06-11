@@ -30,15 +30,20 @@ const addTodo =
   };
 
 const updateTodo =
-  ({ todoId, category, difficulty, title, time }) =>
+  ({ id, category, difficulty, title, time }) =>
   async dispatch => {
-    dispatch(todosActions.updateTodoeRequest());
+    dispatch(todosActions.updateTodoRequest());
+
     try {
       const template = { category, difficulty, title, time };
-      await axios.put(`/tasks/${todoId}`, template);
-      dispatch(todosActions.updateTodoeSuccess(todoId));
+
+      dispatch(
+        todosActions.updateTodoSuccess(
+          await axios.put(`/tasks/${id}`, template).then(res => res.data),
+        ),
+      );
     } catch (error) {
-      dispatch(todosActions.updateTodoeError(error.response.status));
+      dispatch(todosActions.updateTodoError(error.response.status));
     }
   };
 
@@ -47,13 +52,9 @@ const updateTodoStatusDone =
   async dispatch => {
     dispatch(todosActions.updateTodoStatusDoneRequest());
     try {
-      await axios.patch(`/tasks/${id}/done`, done);
+      await axios.patch(`/tasks/${id}/done`, { done: true });
       dispatch(todosActions.updateTodoStatusDoneSuccess(id, done));
     } catch (error) {
-      console.log(
-        '🚀 ~ file: todosOperations.js ~ line 51 ~ error',
-        error.message,
-      );
       dispatch(todosActions.updateTodoStatusDoneError(error.message));
     }
   };
@@ -63,7 +64,7 @@ const deleteTodo = todoId => async dispatch => {
   try {
     await axios.delete(`/tasks/${todoId}`);
     dispatch(todosActions.deleteTodoSuccess(todoId));
-    toast.info('Your task is successfully deleted!')
+    toast.info('Your task is successfully deleted!');
   } catch (error) {
     dispatch(todosActions.deleteTodoError(error.response.status));
   }
