@@ -53,9 +53,11 @@ const registerAuth = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/signup', credentials);
     dispatch(registerSuccess(response.data.data));
-    toast.info('You are successfully registered!')
+    toast.info('You are successfully registered!');
   } catch (error) {
     dispatch(registerError(error.message));
+    toast.error('Something went wrong...');
+    //dispatch(registerError(toast.error(`${error.message}`)));
   }
 };
 
@@ -67,9 +69,11 @@ const loginAuth = credentials => async dispatch => {
     AxiosToken().set(response.data.data.token);
     dispatch(refreshTokenAction(response.data.data.refreshToken));
     dispatch(loginSuccess(response.data.data));
-    toast.info('Welcam to Questify!')
+    toast.info('Welcоme to Questify!')
   } catch (error) {
     dispatch(loginError(error.message));
+    //dispatch(loginError(toast.error(`${error.message}`)));
+    toast.error('Something went wrong...');
   }
 };
 
@@ -82,6 +86,8 @@ const logOutAuth = () => async dispatch => {
     toast.info('You are successfully logOut!')
   } catch (error) {
     dispatch(logoutError(error.response.status));
+    //dispatch(logoutError(toast.error(`${error.response.status}`)));
+    toast.error('Something went wrong...');
   }
 };
 
@@ -93,6 +99,8 @@ const reVerificationt = credentials => async dispatch => {
     toast.info('Reverification email has been sent to you.')
   } catch (error) {
     dispatch(reVerificationtUserError(error.message));
+    //dispatch(reVerificationtUserError(toast.error(`${error.message}`)));
+    toast.error('Something went wrong...');
   }
 };
 
@@ -119,6 +127,8 @@ const verify = eve => async dispatch => {
     toast.info('Verification email has been sent to you.')
   } catch (error) {
     dispatch(getVerifyUserError(error.message));
+    //dispatch(getVerifyUserError(toast.error(`${error.message}`)));
+    toast.error('Something went wrong...');
   }
 };
 
