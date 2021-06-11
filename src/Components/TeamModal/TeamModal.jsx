@@ -47,7 +47,7 @@ const TeamModal = ({ onClose, isOpen }) => {
               <h3 className={style.nameTitle}>Vova Buzinov</h3>
               <h4 className={style.nameSubTitle}>Team-lead</h4>
               <p className={style.description}>
-                Working with user's logic in back-end
+                Working with user's logic in back-end, and lot of code-review.
               </p>
               <a
                 href="https://www.linkedin.com/in/volodymyr-buzinov/"
@@ -60,13 +60,35 @@ const TeamModal = ({ onClose, isOpen }) => {
             <li className={style.teamListItem}>
               <img
                 className={style.teamListItemImg}
+                src="https://i.ibb.co/L5J9y4n/Travinska-Halyna.jpg"
+                alt="Travinska-Halyna"
+                border="0"
+              />
+              <h3 className={style.nameTitle}>Halyna Travinska</h3>
+              <h4 className={style.nameSubTitle}>Scrum-master</h4>
+              <p className={style.description}>
+                Worked with logic and figuration of login and registration
+                pages.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/galinka-travinska-a7055b200/"
+                target="blank"
+                className={style.linkedinLink}
+              >
+                Halyna's Linkedin
+              </a>
+            </li>
+            <li className={style.teamListItem}>
+              <img
+                className={style.teamListItemImg}
                 src="https://i.ibb.co/YdHKfgg/Denis-Svinkovskiy.jpg"
                 alt="Denis-Svinkovskiy"
                 border="0"
               />
               <h3 className={style.nameTitle}>Denis Svinkovskiy</h3>
               <p className={style.description}>
-                Working with tasks logic in back-end
+                Working with tasks logic in back-end, and team modal in
+                front-end.
               </p>
               <a
                 href="https://www.linkedin.com/in/denis-svinkovskiy-a4043a200/"
@@ -85,9 +107,8 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Anastasiia Pankrusheva</h3>
               <p className={style.description}>
-                The logic of the arrangement of cards for today and tomorrow
-                Rendering data and styles from the back on the card in the
-                "Challenge" card
+                The logic of the arrangement of cards. Rendering data and styles
+                from the back on the card in the "Challenge" card.
               </p>
               <a
                 href="https://www.linkedin.com/mwlite/in/anastasiia-pankrusheva"
@@ -106,7 +127,8 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Mykhailo Otmakhov</h3>
               <p className={style.description}>
-                Working with tasks logic in back-end
+                Working with the logic(modal) of deleting tasks, transition
+                between pages, and presentation.
               </p>
               <a
                 href="https://www.linkedin.com/in/mykhailo-otmakhov-7929691bb/"
@@ -145,8 +167,8 @@ const TeamModal = ({ onClose, isOpen }) => {
               />
               <h3 className={style.nameTitle}>Andrii Zatochniy</h3>
               <p className={style.description}>
-                (Frontend - Routing, Logics (Signup, Login, Logout), Refresh
-                Token, Sending a follow-up letter to verification email)
+                Frontend - Routing, Logics (Signup, Login, Logout), Refresh
+                Token, Sending a follow-up letter to verification email.
               </p>
               <a
                 href="https://www.linkedin.com/in/Andrii-Zatochniy/"
@@ -163,6 +185,7 @@ const TeamModal = ({ onClose, isOpen }) => {
                 alt="Yurii-Streltsov"
                 border="0"
               />
+              <h3 className={style.nameTitle}>Yurii Streltsov</h3>
               <p className={style.description}>
                 Working with tasks logic in back-end
               </p>
@@ -172,6 +195,61 @@ const TeamModal = ({ onClose, isOpen }) => {
                 className={style.linkedinLink}
               >
                 Yurii's Linkedin
+              </a>
+            </li>
+            <li className={style.teamListItem}>
+              <img
+                className={style.teamListItemImg}
+                src="https://i.ibb.co/0hybVqL/Anastasiia-Zaikina.jpg"
+                alt="Anastasiia-Zaikina"
+                border="0"
+              />
+              <h3 className={style.nameTitle}>Anastasiia Zaikina</h3>
+              <p className={style.description}>
+                Working with tasks logic in back-end
+              </p>
+              <a
+                href="https://www.linkedin.com/in/анастасия-заикина-1a9481190"
+                target="blank"
+                className={style.linkedinLink}
+              >
+                Anastasiia's Linkedin
+              </a>
+            </li>
+            <li className={style.teamListItem}>
+              <img
+                className={style.teamListItemImg}
+                src="https://i.ibb.co/fHPKQhs/Vitalii-Speka.jpg"
+                alt="Vitalii-Speka"
+                border="0"
+              />
+              <h3 className={style.nameTitle}>Vitalii Speka</h3>
+              <p className={style.description}>Working with date-time logic,</p>
+              <a
+                href="https://www.linkedin.com/in/vitalii-speka/"
+                target="blank"
+                className={style.linkedinLink}
+              >
+                Vitalii's Linkedin
+              </a>
+            </li>
+            <li className={style.teamListItem}>
+              <img
+                className={style.teamListItemImg}
+                src="https://i.ibb.co/0GyzLr0/Artem-Petrenko.jpg"
+                alt="Artem-Petrenko"
+                border="0"
+              />
+              <h3 className={style.nameTitle}>Artem Petrenko</h3>
+              <p className={style.description}>
+                Worked on completed todos, displaying them in the menu.
+              </p>
+              <a
+                href="https://www.linkedin.com/in/artem-petrenko-217aa31bb/"
+                target="blank"
+                className={style.linkedinLink}
+              >
+                Artem's Linkedin
               </a>
             </li>
           </ul>
