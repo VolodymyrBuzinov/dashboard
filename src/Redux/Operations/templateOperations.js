@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BaseURL } from '../../Api/AxiosToken';
 import templateActions from '../Actions/templateActions';
+import { toast } from 'react-toastify';
 
 BaseURL();
 
@@ -12,6 +13,7 @@ const createTemplate =
       const template = { category, difficulty, title, time };
       const { data } = await axios.post('/tasks', template);
       dispatch(templateActions.createTemplateSuccess(data));
+      toast.info('Your task is successfully created!')
     } catch (error) {
       dispatch(templateActions.createTemplateError(error.response.status));
     }
@@ -34,6 +36,7 @@ const updateTemplate = todoId => async dispatch => {
   try {
     await axios.put(`/tasks/${todoId}`);
     dispatch(templateActions.updateTemplateSuccess(todoId));
+    toast.info('Your task is successfully updated!')
   } catch (error) {
     dispatch(templateActions.updateTemplateError(error.response.status));
   }

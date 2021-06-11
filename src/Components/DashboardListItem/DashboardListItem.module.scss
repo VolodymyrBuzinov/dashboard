@@ -60,43 +60,6 @@
   }
 }
 
-.todoItemСircle {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: tomato;
-  @media screen and (max-width: 767px) {
-    width: 10px;
-    height: 10px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 8px;
-    height: 8px;
-  }
-  /*&.easy {
-    background: $hover-color;
-  }
-
-  &.normal {
-    background: $cancel-button;
-  }
-
-  &.hard {
-    background: $delete-button;
-  }*/
-}
-
-.todoItemDifficulty {
-  @media screen and (max-width: 767px) {
-    margin-right: 158px;
-  }
-  @media screen and (min-width: 768px) {
-    margin-right: 86px;
-  }
-}
-
 .todoItemСomplexity {
   display: flex;
   justify-content: space-between;
@@ -116,6 +79,46 @@
     margin-bottom: 42px;
     font-size: 14px;
     line-height: 14px;
+  }
+}
+.todoItemDiv {
+  display: flex;
+
+  align-items: center;
+}
+
+.todoItemСircle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: tomato;
+  @media screen and (max-width: 767px) {
+    width: 10px;
+    height: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 8px;
+    height: 8px;
+  }
+  &.easy {
+    background: $hover-color;
+  }
+
+  &.normal {
+    background: $cancel-button;
+  }
+
+  &.hard {
+    background: $delete-button;
+  }
+}
+
+.todoItemDifficulty {
+  text-transform: lowercase;
+  &::first-letter {
+    text-transform: uppercase;
   }
 }
 
@@ -219,7 +222,6 @@
 }
 
 .todoItemGroup {
-  background-color: $work-color;
   content: ' ';
   display: block;
   position: absolute;
@@ -231,11 +233,29 @@
   letter-spacing: 0.02em;
 
   color: $text-color;
+  &.family {
+    background: $family-color;
+  }
+  &.health {
+    background: $healt-color;
+  }
+  &.learning {
+    background: $learning-color;
+  }
+  &.leisure {
+    background: $leisure-color;
+  }
+  &.work {
+    background: $work-color;
+  }
+  &.stuff {
+    background: $active-color;
+  }
   @media screen and (max-width: 767px) {
     font-size: 14px;
     line-height: 14px;
     padding-top: 10px;
-    top: 192px;
+    top: 194px;
     width: 120px;
     height: 35px;
     border-radius: 0px 25px 25px 0px;
@@ -250,10 +270,3 @@
     border-radius: 0px 15px 15px 0px;
   }
 }
-
-/*@media screen and (max-width: 767px) {
-  }
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1280px) {
-  }*/
