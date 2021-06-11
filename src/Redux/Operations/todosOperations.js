@@ -32,17 +32,18 @@ const addTodo =
 const updateTodo =
   ({ id, category, difficulty, title, time }) =>
   async dispatch => {
-    dispatch(todosActions.updateTodoeRequest());
+    dispatch(todosActions.updateTodoRequest());
+
     try {
       const template = { category, difficulty, title, time };
 
       dispatch(
-        todosActions.updateTodoeSuccess(
+        todosActions.updateTodoSuccess(
           await axios.put(`/tasks/${id}`, template).then(res => res.data),
         ),
       );
     } catch (error) {
-      dispatch(todosActions.updateTodoeError(error.response.status));
+      dispatch(todosActions.updateTodoError(error.response.status));
     }
   };
 
@@ -54,10 +55,6 @@ const updateTodoStatusDone =
       await axios.patch(`/tasks/${id}/done`, { done: true });
       dispatch(todosActions.updateTodoStatusDoneSuccess(id, done));
     } catch (error) {
-      console.log(
-        '🚀 ~ file: todosOperations.js ~ line 51 ~ error',
-        error.message,
-      );
       dispatch(todosActions.updateTodoStatusDoneError(error.message));
     }
   };

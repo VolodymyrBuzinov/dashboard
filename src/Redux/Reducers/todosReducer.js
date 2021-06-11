@@ -8,7 +8,7 @@ const items = createReducer([], {
     ...state,
     payload.data,
   ],
-  [todosActions.updateTodoeSuccess]: (state, { payload }) =>
+  [todosActions.updateTodoSuccess]: (state, { payload }) =>
     state.filter(({ _id }) => _id !== payload),
   [todosActions.updateTodoStatusDoneSuccess]: (state, { payload }) =>
     state.filter(({ _id }) => _id !== payload),
@@ -25,9 +25,9 @@ const loading = createReducer(false, {
   [todosActions.addTodoSuccess]: () => false,
   [todosActions.addTodoError]: () => false,
 
-  [todosActions.updateTodoeRequest]: () => true,
-  [todosActions.updateTodoeSuccess]: () => false,
-  [todosActions.updateTodoeError]: () => false,
+  [todosActions.updateTodoRequest]: () => true,
+  [todosActions.updateTodoSuccess]: () => false,
+  [todosActions.updateTodoError]: () => false,
 
   [todosActions.updateTodoStatusDoneRequest]: () => true,
   [todosActions.updateTodoStatusDoneSuccess]: () => false,

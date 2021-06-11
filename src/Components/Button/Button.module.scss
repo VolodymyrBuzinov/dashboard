@@ -97,7 +97,7 @@
     filter: blur(8px);
   }
 
-  /*Style for button START*/
+  /*Style for button CREATE*/
 
   &.create {
     color: $hover-color;
@@ -105,6 +105,7 @@
     font-size: 14px;
     line-height: 1;
     text-transform: uppercase;
+    // margin-left: 7px;
   }
 
   /*Style for CANCEL, DELETE*/
@@ -131,25 +132,101 @@
       content: ' ';
       background: $secondary-text;
       width: 1px;
-      height: 15px;
       float: left;
-      margin-right: 10px;
+      margin-right: 7px;
+
+      @media screen and (max-width: 767px) {
+        height: 20px;
+      }
+      @media screen and (min-width: 768px) {
+        height: 16px;
+      }
+    }
+  }
+
+  /*Style for DONE, CLEAR, SAVE*/
+
+  &.icon-done {
+    color: $delete-button;
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  &.icon-clear {
+    color: $delete-button;
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &::after {
+      content: ' ';
+      background: $secondary-text;
+      width: 1px;
+      float: left;
+      margin: 0 7px 0 7px;
+
+      @media screen and (max-width: 767px) {
+        height: 20px;
+      }
+      @media screen and (min-width: 768px) {
+        height: 16px;
+      }
+    }
+  }
+
+  &.icon-save {
+    color: $delete-button;
+    font-family: Helvetica, sans-serif;
+    font-size: 10px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &::after {
+      content: ' ';
+      background: $secondary-text;
+      width: 1px;
+      float: right;
+      margin: 0 7px 0 7px;
+
+      @media screen and (max-width: 767px) {
+        height: 20px;
+      }
+      @media screen and (min-width: 768px) {
+        height: 16px;
+      }
     }
   }
 
   /*Style for button CLEAR,SAVE,DONE,STAR,TROPHY*/
 
-  &.icon-clear,
-  &.icon-save,
   &.icon-done {
     & svg {
       @media screen and (max-width: 767px) {
-        width: 19px;
-        height: 19px;
+        width: 16px;
+        height: 12px;
       }
       @media screen and (min-width: 768px) {
-        width: 15px;
-        height: 15px;
+        width: 14px;
+        height: 10px;
+      }
+    }
+  }
+  &.icon-save,
+  &.icon-clear {
+    & svg {
+      @media screen and (max-width: 767px) {
+        width: 12px;
+        height: 12px;
+      }
+      @media screen and (min-width: 768px) {
+        width: 10px;
+        height: 10px;
       }
     }
   }
@@ -175,8 +252,8 @@
       fill: $hover-color;
     }
   }
-
-  &:not(:last-child) {
-    margin-right: 5px;
-  }
+  // закомитил Виталик Спека
+  // &:not(:last-child) {
+  //   margin-right: 5px;
+  // }
 }
