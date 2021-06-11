@@ -38,8 +38,7 @@ const TemplateTodo = ({
   editDifficulty,
   editTime,
   editTitle,
-  id,
-  toggleModalDelete
+  id,  
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -97,7 +96,7 @@ const TemplateTodo = ({
         <div className={style.TemplateTodo__WrapperMidle}>
           <InputTodo
             isEdit={isEdit}
-            title={isEdit && title}
+            title={isEdit && editTitle}
             getInputText={handleChangeState}
             cb={setTitle}
           />

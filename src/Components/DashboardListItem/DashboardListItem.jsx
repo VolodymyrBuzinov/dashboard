@@ -118,7 +118,7 @@ function DashboardListItem({
             editTitle={title}
             editTime={time}
             id={id}
-            isEdit={true}
+            isEdit={isEdit}
           />
         </>
       )}

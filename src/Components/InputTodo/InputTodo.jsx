@@ -1,22 +1,29 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import style from './InputTodo.module.scss';
 
 export default function InputTodo({ title, getInputText, cb, isEdit }) {
   const [inputText, setinputText] = useState('');
 
-  const handleInputChange = date => {
-    setinputText(date.target.value);
+  useEffect(() => {
+    console.log(title);
+    if (isEdit) setinputText(title);
+  }, [isEdit]);
+
+  const handleInputChange = event => {
+    event.preventDefault();
+    setinputText(event.target.value);
   };
 
   return (
     <form className={style.InputTodo__form}>
       <input
-        className={style.InputTodo__input}
-        autoFocus={false}
+                className={style.InputTodo__input}
+        autoFocus={true}
         type="text"
         name="title"
         required
-        value={!isEdit ? title : inputText}
+        value={isEdit ? inputText : title}
         onChange={handleInputChange}
         onBlur={() => {
           getInputText('title', inputText, cb);
