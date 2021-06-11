@@ -17,7 +17,7 @@ function CardDone({ id, titleTodo = "title" }) {
     
     
     return <div id={`cardDone-${id}`} className={`${style.cardDone}`} hidden>
-        <h3 className={style.title}>COMPLETED: <span class={style.textTitle}>{titleTodoShort}</span></h3>
+        <h3 className={style.title}>COMPLETED: <span className={style.textTitle}>{titleTodoShort}</span></h3>
         <svg className={style.iconFon}><use href={`${sprite}#icon-award`}></use></svg>
         <button type="button" className={style.btnContinue}>Continue <svg className={style.iconArrow}><use href={`${sprite}#icon-arrow`}></use></svg></button>
 

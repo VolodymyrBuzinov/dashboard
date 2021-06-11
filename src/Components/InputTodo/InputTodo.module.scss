@@ -2,21 +2,6 @@
 
 .InputTodo__input {
   @extend %button-throw;
-}
-
-/* form starting stylings ------------------------------- */
-.InputTodo__form {
-  position: relative;
-
-  @media screen and (max-width: 767px) {
-    margin-bottom: 15px;
-  }
-  @media screen and (min-width: 768px) {
-    margin-bottom: 10px;
-  }
-}
-
-.InputTodo__input {
   font-weight: 700;
   font-style: normal;
   font-family: HelveticaNeueCyr;
@@ -47,38 +32,18 @@
   outline: none;
 }
 
-/* LABEL ======================================= */
-.InputTodo__label {
-  font-family: HelveticaNeueCyr;
-  color: $active-color;
-  position: absolute;
-  pointer-events: none;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 15px;
-  white-space: nowrap;
-  transition: $animation-timing;
-  -moz-transition: $animation-timing;
-  -webkit-transition: $animation-timing;
-
-  //@extend
-  font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 12px;
-  /* identical to box height */
-
-  text-align: center;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
 /* active state */
 .InputTodo__input:focus ~ label,
 .InputTodo__input:valid ~ label {
   top: -15px;
   font-size: 14px;
   color: $active-color;
+}
+
+/* active state */
+.InputTodo__input:focus ~ .InputTodo__bar:before,
+.InputTodo__input:focus ~ .InputTodo__bar:after {
+  width: 50%;
 }
 
 /* BOTTOM BARS ================================= */
@@ -107,8 +72,40 @@
   right: 50%;
 }
 
-/* active state */
-.InputTodo__input:focus ~ .InputTodo__bar:before,
-.InputTodo__input:focus ~ .InputTodo__bar:after {
-  width: 50%;
+/* form starting stylings ------------------------------- */
+.InputTodo__form {
+  position: relative;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 15px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 10px;
+  }
+}
+
+/* LABEL ======================================= */
+.InputTodo__label {
+  font-family: HelveticaNeueCyr;
+  color: $active-color;
+  position: absolute;
+  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15px;
+  white-space: nowrap;
+  transition: $animation-timing;
+  -moz-transition: $animation-timing;
+  -webkit-transition: $animation-timing;
+
+  //@extend
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }

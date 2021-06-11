@@ -128,7 +128,7 @@ const DashboardList = () => {
               </ul>
             </>
           ) : null}
-          <MenuDone todos={doneList} />
+          <MenuDone todos={doneList}/>
         </div>
       </main>
     </>
