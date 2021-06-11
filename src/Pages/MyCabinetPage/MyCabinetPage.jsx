@@ -29,8 +29,12 @@ const MyCabinetPage = () => {
 
   const edit = useSelector(isEdit);
   const isVisible = useSelector(isVisibleTemplate);
-  const onClick = () => {    
-    if (edit || isVisible) {
+  const onClick = () => {
+    if (edit) {
+      console.log('Закончить редактирование карточки');
+      return;
+    }
+    if (isVisible) {
       console.log('Закончить создание карточки');
       return;
     }
