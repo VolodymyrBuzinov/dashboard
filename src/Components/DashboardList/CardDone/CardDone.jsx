@@ -3,8 +3,10 @@ import sprite from '../../../Icons/symbol-defs.svg';
 
 // import getShowCardDone from "./getShowCardDone"
 // import getHiddenCardDone from "./getHiddenCardDone"
+
 import exp from '../../../Redux/Operations/todosOperations';
 import { useDispatch } from "react-redux";
+
 
 function CardDone({ id, titleTodo = "title" }) {
 
@@ -42,8 +44,7 @@ const dispatch = useDispatch();
         <button type="button" onClick={ ()=>handleClickElementDone(id) } className={style.btnContinue}>Continue <svg className={style.iconArrow}><use href={`${sprite}#icon-arrow`}></use></svg></button>
 
         {/* кнопки для тестов */}
-        {/* <button type="button" onClick={()=>getHiddenCardDone(id)}>HIDDEN</button>
-        <button type="button" onClick={()=>getShowCardDone(id)}>SHOW</button> */}
+
     </div>
 }
 
