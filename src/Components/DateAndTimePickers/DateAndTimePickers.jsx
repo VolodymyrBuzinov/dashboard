@@ -40,6 +40,7 @@ export default function DateAndTimePickers({ time, getDate, cb, isEdit }) {
         type="datetime-local"
         name="dateCreate"
         required
+        step="0"
         min="2021-06-01T08:00"
         max="2022-06-30T21:00"
         value={isEdit ? selectedDate : time}

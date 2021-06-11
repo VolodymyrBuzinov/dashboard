@@ -35,9 +35,11 @@ export default function InputTodo({ title, getInputText, cb, isEdit }) {
         ref={inputEl}
         className={style.InputTodo__input}
         autoFocus={true}
+        autocomplete="off"
         type="text"
         name="title"
         required
+        maxlength="30"
         value={isEdit ? inputText : title}
         onChange={handleInputChange}
         onBlur={() => {
