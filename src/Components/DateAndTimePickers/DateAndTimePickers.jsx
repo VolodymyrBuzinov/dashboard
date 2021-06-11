@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import style from './DateAndTimePickers.module.scss';
 
-export default function DateAndTimePickers({ getDate, cb }) {
+export default function DateAndTimePickers({ time, getDate, cb, isEdit }) {
   const [selectedDate, setSelectedDate] = useState('');
+
+  useEffect(() => {
+    if (isEdit) setSelectedDate(time);
+  });
 
   const handleDateChange = date => {
     setSelectedDate(date.target.value);

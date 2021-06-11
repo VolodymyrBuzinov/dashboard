@@ -100,7 +100,7 @@ const TemplateTodo = ({
             getInputText={handleChangeState}
             cb={setTitle}
           />
-          <DateAndTimePickers getDate={handleChangeState} cb={setTime} />
+          <DateAndTimePickers time={editTime} isEdit={isEdit} getDate={handleChangeState} cb={setTime} />
         </div>
 
         <div className={style.TemplateTodo__WrapperBottom}>

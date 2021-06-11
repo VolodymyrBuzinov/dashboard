@@ -5,8 +5,7 @@ import style from './InputTodo.module.scss';
 export default function InputTodo({ title, getInputText, cb, isEdit }) {
   const [inputText, setinputText] = useState('');
 
-  useEffect(() => {
-    console.log(title);
+  useEffect(() => {    
     if (isEdit) setinputText(title);
   }, [isEdit]);
 
