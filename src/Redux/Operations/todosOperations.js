@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BaseURL } from '../../Api/AxiosToken';
 import todosActions from '../Actions/todosActions';
+import { toast } from 'react-toastify';
 
 BaseURL();
 
@@ -29,19 +30,9 @@ const addTodo =
   };
 
 const updateTodo =
-  ({ title, time, category, difficulty, id }) =>
+  ({ id, category, difficulty, title, time }) =>
   async dispatch => {
     dispatch(todosActions.updateTodoRequest());
-
-    /*
-    try {
-      const template = { category, difficulty, title, time };
-      const res = await axios.put(`/tasks/${id}`, template);
-      dispatch(todosActions.updateTodoeSuccess(res));
-    } catch (error) {
-      dispatch(todosActions.updateTodoeError(error.response.status));
-    }
-    */
 
     try {
       const template = { category, difficulty, title, time };
@@ -73,6 +64,7 @@ const deleteTodo = todoId => async dispatch => {
   try {
     await axios.delete(`/tasks/${todoId}`);
     dispatch(todosActions.deleteTodoSuccess(todoId));
+    toast.info('Your task is successfully deleted!');
   } catch (error) {
     dispatch(todosActions.deleteTodoError(error.response.status));
   }

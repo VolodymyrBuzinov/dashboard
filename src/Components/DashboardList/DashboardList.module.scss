@@ -2,7 +2,8 @@
 
 .todoListMain {
   background-color: $bg-color;
-  width: 100vw;
+  width: 100%;
+  min-height: 90vh;
 }
 
 .todoListDiv {
@@ -32,5 +33,13 @@
   }
   @media screen and (min-width: 768px) {
     margin-bottom: 30px;
+  }
+}
+
+.itemTodo {
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

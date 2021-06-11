@@ -49,8 +49,26 @@ export default function GroupButtonSaveClearDone({
     dispatch(
       exp.updateTodo({
         ...state,
+        id,
         category: categoryToUpperCase,
         difficulty: difficultyToUpperCase,
+      }),
+    );
+  };
+  console.log(
+    '🚀 ~ file: GroupButtonSaveClearDone.jsx ~ line 57 ~ handleClickElementSave ~ id-dis',
+    id,
+  );
+
+  const handleClickElementDone = () => {
+    console.log('run handleClickElementDone');
+    console.log({
+      id,
+      done: true,
+    });
+
+    dispatch(
+      exp.updateTodoStatusDone({
         id,
       }),
     );
@@ -92,9 +110,7 @@ export default function GroupButtonSaveClearDone({
           <Button
             type="button"
             content="icon-done"
-            onClick={() => {
-              getShowCardDone(id);
-            }}
+            onClick={() => getShowCardDone(id)}
           />
         </div>
       )}

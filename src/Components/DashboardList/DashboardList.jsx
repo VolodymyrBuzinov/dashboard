@@ -19,6 +19,7 @@ import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from '../EmptyTodos/EmptyTodods';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import Button from '../Button/Button';
+import CardDone from './CardDone/CardDone';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -39,11 +40,11 @@ const DashboardList = () => {
 
   sorter(todos, todayList, tomorrowList, doneList, challengeList);
 
-  //   console.log("todayList", todayList);
-  //   console.log("tomorrowList", tomorrowList);
-  //   console.log("doneList", doneList);
-  //   console.log("challengeList", challengeList);
-
+/*  console.log("todayList", todayList);
+  console.log("tomorrowList", tomorrowList);
+  console.log("doneList", doneList);
+  console.log("challengeList", challengeList);*/
+  
   return (
     <>
       <main className={s.todoListMain}>
@@ -52,9 +53,7 @@ const DashboardList = () => {
             tomorrowList.length === 0 &&
             challengeList.length === 0 &&
             !isVisible && (
-              <>
                 <EmptyTodos />
-              </>
             )}
           {todayList.length > 0 || isVisible ? (
             <>
@@ -62,21 +61,22 @@ const DashboardList = () => {
               <ul className={s.todoList}>
                 {isVisible && (
                   <li key="temlpate">
-                    <TemplateTodo />
-                  </li>
+                    <TemplateTodo isVisible={isVisible} />
+                    </li>
                 )}
                 {todayList.length > 0 &&
                   todayList.map(
                     ({ title, _id, time, category, difficulty, challenge }) => (
-                      <li key={_id}>
+                      <li key={_id} className={s.itemTodo}>
+                        <CardDone id={_id} titleTodo={title}/>
                         <DashboardListItem
                           category={category}
                           difficulty={difficulty}
                           title={title}
                           time={time}
-                          challengeStyle={challenge}
                           id={_id}
-                        ></DashboardListItem>
+                          day='Today'
+                          challengeStyle={challenge}/>
                       </li>
                     ),
                   )}
@@ -89,16 +89,17 @@ const DashboardList = () => {
               <ul className={s.todoList}>
                 {tomorrowList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
-                    <li key={_id}>
-                      <DashboardListItem
-                        category={category}
-                        difficulty={difficulty}
-                        title={title}
-                        time={time}
-                        challengeStyle={challenge}
+                    <li key={_id} className={s.itemTodo}>
+                        <CardDone id={_id} titleTodo={title}/>
+                        <DashboardListItem 
+                          category={category}
+                          difficulty={difficulty}
+                          title={title}
+                          time={time}
                         id={_id}
-                      ></DashboardListItem>
-                    </li>
+                        day='Tomorrow'
+                          challengeStyle={challenge}/>
+                      </li>
                   ),
                 )}
               </ul>
@@ -110,14 +111,17 @@ const DashboardList = () => {
               <ul className={s.todoList}>
                 {challengeList.map(
                   ({ title, _id, time, category, difficulty, challenge }) => (
-                    <li key={_id}>
+                    <li key={_id} className={s.itemTodo}>
+                      <CardDone id={_id} titleTodo={title}/>
                       <DashboardListItem
                         category={category}
                         difficulty={difficulty}
                         title={title}
                         time={time}
+                        id={_id}
+                        day='By'
                         challengeStyle={challenge}
-                      ></DashboardListItem>
+                      />
                     </li>
                   ),
                 )}

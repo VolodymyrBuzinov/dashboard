@@ -32,6 +32,7 @@ const INITIAL_STATE = {
 };
 
 const TemplateTodo = ({
+  id,
   isEdit,
   editCategory,
   editDifficulty,

@@ -23,13 +23,13 @@
     text-align: center;
   }
   @media screen and (min-width: 768px) {
-    padding-top: 212px;
+    padding-top: 170px;
     padding-bottom: 212px;
   }
   @media screen and (min-width: 1280px) {
     padding-top: 153px;
     padding-bottom: 154px;
-    padding-left: 229px;
+    padding-left: 400px;
   }
 }
 
@@ -51,7 +51,7 @@
     line-height: 0.9;
   }
   @media screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: 28px;
   }
 }
 
@@ -76,12 +76,11 @@
     line-height: 0.9;
   }
   @media screen and (min-width: 1280px) {
-    font-size: 24px;
+    font-size: 34px;
   }
 }
 
 .registr_textContainer {
-  display: inline-flex;
   @media screen and (max-width: 420px) {
     margin-top: 10px;
   }
@@ -136,24 +135,27 @@
 }
 
 .registr_secondBtnContainer {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 400px;
+  height: 100px;
+  background-color: transparent;
 }
 
-.register_secondaryBtn {
-  @extend %button-throw;
-  margin-left: 15px;
-  padding: 3px;
-  border: 1px solid $card-bg-color;
-  border-radius: 3px;
+.regisrt_innerContent {
+  @extend %text-throw;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+}
+
+.regisrt_innerEmail {
+  @extend %text-throw;
   font-weight: 400;
-  color: $card-bg-color;
   letter-spacing: 0.02em;
-  background-color: $secondary-text;
+  color: $card-bg-color;
   @media screen and (max-width: 420px) {
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1;
   }
   @media screen and (min-width: 421px) {
@@ -161,72 +163,33 @@
     line-height: 1;
   }
   @media screen and (min-width: 768px) {
-    font-size: 18px;
-  }
-  @media screen and (min-width: 1280px) {
-    font-size: 24px;
-  }
-}
-
-.registr_inputContainerSend {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 15px;
-  @media screen and (max-width: 767px) {
-    bottom: -20px;
-  }
-  @media screen and (min-width: 768px) {
-    bottom: -30px;
-  }
-}
-
-.registr_inputSendLetter {
-  @extend %input-throw;
-  padding: 0;
-  border: none;
-  border-bottom: 1px solid $hover-color;
-  color: $hover-color;
-  @media screen and (max-width: 767px) {
-    height: 30px;
-    width: 140px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 198px;
-    margin-top: 10px;
-  }
-  @media screen and (min-width: 1280px) {
-    width: 200px;
-    margin-top: 3px;
-  }
-  &:focus + .registr_labelSendLetter {
-    transform: translateX(-100px);
-  }
-}
-
-.registr_labelSendLetter {
-  color: $hover-color;
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 7px;
-  font-weight: 300;
-  font-size: 12px;
-  transform: translateX(0);
-  transition: 0.3s linear;
-  @media screen and (max-width: 1279px) {
-    left: 0;
-  }
-  @media screen and (min-width: 1280px) {
-    left: 0px;
+    font-size: 20px;
+    line-height: 0.9;
   }
 }
 
 .registr_sendBtn {
   @extend %button-throw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
   width: 30px;
-  height: 23px;
+  height: 30px;
+  border-radius: 50%;
   background-color: $hover-color;
+  &::after {
+    display: block;
+    background-size: cover;
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-image: url(../../Images/icon_send.svg);
+  }
+  &:focus,
+  &:hover {
+    background-color: $card-bg-color;
+  }
 }
 
 .registr_form {
@@ -237,17 +200,14 @@
     margin-top: 50px;
   }
   @media screen and (min-width: 421px) {
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
- 
+
   @media screen and (min-width: 768px) {
-    margin-top: 100px;
     width: 298px;
   }
-  
 }
 
 .registr_inputContainer {
@@ -282,21 +242,17 @@
   color: $hover-color;
   position: absolute;
   bottom: 0;
+  left: 0;
   padding-bottom: 7px;
   font-weight: 300;
   line-height: 0.9;
   transform: translateX(0);
-  transition: 0.3s linear;
+  transition: $animation-timing;
   @media screen and (max-width: 420px) {
-    left: 0;
     font-size: 16px;
   }
   @media screen and (min-width: 421px) {
-    left: 0;
     font-size: 18px;
-  }
-  @media screen and (min-width: 768px) {
-    left: 0;
   }
 }
 
@@ -351,11 +307,11 @@
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: 40px;
+    bottom: 0;
     right: 0;
     pointer-events: none;
   }
   @media screen and (min-width: 1280px) {
-    bottom: -100px;
+    bottom: -70px;
   }
 }
