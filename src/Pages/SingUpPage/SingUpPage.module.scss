@@ -178,6 +178,7 @@
   height: 30px;
   border-radius: 50%;
   background-color: $hover-color;
+  transition: $animation-timing;
   &::after {
     display: block;
     background-size: cover;
