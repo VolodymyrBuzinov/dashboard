@@ -38,6 +38,7 @@ const TemplateTodo = ({
   editTime,
   editTitle,
   id,
+  toggleModalDelete
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -135,6 +136,7 @@ const TemplateTodo = ({
               time={time}
               cancelСhanges={cancelСhanges}
               id={id}
+              toggleModalDelete={toggleModalDelete}
             />
           </div>
         </div>

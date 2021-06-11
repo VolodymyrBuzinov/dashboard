@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import s from './DashboardListItem.module.scss';
 import Button from '../Button/Button';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import Modal from '../Modal/Modal';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import toggleModal from '../TemplateTodo/toggleModal';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
+import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 
 function DashboardListItem({
   id,
@@ -13,27 +16,40 @@ function DashboardListItem({
   category,
   difficulty,
   challengeStyle,
-  onEdit,
 }) {
+  const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [edit, setEdit] = useState(false);
+
+  const isEdit = useSelector(isEditTodo);
 
   useEffect(() => {
     if (challengeStyle) {
       setChallenge(true);
     }
   }, []);
+
   const lowDifficulty = difficulty.toLowerCase();
   const lowCategory = category.toLowerCase();
   const toggleChallenge = () => setChallenge(prev => !prev);
+
+  const toggleEditCard = e => {
+    if (!isEdit) {
+      setEdit(true);
+      dispatch(editTodo(true));
+      return;
+    }
+    setEdit(false);
+    dispatch(editTodo(false));
+  };
 
   return (
     <>
       {!edit ? (
         <div
           className={challenge ? s.todoItem__challenge : s.todoItem}
-          onClick={() => setEdit(true)}
+          onClick={!isEdit && toggleEditCard}
         >
           <div className={s.todoItemСomplexity}>
             <div className={s.todoItemDiv}>
@@ -89,14 +105,21 @@ function DashboardListItem({
           )}
         </div>
       ) : (
-        <TemplateTodo
-          editCategory={category.toLowerCase()}
-          editDifficulty={difficulty.toLowerCase()}
-          editTitle={title}
-          editTime={time}
-          id={id}
-          isEdit={true}
-        />
+        <>
+          <div
+            className={`${s.Modal__backdrop}`}
+            onClick={toggleEditCard}
+          ></div>
+          <TemplateTodo
+            editCategory={category.toLowerCase()}
+            editDifficulty={difficulty.toLowerCase()}
+            editTitle={title}
+            editTime={time}
+            id={id}
+            isEdit={true}
+            toggleModalDelete={() => toggleModal('delete', setShowModalDelete)}
+          />
+        </>
       )}
     </>
   );
