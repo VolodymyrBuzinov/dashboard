@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './TemplateTodo.module.scss';
 import Modal from '../Modal/Modal';
+import ModalWindow from '../ModalWindow/ModalWindow';
 import Button from '../Button/Button';
 import Category from '../Category/Category';
 import Level from '../Level/Level';
@@ -42,6 +43,7 @@ const TemplateTodo = ({
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
   const [category, setСategory] = useState(INITIAL_STATE.category);
   const [difficulty, setDifficulty] = useState(INITIAL_STATE.difficulty);
   const [time, setTime] = useState(INITIAL_STATE.time);
@@ -137,11 +139,23 @@ const TemplateTodo = ({
               time={time}
               cancelСhanges={cancelСhanges}
               id={id}
-              toggleModalDelete={toggleModalDelete}
+              toggleModalDelete={()=>toggleModal('delete', setShowModalDelete)}
             />
           </div>
         </div>
       </div>
+      {showModalDelete && (
+            <Modal
+              onClose={() => toggleModal('delete', setShowModalDelete)}
+              type="delete"
+            >
+              <ModalWindow
+                id={id}
+                question={'Delete this Quest?'}
+                isOpened={() => toggleModal('delete', setShowModalDelete)}
+              />
+            </Modal>
+          )}
     </div>
   );
 };
