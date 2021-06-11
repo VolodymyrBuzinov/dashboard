@@ -11,6 +11,7 @@ import { RouteTransition } from '../../Components/RouteTransition/RouteTransitio
 import Button from '../../Components/Button/Button';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
+import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 
 const MyCabinetPage = () => {
   const isVisibleLoader = useSelector(getLoader);
@@ -27,8 +28,12 @@ const MyCabinetPage = () => {
   const transitions = RouteTransition();
 
   const edit = useSelector(isEdit);
-  const onClick = () => {
-    if (edit) return;
+  const isVisible = useSelector(isVisibleTemplate);
+  const onClick = () => {    
+    if (edit || isVisible) {
+      console.log('Закончить создание карточки');
+      return;
+    }
     dispatch(onClickBtnCreate(true));
   };
 

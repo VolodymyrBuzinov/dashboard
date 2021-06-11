@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
+import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 
 function DashboardListItem({
   id,
@@ -19,6 +20,7 @@ function DashboardListItem({
   const [challenge, setChallenge] = useState(false);
   const [edit, setEdit] = useState(false);
   const isEdit = useSelector(isEditTodo);
+  const isVisible = useSelector(isVisibleTemplate);
 
   useEffect(() => {
     if (challengeStyle) {
@@ -47,9 +49,17 @@ function DashboardListItem({
     if (e.target.tagName === 'use') {
       return;
     }
-    if (isEdit) {
+    if (isVisible) {
+      console.log('Закончить создание карточки');
       return;
     }
+    if (isEdit) {
+      if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
+        console.log('Закончить редактирование карточки');
+      }
+      return;
+    }
+
     setEdit(true);
     dispatch(editTodo(true));
   };
