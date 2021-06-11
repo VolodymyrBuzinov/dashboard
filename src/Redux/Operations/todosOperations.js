@@ -34,9 +34,6 @@ const updateTodo =
     dispatch(todosActions.updateTodoRequest());
 
     /*
-    
-    */
-
     try {
       const template = { category, difficulty, title, time };
       const res = await axios.put(`/tasks/${id}`, template);
@@ -44,18 +41,19 @@ const updateTodo =
     } catch (error) {
       dispatch(todosActions.updateTodoeError(error.response.status));
     }
+    */
 
-    // try {
-    //   const template = { category, difficulty, title, time };
+    try {
+      const template = { category, difficulty, title, time };
 
-    //   dispatch(
-    //     todosActions.updateTodoSuccess(
-    //       await axios.put(`/tasks/${id}`, template).then(res => res.data),
-    //     ),
-    //   );
-    // } catch (error) {
-    //   dispatch(todosActions.updateTodoError(error.response.status));
-    // }
+      dispatch(
+        todosActions.updateTodoSuccess(
+          await axios.put(`/tasks/${id}`, template).then(res => res.data),
+        ),
+      );
+    } catch (error) {
+      dispatch(todosActions.updateTodoError(error.response.status));
+    }
   };
 
 const updateTodoStatusDone =
