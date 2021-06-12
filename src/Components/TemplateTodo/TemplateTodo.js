@@ -41,6 +41,7 @@ const TemplateTodo = ({
   editTime,
   editTitle,
   changeEdit,
+  isChallenge,
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -77,9 +78,11 @@ const TemplateTodo = ({
               {showModalLevel && (
                 <Modal
                   type="level"
+                  isChallenge={isChallenge}
                   onClose={() => toggleModal('difficulty', setShowModalLevel)}
                 >
                   <Level
+                    isChallenge={isChallenge}
                     items={LIST_LEVEL}
                     handleClick={handleChangeState}
                     cb={setDifficulty}
@@ -121,10 +124,12 @@ const TemplateTodo = ({
             >
               {showModalCategory && (
                 <Modal
+                  isChallenge={isChallenge}
                   onClose={() => toggleModal('category', setShowModalCategory)}
                   type="category"
                 >
                   <Category
+                    isChallenge={isChallenge}
                     items={LIST_CATEGORY}
                     handleClick={handleChangeState}
                     cb={setСategory}

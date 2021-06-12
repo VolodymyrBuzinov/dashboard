@@ -25,8 +25,6 @@ const DashboardList = () => {
   }, [dispatch]);
   const todos = useSelector(todoSelectors.getAllTodos);
 
-  //const handleEdit = () => {};
-
   const todayList = [];
   const tomorrowList = [];
   const doneList = [];

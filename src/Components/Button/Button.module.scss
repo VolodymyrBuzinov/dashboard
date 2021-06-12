@@ -233,9 +233,8 @@
   &.icon-Vector,
   &.icon-trophy {
     & svg {
+      transition: filter $animation-timing;
       fill: $hover-color;
-      filter: drop-shadow(0px 2px 2px $hover-color);
-
       @media screen and (max-width: 767px) {
         width: 19px;
         height: 19px;
@@ -243,6 +242,9 @@
       @media screen and (min-width: 768px) {
         width: 15px;
         height: 15px;
+      }
+      &:hover {
+        filter: drop-shadow(0px 2px 2px $hover-color);
       }
     }
   }

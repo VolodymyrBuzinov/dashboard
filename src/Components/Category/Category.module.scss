@@ -19,4 +19,10 @@
     cursor: pointer;
     color: $secondary-text;
   }
+  &.challenge {
+    color: $secondary-text;
+    &:hover {
+      color: $white-color;
+    }
+  }
 }

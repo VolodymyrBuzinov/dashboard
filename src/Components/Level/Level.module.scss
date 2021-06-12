@@ -19,6 +19,9 @@
     cursor: pointer;
     color: $text-color;
   }
+  &.challenge:hover {
+    color: $white-color;
+  }
 }
 
 .Level__group {
