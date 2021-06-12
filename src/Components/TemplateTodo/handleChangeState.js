@@ -11,6 +11,7 @@ const handleChangeState = (type, value, cb) => {
       break;
     case 'title':
       cb(value);
+      break;
     case 'challenge':
       cb(value);
       break;
