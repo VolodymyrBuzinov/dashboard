@@ -6,6 +6,7 @@ import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
+import { toast} from 'react-toastify';
 
 function DashboardListItem({
   id,
@@ -51,12 +52,14 @@ function DashboardListItem({
     //   return;
     // }
     if (isVisible) {
-      console.log('Закончить создание карточки');
+     // console.log('Закончить создание карточки');
+      toast.info('Finish card creation');
       return;
     }
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
-        console.log('Закончить редактирование карточки');
+        //console.log('Закончить редактирование карточки');
+        toast.info('Finish editing the card');
       }
       return;
     }

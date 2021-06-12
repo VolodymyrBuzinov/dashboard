@@ -1,4 +1,4 @@
-import { ToastContainer, Flip, Zoom } from 'react-toastify';
+import { ToastContainer, Zoom } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from '../ToastContainer/Toast.module.scss';
 
@@ -7,7 +7,7 @@ const Toast = () => {
         <div className={s.toast}>
     <ToastContainer
         position="top-center"
-        autoClose={3000}
+        autoClose={1750}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

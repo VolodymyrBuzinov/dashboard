@@ -188,7 +188,9 @@ const TemplateTodo = ({
           >
             <ModalWindow
               id={id}
-              question={'Delete this Quest?'}
+              question={
+                !challenge ? 'Delete this Quest?' : 'Delete this Challenge?'
+              }
               isOpened={() => toggleModal('delete', setShowModalDelete)}
             />
           </Modal>

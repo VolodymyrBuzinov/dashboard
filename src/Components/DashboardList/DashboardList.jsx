@@ -89,7 +89,7 @@ const DashboardList = () => {
                           unmountOnExit
                           key={_id}
                         >
-                          <li>
+                          <li className={s.itemTodo}>
                             <CardDone id={_id} titleTodo={title} />
                             <DashboardListItem
                               category={category}
@@ -120,7 +120,7 @@ const DashboardList = () => {
                       unmountOnExit
                       key={_id}
                     >
-                      <li>
+                      <li className={s.itemTodo}>
                         <CardDone id={_id} titleTodo={title} />
                         <DashboardListItem
                           category={category}
@@ -150,7 +150,7 @@ const DashboardList = () => {
                       unmountOnExit
                       key={_id}
                     >
-                      <li>
+                      <li className={s.itemTodo}>
                         <CardDone id={_id} titleTodo={title} />
                         <DashboardListItem
                           category={category}

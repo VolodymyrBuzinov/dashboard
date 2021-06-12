@@ -56,8 +56,7 @@ const registerAuth = credentials => async dispatch => {
     toast.info('You are successfully registered!');
   } catch (error) {
     dispatch(registerError(error.message));
-    toast.error('Something went wrong...');
-    //dispatch(registerError(toast.error(`${error.message}`)));
+    toast.error('Registration is failed');
   }
 };
 
@@ -72,8 +71,7 @@ const loginAuth = credentials => async dispatch => {
     toast.info('Welcоme to Questify!')
   } catch (error) {
     dispatch(loginError(error.message));
-    //dispatch(loginError(toast.error(`${error.message}`)));
-    toast.error('Something went wrong...');
+    toast.error('Login is failed');
   }
 };
 
@@ -86,8 +84,7 @@ const logOutAuth = () => async dispatch => {
     toast.info('You are successfully logOut!')
   } catch (error) {
     dispatch(logoutError(error.response.status));
-    //dispatch(logoutError(toast.error(`${error.response.status}`)));
-    toast.error('Something went wrong...');
+    toast.error('LogOut is failed');
   }
 };
 
@@ -96,11 +93,10 @@ const reVerificationt = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/verify', credentials);
     dispatch(reVerificationtUserSuccess(response.data.data));
-    toast.info('Reverification email has been sent to you.')
+    toast.info('Reverification email has been sent to you')
   } catch (error) {
     dispatch(reVerificationtUserError(error.message));
-    //dispatch(reVerificationtUserError(toast.error(`${error.message}`)));
-    toast.error('Something went wrong...');
+    toast.error('Reverification is failed');
   }
 };
 
@@ -124,11 +120,10 @@ const getCurrentUser = () => async (dispatch, getState) => {
 const verify = eve => async dispatch => {
   try {
     dispatch(getVerifyUserSuccess(eve));
-    toast.info('Verification email has been sent to you.')
+    toast.info('Verification email has been sent to you')
   } catch (error) {
     dispatch(getVerifyUserError(error.message));
-    //dispatch(getVerifyUserError(toast.error(`${error.message}`)));
-    toast.error('Something went wrong...');
+    toast.error('Verification is failed');
   }
 };
 
