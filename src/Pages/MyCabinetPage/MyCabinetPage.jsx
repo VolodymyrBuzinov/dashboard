@@ -12,6 +12,7 @@ import Button from '../../Components/Button/Button';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import isEdit from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
+import { toast} from 'react-toastify';
 
 const MyCabinetPage = () => {
   const isVisibleLoader = useSelector(getLoader);
@@ -31,12 +32,13 @@ const MyCabinetPage = () => {
   const isVisible = useSelector(isVisibleTemplate);
   const onClick = () => {
     if (edit) {
-      console.log('edit', edit);
-      console.log('Закончить редактирование карточки');
+      //console.log('Закончить редактирование карточки');
+      toast.info('Finish editing the card');
       return;
     }
     if (isVisible) {
-      console.log('Закончить создание карточки');
+      //console.log('Закончить создание карточки');
+      toast.info('Finish card creation');
       return;
     }
     dispatch(onClickBtnCreate(true));

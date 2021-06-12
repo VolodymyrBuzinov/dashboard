@@ -2,7 +2,13 @@ import React, { useState, useRef } from 'react';
 import { useEffect } from 'react';
 import style from './InputTodo.module.scss';
 
-export default function InputTodo({ title, getInputText, cb, isEdit, challenge }) {
+export default function InputTodo({
+  title,
+  getInputText,
+  cb,
+  isEdit,
+  isChallenge,
+}) {
   const [inputText, setinputText] = useState('');
 
   const inputEl = useRef(null);
@@ -33,7 +39,7 @@ export default function InputTodo({ title, getInputText, cb, isEdit, challenge }
     <div className={style.InputTodo__form}>
       <input
         ref={inputEl}
-        className={challenge ? style.InputTodo__input__challenge : style.InputTodo__input}
+        className={isChallenge ? style.InputTodo__input__challenge : style.InputTodo__input}
         autoFocus={true}
         autoComplete="off"
         type="text"
@@ -47,9 +53,15 @@ export default function InputTodo({ title, getInputText, cb, isEdit, challenge }
         }}
       />
       <span className={style.InputTodo__bar}></span>
-      <label className={style.InputTodo__label}>{`${
-        isEdit ? 'EDIT QUEST' : 'CREATE NEW QUEST'
-      } `}</label>
+      <label className={style.InputTodo__label}>
+        {isEdit
+          ? !isChallenge
+            ? 'EDIT QUEST'
+            : 'edit challenge'
+          : !isChallenge
+          ? 'CREATE NEW QUEST'
+          : 'Create New Challenge'}
+      </label>
     </div>
   );
 }

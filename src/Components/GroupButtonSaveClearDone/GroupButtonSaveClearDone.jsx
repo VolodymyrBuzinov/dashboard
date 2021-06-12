@@ -17,8 +17,9 @@ export default function GroupButtonSaveClearDone({
   id,
   toggleModalDelete,
   changeEdit,
+  challenge,
 }) {
-  const state = { category, difficulty, title, time };
+  const state = { category, difficulty, title, time, challenge };
 
   const dispatch = useDispatch();
 

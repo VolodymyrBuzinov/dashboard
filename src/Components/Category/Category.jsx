@@ -1,6 +1,6 @@
 import style from './Category.module.scss';
 
-const Category = ({ items, handleClick, cb }) => {
+const Category = ({ items, isChallenge, handleClick, cb }) => {
   return (
     <>
       <ul className={style.Category__list}>
@@ -8,7 +8,9 @@ const Category = ({ items, handleClick, cb }) => {
           <li
             key={index}
             onClick={() => handleClick('category', item, cb)}
-            className={style.Category__item}
+            className={`${style.Category__item} ${
+              isChallenge && style.challenge
+            }`}
           >
             {item}
           </li>
