@@ -7,8 +7,8 @@ import { editTodo } from '../../Redux/Actions/editTodo-action';
 const ModalWindow = ({ id, isOpened, question }) => {
   const dispatch = useDispatch();
 
-  const handleRemoveTask = () => {
-    dispatch(todosOperations.deleteTodo(id));
+  const handleRemoveTask = async () => {
+    await dispatch(todosOperations.deleteTodo(id));
     dispatch(editTodo(false));
   };
 

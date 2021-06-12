@@ -16,11 +16,11 @@ const fetchTodos = () => async dispatch => {
 };
 
 const addTodo =
-  ({ category, difficulty, title, time }) =>
+  ({ category, difficulty, title, time, challenge }) =>
   async dispatch => {
     dispatch(todosActions.addTodoRequest());
     try {
-      const template = { category, difficulty, title, time };
+      const template = { category, difficulty, title, time, challenge };
       await axios
         .post('/tasks', template)
         .then(res => dispatch(todosActions.addTodoSuccess(res.data)));
@@ -32,12 +32,12 @@ const addTodo =
   };
 
 const updateTodo =
-  ({ id, category, difficulty, title, time }) =>
+  ({ id, category, difficulty, title, time, challenge }) =>
   async dispatch => {
     dispatch(todosActions.updateTodoRequest());
 
     try {
-      const template = { category, difficulty, title, time };
+      const template = { category, difficulty, title, time, challenge };
 
       dispatch(
         todosActions.updateTodoSuccess(

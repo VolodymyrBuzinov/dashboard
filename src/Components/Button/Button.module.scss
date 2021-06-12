@@ -25,6 +25,16 @@
     position: fixed;
     bottom: 30px;
     right: 15px;
+    animation: radial-pulse 1s infinite;
+    @keyframes radial-pulse {
+      0% {
+        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+      }
+
+      100% {
+        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+      }
+    }
 
     @media screen and (min-width: 768px) {
       bottom: 42px;
@@ -233,9 +243,8 @@
   &.icon-Vector,
   &.icon-trophy {
     & svg {
+      transition: filter $animation-timing;
       fill: $hover-color;
-      filter: drop-shadow(0px 2px 2px $hover-color);
-
       @media screen and (max-width: 767px) {
         width: 19px;
         height: 19px;
@@ -243,6 +252,9 @@
       @media screen and (min-width: 768px) {
         width: 15px;
         height: 15px;
+      }
+      &:hover {
+        filter: drop-shadow(0px 2px 2px $hover-color);
       }
     }
   }

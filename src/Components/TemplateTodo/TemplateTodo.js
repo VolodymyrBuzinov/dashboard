@@ -13,7 +13,6 @@ import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSav
 import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
-//import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -31,6 +30,7 @@ const INITIAL_STATE = {
   difficulty: LIST_LEVEL[0],
   time: null,
   title: null,
+  challenge: false,
 };
 
 const TemplateTodo = ({
@@ -41,6 +41,7 @@ const TemplateTodo = ({
   editTime,
   editTitle,
   changeEdit,
+  isChallenge,
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -49,6 +50,7 @@ const TemplateTodo = ({
   const [difficulty, setDifficulty] = useState(INITIAL_STATE.difficulty);
   const [time, setTime] = useState(INITIAL_STATE.time);
   const [title, setTitle] = useState(INITIAL_STATE.title);
+  const [challenge, setChallenge] = useState(INITIAL_STATE.challenge);
 
   const dispatch = useDispatch();
 
@@ -58,14 +60,19 @@ const TemplateTodo = ({
       setDifficulty(editDifficulty);
       setTime(editTime);
       setTitle(editTitle);
+      setChallenge(isChallenge);
     }
-  }, [editCategory, editDifficulty, editTime, editTitle, isEdit]);
+  }, [editCategory, editDifficulty, editTime, editTitle, isEdit, isChallenge]);
 
   const cancelСhanges = () => dispatch(onClickBtnCreate(false));
 
   return (
     <div className={style.TemplateTodo}>
-      <div className={style.TemplateTodo__group}>
+      <div
+        className={`${style.TemplateTodo__group} ${
+          challenge && style.challenge
+        }`}
+      >
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
@@ -77,9 +84,11 @@ const TemplateTodo = ({
               {showModalLevel && (
                 <Modal
                   type="level"
+                  isChallenge={challenge}
                   onClose={() => toggleModal('difficulty', setShowModalLevel)}
                 >
                   <Level
+                    isChallenge={challenge}
                     items={LIST_LEVEL}
                     handleClick={handleChangeState}
                     cb={setDifficulty}
@@ -90,7 +99,23 @@ const TemplateTodo = ({
           </div>
 
           <div className="star">
-            <Button content="icon-Vector" type="button" isActive={true} />
+            {challenge ? (
+              <Button
+                onClick={() =>
+                  handleChangeState('challenge', false, setChallenge)
+                }
+                content="icon-trophy"
+                type="button"
+              />
+            ) : (
+              <Button
+                onClick={() =>
+                  handleChangeState('challenge', true, setChallenge)
+                }
+                content="icon-Vector"
+                type="button"
+              />
+            )}
           </div>
         </div>
 
@@ -100,8 +125,10 @@ const TemplateTodo = ({
             title={isEdit && editTitle}
             getInputText={handleChangeState}
             cb={setTitle}
+            isChallenge={challenge}
           />
           <DateAndTimePickers
+            isChallenge={challenge}
             time={editTime}
             isEdit={isEdit}
             getDate={handleChangeState}
@@ -121,10 +148,12 @@ const TemplateTodo = ({
             >
               {showModalCategory && (
                 <Modal
+                  isChallenge={challenge}
                   onClose={() => toggleModal('category', setShowModalCategory)}
                   type="category"
                 >
                   <Category
+                    isChallenge={challenge}
                     items={LIST_CATEGORY}
                     handleClick={handleChangeState}
                     cb={setСategory}
@@ -142,6 +171,7 @@ const TemplateTodo = ({
               difficulty={difficulty}
               title={title}
               time={time}
+              challenge={challenge}
               cancelСhanges={cancelСhanges}
               id={id}
               toggleModalDelete={() =>
@@ -158,7 +188,9 @@ const TemplateTodo = ({
           >
             <ModalWindow
               id={id}
-              question={'Delete this Quest?'}
+              question={
+                !challenge ? 'Delete this Quest?' : 'Delete this Challenge?'
+              }
               isOpened={() => toggleModal('delete', setShowModalDelete)}
             />
           </Modal>

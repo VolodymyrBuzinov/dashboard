@@ -2,14 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import s from './DashboardListItem.module.scss';
 import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-import toggleModal from '../TemplateTodo/toggleModal';
-import ModalWindow from '../ModalWindow/ModalWindow';
-import { toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function DashboardListItem({
   id,
@@ -26,7 +23,6 @@ function DashboardListItem({
   const [edit, setEdit] = useState(false);
   const isEdit = useSelector(isEditTodo);
   const isVisible = useSelector(isVisibleTemplate);
-  const [showModalDelete, setShowModalDelete] = useState(false);
 
   useEffect(() => {
     if (challengeStyle) {
@@ -49,14 +45,19 @@ function DashboardListItem({
   const d = new Date(time);
   const dayName = days[d.getDay()];
 
-  const toggleChallenge = () => setChallenge(prev => !prev);
+  const toggleChallenge = () => {
+    if (done) {
+      return;
+    }
+    setChallenge(prev => !prev);
+  };
 
   const onOpenEditCard = e => {
-    if (e.target.tagName === 'use') {
+    if (done) {
       return;
     }
     if (isVisible) {
-     // console.log('Закончить создание карточки');
+      // console.log('Закончить создание карточки');
       toast.info('Finish card creation');
       return;
     }
@@ -67,6 +68,7 @@ function DashboardListItem({
       }
       return;
     }
+    if (done) return;
 
     setEdit(true);
     dispatch(editTodo(true));
@@ -94,14 +96,12 @@ function DashboardListItem({
                 onClick={toggleChallenge}
                 content="icon-trophy"
                 type="button"
-                isActive={true}
               />
             ) : (
               <Button
                 onClick={toggleChallenge}
                 content="icon-Vector"
                 type="button"
-                isActive={true}
               />
             )}
           </div>
@@ -125,15 +125,6 @@ function DashboardListItem({
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}
           </div>
-
-          {showModalDelete && (
-            <Modal
-              onClose={() => toggleModal('delete', setShowModalDelete)}
-              type="delete"
-            >
-              <ModalWindow id={id} />
-            </Modal>
-          )}
         </div>
       ) : (
         <>
@@ -149,6 +140,7 @@ function DashboardListItem({
             id={id}
             isEdit={isEdit}
             changeEdit={setEdit}
+            isChallenge={challenge}
           />
         </>
       )}
