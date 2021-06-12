@@ -145,6 +145,7 @@ function DashboardListItem({
             editTime={time}
             id={id}
             isEdit={isEdit}
+            changeEdit={setEdit}
           />
         </>
       )}

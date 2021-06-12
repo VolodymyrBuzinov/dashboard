@@ -52,9 +52,12 @@ const updateTodoStatusDone =
   async dispatch => {
     dispatch(todosActions.updateTodoStatusDoneRequest());
     try {
-      await axios.patch(`/tasks/${id}/done`, { done: true });
-      dispatch(todosActions.updateTodoStatusDoneSuccess(id, done));
+      const newQuest = await axios
+        .patch(`/tasks/${id}/done`, { done: true })
+        .then(res => res.data);
+      dispatch(todosActions.updateTodoStatusDoneSuccess(newQuest));
     } catch (error) {
+      console.log('🚀 ~ file: todosOperations.js ~ line 58 ~ error', error);
       dispatch(todosActions.updateTodoStatusDoneError(error.message));
     }
   };

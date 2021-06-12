@@ -16,6 +16,7 @@ export default function GroupButtonSaveClearDone({
   cancelСhanges,
   id,
   toggleModalDelete,
+  changeEdit,
 }) {
   const state = { category, difficulty, title, time };
 
@@ -36,15 +37,9 @@ export default function GroupButtonSaveClearDone({
     dispatch(editTodo(false));
   };
 
-  const handleClickElementSave = () => {
+  const handleClickElementSave = e => {
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
-    console.log({
-      ...state,
-      category: categoryToUpperCase,
-      difficulty: difficultyToUpperCase,
-      id,
-    });
 
     dispatch(
       exp.updateTodo({
@@ -54,24 +49,11 @@ export default function GroupButtonSaveClearDone({
         difficulty: difficultyToUpperCase,
       }),
     );
-  };
-  console.log(
-    '🚀 ~ file: GroupButtonSaveClearDone.jsx ~ line 57 ~ handleClickElementSave ~ id-dis',
-    id,
-  );
-
-  const handleClickElementDone = () => {
-    console.log('run handleClickElementDone');
-    console.log({
-      id,
-      done: true,
-    });
-
-    dispatch(
-      exp.updateTodoStatusDone({
-        id,
-      }),
-    );
+    setTimeout(() => {
+      changeEdit(false);
+      dispatch(onClickBtnCreate(false));
+      dispatch(editTodo(false));
+    }, 500);
   };
 
   return (
@@ -101,6 +83,7 @@ export default function GroupButtonSaveClearDone({
             type="button"
             content="icon-save"
             onClick={handleClickElementSave}
+            isActive={false}
           />
           <Button
             type="button"
@@ -111,6 +94,7 @@ export default function GroupButtonSaveClearDone({
             type="button"
             content="icon-done"
             onClick={() => getShowCardDone(id)}
+            isActive={false}
           />
         </div>
       )}
