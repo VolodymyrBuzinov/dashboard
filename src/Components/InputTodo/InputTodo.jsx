@@ -9,7 +9,7 @@ export default function InputTodo({ title, getInputText, cb, isEdit }) {
 
   useEffect(() => {
     if (isEdit) setinputText(title);
-  }, [isEdit]);
+  }, [isEdit, title]);
 
   useEffect(() => {
     const handleKeyDown = e => {
