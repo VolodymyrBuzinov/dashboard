@@ -8,7 +8,7 @@ export default function DateAndTimePickers({ time, getDate, cb, isEdit }) {
 
   useEffect(() => {
     if (isEdit) setSelectedDate(time);
-  }, []);
+  }, [isEdit, time]);
 
   useEffect(() => {
     const handleKeyDown = e => {

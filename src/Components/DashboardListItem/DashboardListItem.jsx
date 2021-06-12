@@ -7,8 +7,8 @@ import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-import toggleModal from '../TemplateTodo/toggleModal'
-import ModalWindow from '../ModalWindow/ModalWindow'
+import toggleModal from '../TemplateTodo/toggleModal';
+import ModalWindow from '../ModalWindow/ModalWindow';
 
 function DashboardListItem({
   id,
@@ -18,7 +18,7 @@ function DashboardListItem({
   difficulty,
   challengeStyle,
   day,
-  done
+  done,
 }) {
   const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
@@ -91,28 +91,31 @@ function DashboardListItem({
                 onClick={toggleChallenge}
                 content="icon-trophy"
                 type="button"
-                isActive={true}/>
+                isActive={true}
+              />
             ) : (
               <Button
                 onClick={toggleChallenge}
                 content="icon-Vector"
                 type="button"
-                isActive={true}/>
+                isActive={true}
+              />
             )}
-
           </div>
-          <p className={
-            challenge ? s.todoItemChallenge__challenge : s.todoItemChallenge
-          }>
+          <p
+            className={
+              challenge ? s.todoItemChallenge__challenge : s.todoItemChallenge
+            }
+          >
             CHALLENGE
           </p>
-          <p className={
-            challenge ? s.todoItemTitle__challenge : s.todoItemTitle
-          }>
+          <p
+            className={challenge ? s.todoItemTitle__challenge : s.todoItemTitle}
+          >
             {title}
           </p>
           <p className={s.todoItemTime}>
-            {day}
+            {challenge ? 'By' : day}
             {challenge ? ` ${dayName}` : null}
             {done ? time.slice(0, 10) : null},{ time.slice(11)}
           </p>
@@ -123,8 +126,9 @@ function DashboardListItem({
           {showModalDelete && (
             <Modal
               onClose={() => toggleModal('delete', setShowModalDelete)}
-              type="delete">
-              <ModalWindow id={id}/>
+              type="delete"
+            >
+              <ModalWindow id={id} />
             </Modal>
           )}
         </div>
@@ -141,6 +145,7 @@ function DashboardListItem({
             editTime={time}
             id={id}
             isEdit={isEdit}
+            changeEdit={setEdit}
           />
         </>
       )}

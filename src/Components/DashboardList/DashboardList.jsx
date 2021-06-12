@@ -13,7 +13,7 @@ import TemplateTodo from '../TemplateTodo/TemplateTodo';
 // import Button from '../Button/Button';
 import CardDone from './CardDone/CardDone';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-// import transition from '../../Utils/CssTransition.scss';
+import transition from './anim.module.scss';
 
 const DashboardList = () => {
   const dispatch = useDispatch();
@@ -38,52 +38,77 @@ const DashboardList = () => {
     <>
       <main className={s.todoListMain}>
         <div className={s.todoListDiv}>
-          {todayList.length === 0 &&
-            tomorrowList.length === 0 &&
-            challengeList.length === 0 &&
-            !isVisible && <EmptyTodos />}
+          <p className={s.todoListTitle}>TODAY</p>
+          <CSSTransition
+            in={
+              todayList.length === 0 &&
+              tomorrowList.length === 0 &&
+              challengeList.length === 0 &&
+              !isVisible
+            }
+            appear
+            timeout={300}
+            classNames={s}
+            unmountOnExit
+          >
+            <EmptyTodos />
+          </CSSTransition>
           {todayList.length > 0 || isVisible ? (
-            <>
-              <p className={s.todoListTitle}>TODAY</p>
-              <TransitionGroup component="ul" className={s.todoList}>
-                {isVisible && (
-                  <CSSTransition
-                    timeout={300}
-                    classNames={s}
-                    unmountOnExit
-                    key="temlpate"
-                  >
-                    <li>
-                      <TemplateTodo />
-                    </li>
-                  </CSSTransition>
-                )}
-                {todayList.length > 0 &&
-                  todayList.map(
-                    ({ title, _id, time, category, difficulty, challenge }) => (
-                      <CSSTransition
-                        timeout={300}
-                        classNames={s}
-                        unmountOnExit
-                        key={_id}
-                      >
-                        <li>
-                          <CardDone id={_id} titleTodo={title} />
-                          <DashboardListItem
-                            category={category}
-                            difficulty={difficulty}
-                            title={title}
-                            time={time}
-                            id={_id}
-                            day="Today"
-                            challengeStyle={challenge}
-                          />
-                        </li>
-                      </CSSTransition>
-                    ),
+            <CSSTransition
+              in={todayList.length > 0 || isVisible}
+              appear
+              timeout={300}
+              classNames={transition}
+              unmountOnExit
+            >
+              <>
+                <TransitionGroup component="ul" className={s.todoList}>
+                  {isVisible && (
+                    <CSSTransition
+                      timeout={300}
+                      classNames={s}
+                      unmountOnExit
+                      key="temlpate"
+                    >
+                      <li>
+                        <TemplateTodo />
+                      </li>
+                    </CSSTransition>
                   )}
-              </TransitionGroup>
-            </>
+                  {todayList.length > 0 &&
+                    todayList.map(
+                      ({
+                        title,
+                        _id,
+                        time,
+                        category,
+                        difficulty,
+                        challenge,
+                      }) => (
+                        <CSSTransition
+                          timeout={300}
+                          classNames={s}
+                          unmountOnExit
+                          key={_id}
+                        >
+                          <li>
+                            <CardDone id={_id} titleTodo={title} />
+                            <DashboardListItem
+                              category={category}
+                              difficulty={difficulty}
+                              title={title}
+                              time={time}
+                              id={_id}
+                              day="Today"
+                              challengeStyle={challenge}
+                            />
+                          </li>
+                        </CSSTransition>
+                      ),
+                    )}
+                </TransitionGroup>
+              </>
+            </CSSTransition>
           ) : null}
           {tomorrowList.length > 0 ? (
             <>
@@ -145,7 +170,7 @@ const DashboardList = () => {
               </TransitionGroup>
             </>
           ) : null}
-          <MenuDone todos={doneList}/>
+          <MenuDone todos={doneList} />
         </div>
       </main>
     </>

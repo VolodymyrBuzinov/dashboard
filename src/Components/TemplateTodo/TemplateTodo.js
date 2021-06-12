@@ -40,6 +40,7 @@ const TemplateTodo = ({
   editDifficulty,
   editTime,
   editTitle,
+  changeEdit,
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -146,22 +147,23 @@ const TemplateTodo = ({
               toggleModalDelete={() =>
                 toggleModal('delete', setShowModalDelete)
               }
+              changeEdit={changeEdit}
             />
           </div>
         </div>
+        {showModalDelete && (
+          <Modal
+            onClose={() => toggleModal('delete', setShowModalDelete)}
+            type="delete"
+          >
+            <ModalWindow
+              id={id}
+              question={'Delete this Quest?'}
+              isOpened={() => toggleModal('delete', setShowModalDelete)}
+            />
+          </Modal>
+        )}
       </div>
-      {showModalDelete && (
-        <Modal
-          onClose={() => toggleModal('delete', setShowModalDelete)}
-          type="delete"
-        >
-          <ModalWindow
-            id={id}
-            question={'Delete this Quest?'}
-            isOpened={() => toggleModal('delete', setShowModalDelete)}
-          />
-        </Modal>
-      )}
     </div>
   );
 };

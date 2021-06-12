@@ -1,0 +1,36 @@
+.appear {
+  position: absolute;
+  transform: translateY(100%);
+  opacity: 0.05;
+}
+.appearActive {
+  transform: translateY(50%);
+  opacity: 0.05;
+  transition: all 300ms ease;
+}
+
+.appearDone {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 300ms ease;
+}
+
+// .enter {
+//   transform: translateY(-100%);
+//   opacity: 1;
+// }
+// .enterActive {
+//   transform: translateY(0);
+//   opacity: 0.1;
+//   transition: all 300ms ease-in-out;
+// }
+
+.exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+.exitActive {
+  transform: translateY(100%);
+  opacity: 0.1;
+  transition: all 300ms ease-in;
+}

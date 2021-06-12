@@ -101,14 +101,14 @@ const TeamModal = ({ onClose, isOpen }) => {
             <li className={style.teamListItem}>
               <img
                 className={style.teamListItemImg}
-                src="https://i.ibb.co/55KpX4L/Pankrusheva-Anastasiia.jpg"
+                src="https://i.ibb.co/LJHCdY5/Pankrusheva-Anastasiia.png"
                 alt="Pankrusheva-Anastasiia"
                 border="0"
               />
               <h3 className={style.nameTitle}>Anastasiia Pankrusheva</h3>
               <p className={style.description}>
                 The logic of the arrangement of cards. Rendering data and styles
-                from the back on the card in the "Challenge" card.
+                from the back in usual and Challenge card.
               </p>
               <a
                 href="https://www.linkedin.com/mwlite/in/anastasiia-pankrusheva"
