@@ -37,11 +37,34 @@
       width: 205px;
       height: 199px;
     }
-  }
-  &__challenge {
-    background: $card-bg-color;
-  }
 
+    &__challenge {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding-top: 21px;
+      padding-bottom: 21px;
+      padding-left: 21px;
+      padding-right: 21px;
+      margin-left: auto;
+      margin-right: auto;
+      background: $card-bg-color;
+      box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+        3px 4px 4px rgba(21, 57, 90, 0.03);
+      border-radius: 10px;
+      transition: all $animation-timing;
+      @media screen and (max-width: 767px) {
+        width: 290px;
+        height: 260px;
+        padding-bottom: 33px;
+      }
+      @media screen and (min-width: 768px) {
+        width: 205px;
+        height: 199px;
+        padding-bottom: 21px;
+      }
+    }
+  }
   &__WrapperTop {
     display: flex;
     justify-content: space-between;
@@ -49,7 +72,7 @@
       padding-bottom: 41px;
     }
     @media screen and (min-width: 768px) {
-      padding-bottom: 22px;
+      padding-bottom: 36px;
     }
   }
 
@@ -76,7 +99,7 @@
     }
     @media screen and (min-width: 768px) {
       height: 42px;
-      margin-bottom: 50px;
+      margin-bottom: 37px;
     }
   }
 

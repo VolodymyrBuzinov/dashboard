@@ -41,6 +41,7 @@ const TemplateTodo = ({
   editTime,
   editTitle,
   changeEdit,
+  challengeStyle
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -49,7 +50,7 @@ const TemplateTodo = ({
   const [difficulty, setDifficulty] = useState(INITIAL_STATE.difficulty);
   const [time, setTime] = useState(INITIAL_STATE.time);
   const [title, setTitle] = useState(INITIAL_STATE.title);
-
+  const [challenge, setChallenge] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,14 +59,18 @@ const TemplateTodo = ({
       setDifficulty(editDifficulty);
       setTime(editTime);
       setTitle(editTitle);
+      if (challengeStyle) {
+      setChallenge(true);
     }
-  }, [editCategory, editDifficulty, editTime, editTitle, isEdit]);
-
+    }
+  }, [editCategory, editDifficulty, editTime, editTitle, isEdit, challengeStyle]);
+  
+  const toggleChallenge = () => setChallenge(prev => !prev);
   const cancelСhanges = () => dispatch(onClickBtnCreate(false));
 
   return (
     <div className={style.TemplateTodo}>
-      <div className={style.TemplateTodo__group}>
+      <div className={challenge ? style.TemplateTodo__group__challenge : style.TemplateTodo__group}>
         <div className={style.TemplateTodo__WrapperTop}>
           <div className="button">
             <ButtonOpenModal
@@ -88,10 +93,24 @@ const TemplateTodo = ({
               )}
             </ButtonOpenModal>
           </div>
-
-          <div className="star">
+{challenge ? (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-trophy"
+                type="button"
+                isActive={true}
+              />
+            ) : (
+              <Button
+                onClick={toggleChallenge}
+                content="icon-Vector"
+                type="button"
+                isActive={true}
+              />
+            )}
+          {/*<div className="star">
             <Button content="icon-Vector" type="button" isActive={true} />
-          </div>
+              </div>*/}
         </div>
 
         <div className={style.TemplateTodo__WrapperMidle}>
@@ -100,12 +119,14 @@ const TemplateTodo = ({
             title={isEdit && editTitle}
             getInputText={handleChangeState}
             cb={setTitle}
+            challenge={challenge}
           />
           <DateAndTimePickers
             time={editTime}
             isEdit={isEdit}
             getDate={handleChangeState}
             cb={setTime}
+            challenge={challenge}
           />
         </div>
 

@@ -31,6 +31,7 @@ const MyCabinetPage = () => {
   const isVisible = useSelector(isVisibleTemplate);
   const onClick = () => {
     if (edit) {
+      console.log('edit', edit);
       console.log('Закончить редактирование карточки');
       return;
     }

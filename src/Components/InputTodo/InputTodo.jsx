@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useEffect } from 'react';
 import style from './InputTodo.module.scss';
 
-export default function InputTodo({ title, getInputText, cb, isEdit }) {
+export default function InputTodo({ title, getInputText, cb, isEdit, challenge }) {
   const [inputText, setinputText] = useState('');
 
   const inputEl = useRef(null);
@@ -33,7 +33,7 @@ export default function InputTodo({ title, getInputText, cb, isEdit }) {
     <div className={style.InputTodo__form}>
       <input
         ref={inputEl}
-        className={style.InputTodo__input}
+        className={challenge ? style.InputTodo__input__challenge : style.InputTodo__input}
         autoFocus={true}
         autoComplete="off"
         type="text"

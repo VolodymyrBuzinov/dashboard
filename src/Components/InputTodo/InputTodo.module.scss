@@ -4,7 +4,6 @@
   @extend %button-throw;
   font-weight: 700;
   font-style: normal;
-  font-family: Helvetica, sans-serif;
   max-width: 155px;
   counter-reset: $text-color;
   // display: block;
@@ -26,9 +25,38 @@
     line-height: 16px;
     margin-bottom: 12px;
   }
+  &__challenge {
+    @extend %button-throw;
+    background: $card-bg-color;
+    font-weight: 700;
+    font-style: normal;
+    max-width: 155px;
+    color: $white-color;
+    //counter-reset: $text-color;
+    // display: block;
+    border: none;
+    text-align: center;
+
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 12px;
+    }
+  }
 }
 
-.InputTodo__input:focus {
+.InputTodo__input:focus,
+.InputTodo__input__challenge:focus {
   outline: none;
 }
 
@@ -60,7 +88,9 @@
 
 /* active state */
 .InputTodo__input:focus ~ label,
-.InputTodo__input:valid ~ label {
+.InputTodo__input:valid ~ label,
+.InputTodo__input__challenge:focus ~ label,
+.InputTodo__input__challenge:valid ~ label {
   top: -15px;
   font-size: 14px;
   color: $active-color;
@@ -68,7 +98,9 @@
 
 /* active state */
 .InputTodo__input:focus ~ .InputTodo__bar:before,
-.InputTodo__input:focus ~ .InputTodo__bar:after {
+.InputTodo__input:focus ~ .InputTodo__bar:after,
+.InputTodo__input__challenge:focus ~ .InputTodo__bar:before,
+.InputTodo__input__challenge:focus ~ .InputTodo__bar:after {
   width: 50%;
 }
 

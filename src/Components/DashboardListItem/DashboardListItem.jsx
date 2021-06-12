@@ -60,6 +60,7 @@ function DashboardListItem({
     }
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
+        console.log('edit', isEdit);
         console.log('Закончить редактирование карточки');
       }
       return;
@@ -117,7 +118,7 @@ function DashboardListItem({
           <p className={s.todoItemTime}>
             {challenge ? 'By' : day}
             {challenge ? ` ${dayName}` : null}
-            {done ? time.slice(0, 10) : null},{ time.slice(11)}
+            {done ? time.slice(0, 10) : null}, {time.slice(11)}
           </p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}
@@ -146,6 +147,7 @@ function DashboardListItem({
             id={id}
             isEdit={isEdit}
             changeEdit={setEdit}
+            challengeStyle={challenge}
           />
         </>
       )}

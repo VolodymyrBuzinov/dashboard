@@ -29,4 +29,8 @@
   color: $active-color;
   border: none;
   cursor: pointer;
+  &__challenge {
+    background: $card-bg-color;
+    color: $secondary-text;
+  }
 }
