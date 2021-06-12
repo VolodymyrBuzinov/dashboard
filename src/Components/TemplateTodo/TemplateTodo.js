@@ -13,7 +13,7 @@ import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSav
 import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
-import { editTodo } from '../../Redux/Actions/editTodo-action';
+//import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 const LIST_CATEGORY = [
   'stuff',

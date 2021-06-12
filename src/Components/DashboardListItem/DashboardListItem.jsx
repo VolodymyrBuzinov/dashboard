@@ -114,8 +114,7 @@ function DashboardListItem({
           <p className={s.todoItemTime}>
             {day}
             {challenge ? ` ${dayName}` : null}
-            {done ? time.slice(0, 10) : null},
-            {time.slice(11)}
+            {done ? time.slice(0, 10) : null},{ time.slice(11)}
           </p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}

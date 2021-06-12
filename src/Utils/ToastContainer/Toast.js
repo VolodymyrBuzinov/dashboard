@@ -1,4 +1,8 @@
-import { ToastContainer, Flip, Zoom } from 'react-toastify';
+import {
+    ToastContainer,
+    //Flip, 
+    Zoom
+} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import s from '../ToastContainer/Toast.module.scss';
 
