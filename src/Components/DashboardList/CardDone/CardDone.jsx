@@ -6,6 +6,7 @@ import sprite from '../../../Icons/symbol-defs.svg';
 
 import exp from '../../../Redux/Operations/todosOperations';
 import { useDispatch } from 'react-redux';
+import { editTodo } from '../../../Redux/Actions/editTodo-action';
 
 function CardDone({ id, titleTodo = 'title' }) {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function CardDone({ id, titleTodo = 'title' }) {
         done: true,
       }),
     );
+    dispatch(editTodo(false));
   };
 
   return (
