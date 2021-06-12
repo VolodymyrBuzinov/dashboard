@@ -6,7 +6,7 @@ import TemplateTodo from '../TemplateTodo/TemplateTodo';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
-import { toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 function DashboardListItem({
   id,
@@ -45,14 +45,19 @@ function DashboardListItem({
   const d = new Date(time);
   const dayName = days[d.getDay()];
 
-  const toggleChallenge = () => setChallenge(prev => !prev);
+  const toggleChallenge = () => {
+    if (done) {
+      return;
+    }
+    setChallenge(prev => !prev);
+  };
 
   const onOpenEditCard = e => {
-    // if (e.target.tagName === 'use') {
-    //   return;
-    // }
+    if (done) {
+      return;
+    }
     if (isVisible) {
-     // console.log('Закончить создание карточки');
+      // console.log('Закончить создание карточки');
       toast.info('Finish card creation');
       return;
     }
