@@ -149,19 +149,19 @@ const TemplateTodo = ({
             />
           </div>
         </div>
+        {showModalDelete && (
+          <Modal
+            onClose={() => toggleModal('delete', setShowModalDelete)}
+            type="delete"
+          >
+            <ModalWindow
+              id={id}
+              question={'Delete this Quest?'}
+              isOpened={() => toggleModal('delete', setShowModalDelete)}
+            />
+          </Modal>
+        )}
       </div>
-      {showModalDelete && (
-        <Modal
-          onClose={() => toggleModal('delete', setShowModalDelete)}
-          type="delete"
-        >
-          <ModalWindow
-            id={id}
-            question={'Delete this Quest?'}
-            isOpened={() => toggleModal('delete', setShowModalDelete)}
-          />
-        </Modal>
-      )}
     </div>
   );
 };
