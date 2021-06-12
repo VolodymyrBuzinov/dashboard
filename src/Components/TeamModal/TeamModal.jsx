@@ -108,7 +108,7 @@ const TeamModal = ({ onClose, isOpen }) => {
               <h3 className={style.nameTitle}>Anastasiia Pankrusheva</h3>
               <p className={style.description}>
                 The logic of the arrangement of cards. Rendering data and styles
-                from the back on the card in the "Challenge" card.
+                from the back in usual and Challenge card.
               </p>
               <a
                 href="https://www.linkedin.com/mwlite/in/anastasiia-pankrusheva"
