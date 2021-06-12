@@ -12,13 +12,13 @@ function CardDone({ id, titleTodo = 'title' }) {
   const dispatch = useDispatch();
 
   let titleTodoShort;
-  // ? если длина заголовка больше 15 - обрезаем и добавляем ...
-  if (titleTodo.length > 15) {
+  // ? если длина заголовка больше 12 - обрезаем и добавляем ...
+  if (titleTodo.length > 12) {
     let titleTodoSlice = titleTodo.split('');
-    titleTodoSlice.length = 15;
+    titleTodoSlice.length = 12;
     titleTodoShort = titleTodoSlice.join('') + '...';
   }
-  if (titleTodo.length <= 15) {
+  if (titleTodo.length <= 12) {
     titleTodoShort = titleTodo;
   }
 
