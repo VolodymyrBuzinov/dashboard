@@ -47,9 +47,9 @@ function DashboardListItem({
   const toggleChallenge = () => setChallenge(prev => !prev);
 
   const onOpenEditCard = e => {
-    if (e.target.tagName === 'use') {
-      return;
-    }
+    // if (e.target.tagName === 'use') {
+    //   return;
+    // }
     if (isVisible) {
       console.log('Закончить создание карточки');
       return;
