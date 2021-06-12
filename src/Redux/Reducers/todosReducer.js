@@ -9,9 +9,19 @@ const items = createReducer([], {
     payload.data,
   ],
   [todosActions.updateTodoSuccess]: (state, { payload }) =>
-    state.filter(({ _id }) => _id !== payload),
+    state.map(item => {
+      if (item._id === payload.data._id) {
+        return payload.data;
+      }
+      return item;
+    }),
   [todosActions.updateTodoStatusDoneSuccess]: (state, { payload }) =>
-    state.filter(({ _id }) => _id !== payload),
+    state.map(item => {
+      if (item._id === payload.data._id) {
+        return payload.data;
+      }
+      return item;
+    }),
   [todosActions.deleteTodoSuccess]: (state, { payload }) =>
     state.filter(({ _id }) => _id !== payload),
 });
