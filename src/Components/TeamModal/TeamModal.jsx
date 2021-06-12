@@ -101,7 +101,7 @@ const TeamModal = ({ onClose, isOpen }) => {
             <li className={style.teamListItem}>
               <img
                 className={style.teamListItemImg}
-                src="https://i.ibb.co/55KpX4L/Pankrusheva-Anastasiia.jpg"
+                src="https://i.ibb.co/LJHCdY5/Pankrusheva-Anastasiia.png"
                 alt="Pankrusheva-Anastasiia"
                 border="0"
               />
