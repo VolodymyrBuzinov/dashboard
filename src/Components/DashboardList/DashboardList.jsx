@@ -36,7 +36,6 @@ const DashboardList = () => {
     <>
       <main className={s.todoListMain}>
         <div className={s.todoListDiv}>
-          <p className={s.todoListTitle}>TODAY</p>
           <CSSTransition
             in={
               todayList.length === 0 &&
@@ -53,13 +52,14 @@ const DashboardList = () => {
           </CSSTransition>
           {todayList.length > 0 || isVisible ? (
             <CSSTransition
-              in={todayList.length > 0 || isVisible}
               appear
+              in={todayList.length > 0 || isVisible}
               timeout={300}
               classNames={transition}
               unmountOnExit
             >
-              <>
+              <div>
+                <p className={s.todoListTitle}>TODAY</p>
                 <TransitionGroup component="ul" className={s.todoList}>
                   {isVisible && (
                     <CSSTransition
@@ -105,7 +105,7 @@ const DashboardList = () => {
                       ),
                     )}
                 </TransitionGroup>
-              </>
+              </div>
             </CSSTransition>
           ) : null}
           {tomorrowList.length > 0 ? (
