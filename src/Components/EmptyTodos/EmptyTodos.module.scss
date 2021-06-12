@@ -3,8 +3,8 @@
 .emptyList {
   @extend %list-throw;
   @extend %list-styles;
-  margin-bottom: 31px;
-  margin-top: 37px;
+  margin-bottom: 35px;
+  // margin-top: 37px;
 }
 .emptyItem {
   background: $white-color;
