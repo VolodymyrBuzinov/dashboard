@@ -227,7 +227,6 @@
   transform: translateY(-1px);
   font-style: normal;
   font-weight: 400;
-  padding-left: 21px;
   letter-spacing: 0.02em;
 
   color: $text-color;
@@ -259,11 +258,13 @@
     border-radius: 0px 25px 25px 0px;
   }
   @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 11px;
     top: 153px;
     line-height: 11px;
-    padding-top: 7px;
-    width: 88px;
+    width: 95px;
     height: 25px;
     border-radius: 0px 15px 15px 0px;
   }
