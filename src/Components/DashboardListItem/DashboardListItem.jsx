@@ -8,6 +8,8 @@ import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import { toast } from 'react-toastify';
 import Fire from '../../Icons/svg/fire.svg';
+import { refToken, getCurrentUser } from '../../Redux/Operations/authOperation';
+
 
 function DashboardListItem({
   id,
@@ -74,6 +76,11 @@ function DashboardListItem({
 
     setEdit(true);
     dispatch(editTodo(true));
+
+    dispatch(refToken());
+    setTimeout(() => {
+      dispatch(getCurrentUser());
+    }, 1000);
   };
 
   const onCloseEditCard = () => {
