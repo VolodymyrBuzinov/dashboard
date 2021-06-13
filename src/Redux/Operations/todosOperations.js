@@ -27,7 +27,7 @@ const addTodo =
         toast.info('Your quest is successfully added!');
     } catch (error) {
       dispatch(todosActions.addTodoError(error.response.status));
-      toast.error('Quest is not added!');
+      toast.error('Quest is not added! Fill all the fields!');
     }
   };
 
