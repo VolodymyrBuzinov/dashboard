@@ -7,11 +7,7 @@ import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import { toast } from 'react-toastify';
-import {
-  refToken,
-  getCurrentUser,
-  logOutAuth,
-} from '../../Redux/Operations/authOperation';
+import { refToken, getCurrentUser } from '../../Redux/Operations/authOperation';
 
 function DashboardListItem({
   id,
