@@ -91,11 +91,6 @@
     align-items: center;
     width: 100%;
   }
-
-  // &__ButtonGroup {
-  //   width: 68px;
-  //   height: 16px;
-  // }
 }
 
 .TemplateTodo__ButtonBgc {
@@ -111,7 +106,10 @@
     width: 120px;
     height: 35px;
     @media screen and (min-width: 768px) {
-      width: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 95px;
       height: 25px;
     }
     background-color: $secondary-text;

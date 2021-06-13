@@ -3,11 +3,14 @@
 .DateAndTimePickers__form {
   display: flex;
   color: $secondary-text;
+  margin-top: 12px;
 }
 
 .DateAndTimePickers__input {
   position: relative;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-style: normal;
   font-weight: 400;
   text-align: center;
@@ -16,6 +19,7 @@
   color: $secondary-text;
   border: none;
   background-color: inherit;
+  outline: inherit;
 
   line-height: 1;
   outline: inherit;
