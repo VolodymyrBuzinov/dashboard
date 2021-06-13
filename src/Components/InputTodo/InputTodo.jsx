@@ -36,10 +36,14 @@ export default function InputTodo({
   };
 
   return (
-    <div className={style.InputTodo__form}>
+    <form className={style.InputTodo__form}>
       <input
         ref={inputEl}
-        className={isChallenge ? style.InputTodo__input__challenge : style.InputTodo__input}
+        className={
+          isChallenge
+            ? style.InputTodo__input__challenge
+            : style.InputTodo__input
+        }
         autoFocus={true}
         autoComplete="off"
         type="text"
@@ -62,6 +66,6 @@ export default function InputTodo({
           ? 'CREATE NEW QUEST'
           : 'Create New Challenge'}
       </label>
-    </div>
+    </form>
   );
 }
