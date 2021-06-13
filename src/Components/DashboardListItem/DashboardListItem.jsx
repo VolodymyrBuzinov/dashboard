@@ -7,6 +7,7 @@ import { editTodo } from '../../Redux/Actions/editTodo-action';
 import isEditTodo from '../../Redux/Selectors/editTodoSelector';
 import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import { toast } from 'react-toastify';
+import Fire from '../../Icons/svg/fire.svg';
 
 function DashboardListItem({
   id,
@@ -17,6 +18,7 @@ function DashboardListItem({
   challengeStyle,
   day,
   done,
+  hot
 }) {
   const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
@@ -110,9 +112,9 @@ function DashboardListItem({
             {title}
           </p>
           <p className={s.todoItemTime}>
-            {day}
-            {challenge ? ` ${dayName}` : null}
-            {done ? time.slice(0, 10) : null}, {time.slice(11)}
+            {done ? time.slice(0, 10) : null ||challenge ? `${day} ${dayName}` : null || day}
+            , {time.slice(11)}
+            {hot ? <img className={s.todoItemFire} src={Fire} alt='fire!!!' /> : null}
           </p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}

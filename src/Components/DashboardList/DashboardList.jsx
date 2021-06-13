@@ -88,10 +88,11 @@ const DashboardList = () => {
                           classNames={s}
                           unmountOnExit
                           key={_id}
-                        >
+                        > 
                           <li className={s.itemTodo}>
                             <CardDone id={_id} titleTodo={title} />
-                            <DashboardListItem
+                            {_id === todayList[0]._id ?
+                              <DashboardListItem
                               category={category}
                               difficulty={difficulty}
                               title={title}
@@ -99,7 +100,17 @@ const DashboardList = () => {
                               id={_id}
                               day="Today"
                               challengeStyle={challenge}
-                            />
+                              hot='true'
+                              /> :
+                              <DashboardListItem
+                              category={category}
+                              difficulty={difficulty}
+                              title={title}
+                              time={time}
+                              id={_id}
+                              day="Today"
+                              challengeStyle={challenge}
+                            />}
                           </li>
                         </CSSTransition>
                       ),

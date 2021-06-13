@@ -10,7 +10,7 @@ const sorter = (whole, todayList, tomorrowList, doneList, challengeList) => {
             today.getMonth() === new Date(Date.parse(part.time)).getMonth() &&
             today.getDay() === new Date(Date.parse(part.time)).getDay()
           ) {
-            todayList.unshift(part);
+            todayList.unshift(part);//.sort((a, b) => b.time - a.time);
           }
           if (
             tomorrow.getFullYear() === new Date(Date.parse(part.time)).getFullYear() &&
@@ -25,8 +25,12 @@ const sorter = (whole, todayList, tomorrowList, doneList, challengeList) => {
       } else {
         doneList.unshift(part);
       }
-      return { todayList, tomorrowList, doneList };
+      return { todayList, tomorrowList, doneList, challengeList };
     });
+  todayList.sort((a, b) => a.time > b.time ? 1 : -1);
+  tomorrowList.sort((a, b) => a.time > b.time ? 1 : -1);
+  challengeList.sort((a, b) => a.time > b.time ? 1 : -1);
+  doneList.sort((a, b) => a.time > b.time ? 1 : -1);
 };
-  
+
 export default sorter;
