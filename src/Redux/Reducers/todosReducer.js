@@ -61,6 +61,8 @@ const refreshTokenError = createReducer('', {
   [todosActions.addTodoError]: (_, { payload }) => payload,
   [todosActions.deleteTodoError]: (_, { payload }) => payload,
   [todosActions.clearTodoError]: (_, { payload }) => payload,
+  [todosActions.updateTodoError]: (_, { payload }) => payload,
+  [todosActions.updateTodoStatusDoneError]: (_, { payload }) => payload,
 });
 export default combineReducers({
   items,
