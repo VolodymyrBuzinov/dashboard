@@ -17,15 +17,15 @@
     font-size: 18px;
     line-height: 18px;
     height: 18px;
-    margin-bottom: 38px;
+    //margin-bottom: 38px;
     width: 230px;
   }
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 14px;
     height: 14px;
-    margin-bottom: 36px;
-    width: 160px;
+    //margin-bottom: 36px;
+    width: 170px;
   }
 
   &::-webkit-calendar-picker-indicator {
@@ -84,7 +84,8 @@
   cursor: pointer;
   &__challenge {
     background: $card-bg-color;
-    color: $secondary-text;
+    //color: $secondary-text;
+    color: $active-color;
   }
 }
 

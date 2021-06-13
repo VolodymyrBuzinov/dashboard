@@ -32,10 +32,8 @@
       width: 205px;
       height: 199px;
       padding-bottom: 21px;
-    }
-    @media screen and (min-width: 1280px) {
-      width: 205px;
-      height: 199px;
+      font-size: 14px;
+      line-height: 14px;
     }
   }
 
@@ -46,7 +44,6 @@
     display: flex;
     flex-direction: column;
     padding-top: 19px;
-    padding-bottom: 21px;
     padding-left: 21px;
     padding-right: 21px;
     margin-left: auto;
@@ -71,11 +68,30 @@
   &__WrapperTop {
     display: flex;
     justify-content: space-between;
+
     @media screen and (max-width: 767px) {
-      padding-bottom: 41px;
+      margin-bottom: 70px; //46px;
+      height: 19px;
     }
     @media screen and (min-width: 768px) {
-      padding-bottom: 35px;
+      margin-bottom: 40px;
+      height: 15px;
+    }
+  }
+
+  &__WrapperMidle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    @media screen and (max-width: 767px) {
+      height: 48px;
+      margin-bottom: 38px;
+    }
+    @media screen and (min-width: 768px) {
+      height: 42px;
+      margin-bottom: 36px;
     }
   }
 
@@ -89,23 +105,6 @@
     @extend %button-throw;
     background-color: transparent;
   }
-
-  &__WrapperMidle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-
-    @media screen and (max-width: 767px) {
-      height: 48px;
-      margin-bottom: 61px;
-    }
-    @media screen and (min-width: 768px) {
-      height: 42px;
-      margin-bottom: 37px;
-    }
-  }
-
   // &__ButtonGroup {
   //   width: 68px;
   //   height: 16px;
@@ -116,6 +115,7 @@
   position: relative;
   display: flex;
   height: 35px;
+
   @media screen and (min-width: 768px) {
     height: 25px;
   }
