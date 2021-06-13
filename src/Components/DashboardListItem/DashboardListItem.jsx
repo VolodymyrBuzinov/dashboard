@@ -58,13 +58,13 @@ function DashboardListItem({
     }
     if (isVisible) {
       // console.log('Закончить создание карточки');
-      toast.info('Finish card creation');
+      toast.warning('Finish card creation');
       return;
     }
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
         //console.log('Закончить редактирование карточки');
-        toast.info('Finish editing the card');
+        toast.warning('Finish editing the card');
       }
       return;
     }
