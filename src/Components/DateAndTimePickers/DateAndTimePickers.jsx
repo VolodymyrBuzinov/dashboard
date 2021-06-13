@@ -8,10 +8,7 @@ export default function DateAndTimePickers({
   cb,
   isEdit,
 }) {
-  console.log(
-    '🚀 ~ file: DateAndTimePickers.jsx ~ line 11 ~ isChallenge',
-    isChallenge,
-  );
+  
   const [selectedDate, setSelectedDate] = useState('');
 
   const inputEl = useRef(null);

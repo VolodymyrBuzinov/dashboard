@@ -77,9 +77,13 @@
 }
 
 .active {
-  // color: $text-color;
+  color: $text-color;
   border: none;
   cursor: pointer;
   border-color: inherit;
   outline: none;
+}
+
+.isChallenge {
+  color: $secondary-text;
 }
