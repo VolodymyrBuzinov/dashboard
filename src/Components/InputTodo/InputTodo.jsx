@@ -39,7 +39,7 @@ export default function InputTodo({
     <div className={style.InputTodo__form}>
       <input
         ref={inputEl}
-        className={style.InputTodo__input}
+        className={isChallenge ? style.InputTodo__input__challenge : style.InputTodo__input}
         autoFocus={true}
         autoComplete="off"
         type="text"

@@ -69,7 +69,7 @@ const DashboardList = () => {
                       key="temlpate"
                     >
                       <li>
-                        <TemplateTodo />
+                        <TemplateTodo/>
                       </li>
                     </CSSTransition>
                   )}

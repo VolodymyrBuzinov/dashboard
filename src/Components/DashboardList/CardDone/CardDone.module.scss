@@ -24,16 +24,13 @@
     width: 205px;
     height: 199px;
   }
-  @media screen and (min-width: 1280px) {
-    width: 205px;
-    height: 199px;
-  }
   &[hidden] {
     // transform: translateY(-105%);
     opacity: 0;
     pointer-events: none;
   }
 }
+
 .iconFon {
   margin-top: 10px;
   margin-bottom: 7px;
@@ -56,6 +53,7 @@
   line-height: 11px;
   align-self: flex-start;
 }
+
 .textTitle {
   margin-left: 7px;
   margin-top: 0;
@@ -71,6 +69,7 @@
   line-height: 12px;
   text-decoration: underline;
 }
+
 .btnContinue {
   display: flex;
   align-items: center;

@@ -27,7 +27,7 @@
     line-height: 14px;
     height: 14px;
     margin-bottom: 36px;
-    width: 170px;
+    width: 160px;
   }
 
   &::-webkit-calendar-picker-indicator {
@@ -64,7 +64,10 @@
       height: 14px;
       right: -15px;
     }
-
+    &__challenge {
+      background: $card-bg-color;
+      color: $secondary-text;
+    }
     //text
     // font: normal normal normal 14px/1 FontAwesome;
     // font-size: inherit;
@@ -78,6 +81,10 @@
   color: $text-color;
   border: none;
   cursor: pointer;
+  &__challenge {
+    background: $card-bg-color;
+    color: $secondary-text;
+  }
 }
 
 .isChallenge {
