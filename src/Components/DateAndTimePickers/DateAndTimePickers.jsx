@@ -8,10 +8,7 @@ export default function DateAndTimePickers({
   cb,
   isEdit,
 }) {
-  console.log(
-    '🚀 ~ file: DateAndTimePickers.jsx ~ line 11 ~ isChallenge',
-    isChallenge,
-  );
+  
   const [selectedDate, setSelectedDate] = useState('');
 
   const inputEl = useRef(null);
@@ -46,7 +43,7 @@ export default function DateAndTimePickers({
         className={
           selectedDate && isChallenge
             ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
-            : style.DateAndTimePickers__input
+            : `${style.DateAndTimePickers__input}  ${style.active}`
         }
         type="datetime-local"
         name="dateCreate"
