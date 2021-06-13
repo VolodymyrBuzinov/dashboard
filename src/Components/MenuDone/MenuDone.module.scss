@@ -31,6 +31,7 @@
   z-index: 1;
   &:checked + .doneList .menu {
     transform: translateY(0%);
+    height: auto;
   }
   &:checked + .doneList .icon {
     transform: rotate(0deg);
@@ -77,6 +78,7 @@
 .menu {
   transform: translateY(-110%);
   transition: transform 500ms ease-in;
+  height: 0;
 }
 
 .contentMenu {
