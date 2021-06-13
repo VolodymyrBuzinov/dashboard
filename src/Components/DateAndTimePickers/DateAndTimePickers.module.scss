@@ -10,8 +10,9 @@
   margin: 0;
   margin-left: auto;
   margin-right: auto;
-  color: $active-color;
+  color: $secondary-text;
   border: none;
+  background-color: inherit;
 
   @media screen and (max-width: 767px) {
     font-size: 18px;
@@ -76,40 +77,9 @@
 }
 
 .active {
-  color: $text-color;
+  // color: $text-color;
   border: none;
   cursor: pointer;
+  border-color: inherit;
+  outline: none;
 }
-
-/* var 2  
-input[type='datetime-local']::-webkit-clear-button,
-input[type='datetime-local']::-webkit-inner-spin-button,
-input[type='datetime-local']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type='datetime-local'] {
-  -webkit-appearance: none;
-  padding-right: 0;
-  // height: 2.23rem;
-}
-input[type='datetime-local']::-webkit-calendar-picker-indicator {
-  -webkit-appearance: none;
-  // opacity: 1;
-  // color: rgba(0, 0, 0, 0);
-  background: url('../../Icons/svg/calendar.svg') no-repeat;
-  height: 93%;
-  // width: 2.8rem;
-  width: -100px;
-  // top: 0;
-  // left: 30px;
-  z-index: 0;
-  // position: absolute;
-  // right: 30px;
-  top: -2px;
-  bottom: 0px;
-  padding-right: 60px;
-  padding-left: 60px;
-}
-*/
