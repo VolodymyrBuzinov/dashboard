@@ -38,12 +38,12 @@ const MyCabinetPage = () => {
     }, 1000);
     if (edit) {
       //console.log('Закончить редактирование карточки');
-      toast.info('Finish editing the card');
+      toast.warning('Finish editing the card');
       return;
     }
     if (isVisible) {
       //console.log('Закончить создание карточки');
-      toast.info('Finish card creation');
+      toast.warning('Finish card creation');
       return;
     }
     dispatch(onClickBtnCreate(true));
