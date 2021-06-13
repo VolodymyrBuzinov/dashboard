@@ -7,6 +7,10 @@
   height: 30px;
   transition: $animation-timing;
   cursor: pointer;
+  z-index: 1;
+  @media screen and (min-width: 768px) {
+    right: 50px;
+  }
   &:hover,
   &:focus {
     transform: scale(1.2);
