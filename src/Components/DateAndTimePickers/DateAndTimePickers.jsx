@@ -1,7 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import style from './DateAndTimePickers.module.scss';
 
-export default function DateAndTimePickers({ time, getDate, cb, isEdit }) {
+
+export default function DateAndTimePickers({
+  isChallenge,
+  time,
+  getDate,
+  cb,
+  isEdit,
+}) {
+  
+
   const [selectedDate, setSelectedDate] = useState('');
 
   const inputEl = useRef(null);
@@ -32,10 +41,13 @@ export default function DateAndTimePickers({ time, getDate, cb, isEdit }) {
     <div className={style.DateAndTimePickers__form}>
       <input
         ref={inputEl}
+        // isChallenge
         className={
-          selectedDate
-            ? `${style.DateAndTimePickers__input}  ${style.active}`
-            : style.DateAndTimePickers__input
+
+          selectedDate && isChallenge
+            ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
+            : `${style.DateAndTimePickers__input}  ${style.active}`
+
         }
         type="datetime-local"
         name="dateCreate"
