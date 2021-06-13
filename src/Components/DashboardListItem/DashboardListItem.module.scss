@@ -251,7 +251,9 @@
   @media screen and (max-width: 767px) {
     font-size: 14px;
     line-height: 14px;
-    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 194px;
     width: 120px;
     height: 35px;
