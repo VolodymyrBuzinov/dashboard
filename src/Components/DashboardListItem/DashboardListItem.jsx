@@ -133,6 +133,8 @@ function DashboardListItem({
             isEdit={isEdit}
             changeEdit={setEdit}
             isChallenge={challenge}
+            day={day}
+            dayName={dayName}
           />
         </>
       )}

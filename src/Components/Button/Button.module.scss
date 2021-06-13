@@ -28,11 +28,11 @@
     animation: radial-pulse 1s infinite;
     @keyframes radial-pulse {
       0% {
-        box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 0 0px rgba(255, 133, 28, 0.5);
       }
 
       100% {
-        box-shadow: 0 0 0 40px rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 15px rgba(255, 133, 28, 0);
       }
     }
 
