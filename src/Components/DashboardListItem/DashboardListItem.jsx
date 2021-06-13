@@ -92,17 +92,9 @@ function DashboardListItem({
               <div className={s.todoItemDifficulty}>{difficulty}</div>
             </div>
             {challenge ? (
-              <Button
-                onClick={toggleChallenge}
-                content="icon-trophy"
-                type="button"
-              />
+              <Button content="icon-trophy" type="button" isEdit={!edit} />
             ) : (
-              <Button
-                onClick={toggleChallenge}
-                content="icon-Vector"
-                type="button"
-              />
+              <Button content="icon-Vector" type="button" isEdit={!edit} />
             )}
           </div>
           <p
@@ -118,7 +110,7 @@ function DashboardListItem({
             {title}
           </p>
           <p className={s.todoItemTime}>
-            {challenge ? 'By' : day}
+            {day}
             {challenge ? ` ${dayName}` : null}
             {done ? time.slice(0, 10) : null},{time.slice(11)}
           </p>
