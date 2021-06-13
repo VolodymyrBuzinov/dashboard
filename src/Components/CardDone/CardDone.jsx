@@ -1,18 +1,17 @@
 import style from './CardDone.module.scss';
-import sprite from '../../../Icons/symbol-defs.svg';
+import sprite from '../../Icons/symbol-defs.svg';
 
 // import getShowCardDone from "./getShowCardDone"
 // import getHiddenCardDone from "./getHiddenCardDone"
 
-import exp from '../../../Redux/Operations/todosOperations';
+import exp from '../../Redux/Operations/todosOperations';
 import { useDispatch } from 'react-redux';
-import { editTodo } from '../../../Redux/Actions/editTodo-action';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 function CardDone({ id, titleTodo = 'title' }) {
   const dispatch = useDispatch();
 
   let titleTodoShort;
-  // ? если длина заголовка больше 12 - обрезаем и добавляем ...
   if (titleTodo.length > 12) {
     let titleTodoSlice = titleTodo.split('');
     titleTodoSlice.length = 12;
@@ -23,12 +22,6 @@ function CardDone({ id, titleTodo = 'title' }) {
   }
 
   const handleClickElementDone = id => {
-    console.log('run handleClickElementDone');
-    console.log({
-      id,
-      done: true,
-    });
-
     dispatch(
       exp.updateTodoStatusDone({
         id,

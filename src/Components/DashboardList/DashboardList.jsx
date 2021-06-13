@@ -11,7 +11,7 @@ import MenuDone from '../MenuDone/MenuDone';
 import EmptyTodos from '../EmptyTodos/EmptyTodods';
 import TemplateTodo from '../TemplateTodo/TemplateTodo';
 // import Button from '../Button/Button';
-import CardDone from './CardDone/CardDone';
+import CardDone from '../CardDone/CardDone';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import transition from './anim.module.scss';
 
@@ -69,7 +69,7 @@ const DashboardList = () => {
                       key="temlpate"
                     >
                       <li>
-                        <TemplateTodo/>
+                        <TemplateTodo />
                       </li>
                     </CSSTransition>
                   )}
