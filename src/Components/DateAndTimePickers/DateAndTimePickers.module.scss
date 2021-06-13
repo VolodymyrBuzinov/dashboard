@@ -16,7 +16,9 @@
   color: $secondary-text;
   border: none;
   background-color: inherit;
+
   line-height: 1;
+  outline: inherit;
 
   @media screen and (max-width: 767px) {
     width: 18px;
@@ -47,57 +49,21 @@
   &::-webkit-datetime-edit-fields-wrapper {
     display: none;
   }
-
-  // &:after {
-  //   position: absolute;
-  //   content: 'Today';
-  //   display: inline-block;
-
-  //   // top: 50%;
-  //   // transform: translateY(-50%);
-  //   // z-index: 0;
-
-  //   //svg
-  //   background-image: url('../../Icons/svg/calendar.svg');
-  //   background-repeat: no-repeat;
-  //   background-size: contain;
-  //   outline: none;
-
-  //   @media screen and (max-width: 767px) {
-  //     width: 40px;
-  //     height: 18px;
-  //     right: -10px;
-  //   }
-  //   @media screen and (min-width: 768px) {
-  //     width: 35px;
-  //     height: 14px;
-  //     right: -15px;
-  //   }
-
-  //   //text
-  //   // font: normal normal normal 14px/1 FontAwesome;
-  //   // font-size: inherit;
-  //   // text-rendering: auto;
-  //   // -webkit-font-smoothing: antialiased;
-  //   // -moz-osx-font-smoothing: grayscale;
-  // }
-
-  /* var1
-  */
 }
 
 .active {
-  // color: $text-color;
+  color: $text-color;
   border: none;
   cursor: pointer;
-  border-color: inherit;
-  outline: none;
+  &__challenge {
+    background: $card-bg-color;
+    color: $secondary-text;
+  }
 }
 
-// input[type='datetime-local' i]::-webkit-calendar-picker-indicator {
-//   width: 100%;
-//   height: 100%;
-// }
+.isChallenge {
+  color: $secondary-text;
+}
 
 .DateAndTimePickers__text {
   @extend %text-throw;

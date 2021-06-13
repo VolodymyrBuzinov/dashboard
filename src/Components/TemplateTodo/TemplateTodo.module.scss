@@ -41,8 +41,32 @@
   }
 
   & .challenge {
-    background-color: $card-bg-color;
+    background: $card-bg-color;
     color: $white-color;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 19px;
+    padding-bottom: 21px;
+    padding-left: 21px;
+    padding-right: 21px;
+    margin-left: auto;
+    margin-right: auto;
+    background: $card-bg-color;
+    box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+      3px 4px 4px rgba(21, 57, 90, 0.03);
+    border-radius: 10px;
+    transition: all $animation-timing;
+    @media screen and (max-width: 767px) {
+      width: 290px;
+      height: 260px;
+      padding-bottom: 33px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 205px;
+      height: 199px;
+      padding-bottom: 21px;
+    }
   }
 
   &__WrapperTop {

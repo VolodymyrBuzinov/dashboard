@@ -24,7 +24,7 @@ const addTodo =
       await axios
         .post('/tasks', template)
         .then(res => dispatch(todosActions.addTodoSuccess(res.data)));
-        toast.info('Your quest is successfully added!');
+      toast.info('Your quest is successfully added!');
     } catch (error) {
       dispatch(todosActions.addTodoError(error.response.status));
       toast.error('Quest is not added!');
@@ -63,7 +63,7 @@ const updateTodoStatusDone =
       toast.info('Your quest is successfully added to Done!');
     } catch (error) {
       console.log('🚀 ~ file: todosOperations.js ~ line 58 ~ error', error);
-      dispatch(todosActions.updateTodoStatusDoneError(error.message));
+      dispatch(todosActions.updateTodoStatusDoneError(error.response.status));
       toast.error('Quest is not added to Done!');
     }
   };

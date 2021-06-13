@@ -45,12 +45,12 @@ function DashboardListItem({
   const d = new Date(time);
   const dayName = days[d.getDay()];
 
-  const toggleChallenge = () => {
-    if (done) {
-      return;
-    }
-    setChallenge(prev => !prev);
-  };
+  // const toggleChallenge = () => {
+  //   if (done) {
+  //     return;
+  //   }
+  //   setChallenge(prev => !prev);
+  // };
 
   const onOpenEditCard = e => {
     if (done) {
@@ -58,13 +58,13 @@ function DashboardListItem({
     }
     if (isVisible) {
       // console.log('Закончить создание карточки');
-      toast.info('Finish card creation');
+      toast.warning('Finish card creation');
       return;
     }
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
         //console.log('Закончить редактирование карточки');
-        toast.info('Finish editing the card');
+        toast.warning('Finish editing the card');
       }
       return;
     }
@@ -112,7 +112,7 @@ function DashboardListItem({
           <p className={s.todoItemTime}>
             {day}
             {challenge ? ` ${dayName}` : null}
-            {done ? time.slice(0, 10) : null},{time.slice(11)}
+            {done ? time.slice(0, 10) : null}, {time.slice(11)}
           </p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}
