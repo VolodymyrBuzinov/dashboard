@@ -42,6 +42,8 @@ const TemplateTodo = ({
   editTitle,
   changeEdit,
   isChallenge,
+  day,
+  dayName,
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -133,6 +135,8 @@ const TemplateTodo = ({
             isEdit={isEdit}
             getDate={handleChangeState}
             cb={setTime}
+            day={day}
+            dayName={dayName}
           />
         </div>
 
