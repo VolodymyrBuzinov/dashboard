@@ -7,18 +7,16 @@ export default function DateAndTimePickers({
   getDate,
   cb,
   isEdit,
+  day,
+  dayName,
 }) {
-  console.log(
-    '🚀 ~ file: DateAndTimePickers.jsx ~ line 11 ~ isChallenge',
-    isChallenge,
-  );
   const [selectedDate, setSelectedDate] = useState('');
 
   const inputEl = useRef(null);
 
-  useEffect(() => {
-    if (isEdit) setSelectedDate(time);
-  }, [isEdit, time]);
+  // useEffect(() => {
+  //   if (isEdit) setSelectedDate(time);
+  // }, [isEdit, time]);
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -40,26 +38,80 @@ export default function DateAndTimePickers({
 
   return (
     <div className={style.DateAndTimePickers__form}>
-      <input
-        ref={inputEl}
-        // isChallenge
-        className={
-          selectedDate && isChallenge
-            ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
-            : style.DateAndTimePickers__input
-        }
-        type="datetime-local"
-        name="dateCreate"
-        required
-        step="0"
-        min="2021-06-01T08:00"
-        max="2022-06-30T21:00"
-        value={isEdit ? selectedDate : time}
-        onChange={handleDateChange}
-        onBlur={() => {
-          getDate('time', selectedDate, cb);
-        }}
-      />
+      <p className={style.DateAndTimePickers__text}>
+        {selectedDate &&
+          `${selectedDate.slice(0, 10)}, ${selectedDate.slice(11)}`}
+        {!time && !selectedDate && !isChallenge && `Today`}
+        {time && !selectedDate && !isChallenge && `${day}, ${time.slice(11)}`}
+        {isChallenge && !selectedDate && !time && `by Today`}
+        {isChallenge && !selectedDate && time && `by ${dayName}`}
+      </p>
+      {isChallenge && !time && (
+        <input
+          ref={inputEl}
+          // isChallenge
+          className={
+            selectedDate && isChallenge
+              ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
+              : style.DateAndTimePickers__input
+          }
+          type="datetime-local"
+          name="dateCreate"
+          required
+          step="0"
+          min="2021-06-01T08:00"
+          max="2022-06-30T21:00"
+          value={isEdit ? selectedDate : time}
+          onChange={handleDateChange}
+          onBlur={() => {
+            getDate('time', selectedDate, cb);
+          }}
+        />
+      )}
+      {!time && !isChallenge && (
+        <input
+          ref={inputEl}
+          // isChallenge
+          className={
+            selectedDate && isChallenge
+              ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
+              : style.DateAndTimePickers__input
+          }
+          type="datetime-local"
+          name="dateCreate"
+          required
+          step="0"
+          min="2021-06-01T08:00"
+          max="2022-06-30T21:00"
+          value={isEdit ? selectedDate : time}
+          onChange={handleDateChange}
+          onBlur={() => {
+            getDate('time', selectedDate, cb);
+          }}
+        />
+      )}
+      {time && !isChallenge && (
+        <input
+          ref={inputEl}
+          // isChallenge
+          className={
+            selectedDate && isChallenge
+              ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
+              : style.DateAndTimePickers__input
+          }
+          type="datetime-local"
+          name="dateCreate"
+          required
+          step="0"
+          min="2021-06-01T08:00"
+          max="2022-06-30T21:00"
+          value={isEdit ? selectedDate : time}
+          onChange={handleDateChange}
+          onBlur={() => {
+            getDate('time', selectedDate, cb);
+          }}
+        />
+      )}
     </div>
   );
 }
