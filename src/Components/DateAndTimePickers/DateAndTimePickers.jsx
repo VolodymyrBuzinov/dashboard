@@ -43,7 +43,7 @@ export default function DateAndTimePickers({
         className={
           selectedDate && isChallenge
             ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
-            : style.DateAndTimePickers__input
+            : `${style.DateAndTimePickers__input}  ${style.active}`
         }
         type="datetime-local"
         name="dateCreate"

@@ -45,12 +45,12 @@ function DashboardListItem({
   const d = new Date(time);
   const dayName = days[d.getDay()];
 
-  const toggleChallenge = () => {
-    if (done) {
-      return;
-    }
-    setChallenge(prev => !prev);
-  };
+  // const toggleChallenge = () => {
+  //   if (done) {
+  //     return;
+  //   }
+  //   setChallenge(prev => !prev);
+  // };
 
   const onOpenEditCard = e => {
     if (done) {

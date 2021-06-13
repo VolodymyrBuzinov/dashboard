@@ -13,6 +13,7 @@
   color: $secondary-text;
   border: none;
   background-color: inherit;
+  outline: inherit;
 
   @media screen and (max-width: 767px) {
     font-size: 18px;
@@ -71,17 +72,12 @@
     // -webkit-font-smoothing: antialiased;
     // -moz-osx-font-smoothing: grayscale;
   }
-
-  /* var1
-  */
 }
 
 .active {
   color: $text-color;
   border: none;
   cursor: pointer;
-  border-color: inherit;
-  outline: none;
 }
 
 .isChallenge {
