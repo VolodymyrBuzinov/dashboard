@@ -4,38 +4,38 @@
   @extend %button-throw;
   font-style: normal;
   color: inherit;
+  max-width: 100%;
   counter-reset: $text-color;
   border: none;
   text-align: center;
   font-weight: 700;
-
+  background-color: transparent;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
   height: auto;
+  padding-bottom: 3px;
 
   @media screen and (max-width: 767px) {
     font-size: 20px;
     line-height: 20px;
-    margin-bottom: 12px;
+    height: 20px;
   }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 16px;
-    margin-bottom: 2px;
+
+    height: 16px;
   }
   &__challenge {
     @extend %button-throw;
-    background: $card-bg-color;
     font-weight: 700;
     font-style: normal;
-    max-width: 155px;
+    max-width: 100%;
     color: $white-color;
-    //counter-reset: $text-color;
-    // display: block;
     border: none;
     text-align: center;
-
+    padding-bottom: 3px;
     margin: 0;
     margin-left: auto;
     margin-right: auto;
@@ -44,17 +44,15 @@
     @media screen and (max-width: 767px) {
       font-size: 20px;
       line-height: 20px;
-      margin-bottom: 10px;
+      height: 20px;
     }
     @media screen and (min-width: 768px) {
       font-size: 16px;
       line-height: 16px;
-      margin-bottom: 12px;
+
+      height: 16px;
     }
   }
-}
-.challenge {
-  background-color: red;
 }
 
 .InputTodo__input:focus,
@@ -70,18 +68,15 @@
   pointer-events: none;
   left: 50%;
   transform: translateX(-50%);
-  top: 15px;
+  top: 0px;
   white-space: nowrap;
   transition: $animation-timing;
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
 
-  //@extend
   font-style: normal;
   font-size: 12px;
   line-height: 1;
-  /* identical to box height */
-
   text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -92,8 +87,13 @@
 .InputTodo__input:valid ~ label,
 .InputTodo__input__challenge:focus ~ label,
 .InputTodo__input__challenge:valid ~ label {
-  top: -15px;
   color: $active-color;
+  @media screen and (max-width: 767px) {
+    top: -45px;
+  }
+  @media screen and (min-width: 768px) {
+    top: -20px;
+  }
 }
 
 /* active state */
@@ -105,17 +105,17 @@
 }
 
 /* BOTTOM BARS ================================= */
-// .InputTodo__bar {
+
 .InputTodo__bar {
   position: relative;
   display: block;
+
   @media screen and (max-width: 767px) {
-    width: 100%;
-    // width: 230px;
+    width: 230px;
   }
   @media screen and (min-width: 768px) {
-    // width: 155px;
-    width: 100%;
+    width: 155px;
+    left: 8%;
   }
 }
 .InputTodo__bar:before,
@@ -130,22 +130,24 @@
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
 }
+
 .InputTodo__bar:before {
   left: 50%;
 }
-.InputTodo__bar:after {
+.InputTodo__bar:after,
+.InputTodo__bar__challenge:after {
   right: 50%;
 }
 
 /* form starting stylings ------------------------------- */
 .InputTodo__form {
   position: relative;
-
   @media screen and (max-width: 767px) {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   @media screen and (min-width: 768px) {
-    //margin-bottom: 10px;
+    margin-bottom: 12px;
+    height: 16px;
   }
 }
 
@@ -156,17 +158,14 @@
   pointer-events: none;
   left: 50%;
   transform: translateX(-50%);
-  top: 15px;
   white-space: nowrap;
   transition: $animation-timing;
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
 
-  //@extend
   font-style: normal;
   font-size: 12px;
   line-height: 12px;
-  /* identical to box height */
 
   text-align: center;
   letter-spacing: 0.02em;

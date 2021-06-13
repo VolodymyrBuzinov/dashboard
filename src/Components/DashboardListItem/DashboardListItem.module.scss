@@ -34,7 +34,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    padding-top: 21px;
+    padding-top: 19px;
     padding-bottom: 21px;
     padding-left: 21px;
     padding-right: 21px;
@@ -279,4 +279,9 @@
   transform: translate(-180px, -25px);
 
   border-radius: 10px;
+}
+
+.todoItemFire {
+  margin-left: 5px;
+  margin-top: -5px;
 }
