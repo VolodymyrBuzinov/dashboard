@@ -1,0 +1,29 @@
+@import '../../Utils/utils.scss';
+.icon {
+  transition: $animation-timing;
+  transform: rotate(180deg);
+  margin-left: 10px;
+  width: 12px;
+  height: 14px;
+}
+.iconClick {
+  transform: rotate(0deg);
+  transition: $animation-timing;
+  margin-left: 10px;
+  width: 12px;
+  height: 14px;
+}
+
+.menu {
+  display: none;
+  transform: translateY(-110%);
+  transition: transform 500ms ease-in; // кнопка не нажата
+}
+.menuClickBlock {
+  display: block; // кнопка  нажата
+}
+
+.menuClick {
+  transform: translateY(0%); // кнопка  нажата
+  transition: transform 500ms ease-in;
+}
