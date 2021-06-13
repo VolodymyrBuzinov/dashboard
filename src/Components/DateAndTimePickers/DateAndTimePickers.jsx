@@ -42,71 +42,27 @@ export default function DateAndTimePickers({
         {isChallenge && !selectedDate && !time && `by Today`}
         {isChallenge && !selectedDate && time && `by ${dayName}`}
       </p>
-      {isChallenge && !time && (
-        <input
-          ref={inputEl}
-          className={
-            selectedDate && isChallenge
-              ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
-              : style.DateAndTimePickers__input
-          }
-          type="datetime-local"
-          name="dateCreate"
-          required
-          step="0"
-          min="2021-06-01T08:00"
-          max="2022-06-30T21:00"
-          value={isEdit ? selectedDate : time}
-          onChange={handleDateChange}
-          onBlur={() => {
-            getDate('time', selectedDate, cb);
-          }}
-        />
-      )}
-      {!time && !isChallenge && (
-        <input
-          ref={inputEl}
-          // isChallenge
-          className={
-            selectedDate && isChallenge
-              ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
-              : style.DateAndTimePickers__input
-          }
-          type="datetime-local"
-          name="dateCreate"
-          required
-          step="0"
-          min="2021-06-01T08:00"
-          max="2022-06-30T21:00"
-          value={isEdit ? selectedDate : time}
-          onChange={handleDateChange}
-          onBlur={() => {
-            getDate('time', selectedDate, cb);
-          }}
-        />
-      )}
-      {time && !isChallenge && (
-        <input
-          ref={inputEl}
-          // isChallenge
-          className={
-            selectedDate && isChallenge
-              ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
-              : style.DateAndTimePickers__input
-          }
-          type="datetime-local"
-          name="dateCreate"
-          required
-          step="0"
-          min="2021-06-01T08:00"
-          max="2022-06-30T21:00"
-          value={isEdit ? selectedDate : time}
-          onChange={handleDateChange}
-          onBlur={() => {
-            getDate('time', selectedDate, cb);
-          }}
-        />
-      )}
+
+      <input
+        ref={inputEl}
+        // isChallenge
+        className={
+          selectedDate && isChallenge
+            ? `${style.DateAndTimePickers__input}  ${style.active}   ${style.isChallenge} `
+            : style.DateAndTimePickers__input
+        }
+        type="datetime-local"
+        name="dateCreate"
+        required
+        step="0"
+        min="2021-06-01T08:00"
+        max="2022-06-30T21:00"
+        value={isEdit ? selectedDate : time}
+        onChange={handleDateChange}
+        onBlur={() => {
+          getDate('time', selectedDate, cb);
+        }}
+      />
     </form>
   );
 }
