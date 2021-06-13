@@ -81,10 +81,10 @@
   background: transparent;
   transform: scale(1);
   // transform: rotate(0deg);
-  transition: transform 500ms ease-in;
+  transition: $animation-timing;
   &:hover {
     // transform: rotate(360deg);
-    transform: scale(1.7);
+    transform: scale(1.1);
   }
 }
 
