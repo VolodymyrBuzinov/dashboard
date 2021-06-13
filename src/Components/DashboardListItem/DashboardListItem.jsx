@@ -45,12 +45,12 @@ function DashboardListItem({
   const d = new Date(time);
   const dayName = days[d.getDay()];
 
-  const toggleChallenge = () => {
-    if (done) {
-      return;
-    }
-    setChallenge(prev => !prev);
-  };
+  // const toggleChallenge = () => {
+  //   if (done) {
+  //     return;
+  //   }
+  //   setChallenge(prev => !prev);
+  // };
 
   const onOpenEditCard = e => {
     if (done) {
@@ -58,13 +58,13 @@ function DashboardListItem({
     }
     if (isVisible) {
       // console.log('Закончить создание карточки');
-      toast.info('Finish card creation');
+      toast.warning('Finish card creation');
       return;
     }
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
         //console.log('Закончить редактирование карточки');
-        toast.info('Finish editing the card');
+        toast.warning('Finish editing the card');
       }
       return;
     }
@@ -92,17 +92,9 @@ function DashboardListItem({
               <div className={s.todoItemDifficulty}>{difficulty}</div>
             </div>
             {challenge ? (
-              <Button
-                onClick={toggleChallenge}
-                content="icon-trophy"
-                type="button"
-              />
+              <Button content="icon-trophy" type="button" isEdit={!edit} />
             ) : (
-              <Button
-                onClick={toggleChallenge}
-                content="icon-Vector"
-                type="button"
-              />
+              <Button content="icon-Vector" type="button" isEdit={!edit} />
             )}
           </div>
           <p
@@ -118,7 +110,7 @@ function DashboardListItem({
             {title}
           </p>
           <p className={s.todoItemTime}>
-            {challenge ? 'By' : day}
+            {day}
             {challenge ? ` ${dayName}` : null}
             {done ? time.slice(0, 10) : null}, {time.slice(11)}
           </p>

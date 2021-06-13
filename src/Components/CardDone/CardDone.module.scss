@@ -1,4 +1,4 @@
-@import '../../../Utils/utils.scss';
+@import '../../Utils/utils.scss';
 
 .cardDone {
   position: absolute;
@@ -74,8 +74,16 @@
   align-items: center;
   margin: 0;
   padding: 0;
+  cursor: pointer;
   border: none;
-  background: inherit;
+  background: transparent;
+  transform: scale(1);
+  // transform: rotate(0deg);
+  transition: $animation-timing;
+  &:hover {
+    // transform: rotate(360deg);
+    transform: scale(1.1);
+  }
 }
 
 .iconArrow {

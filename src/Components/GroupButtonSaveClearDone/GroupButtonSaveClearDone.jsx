@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
-import getShowCardDone from '../DashboardList/CardDone/getShowCardDone';
+import getShowCardDone from '../CardDone/getShowCardDone';
 
 export default function GroupButtonSaveClearDone({
   isCreate,
