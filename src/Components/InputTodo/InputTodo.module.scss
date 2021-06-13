@@ -9,7 +9,7 @@
   border: none;
   text-align: center;
   font-weight: 700;
-
+  background-color: transparent;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
@@ -28,13 +28,10 @@
   }
   &__challenge {
     @extend %button-throw;
-    background: $card-bg-color;
     font-weight: 700;
     font-style: normal;
     max-width: 100%;
     color: $white-color;
-    //counter-reset: $text-color;
-    // display: block;
     border: none;
     text-align: center;
 
@@ -76,7 +73,6 @@
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
 
-  //@extend
   font-style: normal;
   font-size: 12px;
   line-height: 1;
