@@ -1,15 +1,15 @@
-import React from 'react';
 import style from './ModalWindow.module.scss';
 import { useDispatch } from 'react-redux';
-import todosOperations from '../../Redux/Todos/todosOperations';
+import todosOperations from '../../Redux/Operations/todosOperations';
 import Button from '../Button/Button';
+import { editTodo } from '../../Redux/Actions/editTodo-action';
 
 const ModalWindow = ({ id, isOpened, question }) => {
   const dispatch = useDispatch();
 
-  const handleRemoveTask = () => {
-    dispatch(todosOperations.deleteTodo(id));
-    isOpened();
+  const handleRemoveTask = async () => {
+    await dispatch(todosOperations.deleteTodo(id));
+    dispatch(editTodo(false));
   };
 
   return (

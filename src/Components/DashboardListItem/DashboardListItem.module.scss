@@ -1,15 +1,20 @@
 @import '../../Utils/utils.scss';
 
 .todoItem {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  padding-left: 21px;
+  padding-right: 21px;
   padding-top: 19px;
+  margin-left: auto;
+  margin-right: auto;
 
-  background: #ffffff;
+  background: $white-color;
   box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
     3px 4px 4px rgba(21, 57, 90, 0.03);
   border-radius: 10px;
+  transition: all $animation-timing;
 
   @media screen and (max-width: 767px) {
     width: 290px;
@@ -25,36 +30,98 @@
     width: 205px;
     height: 199px;
   }
+  &__challenge {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding-top: 19px;
+    padding-bottom: 21px;
+    padding-left: 21px;
+    padding-right: 21px;
+    margin-left: auto;
+    margin-right: auto;
+    background: $card-bg-color;
+    box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+      3px 4px 4px rgba(21, 57, 90, 0.03);
+    border-radius: 10px;
+    transition: all $animation-timing;
+    @media screen and (max-width: 767px) {
+      width: 290px;
+      height: 260px;
+      padding-bottom: 33px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 205px;
+      height: 199px;
+      padding-bottom: 21px;
+    }
+  }
 }
 
 .todoItemСomplexity {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-
-  margin-right: 21px;
+  align-items: center;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.02em;
-  color: #b9c3c8;
+  color: $secondary-text;
 
   @media screen and (max-width: 767px) {
-    margin-left: 38px;
     margin-bottom: 70px;
     font-size: 16px;
     line-height: 16px;
   }
   @media screen and (min-width: 768px) {
-    margin-left: 36px;
-    margin-bottom: 42px;
+    margin-bottom: 40px;
     font-size: 14px;
     line-height: 14px;
   }
 }
+.todoItemDiv {
+  display: flex;
+
+  align-items: center;
+}
+
+.todoItemСircle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: tomato;
+  @media screen and (max-width: 767px) {
+    width: 10px;
+    height: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 8px;
+    height: 8px;
+  }
+  &.easy {
+    background: $hover-color;
+  }
+
+  &.normal {
+    background: $cancel-button;
+  }
+
+  &.hard {
+    background: $delete-button;
+  }
+}
+
+.todoItemDifficulty {
+  text-transform: lowercase;
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
 
 .todoItemSvg {
-  -webkit-filter: drop-shadow(0px 2px 2px #00d7ff);
-  filter: drop-shadow(0px 2px 2px #00d7ff);
+  filter: drop-shadow(0px 2px 2px $hover-color);
   @media screen and (max-width: 767px) {
     width: 19px;
     height: 19px;
@@ -65,18 +132,39 @@
   }
 }
 
+.todoItemChallenge {
+  display: none;
+  &__challenge {
+    position: absolute;
+    color: $secondary-text;
+
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.02em;
+    @media screen and (max-width: 767px) {
+      top: 63px;
+      left: 103px;
+      font-size: 14px;
+      line-height: 14px;
+    }
+    @media screen and (min-width: 768px) {
+      top: 53px;
+      left: 66px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}
 .todoItemTitle {
   font-style: normal;
   font-weight: 700;
   word-wrap: break-word;
   margin: 0;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 200px;
   height: auto;
   text-align: center;
-
-  color: #282828;
+  color: $bold-text;
   @media screen and (max-width: 767px) {
     font-size: 20px;
     line-height: 20px;
@@ -87,19 +175,36 @@
     line-height: 16px;
     margin-bottom: 12px;
   }
+  &__challenge {
+    font-style: normal;
+    font-weight: 700;
+    word-wrap: break-word;
+    margin: 0;
+    height: auto;
+    text-align: center;
+    color: $white-color;
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+      line-height: 20px;
+      margin-bottom: 10px;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 12px;
+    }
+  }
 }
 
 .todoItemTime {
   font-style: normal;
   font-weight: 400;
-
   text-align: center;
   letter-spacing: 0.02em;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
-  max-width: 200px;
-  color: #b9c3c8;
+  color: $secondary-text;
   @media screen and (max-width: 767px) {
     font-size: 18px;
     line-height: 18px;
@@ -109,43 +214,63 @@
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 14px;
-    height: 14px;
-    margin-bottom: 36px;
   }
 }
 
 .todoItemGroup {
-  padding-left: 21px;
-  background: #d3f6ce;
-
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  transform: translateY(-1px);
   font-style: normal;
   font-weight: 400;
-
-  /* identical to box height */
-
   letter-spacing: 0.02em;
 
-  color: #282828;
+  color: $text-color;
+  &.family {
+    background: $family-color;
+  }
+  &.health {
+    background: $healt-color;
+  }
+  &.learning {
+    background: $learning-color;
+  }
+  &.leisure {
+    background: $leisure-color;
+  }
+  &.work {
+    background: $work-color;
+  }
+  &.stuff {
+    background: $active-color;
+  }
   @media screen and (max-width: 767px) {
     font-size: 14px;
     line-height: 14px;
-    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 194px;
     width: 120px;
     height: 35px;
     border-radius: 0px 25px 25px 0px;
   }
   @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 11px;
+    top: 153px;
     line-height: 11px;
-    padding-top: 7px;
-    width: 88px;
+    width: 95px;
     height: 25px;
     border-radius: 0px 15px 15px 0px;
   }
 }
-/*@media screen and (max-width: 767px) {
-  }
-  @media screen and (min-width: 768px) {
-  }
-  @media screen and (min-width: 1280px) {
-  }*/
+
+.todoItemFire {
+  margin-left: 5px;
+  margin-top: -5px;
+}

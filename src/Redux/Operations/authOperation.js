@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { AxiosToken, BaseURL } from '../../Api/AxiosToken';
 
 import {
@@ -32,13 +33,15 @@ const refToken = () => async (dispatch, getState) => {
   const {
     auth: { refreshToken: persistedReToken },
   } = getState();
-  const token = { refreshToken: persistedReToken };
+
+  const reToken = { refreshToken: persistedReToken };
   if (!persistedReToken) {
     return;
   }
 
   try {
-    const response = await axios.post('/users/refresh', token);
+    const response = await axios.post('/users/refresh', reToken);
+    AxiosToken().set(response.data.data.token);
     dispatch(getRefreshTokenSuccess(response.data.data));
   } catch (error) {
     dispatch(getRefreshTokenError(error.message));
@@ -50,8 +53,10 @@ const registerAuth = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/signup', credentials);
     dispatch(registerSuccess(response.data.data));
+    toast.info('You are successfully registered!');
   } catch (error) {
     dispatch(registerError(error.message));
+    toast.error('Registration is failed');
   }
 };
 
@@ -63,8 +68,10 @@ const loginAuth = credentials => async dispatch => {
     AxiosToken().set(response.data.data.token);
     dispatch(refreshTokenAction(response.data.data.refreshToken));
     dispatch(loginSuccess(response.data.data));
+    toast.info('Welcоme to Questify!')
   } catch (error) {
     dispatch(loginError(error.message));
+    toast.error('Login is failed');
   }
 };
 
@@ -74,8 +81,10 @@ const logOutAuth = () => async dispatch => {
     await axios.post('/users/logout');
     AxiosToken().unset();
     dispatch(logoutSuccess());
+    toast.info('You are successfully logOut!')
   } catch (error) {
-    dispatch(logoutError(error.message));
+    dispatch(logoutError(error.response.status));
+    toast.error('LogOut is failed');
   }
 };
 
@@ -84,8 +93,10 @@ const reVerificationt = credentials => async dispatch => {
   try {
     const response = await axios.post('/users/verify', credentials);
     dispatch(reVerificationtUserSuccess(response.data.data));
+    toast.info('Reverification email has been sent to you')
   } catch (error) {
     dispatch(reVerificationtUserError(error.message));
+    toast.error('Reverification is failed');
   }
 };
 
@@ -102,15 +113,17 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const response = await axios.get('/users/current');
     dispatch(getCurrentUserSuccess(response.data.data));
   } catch (error) {
-    dispatch(getCurrentUserError(error.message));
+    dispatch(getCurrentUserError(error.response.status));
   }
 };
 
 const verify = eve => async dispatch => {
   try {
     dispatch(getVerifyUserSuccess(eve));
+    toast.info('Verification email has been sent to you')
   } catch (error) {
     dispatch(getVerifyUserError(error.message));
+    toast.error('Verification is failed');
   }
 };
 

@@ -7,22 +7,32 @@
 }
 
 .registr_section {
-  background-color: $white-color;
+  position: relative;
 }
 
 .registr_container {
   @extend %container-styles;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
+  @media screen and (min-width: 421px) and (max-width: 767px) {
     padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
   }
   @media screen and (min-width: 768px) {
-    padding-top: 212px;
+    padding-top: 170px;
     padding-bottom: 212px;
   }
   @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     padding-top: 153px;
     padding-bottom: 154px;
-    padding-left: 229px;
   }
 }
 
@@ -31,7 +41,11 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: $hover-color;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
     font-size: 24px;
     line-height: 1;
   }
@@ -40,7 +54,45 @@
     line-height: 0.9;
   }
   @media screen and (min-width: 1280px) {
+    font-size: 28px;
+  }
+}
+
+.registr_caption {
+  @extend %text-throw;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: $card-bg-color;
+  @media screen and (max-width: 420px) {
+    margin-top: 30px;
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
+    margin-top: 10px;
     font-size: 24px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 40px;
+    font-size: 24px;
+    line-height: 0.9;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 34px;
+  }
+}
+
+.registr_textContainer {
+  @media screen and (max-width: 420px) {
+    margin-top: 10px;
+  }
+  @media screen and (min-width: 421px) {
+    margin-top: 30px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 35px;
+    text-align: center;
   }
 }
 
@@ -48,29 +100,129 @@
   @extend %text-throw;
   color: $secondary-text;
   font-weight: 400;
-
   letter-spacing: 0.02em;
   @media screen and (max-width: 767px) {
-    margin-top: 30px;
     font-size: 14px;
     line-height: 3.2;
   }
   @media screen and (min-width: 768px) {
-    margin-top: 25px;
     font-size: 18px;
     line-height: 2.5;
   }
   @media screen and (min-width: 1280px) {
-    margin-top: 35px;
     font-size: 24px;
-    line-height: 1.8;  }
+    line-height: 1.8;
+  }
+}
+
+.registr_navLink {
+  text-decoration: none;
 }
 
 .registr_link {
-  // нужно убрать display: block
-  // @extend %link-throw;
-  text-decoration: none;
+  margin-left: 5px;
+  font-weight: 400;
   color: $card-bg-color;
+  letter-spacing: 0.02em;
+  @media screen and (max-width: 767px) {
+    font-size: 14px;
+    line-height: 3.2;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 2.5;
+  }
+  @media screen and (min-width: 1280px) {
+    font-size: 24px;
+    line-height: 1.8;
+  }
+}
+
+.registr_secondBtnContainer {
+  transition: $animation-timing;
+  transform: translateX(-100%);
+  // @media screen and (max-width: 767px) {
+  // }
+  @media screen and (min-width: 768px) {
+    min-height: 100px;
+  }
+}
+.transformed {
+  transform: translateX(0);
+}
+.regisrt_innerContent {
+  @extend %text-throw;
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
+    justify-content: center;
+  }
+}
+
+.regisrt_innerEmail {
+  @extend %text-throw;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: $card-bg-color;
+  @media screen and (max-width: 420px) {
+    font-size: 20px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 421px) {
+    font-size: 14px;
+    line-height: 1;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+    line-height: 0.9;
+  }
+}
+
+.registr_sendBtn {
+  @extend %button-throw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: $hover-color;
+  transition: $animation-timing;
+  &::after {
+    display: block;
+    background-size: cover;
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-image: url(../../Images/icon_send.svg);
+  }
+  &:focus,
+  &:hover {
+    background-color: $card-bg-color;
+  }
+}
+
+.registr_form {
+  @media screen and (max-width: 420px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: 421px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 298px;
+  }
 }
 
 .registr_inputContainer {
@@ -78,35 +230,22 @@
   overflow: hidden;
 }
 
-.registr_label {
-  color: $hover-color;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 0.9;
-  transform: translateX(0);
-  transition: 0.3s linear;
-}
-
 .registr_input {
   @extend %input-throw;
   padding: 0;
-  height: 38px;
   border: none;
   border-bottom: 1px solid $hover-color;
   color: $hover-color;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 420px) {
     width: 100%;
-    margin-top: 10px;
+    height: 30px;
   }
-  @media screen and (min-width: 768px) {
-    width: 198px;
+  @media screen and (min-width: 421px) {
+    width: 100%;
+    height: 38px;
     margin-top: 10px;
   }
   @media screen and (min-width: 1280px) {
-    width: 196px;
     margin-top: 3px;
   }
   &:focus + .registr_label {
@@ -114,12 +253,50 @@
   }
 }
 
-.registr_bgMobile {
-  // @extend %img-styles;
-
+.registr_label {
+  color: $hover-color;
   position: absolute;
   bottom: 0;
-  @media screen and (max-width: 767px) {
+  left: 0;
+  padding-bottom: 7px;
+  font-weight: 300;
+  line-height: 0.9;
+  transform: translateX(0);
+  transition: $animation-timing;
+  @media screen and (max-width: 420px) {
+    font-size: 16px;
+  }
+  @media screen and (min-width: 421px) {
+    font-size: 18px;
+  }
+}
+
+.registr_btn {
+  display: flex;
+  @media screen and (max-width: 420px) {
+    justify-content: center;
+    margin-top: 50px;
+  }
+  @media screen and (min-width: 421px) {
+    justify-content: end;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+}
+
+.registr_pictureBlock {
+  position: relative;
+}
+
+.registr_bgMobile {
+  position: absolute;
+  @media screen and (max-width: 320px) {
+    display: none;
+  }
+  @media screen and (min-width: 321px) {
+    bottom: -100px;
     left: 0;
   }
   @media screen and (min-width: 768px) {
@@ -128,8 +305,6 @@
 }
 
 .registr_loginPic {
-  // @extend %img-styles;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
@@ -142,18 +317,40 @@
 }
 
 .registr_loginPicture {
-  // @extend %img-styles;
-
   @media screen and (max-width: 767px) {
     display: none;
   }
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: -200px;
+    bottom: 0;
     right: 0;
     pointer-events: none;
   }
   @media screen and (min-width: 1280px) {
-    bottom: -120px;
+    bottom: -70px;
+  }
+}
+.registr_registerPicture {
+  pointer-events: none;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    transform: scale(-1, 1);
+  }
+}
+.registr_registerPic {
+  pointer-events: none;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    bottom: -70px;
+    left: -50px;
+    transform: scale(-1, 1);
   }
 }

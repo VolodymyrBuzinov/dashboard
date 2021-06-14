@@ -2,63 +2,81 @@
 
 .InputTodo__input {
   @extend %button-throw;
-}
-
-/* form starting stylings ------------------------------- */
-.InputTodo__form {
-  position: relative;
-  //   margin-bottom: 10px;
-}
-
-.InputTodo__input {
-  font-weight: 700;
   font-style: normal;
-  font-family: HelveticaNeueCyr;
-  max-width: 200px;
+  color: inherit;
+  max-width: 100%;
   counter-reset: $text-color;
-  // display: block;
   border: none;
   text-align: center;
-
+  font-weight: 700;
+  background-color: transparent;
   margin: 0;
   margin-left: auto;
   margin-right: auto;
   height: auto;
+  padding-bottom: 3px;
 
   @media screen and (max-width: 767px) {
     font-size: 20px;
     line-height: 20px;
-    margin-bottom: 10px;
+    height: 20px;
   }
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 16px;
-    margin-bottom: 12px;
+
+    height: 16px;
+  }
+  &__challenge {
+    @extend %button-throw;
+    font-weight: 700;
+    font-style: normal;
+    max-width: 100%;
+    color: $white-color;
+    border: none;
+    text-align: center;
+    padding-bottom: 3px;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+
+    @media screen and (max-width: 767px) {
+      font-size: 20px;
+      line-height: 20px;
+      height: 20px;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+      line-height: 16px;
+
+      height: 16px;
+    }
   }
 }
-.InputTodo__input:focus {
+
+.InputTodo__input:focus,
+.InputTodo__input__challenge:focus {
   outline: none;
 }
 
 /* LABEL ======================================= */
 .InputTodo__label {
-  font-family: HelveticaNeueCyr;
   color: $active-color;
+  line-height: 1;
   position: absolute;
   pointer-events: none;
-  left: 25px;
-  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0px;
+  white-space: nowrap;
   transition: $animation-timing;
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
 
-  //@extend
   font-style: normal;
-  font-weight: bold;
   font-size: 12px;
-  line-height: 12px;
-  /* identical to box height */
-
+  line-height: 1;
   text-align: center;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -66,18 +84,39 @@
 
 /* active state */
 .InputTodo__input:focus ~ label,
-.InputTodo__input:valid ~ label {
-  top: -15px;
-  font-size: 14px;
+.InputTodo__input:valid ~ label,
+.InputTodo__input__challenge:focus ~ label,
+.InputTodo__input__challenge:valid ~ label {
   color: $active-color;
+  @media screen and (max-width: 767px) {
+    top: -45px;
+  }
+  @media screen and (min-width: 768px) {
+    top: -20px;
+  }
+}
+
+/* active state */
+.InputTodo__input:focus ~ .InputTodo__bar:before,
+.InputTodo__input:focus ~ .InputTodo__bar:after,
+.InputTodo__input__challenge:focus ~ .InputTodo__bar:before,
+.InputTodo__input__challenge:focus ~ .InputTodo__bar:after {
+  width: 50%;
 }
 
 /* BOTTOM BARS ================================= */
-// .InputTodo__bar {
+
 .InputTodo__bar {
   position: relative;
   display: block;
-  width: 200px;
+
+  @media screen and (max-width: 767px) {
+    width: 230px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 155px;
+    left: 8%;
+  }
 }
 .InputTodo__bar:before,
 .InputTodo__bar:after {
@@ -91,15 +130,44 @@
   -moz-transition: $animation-timing;
   -webkit-transition: $animation-timing;
 }
+
 .InputTodo__bar:before {
   left: 50%;
 }
-.InputTodo__bar:after {
+.InputTodo__bar:after,
+.InputTodo__bar__challenge:after {
   right: 50%;
 }
 
-/* active state */
-.InputTodo__input:focus ~ .InputTodo__bar:before,
-.InputTodo__input:focus ~ .InputTodo__bar:after {
-  width: 50%;
+/* form starting stylings ------------------------------- */
+.InputTodo__form {
+  position: relative;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 10px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 12px;
+    height: 16px;
+  }
+}
+
+/* LABEL ======================================= */
+.InputTodo__label {
+  color: $active-color;
+  position: absolute;
+  pointer-events: none;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  transition: $animation-timing;
+  -moz-transition: $animation-timing;
+  -webkit-transition: $animation-timing;
+
+  font-style: normal;
+  font-size: 12px;
+  line-height: 12px;
+
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }

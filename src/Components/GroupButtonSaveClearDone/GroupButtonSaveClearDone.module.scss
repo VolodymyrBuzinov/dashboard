@@ -1,0 +1,15 @@
+@import '../../Utils/utils.scss';
+
+.GroupButtonSaveClearDone__ButtonGroup {
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    width: 88px;
+    height: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 79px;
+    height: 16px;
+  }
+}

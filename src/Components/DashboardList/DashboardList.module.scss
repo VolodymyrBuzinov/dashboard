@@ -2,13 +2,22 @@
 
 .todoListMain {
   background-color: $bg-color;
-  width: 100vw;
+  width: 100%;
+  min-height: 90vh;
 }
 
 .todoListDiv {
   @extend %container-styles;
   padding-top: 25px;
   padding-bottom: 82px;
+  @media screen and (max-width: 767px) {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 49px;
+    padding-right: 49px;
+  }
 }
 
 .todoListTitle {
@@ -18,6 +27,46 @@
 
 .todoList {
   @extend %list-styles;
-  width: 300px;
-  margin-bottom: 35px;
+  @extend %list-throw;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 38px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.appear {
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.appearActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 300ms ease-in;
+}
+
+.enter {
+  opacity: 0.1;
+}
+.enterActive {
+  opacity: 1;
+  transition: all 300ms ease-in;
+}
+
+.exit {
+  opacity: 1;
+}
+.exitActive {
+  opacity: 0.1;
+  transition: all 300ms ease-in;
+}
+
+.itemTodo {
+  width: 205px;
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

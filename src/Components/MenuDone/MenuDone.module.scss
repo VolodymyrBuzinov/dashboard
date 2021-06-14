@@ -2,27 +2,35 @@
 
 .container {
   @extend %container-styles;
-  overflow: hidden;
   position: relative;
-  padding-left: 0;
-  padding-right: 0;
+
+  margin: 0;
+  padding: 0;
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 768px) {
+    width: 669px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 100%;
+    margin-right: -4px;
+  }
 }
 
 .check {
+  @extend %container-styles;
   opacity: 0;
-  width: 100%;
+  height: 20px;
+  width: 70%;
   cursor: pointer;
   border-color: transparent;
   border-style: none;
   background: transparent none;
   position: absolute;
   z-index: 1;
-  &:checked + .doneList > .menu {
-    display: block;
-  }
-  &:checked + .doneList .icon {
-    transform: rotate(0deg);
-  }
 }
 
 .spoiler {
@@ -35,23 +43,9 @@
   margin: 0;
   border: none;
 
-  // font-family: HelveticaNeueCyr;
-  // font-size: 15px;
-  // font-style: normal;
-  // font-weight: 300;
-  // line-height: 15px;
-  // letter-spacing: 0.02em;
-  // text-align: left;
   & p {
     margin: 0;
   }
-}
-
-.icon {
-  transform: rotate(180deg);
-  margin-left: 10px;
-  width: 12px;
-  height: 14px;
 }
 
 .dottedLine {
@@ -61,10 +55,11 @@
   transform: translateY(50%);
 }
 
-.menu {
-  display: none;
-}
-
 .contentMenu {
   margin: 0;
+}
+
+.overflow {
+  overflow: hidden;
+  position: relative;
 }

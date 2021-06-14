@@ -6,8 +6,16 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  width: 23px;
-  height: 17px;
+  cursor: pointer;
   background-color: transparent;
+
+  &:hover .icon,
+  &:focus .icon {
+    fill: $hover-color;
+  }
+}
+
+.icon {
+  fill: $header-text;
+  transition: $animation-timing;
 }

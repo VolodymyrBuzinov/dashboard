@@ -1,0 +1,95 @@
+@import '../../Utils/utils.scss';
+
+.emptyList {
+  @extend %list-throw;
+  @extend %list-styles;
+  margin-bottom: 37px;
+  margin-top: 37px;
+}
+.emptyItem {
+  background: $white-color;
+  box-shadow: -3px -4px 4px rgba(21, 57, 90, 0.03),
+    3px 4px 4px rgba(21, 57, 90, 0.03);
+  border-radius: 10px;
+  padding: 19px 25px;
+
+  @media screen and (max-width: 767px) {
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (min-width: 768px) {
+    width: 205px;
+  }
+}
+.emptyParagraph {
+  @extend %list-throw;
+  color: $text-color;
+  font-weight: 700;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 63px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 26px;
+  }
+}
+.emptyIcon {
+  width: 19px;
+  height: 19px;
+  fill: $header-text;
+}
+.emptyControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 767px) {
+    margin-bottom: 70px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+  }
+}
+
+.emptyControlsText {
+  @extend %text-throw;
+  padding-left: 20px;
+  position: relative;
+  color: $text-color;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    background-color: $header-text;
+  }
+}
+.emptyCategory {
+  @extend %text-throw;
+  display: inline-block;
+  font-size: 11px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 25px;
+  padding-right: 32px;
+  color: $text-color;
+  background-color: $hover-color;
+  border-radius: 0px 15px 15px 0px;
+  transform: translateX(-25px);
+}
+
+.emptyIcon {
+  filter: drop-shadow(0px 2px 2px $active-color);
+  @media screen and (max-width: 767px) {
+    width: 19px;
+    height: 19px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 15px;
+    height: 15px;
+  }
+}

@@ -6,7 +6,7 @@ import sprite from '../../Icons/symbol-defs.svg';
     onClick-принимает функцию-обработчик события по нажатию кнопки
     isActive-показывает в режиме редактирования или нет(меняет цвет иконки)
 */
-const Button = ({ content, type, onClick, isActive }) => {
+const Button = ({ content, type, onClick, isActive, isEdit }) => {
   const isIcon = content.slice(0, 4) === 'icon';
 
   return (
@@ -16,7 +16,8 @@ const Button = ({ content, type, onClick, isActive }) => {
         type={type}
         className={`${style.Button} ${
           content === 'go!' ? style.go : style[content]
-        } ${isActive && style.active}`}
+        } ${isActive && style.active}
+        ${isEdit && style.edit}`}
       >
         {isIcon ? (
           <svg width="30" height="30">

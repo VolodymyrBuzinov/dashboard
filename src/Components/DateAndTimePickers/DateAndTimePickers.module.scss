@@ -1,20 +1,93 @@
 @import '../../Utils/utils.scss';
 
 .DateAndTimePickers__form {
-  color: red;
+  display: flex;
+  color: $secondary-text;
+  //margin-top: 12px;
 }
-.DateAndTimePickers__input {
-  font-family: HelveticaNeueCyr;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 14px;
-  /* identical to box height */
 
+.DateAndTimePickers__input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: 400;
   text-align: center;
   letter-spacing: 0.02em;
 
+  color: $secondary-text;
+  border: none;
+  background-color: inherit;
+  outline: inherit;
+
+  line-height: 1;
+  outline: inherit;
+
+  @media screen and (max-width: 767px) {
+    width: 18px;
+    height: 18px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 14px;
+    height: 14px;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    opacity: 1;
+    top: -2px;
+    right: -4px;
+    cursor: pointer;
+
+    background-image: url('../../Icons/svg/calendar.svg');
+    @media screen and (max-width: 767px) {
+      width: 18px;
+      height: 18px;
+    }
+    @media screen and (min-width: 768px) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &::-webkit-datetime-edit-fields-wrapper {
+    display: none;
+  }
+}
+
+.active {
   color: $text-color;
   border: none;
   cursor: pointer;
+  &__challenge {
+    background: $card-bg-color;
+    color: $secondary-text;
+  }
+}
+
+.isChallenge {
+  color: $secondary-text;
+}
+
+.DateAndTimePickers__text {
+  @extend %text-throw;
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin-right: 7px;
+
+  color: inherit;
+  border: none;
+  background-color: inherit;
+  line-height: 1;
+
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+  }
 }
