@@ -20,7 +20,7 @@ function MenuDone({ todos }) {
       menu.classList.remove('menuClick');
       setTimeout(() => {
         menu.classList.remove('menuClickBlock');
-      }, 250);
+      }, 1000);
     }
   };
 
