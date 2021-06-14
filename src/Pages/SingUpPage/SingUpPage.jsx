@@ -69,24 +69,24 @@ const SingUpPage = () => {
                     <h2 className={s.registr_caption}>Registration</h2>
                     <div className={s.registr_textContainer}>
                       <span className={s.registr_text}>Back to</span>
-                      <NavLink
-                        exact
-                        to="/"
-                        className={s.registr_navLink}
-                      >
+                      <NavLink exact to="/" className={s.registr_navLink}>
                         <span className={s.registr_link}>log in</span>
                       </NavLink>
 
-                      <div className={s.registr_secondBtnContainer}>
+                      <div
+                        className={
+                          reEmail
+                            ? `${s.registr_secondBtnContainer} ${s.transformed}`
+                            : s.registr_secondBtnContainer
+                        }
+                      >
                         {reEmail && (
                           <>
                             <p className={s.registr_text}>
                               Send a follow-up letter
                             </p>
                             <div className={s.regisrt_innerContent}>
-                              <p className={s.regisrt_innerEmail}>
-                                {reEmail}
-                              </p>
+                              <p className={s.regisrt_innerEmail}>{reEmail}</p>
                               <button
                                 className={s.registr_sendBtn}
                                 type="button"
@@ -172,6 +172,16 @@ const SingUpPage = () => {
                     src={pic2}
                     alt="background"
                     className={s.registr_loginPicture}
+                  />
+                  <img
+                    src={pic1}
+                    alt="background"
+                    className={s.registr_registerPicture}
+                  />
+                  <img
+                    src={pic2}
+                    alt="background"
+                    className={s.registr_registerPic}
                   />
                 </section>
               </animated.div>

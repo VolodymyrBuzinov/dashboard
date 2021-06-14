@@ -27,9 +27,12 @@
     padding-bottom: 212px;
   }
   @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     padding-top: 153px;
     padding-bottom: 154px;
-    padding-left: 400px;
   }
 }
 
@@ -89,6 +92,7 @@
   }
   @media screen and (min-width: 1280px) {
     margin-top: 35px;
+    text-align: center;
   }
 }
 
@@ -135,16 +139,26 @@
 }
 
 .registr_secondBtnContainer {
-  width: 400px;
-  height: 100px;
-  background-color: transparent;
+  transition: $animation-timing;
+  transform: translateX(-100%);
+  // @media screen and (max-width: 767px) {
+  // }
+  @media screen and (min-width: 768px) {
+    min-height: 100px;
+  }
 }
-
+.transformed {
+  transform: translateX(0);
+}
 .regisrt_innerContent {
   @extend %text-throw;
   display: flex;
   align-items: center;
+
   @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+  @media screen and (min-width: 1280px) {
     justify-content: center;
   }
 }
@@ -198,7 +212,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 20px;
   }
   @media screen and (min-width: 421px) {
     display: flex;
@@ -314,5 +328,29 @@
   }
   @media screen and (min-width: 1280px) {
     bottom: -70px;
+  }
+}
+.registr_registerPicture {
+  pointer-events: none;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    transform: scale(-1, 1);
+  }
+}
+.registr_registerPic {
+  pointer-events: none;
+  @media screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    bottom: -70px;
+    left: -50px;
+    transform: scale(-1, 1);
   }
 }
