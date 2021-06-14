@@ -16,8 +16,13 @@ function MenuDone({ todos }) {
         menu.classList.add('menuClick');
       }, 100);
     } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
       check.classList.remove('iconClick');
       menu.classList.remove('menuClick');
+
       setTimeout(() => {
         menu.classList.remove('menuClickBlock');
       }, 1000);
