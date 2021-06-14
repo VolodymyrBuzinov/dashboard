@@ -270,17 +270,6 @@
   }
 }
 
-.Modal__backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 99vw;
-  height: 91.25vh;
-  transform: translate(-180px, -25px);
-
-  border-radius: 10px;
-}
-
 .todoItemFire {
   margin-left: 5px;
   margin-top: -5px;

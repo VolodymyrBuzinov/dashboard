@@ -4,6 +4,7 @@
   position: relative;
   display: block;
   margin: 0;
+  z-index: 2;
 
   &__group {
     display: flex;

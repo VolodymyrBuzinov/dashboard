@@ -9,6 +9,7 @@ import isVisibleTemplate from '../../Redux/Selectors/isVisibleSelector';
 import { toast } from 'react-toastify';
 import Fire from '../../Icons/svg/fire.svg';
 import { refToken, getCurrentUser } from '../../Redux/Operations/authOperation';
+import BackdropForList from '../BackdropForList/BackdropForList';
 
 function DashboardListItem({
   id,
@@ -32,23 +33,6 @@ function DashboardListItem({
       setChallenge(true);
     }
   }, [challengeStyle]);
-
-  useEffect(() => {
-    if (isEdit) {
-      const onCloseEditCard = e => {
-        if (!e.target.closest('div#template')) {
-          setEdit(false);
-          dispatch(editTodo(false));
-        }
-      };
-      document.querySelector('body').addEventListener('click', onCloseEditCard);
-      return () => {
-        document
-          .querySelector('body')
-          .removeEventListener('click', onCloseEditCard);
-      };
-    }
-  }, [dispatch, isEdit]);
 
   const lowDifficulty = difficulty.toLowerCase();
   const lowCategory = category.toLowerCase();
@@ -84,7 +68,7 @@ function DashboardListItem({
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
         //console.log('Закончить редактирование карточки');
-        // toast.warning('Finish editing the card');
+        toast.warning('Finish editing the card');
       }
       return;
     }
@@ -97,6 +81,13 @@ function DashboardListItem({
     setTimeout(() => {
       dispatch(getCurrentUser());
     }, 1000);
+  };
+
+  const onCloseEditCard = e => {
+    if (e.target === e.currentTarget) {
+      setEdit(false);
+      dispatch(editTodo(false));
+    }
   };
 
   return (
@@ -146,6 +137,7 @@ function DashboardListItem({
         </div>
       ) : (
         <>
+          <BackdropForList onClose={onCloseEditCard} />
           <TemplateTodo
             editCategory={category.toLowerCase()}
             editDifficulty={difficulty.toLowerCase()}
