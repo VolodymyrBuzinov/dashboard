@@ -21,9 +21,10 @@
 }
 
 .check {
+  @extend %container-styles;
   opacity: 0;
   height: 20px;
-  width: 100%;
+  width: 70%;
   cursor: pointer;
   border-color: transparent;
   border-style: none;
