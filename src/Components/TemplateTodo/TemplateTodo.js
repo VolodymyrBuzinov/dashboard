@@ -44,6 +44,7 @@ const TemplateTodo = ({
   isChallenge,
   day,
   dayName,
+  challengeCategory
 }) => {
   const [showModalCategory, setShowModalCategory] = useState(false);
   const [showModalLevel, setShowModalLevel] = useState(false);
@@ -137,6 +138,7 @@ const TemplateTodo = ({
             cb={setTime}
             day={day}
             dayName={dayName}
+            challengeCategory={challengeCategory}
           />
         </div>
 

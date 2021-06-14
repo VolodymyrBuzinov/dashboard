@@ -176,6 +176,7 @@ const DashboardList = () => {
                           id={_id}
                           day="By"
                           challengeStyle={challenge}
+                          challengeCategory={true}
                         />
                       </li>
                     </CSSTransition>

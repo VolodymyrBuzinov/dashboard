@@ -20,6 +20,7 @@ function DashboardListItem({
   day,
   done,
   hot,
+  challengeCategory
 }) {
   const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
@@ -154,9 +155,10 @@ function DashboardListItem({
             id={id}
             isEdit={isEdit}
             changeEdit={setEdit}
-            isChallenge={challenge}
+            isChallenge={challengeStyle}
             day={day}
             dayName={dayName}
+            challengeCategory={challengeCategory}
           />
         </>
       )}

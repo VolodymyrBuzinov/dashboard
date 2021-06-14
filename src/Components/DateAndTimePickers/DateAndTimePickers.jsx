@@ -9,6 +9,7 @@ export default function DateAndTimePickers({
   isEdit,
   day,
   dayName,
+  challengeCategory
 }) {
   const [selectedDate, setSelectedDate] = useState('');
 
@@ -38,9 +39,9 @@ export default function DateAndTimePickers({
         {selectedDate &&
           `${selectedDate.slice(0, 10)}, ${selectedDate.slice(11)}`}
         {!time && !selectedDate && !isChallenge && `Today`}
-        {time && !selectedDate && !isChallenge && `${day}, ${time.slice(11)}`}
-        {isChallenge && !selectedDate && !time && `by Today`}
-        {isChallenge && !selectedDate && time && `by ${dayName}`}
+        {time && !selectedDate && !challengeCategory && `${day}, ${time.slice(11)}`}
+        {time && !selectedDate && challengeCategory && `${day} ${dayName} ${time.slice(11)}`}
+        {isChallenge && !selectedDate && !time && `by Today`}        
       </p>
 
       <input
