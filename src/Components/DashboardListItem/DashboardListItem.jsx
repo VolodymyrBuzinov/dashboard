@@ -84,7 +84,7 @@ function DashboardListItem({
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
         //console.log('Закончить редактирование карточки');
-        toast.warning('Finish editing the card');
+        // toast.warning('Finish editing the card');
       }
       return;
     }
