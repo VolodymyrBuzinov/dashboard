@@ -10,7 +10,6 @@ import { toast } from 'react-toastify';
 import Fire from '../../Icons/svg/fire.svg';
 import { refToken, getCurrentUser } from '../../Redux/Operations/authOperation';
 
-
 function DashboardListItem({
   id,
   title,
@@ -20,7 +19,7 @@ function DashboardListItem({
   challengeStyle,
   day,
   done,
-  hot
+  hot,
 }) {
   const dispatch = useDispatch();
   const [challenge, setChallenge] = useState(false);
@@ -33,6 +32,23 @@ function DashboardListItem({
       setChallenge(true);
     }
   }, [challengeStyle]);
+
+  useEffect(() => {
+    if (isEdit) {
+      const onCloseEditCard = e => {
+        if (!e.target.closest('div#template')) {
+          setEdit(false);
+          dispatch(editTodo(false));
+        }
+      };
+      document.querySelector('body').addEventListener('click', onCloseEditCard);
+      return () => {
+        document
+          .querySelector('body')
+          .removeEventListener('click', onCloseEditCard);
+      };
+    }
+  }, [dispatch, isEdit]);
 
   const lowDifficulty = difficulty.toLowerCase();
   const lowCategory = category.toLowerCase();
@@ -68,7 +84,7 @@ function DashboardListItem({
     if (isEdit) {
       if (e.target.tagName === 'DIV' || e.target.tagName === 'P') {
         //console.log('Закончить редактирование карточки');
-        toast.warning('Finish editing the card');
+        // toast.warning('Finish editing the card');
       }
       return;
     }
@@ -81,11 +97,6 @@ function DashboardListItem({
     setTimeout(() => {
       dispatch(getCurrentUser());
     }, 1000);
-  };
-
-  const onCloseEditCard = () => {
-    setEdit(false);
-    dispatch(editTodo(false));
   };
 
   return (
@@ -119,9 +130,15 @@ function DashboardListItem({
             {title}
           </p>
           <p className={s.todoItemTime}>
-            {done ? time.slice(0, 10) : null ||challenge ? `${day} ${dayName}` : null || day}
+            {done
+              ? time.slice(0, 10)
+              : null || challenge
+              ? `${day} ${dayName}`
+              : null || day}
             , {time.slice(11)}
-            {hot ? <img className={s.todoItemFire} src={Fire} alt='fire!!!' /> : null}
+            {hot ? (
+              <img className={s.todoItemFire} src={Fire} alt="fire!!!" />
+            ) : null}
           </p>
           <div className={`${s.todoItemGroup} ${s[lowCategory]}`}>
             {category}
@@ -129,10 +146,6 @@ function DashboardListItem({
         </div>
       ) : (
         <>
-          <div
-            className={`${s.Modal__backdrop}`}
-            onClick={onCloseEditCard}
-          ></div>
           <TemplateTodo
             editCategory={category.toLowerCase()}
             editDifficulty={difficulty.toLowerCase()}

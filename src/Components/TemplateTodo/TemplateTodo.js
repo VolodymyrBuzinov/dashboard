@@ -69,7 +69,7 @@ const TemplateTodo = ({
   const cancelСhanges = () => dispatch(onClickBtnCreate(false));
 
   return (
-    <div className={style.TemplateTodo}>
+    <div className={style.TemplateTodo} id="template">
       <div
         className={`${style.TemplateTodo__group} ${
           challenge && style.challenge
