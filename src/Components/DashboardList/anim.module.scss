@@ -1,31 +1,33 @@
-.appear {
-  position: absolute;
-  transform: translateY(100%);
-  opacity: 0.05;
-}
-.appearActive {
-  transform: translateY(50%);
-  opacity: 0.05;
-  transition: all 300ms ease;
-}
+// .appear {
+//   position: absolute;
+//   transform: translateY(100%);
+//   opacity: 0.05;
+// }
+// .appearActive {
+//   transform: translateY(50%);
+//   opacity: 0.05;
+//   transition: all 300ms ease;
+// }
 
-.appearDone {
+// .appearDone {
+//   transform: translateY(0);
+//   opacity: 1;
+//   transition: all 300ms ease;
+// }
+
+.enter {
+  // position: absolute;
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.enterActive {
   transform: translateY(0);
   opacity: 1;
-  transition: all 300ms ease;
+  transition: all 300ms ease-in-out;
 }
 
-// .enter {
-//   transform: translateY(-100%);
-//   opacity: 1;
-// }
-// .enterActive {
-//   transform: translateY(0);
-//   opacity: 0.1;
-//   transition: all 300ms ease-in-out;
-// }
-
 .exit {
+  position: absolute;
   transform: translateY(0);
   opacity: 1;
 }
