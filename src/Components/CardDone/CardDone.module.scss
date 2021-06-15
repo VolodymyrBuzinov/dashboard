@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  //   transform: translateY(-105%);
   transition: all 300ms ease-in;
   background: #ffffff;
   opacity: 1;
@@ -25,7 +24,6 @@
     height: 199px;
   }
   &[hidden] {
-    // transform: translateY(-105%);
     opacity: 0;
     pointer-events: none;
   }
@@ -78,10 +76,8 @@
   border: none;
   background: transparent;
   transform: scale(1);
-  // transform: rotate(0deg);
   transition: $animation-timing;
   &:hover {
-    // transform: rotate(360deg);
     transform: scale(1.1);
   }
 }
