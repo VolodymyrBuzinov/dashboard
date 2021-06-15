@@ -2,15 +2,14 @@ import style from './ButtonOpenModal.module.scss';
 import sprite from '../../Icons/symbol-defs.svg';
 
 const ButtonOpenModal = ({ type, title, onClick, isEdit, children }) => {
-  
   return (
     <div
       onClick={onClick}
       className={`${style.Btn} ${isEdit && style.visible}`}
     >
-      {type === 'difficulty' && (<div
-        className={`${style.Btn__circle} ${style[title]}`}
-      ></div>)}
+      {type === 'difficulty' && (
+        <div className={`${style.Btn__circle} ${style[title]}`}></div>
+      )}
 
       <span
         className={`${

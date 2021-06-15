@@ -13,6 +13,7 @@ import GroupButtonSaveClearDone from '../GroupButtonSaveClearDone/GroupButtonSav
 import toggleModal from './toggleModal';
 import handleChangeState from './handleChangeState';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
+import { CSSTransition } from 'react-transition-group';
 
 const LIST_CATEGORY = [
   'stuff',
@@ -168,21 +169,29 @@ const TemplateTodo = ({
           </div>
 
           <div className={style.TemplateTodo__ButtonGroup}>
-            <GroupButtonSaveClearDone
-              isCreate={!isEdit && true}
-              isEdit={isEdit && true}
-              category={category}
-              difficulty={difficulty}
-              title={title}
-              time={time}
-              challenge={challenge}
-              cancelСhanges={cancelСhanges}
-              id={id}
-              toggleModalDelete={() =>
-                toggleModal('delete', setShowModalDelete)
-              }
-              changeEdit={changeEdit}
-            />
+            <CSSTransition
+              in={true}
+              appear
+              timeout={300}
+              classNames={style}
+              unmountOnExit
+            >
+              <GroupButtonSaveClearDone
+                isCreate={!isEdit && true}
+                isEdit={isEdit && true}
+                category={category}
+                difficulty={difficulty}
+                title={title}
+                time={time}
+                challenge={challenge}
+                cancelСhanges={cancelСhanges}
+                id={id}
+                toggleModalDelete={() =>
+                  toggleModal('delete', setShowModalDelete)
+                }
+                changeEdit={changeEdit}
+              />
+            </CSSTransition>
           </div>
         </div>
         {showModalDelete && (

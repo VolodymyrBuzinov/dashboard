@@ -206,3 +206,18 @@
     margin-bottom: 36px;
   }
 }
+.appear {
+  opacity: 0.1;
+}
+.appearActive {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+.exit {
+  opacity: 1;
+}
+.exitActive {
+  opacity: 0.1;
+  transition: all 300ms ease-in-out;
+}
