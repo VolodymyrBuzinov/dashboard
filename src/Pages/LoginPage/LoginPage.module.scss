@@ -8,6 +8,9 @@
 
 .login_section {
   position: relative;
+  @media screen and (max-width: 767px) {
+    height: 92vh;
+  }
 }
 
 .login_container {
@@ -15,7 +18,7 @@
   @media screen and (max-width: 420px) {
     padding-top: 25px;
     padding-bottom: 25px;
-    }
+  }
   @media screen and (min-width: 421px) {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -38,7 +41,7 @@
   color: $hover-color;
   @media screen and (max-width: 419px) {
     font-size: 20px;
-    line-height: 1;  
+    line-height: 1;
   }
   @media screen and (min-width: 420px) {
     font-size: 24px;
@@ -62,7 +65,7 @@
     margin-top: 20px;
     font-size: 16px;
     line-height: 1.6;
-    }
+  }
   @media screen and (min-width: 420px) {
     margin-top: 60px;
     font-size: 18px;
@@ -104,7 +107,7 @@
     margin-top: 15px;
     font-size: 14px;
     line-height: 1.6;
-    }
+  }
   @media screen and (min-width: 421px) {
     margin-top: 30px;
     font-size: 14px;
@@ -147,7 +150,9 @@
 }
 
 .login_pictureBlock {
-  position: relative;
+  @media screen and (min-width: 768px) {
+    position: relative;
+  }
 }
 
 .login_bgMobile {
@@ -156,7 +161,7 @@
     display: none;
   }
   @media screen and (min-width: 321px) {
-    bottom: -100px;
+    bottom: 0;
     left: 0;
   }
   @media screen and (min-width: 768px) {
