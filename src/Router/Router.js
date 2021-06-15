@@ -46,7 +46,7 @@ function Router() {
         />
         <PublicRoute
           path="/verifyPage"
-          render={() => (false ? <Redirect exact to="/" /> : <VerifyPage />)}
+          render={() => (state ? <Redirect exact to="/" /> : <VerifyPage />)}
         />
         <PublicRoute
           path="/singUpPage"
