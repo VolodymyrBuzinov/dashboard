@@ -31,7 +31,6 @@ function MenuDone({ todos }) {
 
   return (
     <div className="container">
-      {/* <input type="checkbox" className={style.check}></input> */}
       <button onClick={clickButton} id="check" className={style.check}></button>
       <div className={style.doneList}>
         <div className={style.spoiler}>

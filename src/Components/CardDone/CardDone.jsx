@@ -1,12 +1,8 @@
-import style from './CardDone.module.scss';
-import sprite from '../../Icons/symbol-defs.svg';
-
-// import getShowCardDone from "./getShowCardDone"
-// import getHiddenCardDone from "./getHiddenCardDone"
-
 import exp from '../../Redux/Operations/todosOperations';
 import { useDispatch } from 'react-redux';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
+import style from './CardDone.module.scss';
+import sprite from '../../Icons/symbol-defs.svg';
 
 function CardDone({ id, titleTodo = 'title' }) {
   const dispatch = useDispatch();
@@ -49,8 +45,6 @@ function CardDone({ id, titleTodo = 'title' }) {
           <use href={`${sprite}#icon-arrow`}></use>
         </svg>
       </button>
-
-      {/* кнопки для тестов */}
     </div>
   );
 }
