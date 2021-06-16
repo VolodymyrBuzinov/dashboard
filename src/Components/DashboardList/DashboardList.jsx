@@ -57,7 +57,7 @@ const DashboardList = () => {
             classNames={transition}
             unmountOnExit
           >
-            <div>
+            <div className={s.todoListWrapper}>
               <p className={s.todoListTitle}>TODAY</p>
               <TransitionGroup component="ul" className={s.todoList}>
                 {isVisible && (
@@ -119,7 +119,7 @@ const DashboardList = () => {
             classNames={s}
             unmountOnExit
           >
-            <div>
+            <div className={s.todoListWrapper}>
               <p className={s.todoListTitle}>TOMORROW</p>
               <TransitionGroup component="ul" className={s.todoList}>
                 {tomorrowList.map(
@@ -155,7 +155,7 @@ const DashboardList = () => {
             classNames={s}
             unmountOnExit
           >
-            <div>
+            <div className={s.todoListWrapper}>
               <p className={s.todoListTitle}>CHALLENGES</p>
               <TransitionGroup component="ul" className={s.todoList}>
                 {challengeList.map(
