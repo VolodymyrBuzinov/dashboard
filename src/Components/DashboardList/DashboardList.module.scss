@@ -47,17 +47,21 @@
 }
 
 .enter {
+  // position: absolute;
   opacity: 0.1;
 }
 .enterActive {
+  // position: absolute;
   opacity: 1;
   transition: all 300ms ease-in;
 }
 
 .exit {
+  position: absolute;
   opacity: 1;
 }
 .exitActive {
+  position: absolute;
   opacity: 0.1;
   transition: all 300ms ease-in;
 }

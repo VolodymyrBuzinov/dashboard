@@ -15,17 +15,19 @@
   transition: all 300ms ease;
 }
 
-// .enter {
-//   transform: translateY(-100%);
-//   opacity: 1;
-// }
-// .enterActive {
-//   transform: translateY(0);
-//   opacity: 0.1;
-//   transition: all 300ms ease-in-out;
-// }
+.enter {
+  // position: absolute;
+  transform: translateY(-100%);
+  opacity: 0.1;
+}
+.enterActive {
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
 
 .exit {
+  position: absolute;
   transform: translateY(0);
   opacity: 1;
 }
