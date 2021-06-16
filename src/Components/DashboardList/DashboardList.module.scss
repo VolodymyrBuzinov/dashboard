@@ -28,6 +28,9 @@
 .todoList {
   @extend %list-styles;
   @extend %list-throw;
+}
+
+.todoListWrapper {
   @media screen and (max-width: 767px) {
     margin-bottom: 38px;
   }

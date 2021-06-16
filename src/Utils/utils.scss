@@ -87,7 +87,7 @@ $animation-timing: 0.3s ease-in-out;
 }
 
 %img-styles {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;

@@ -5,6 +5,7 @@ import exp from '../../Redux/Operations/todosOperations';
 import { onClickBtnCreate } from '../../Redux/Actions/onClickBtnCreate-action';
 import { editTodo } from '../../Redux/Actions/editTodo-action';
 import getShowCardDone from '../CardDone/getShowCardDone';
+import { toast } from 'react-toastify';
 
 export default function GroupButtonSaveClearDone({
   isCreate,
@@ -26,6 +27,14 @@ export default function GroupButtonSaveClearDone({
   const handleClickElementCreate = () => {
     const categoryToUpperCase = state.category.toUpperCase();
     const difficultyToUpperCase = state.difficulty.toUpperCase();
+
+    if (!title.trim()) {
+      return toast.error('Title is required for creating quest!');
+    }
+
+    if (!time) {
+      return toast.error('Date is required for creating quest!');
+    }
 
     dispatch(
       exp.addTodo({
